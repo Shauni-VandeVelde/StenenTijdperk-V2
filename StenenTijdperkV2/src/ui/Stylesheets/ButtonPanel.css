@@ -1,0 +1,63 @@
+.combo-box .combo-box-popup .list-view, .combo-box .combo-box-popup .list-cell {
+    -fx-background-color: grey ;
+    -fx-text-fill: white ;
+
+}
+.combo-box .combo-box-popup .list-cell:hover {
+    -fx-text-fill: yellow ;
+    -fx-background-color: green ;
+}
+.combo-box > .list-cell {
+    -fx-text-fill: white;
+
+}
+.combo-box
+{
+    -fx-background-color: transparent;
+
+}
+.combo-box:hover{
+    -fx-border-color:yellow;
+    -fx-border-width: 3 3 3 3;
+
+}
+.slider { -fx-pref-width: 10em; 
+          -fx-background-color: transparent;
+}
+.slider .axis { 
+    -fx-tick-label-fill: white; 
+    -fx-tick-label-font-weight: 900;}
+
+.button
+{
+
+    -fx-text-fill: yellow ;
+    -fx-background-color: transparent;
+
+}
+.text {
+    -fx-font-family: "Roboto Condensed";
+    -fx-fill: white;
+    -fx-font-family: "Calibri" ;
+    -fx-font-size: 1.1em ;
+    -fx-font-weight: 900;
+
+}
+
+
+.input-text
+{
+    -fx-text-inner-color: white;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+
+    -fx-fill: white;
+    -fx-font-family: "Calibri" ;
+    -fx-font-size: 1.1em ;
+    -fx-font-weight: 900;
+}
+.button:hover {
+
+    -fx-border-color:yellow;
+    -fx-border-width: 3 3 3 3;
+}

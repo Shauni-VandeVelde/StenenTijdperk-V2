@@ -1,0 +1,19 @@
+
+.slider .axis { 
+    -fx-control-inner-background: #800000;-fx-tick-label-fill: green;-fx-tick-label-font-weight: 900;
+}
+
+
+.slider .thumb {
+
+
+    -fx-background-color: green;
+    -fx-background-insets: 0, 1, 2;
+
+    -fx-background-radius: 0.25em; /* makes sure this remains circular */
+
+    -fx-padding: 0.25em;  /* 7 */
+
+
+
+}
