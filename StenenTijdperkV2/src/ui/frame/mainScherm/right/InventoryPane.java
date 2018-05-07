@@ -170,7 +170,7 @@ public class InventoryPane extends RightPaneBlueprint
             {
             buttonsString[i] = "button";
             inventoryButtons[i] = new Button("Speler " + (i + 1));
-            getStylesheets().add("ui/stylesheets/buttons.css");
+            getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
             }
 
         inventoryButtons[0].setOnAction(new EventHandler<ActionEvent>()

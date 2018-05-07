@@ -40,7 +40,7 @@ public class Player
             try
                 {
                 Media media = new Media(getFile(path).toURI().toString());
-                System.out.println("Media " + media.getSource());
+                // System.out.println("Media " + media.getSource());
                 mediaPlayer = new MediaPlayer(media);
 
 //                setVolume();

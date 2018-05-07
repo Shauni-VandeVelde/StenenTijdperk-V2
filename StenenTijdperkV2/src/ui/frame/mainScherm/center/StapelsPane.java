@@ -125,8 +125,6 @@ public class StapelsPane extends Pane
             });
         button2.setOnAction((event) ->
             {
-
-            System.out.println("cow");
             if (mainScherm.pionnenPlaatsen())
                 {
 
