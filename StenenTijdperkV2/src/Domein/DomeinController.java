@@ -86,16 +86,25 @@ public class DomeinController
         vorigeLocaties[getHuidigeSpelerIndex()] = vorigeLocaties[getHuidigeSpelerIndex()] + nieuweLocatie.getNaam();
     }
 
-    public void verrekenStapel(Stapel stapel, Speler speler)
+    public boolean verrekenStapel(Stapel stapel, Speler speler)
     {
         Hut hut = stapel.getBovensteHut();
-        speler.setAantalHout(speler.getAantalGoud() - hut.getHoutKost());
-        speler.setAantalLeem(speler.getAantalGoud() - hut.getLeemKost());
-        speler.setAantalSteen(speler.getAantalGoud() - hut.getSteenKost());
-        speler.setAantalGoud(speler.getAantalGoud() - hut.getGoudKost());
-        speler.voegHutToe(hut);
-        stapel.verwijderBovensteHut();
-        stapel.clearPionnen();
+        if ((hut.getGoudKost() < speler.getAantalGoud()) && (hut.getHoutKost() < speler.getAantalHout()) && (hut.getLeemKost() < speler.getAantalLeem()) && (hut.getSteenKost() < speler.getAantalSteen()))
+            {
+            speler.setAantalHout(speler.getAantalGoud() - hut.getHoutKost());
+            speler.setAantalLeem(speler.getAantalGoud() - hut.getLeemKost());
+            speler.setAantalSteen(speler.getAantalGoud() - hut.getSteenKost());
+            speler.setAantalGoud(speler.getAantalGoud() - hut.getGoudKost());
+            speler.voegHutToe(hut);
+            stapel.verwijderBovensteHut();
+            stapel.clearPionnen();
+            return true;
+            }
+        else
+            {
+            stapel.clearPionnen();
+            return false;
+            }
 
     }
 

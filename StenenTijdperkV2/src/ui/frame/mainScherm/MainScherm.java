@@ -332,7 +332,6 @@ public class MainScherm extends BorderPane
         if (accepted)
             {
             controller.verrekenStapel(stapel, koopHutPane.getSpeler());
-
             }
         else
             {
