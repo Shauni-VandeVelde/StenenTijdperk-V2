@@ -71,7 +71,7 @@ public class Player
 
     private void finish()
     {
-        mainScherm.removeSFXNode(this);
+        mainScherm.removeSFX(this);
     }
 
     private void setPath(String type)

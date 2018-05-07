@@ -112,7 +112,7 @@ public class StapelsPane extends Pane
         button1.setOnAction((event) ->
             {
 
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
 
                 if (mainScherm.getController().getStapel(0).getAantalPlaatsenVrij() > 0)
@@ -125,7 +125,7 @@ public class StapelsPane extends Pane
             });
         button2.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
 
                 if (mainScherm.getController().getStapel(1).getAantalPlaatsenVrij() > 0)
@@ -139,7 +139,7 @@ public class StapelsPane extends Pane
         button3.setOnAction((event) ->
             {
 
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
 
                 if (mainScherm.getController().getStapel(2).getAantalPlaatsenVrij() > 0)
@@ -153,7 +153,7 @@ public class StapelsPane extends Pane
         button4.setOnAction((event) ->
             {
 
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
 
                 if (mainScherm.getController().getStapel(3).getAantalPlaatsenVrij() > 0)

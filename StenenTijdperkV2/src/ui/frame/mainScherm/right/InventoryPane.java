@@ -179,7 +179,7 @@ public class InventoryPane extends RightPaneBlueprint
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.showSpelerTab(0);
+                mainScherm.tabNaarSpeler(0);
 
             }
 
@@ -190,7 +190,7 @@ public class InventoryPane extends RightPaneBlueprint
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.showSpelerTab(1);
+                mainScherm.tabNaarSpeler(1);
 
             }
 
@@ -203,7 +203,7 @@ public class InventoryPane extends RightPaneBlueprint
                 @Override
                 public void handle(ActionEvent event)
                 {
-                    mainScherm.showSpelerTab(2);
+                    mainScherm.tabNaarSpeler(2);
 
                 }
 
@@ -217,7 +217,7 @@ public class InventoryPane extends RightPaneBlueprint
                 @Override
                 public void handle(ActionEvent event)
                 {
-                    mainScherm.showSpelerTab(2);
+                    mainScherm.tabNaarSpeler(2);
 
                 }
 
@@ -228,7 +228,7 @@ public class InventoryPane extends RightPaneBlueprint
                 @Override
                 public void handle(ActionEvent event)
                 {
-                    mainScherm.showSpelerTab(3);
+                    mainScherm.tabNaarSpeler(3);
 
                 }
 

@@ -36,7 +36,7 @@ public class StartGui extends Application
             {
             controller = new DomeinController(true);
             main = new MainScherm(controller, stage);
-            if (main.aantalSpelersPrompt())
+            if (main.openStartScherm())
                 {
                 controller.startSpel();
 //            main.opStartSpel();
@@ -94,11 +94,11 @@ public class StartGui extends Application
                 if (isPaused)
 
                     {
-                    main.unPause();
+                    main.closePauzeMenu();
                     }
                 else
                     {
-                    main.pause();
+                    main.openPauzeMenu();
                     }
 
                 }

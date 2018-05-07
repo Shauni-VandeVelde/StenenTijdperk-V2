@@ -158,7 +158,7 @@ public class ButtonsPane extends Pane
                         else
                             {
                             controller.plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
-                            mainScherm.plaatsPionnenImages(gekozenLocatie, gekozenLocatie.getMaxPionnen(), controller.getHuidigeSpeler());
+                            mainScherm.setPionnenImages(gekozenLocatie, gekozenLocatie.getMaxPionnen(), controller.getHuidigeSpeler());
 
                             mainScherm.volgendeSpeler();
                             }
@@ -183,7 +183,7 @@ public class ButtonsPane extends Pane
                     if (gekozenLocatie.heeftPlaatsGenoeg((int) sliderPionnen.getValue()))
                         {
                         controller.plaatsPionnenOpVeld(gekozenLocatie, (int) sliderPionnen.getValue());
-                        mainScherm.plaatsPionnenImages(gekozenLocatie, (int) sliderPionnen.getValue(), controller.getHuidigeSpeler());
+                        mainScherm.setPionnenImages(gekozenLocatie, (int) sliderPionnen.getValue(), controller.getHuidigeSpeler());
 
                         resetSlider();
                         resetCBOPlaatsPionnen();

@@ -87,19 +87,19 @@ public class MainScherm extends BorderPane
     private HBox centerMainHBox;
     private Pane centerRightInventoryMainPane;
     private InventoryPane inventoryPane;
-    private CenterPane centerPane;
+    private CenterPane spelbordPane;
     private StapelsPane stapelsPanel;
     private ButtonsPane bottomButtonsPanel;
     private ConsolePane consolePane;
     private boolean[] accept;
-    private boolean bottomHidden = false;
+
     private boolean first = true;
     private boolean finishRoundFirst = true;
-    private boolean pionnenPlaatsen = true;
+    private boolean magPionnenPlaatsen = true;
     private boolean spelGestart = false;
     private boolean spelGedaan = false;
     private boolean isPlaying = true;
-
+    private boolean firstDobbel = true;
     private ArrayList<Player> SFXPlayers = new ArrayList<>();
     private double masterVolume = 0.8, musicVolume = 0.7, SFXVolume = 0.9;
 
@@ -130,250 +130,6 @@ public class MainScherm extends BorderPane
 
     }
 
-    private void queueSound(String type, double volume)
-    {
-        //System.out.println("type: " + type + " volume " + volume);
-        SFXPlayers.add(new Player(this, type, volume));
-    }
-
-    public void stopMusic()
-    {
-        for (int i = 0; i < SFXPlayers.size(); i++)
-            {
-            if (SFXPlayers.get(i).isMusic())
-                {
-                SFXPlayers.get(i).getPlayer().stop();
-                }
-            }
-    }
-
-    public void stopSoundEffects()
-    {
-        for (int i = 0; i < SFXPlayers.size(); i++)
-            {
-            if (SFXPlayers.get(i).isSoundEffect())
-                {
-                SFXPlayers.get(i).getPlayer().stop();
-                }
-            }
-    }
-
-    private void playMusic()
-    {
-        if (spelGestart)
-            {
-            if (!spelGedaan)
-                {
-                stopMusic();
-                queueSound("musicLoop", 80);
-                }
-            }
-        else
-            {
-
-            queueSound("mainMenu", 85);
-            }
-    }
-
-    public void toggleMusic()
-    {
-        for (int i = 0; i < SFXPlayers.size(); i++)
-            {
-            if (isPlaying)
-                {
-                if (SFXPlayers.get(i).isMusic())
-                    {
-                    SFXPlayers.get(i).getPlayer().pause();
-                    }
-                isPlaying = false;
-                }
-            else
-                {
-                if (SFXPlayers.get(i).isMusic())
-                    {
-                    SFXPlayers.get(i).getPlayer().play();
-                    }
-                isPlaying = true;
-                }
-            }
-    }
-
-    public void removeSFXNode(Player player)
-    {
-        SFXPlayers.remove(player);
-    }
-
-    public void setMasterVolume(double masterVolume)
-    {
-        this.masterVolume = masterVolume;
-        for (int i = 0; i < SFXPlayers.size(); i++)
-            {
-            if (SFXPlayers.get(i).isMusic())
-                {
-                SFXPlayers.get(i).getPlayer().setVolume(masterVolume * musicVolume);
-                }
-            if (SFXPlayers.get(i).isSoundEffect())
-                {
-                SFXPlayers.get(i).getPlayer().setVolume(masterVolume * SFXVolume);
-                }
-            }
-    }
-
-    public void setMusicVolume(double musicVolume)
-    {
-        this.musicVolume = musicVolume;
-        for (int i = 0; i < SFXPlayers.size(); i++)
-            {
-            if (SFXPlayers.get(i).isMusic())
-                {
-                SFXPlayers.get(i).getPlayer().setVolume(masterVolume * musicVolume);
-                }
-            }
-    }
-
-    public void setSFXVolume(double SFXVolume)
-    {
-        this.SFXVolume = SFXVolume;
-        for (int i = 0; i < SFXPlayers.size(); i++)
-            {
-            if (SFXPlayers.get(i).isSoundEffect())
-                {
-                SFXPlayers.get(i).getPlayer().setVolume(masterVolume * SFXVolume);
-                }
-            }
-    }
-
-    public double getMasterVolume()
-    {
-        return masterVolume;
-    }
-
-    public double getMusicVolume()
-    {
-        return musicVolume;
-    }
-
-    public double getSFXVolume()
-    {
-        return SFXVolume;
-    }
-
-    // The rest:
-    public void init()
-    {
-        initMenuBar();
-
-        initPanels();
-        setBindings();
-        tabNaarHuidigeSpeler();
-        bottomButtonsPanel.update();
-        try
-            {
-            Media media = new Media(getFile("/SFX/Akker1.mp3").toURI().toString());
-            //System.out.println("Media " + media.getSource());
-            }
-        catch (Exception e)
-            {
-            e.printStackTrace();
-            }
-    }
-
-    File getFile(String path)
-    {
-        File file = null;
-        String resource = path;
-        URL res = getClass().getResource(resource);
-        if (res.toString().startsWith("jar:"))
-            {
-            try
-                {
-                InputStream input = getClass().getResourceAsStream(resource);
-                file = File.createTempFile("tempfile", ".tmp");
-                OutputStream out = new FileOutputStream(file);
-                int read;
-                byte[] bytes = new byte[1024];
-
-                while ((read = input.read(bytes)) != -1)
-                    {
-                    out.write(bytes, 0, read);
-                    }
-                file.deleteOnExit();
-                }
-            catch (IOException ex)
-                {
-                ex.printStackTrace();
-                }
-            }
-        else
-            {
-            file = new File(res.getFile());
-            }
-
-        if (file != null && !file.exists())
-            {
-            throw new RuntimeException("Error: File " + file + " not found!");
-            }
-        return file;
-    }
-
-    private void initMenuBar()
-    {
-        Menu optionsMenu = new Menu("Options");
-        menuBar = new MenuBar();
-        menuBar.getMenus().add(optionsMenu);
-        MenuItem close = new MenuItem("Close");
-        MenuItem toggleButtons = new MenuItem("toggleButtons");
-        toggleButtons.setOnAction(new EventHandler<ActionEvent>()
-        {
-            public void handle(ActionEvent t)
-            {
-                bottomButtonsPanel.toggleButtons();
-            }
-
-        });
-        close.setOnAction(new EventHandler<ActionEvent>()
-        {
-            public void handle(ActionEvent t)
-            {
-                Platform.exit();
-                System.exit(0);
-            }
-
-        });
-        optionsMenu.getItems().add(close);
-        optionsMenu.getItems().add(toggleButtons);
-
-    }
-
-    private void initPanels()
-    {
-        accept = new boolean[controller.getAantalSpelers()];
-        bottomVBox = new VBox();
-        centerLeftVbox = new VBox();
-        centerRightInventoryMainVbox = new VBox();
-        centerMainHBox = new HBox();
-        centerPane = new CenterPane(this);
-        consolePane = new ConsolePane(console, stage);
-        centerRightInventoryMainPane = new Pane();
-        bottomButtonsPanel = new ButtonsPane(controller, console, this);
-        stapelsPanel = new StapelsPane(this);
-
-        centerLeftVbox.getChildren().add(centerPane);
-        centerLeftVbox.getChildren().add(stapelsPanel);
-        centerPane.setStyle("-fx-background-color:blue;");
-        centerMainHBox.getChildren().add(centerLeftVbox);
-        centerMainHBox.getChildren().add(centerRightInventoryMainPane);
-        bottomVBox.getChildren().add(bottomButtonsPanel);
-        bottomVBox.getChildren().add(consolePane);
-
-        setTop(menuBar);
-        setCenter(centerMainHBox);
-        setBottom(bottomVBox);
-
-    }
-
-    double i = 0;
-
     public void volgendeSpeler()
     {
         Button temp = new Button();
@@ -396,7 +152,6 @@ public class MainScherm extends BorderPane
             }
         else
             {
-
             controller.incrementHuidigeSpelerIndex();
             if (controller.getHuidigeSpeler().getAantalPionnenOver() == 0)
                 {
@@ -410,19 +165,19 @@ public class MainScherm extends BorderPane
     public void bevestigPlaatsen(LocatiePane locatiePane)
     {
         controller.plaatsPionnenOpVeld(locatiePane.getLocatie(), locatiePane.getCurrentlySelectedNumber());
-        plaatsPionnenImages(locatiePane.getLocatie(), locatiePane.getCurrentlySelectedNumber(), controller.getHuidigeSpeler());
+        setPionnenImages(locatiePane.getLocatie(), locatiePane.getCurrentlySelectedNumber(), controller.getHuidigeSpeler());
         getStapelsPane().updateStapels();
         volgendeSpeler();
-        queueSound(locatiePane.getLocatie().getNaam(), 100);
+        queueSFX(locatiePane.getLocatie().getNaam(), 100);
     }
 
     public void startDobbel()
     {
         if (first)
             {
-            queueSound("dice1", 75);
+            queueSFX("dice1", 75);
 
-            pionnenPlaatsen = false;
+            magPionnenPlaatsen = false;
             controller.setHuidigeSpelerIndex();
             first = false;
             }
@@ -435,7 +190,7 @@ public class MainScherm extends BorderPane
                 Locatie locatie = controller.getVolgendeBezetteLocatie(spelerIndex);
                 int rol = controller.getRol(spelerIndex, locatie);
                 inventoryPane = null;
-                setDobbelPaneel(new DobbelPane(this, controller.getSpelers().get(spelerIndex), centerRightInventoryMainVbox, rol, locatie));
+                setDobbelPane(new DobbelPane(this, controller.getSpelers().get(spelerIndex), centerRightInventoryMainVbox, rol, locatie));
                 }
             }
         else
@@ -448,7 +203,7 @@ public class MainScherm extends BorderPane
     public void bevestigDobbel(DobbelPane dobbel)
     {
 
-        queueSound("dice2", 100);
+        queueSFX("dice2", 100);
 
         if ((dobbel.getSpeler() != null) && (dobbel.getCurrentLocatie() != null) && (dobbel.getCurrentRol() != -1))
             {
@@ -477,7 +232,7 @@ public class MainScherm extends BorderPane
                 }
             controller.clearPionnenVanSpeler(dobbel.getSpeler().index(), dobbel.getCurrentLocatie());
 
-            centerPane.clearPionnenVanLocatie(dobbel.getCurrentLocatie(), dobbel.getSpeler());
+            spelbordPane.clearPionnenVanLocatie(dobbel.getCurrentLocatie(), dobbel.getSpeler());
             if (getVolgendeSpeler() != -1)
                 {
                 startDobbel();
@@ -511,11 +266,11 @@ public class MainScherm extends BorderPane
     {
         if (controller.getRondeNummer() <= 3)
             {
-            centerPane.toggleArrow();
+            spelbordPane.toggleArrow();
             }
         else
             {
-            centerPane.removeArrow();
+            spelbordPane.removeArrow();
             }
 
         boolean finished = true;
@@ -546,7 +301,7 @@ public class MainScherm extends BorderPane
                     if (stapel.getBovensteHut().kanHutKopen(speler))
                         {
 
-                        setKoopHutPanel(new KoopHutPane(this, centerMainHBox, speler, stapel));
+                        setKoopHutPane(new KoopHutPane(this, centerMainHBox, speler, stapel));
 
                         }
                     else
@@ -608,7 +363,7 @@ public class MainScherm extends BorderPane
                 VoedselPane temp = new VoedselPane(this, centerMainHBox, speler);
                 if (speler.getAantalGoud() + speler.getAantalHout() + speler.getAantalLeem() + speler.getAantalSteen() >= speler.getVoedseltekort())
                     {
-                    setVoedselPaneel(temp);
+                    setVoedselPane(temp);
                     }
                 else
                     {
@@ -669,19 +424,19 @@ public class MainScherm extends BorderPane
             controller.resetVorigeLocaties();
             controller.resetLocaties();
             controller.resetPionnen();
-            centerPane.resetAkker();
-            centerPane.resetLovehut();
-            centerPane.resetGereedschapsMaker();
+            spelbordPane.resetAkker();
+            spelbordPane.resetLovehut();
+            spelbordPane.resetGereedschapsMaker();
             resetAccept();
 
             controller.resetGebruiktGereedschap();
             stapelsPanel.updateStapels();
-            centerPane.turnOffArrow();
+            spelbordPane.turnOffArrow();
             controller.incrementRondeNummer();
             controller.incrementStartSpelerNummer();
             controller.setHuidigeSpelerIndex();
             bottomButtonsPanel.update();
-            pionnenPlaatsen = true;
+            magPionnenPlaatsen = true;
             tabNaarHuidigeSpeler();
 
             }
@@ -689,22 +444,6 @@ public class MainScherm extends BorderPane
             {
             setEindScherm(new EndOfGamePane(this, centerRightInventoryMainPane));
             }
-
-    }
-
-    public void tabNaarHuidigeSpeler()
-    {
-        setInventoryPanel(new InventoryPane(controller.getHuidigeSpeler(), this, centerRightInventoryMainVbox));
-    }
-
-    public void showSpelerTab(int index)
-    {
-        setInventoryPanel(new InventoryPane(controller.getSpelers().get(index), this, centerRightInventoryMainVbox));
-    }
-
-    public void plaatsPionnenImages(Locatie locatie, int aantal, Speler speler)
-    {
-        centerPane.setLocatieImages(locatie, aantal, speler);
 
     }
 
@@ -716,139 +455,19 @@ public class MainScherm extends BorderPane
             }
     }
 
-    public void toggleBottom()
+    public boolean magPionnenPlaatsen()
     {
-        if (bottomHidden)
-            {
-            bottomVBox.setVisible(true);
-            bottomHidden = false;
-            }
-        else
-            {
-            bottomVBox.setVisible(false);
-            bottomHidden = true;
-            }
+        return magPionnenPlaatsen;
     }
 
-    private void setBindings()
+    public boolean isSpelGestart()
     {
-        //Bindings for Bottom Panels
-        bottomVBox.prefWidthProperty().bind(widthProperty());
-        bottomVBox.minWidthProperty().bind(widthProperty());
-        bottomVBox.maxWidthProperty().bind(widthProperty());
-        bottomVBox.prefHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
-        bottomVBox.minHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
-        bottomVBox.maxHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
-
-        bottomButtonsPanel.prefWidthProperty().bind(bottomVBox.widthProperty());
-        bottomButtonsPanel.minWidthProperty().bind(bottomVBox.widthProperty());
-        bottomButtonsPanel.maxWidthProperty().bind(bottomVBox.widthProperty());
-        bottomButtonsPanel.prefHeightProperty().bind(bottomVBox.heightProperty().multiply(0.24));
-        bottomButtonsPanel.minHeightProperty().bind(bottomVBox.heightProperty().multiply(0.24));
-        bottomButtonsPanel.maxHeightProperty().bind(bottomVBox.heightProperty().multiply(0.24));
-
-        consolePane.prefWidthProperty().bind(bottomVBox.widthProperty());
-        consolePane.minWidthProperty().bind(bottomVBox.widthProperty());
-        consolePane.maxWidthProperty().bind(bottomVBox.widthProperty());
-        consolePane.prefHeightProperty().bind(bottomVBox.heightProperty().multiply(0.76));
-        consolePane.minHeightProperty().bind(bottomVBox.heightProperty().multiply(0.76));
-        consolePane.maxHeightProperty().bind(bottomVBox.heightProperty().multiply(0.76));
-
-        // Center Panels
-        centerMainHBox.prefHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
-        centerMainHBox.minHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
-        centerMainHBox.maxHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
-        centerMainHBox.prefWidthProperty().bind(stage.widthProperty());
-        centerMainHBox.maxWidthProperty().bind(stage.widthProperty());
-        centerMainHBox.minWidthProperty().bind(stage.widthProperty());
-
-        centerLeftVbox.prefHeightProperty().bind(centerMainHBox.heightProperty());
-        centerLeftVbox.minHeightProperty().bind(centerMainHBox.heightProperty());
-        centerLeftVbox.maxHeightProperty().bind(centerMainHBox.heightProperty());
-        centerLeftVbox.prefWidthProperty().bind(centerMainHBox.widthProperty().multiply(0.8));
-        centerLeftVbox.maxWidthProperty().bind(centerMainHBox.widthProperty().multiply(0.8));
-        centerLeftVbox.minWidthProperty().bind(centerMainHBox.widthProperty().multiply(0.8));
-
-        centerPane.prefWidthProperty().bind(centerLeftVbox.widthProperty());
-        centerPane.minWidthProperty().bind(centerLeftVbox.widthProperty());
-        centerPane.maxWidthProperty().bind(centerLeftVbox.widthProperty());
-        centerPane.prefHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.84));
-        centerPane.minHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.84));
-        centerPane.maxHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.84));
-
-        stapelsPanel.prefWidthProperty().bind(centerLeftVbox.widthProperty());
-        stapelsPanel.minWidthProperty().bind(centerLeftVbox.widthProperty());
-        stapelsPanel.maxWidthProperty().bind(centerLeftVbox.widthProperty());
-        stapelsPanel.prefHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.16));
-        stapelsPanel.minHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.16));
-        stapelsPanel.maxHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.16));
-
+        return spelGestart;
     }
 
-    public void setEindScherm(EndOfGamePane eindScherm)
+    public boolean isSpelGedaan()
     {
-        getChildren().clear();
-
-        getChildren().add(eindScherm);
-    }
-
-    public void setKoopHutPanel(KoopHutPane koopHutPane)
-    {
-
-        centerMainHBox.getChildren().clear();
-
-        centerMainHBox.getChildren().add(koopHutPane);
-
-    }
-
-    public void setInventoryPanel(InventoryPane inventory)
-    {
-        inventoryPane = inventory;
-        centerMainHBox.getChildren().clear();
-        centerMainHBox.getChildren().add(centerLeftVbox);
-        centerMainHBox.getChildren().add(inventory);
-        inventory.requestFocus();
-    }
-
-    private boolean firstDobbel = true;
-
-    public void setDobbelPaneel(DobbelPane dobbelPaneel)
-    {
-        if (firstDobbel)
-            {
-
-            if (controller.getRondeNummer() <= 3)
-                {
-                centerPane.toggleArrow();
-                }
-
-            firstDobbel = false;
-            }
-        //System.err.println("setDobbelPanel()");
-        centerMainHBox.getChildren().clear();
-        centerMainHBox.getChildren().add(centerLeftVbox);
-        centerMainHBox.getChildren().add(dobbelPaneel);
-        dobbelPaneel.requestFocus();
-    }
-
-    public void setVoedselPaneel(VoedselPane voedselPaneel)
-    {
-
-        //System.err.println("setVoedselPanel()");
-        centerMainHBox.getChildren().clear();
-        centerMainHBox.getChildren().add(voedselPaneel);
-        voedselPaneel.requestFocus();
-
-    }
-
-    public void setEindeRondePane(EindeRondePane eindeRondePane)
-    {
-
-        //System.err.println("setVoedselPanel()");
-        centerMainHBox.getChildren().clear();
-
-        centerMainHBox.getChildren().add(eindeRondePane);
-        eindeRondePane.requestFocus();
+        return spelGedaan;
     }
 
     private int getVolgendeSpeler()
@@ -868,62 +487,180 @@ public class MainScherm extends BorderPane
         return -1;
     }
 
-    public Stage getStage()
-    {
-        return stage;
-    }
-
-    public Pane getCenterPane()
-    {
-        return centerPane;
-    }
-
-    public Pane getCenterLeftVBox()
-    {
-        return centerLeftVbox;
-    }
-
-    public StapelsPane getStapelsPane()
-    {
-        return stapelsPanel;
-    }
-
-    public ButtonsPane getBottomButtonsPanel()
-    {
-        return bottomButtonsPanel;
-    }
-
-    public VBox getCenterRightInventoryMainVbox()
-    {
-        return centerRightInventoryMainVbox;
-    }
-
-    public boolean isSpelGestart()
-    {
-        return spelGestart;
-    }
-
-    public boolean isSpelGedaan()
-    {
-        return spelGedaan;
-    }
-
-    public Pane getCenterRightInventoryMainPane()
-    {
-        return centerRightInventoryMainPane;
-    }
-
     public DomeinController getController()
     {
         return controller;
     }
 
-    public boolean pionnenPlaatsen()
+    //Sound related:
+    private void queueSFX(String type, double volume)
     {
-        return pionnenPlaatsen;
+        //System.out.println("type: " + type + " volume " + volume);
+        SFXPlayers.add(new Player(this, type, volume));
     }
 
-    public boolean aantalSpelersPrompt()
+    public void removeSFX(Player player)
+    {
+        SFXPlayers.remove(player);
+    }
+
+    private void playMusic()
+    {
+        if (spelGestart)
+            {
+            if (!spelGedaan)
+                {
+                stopMusic();
+                queueSFX("musicLoop", 80);
+                }
+            }
+        else
+            {
+
+            queueSFX("mainMenu", 85);
+            }
+    }
+
+    public void stopMusic()
+    {
+        for (int i = 0; i < SFXPlayers.size(); i++)
+            {
+            if (SFXPlayers.get(i).isMusic())
+                {
+                SFXPlayers.get(i).getPlayer().stop();
+                }
+            }
+    }
+
+    public void stopSoundEffects()
+    {
+        for (int i = 0; i < SFXPlayers.size(); i++)
+            {
+            if (SFXPlayers.get(i).isSoundEffect())
+                {
+                SFXPlayers.get(i).getPlayer().stop();
+                }
+            }
+    }
+
+    public void toggleMusic()
+    {
+        for (int i = 0; i < SFXPlayers.size(); i++)
+            {
+            if (isPlaying)
+                {
+                if (SFXPlayers.get(i).isMusic())
+                    {
+                    SFXPlayers.get(i).getPlayer().pause();
+                    }
+                isPlaying = false;
+                }
+            else
+                {
+                if (SFXPlayers.get(i).isMusic())
+                    {
+                    SFXPlayers.get(i).getPlayer().play();
+                    }
+                isPlaying = true;
+                }
+            }
+    }
+
+    public void setMasterVolume(double masterVolume)
+    {
+        this.masterVolume = masterVolume;
+        for (int i = 0; i < SFXPlayers.size(); i++)
+            {
+            if (SFXPlayers.get(i).isMusic())
+                {
+                SFXPlayers.get(i).getPlayer().setVolume(masterVolume * musicVolume);
+                }
+            if (SFXPlayers.get(i).isSoundEffect())
+                {
+                SFXPlayers.get(i).getPlayer().setVolume(masterVolume * SFXVolume);
+                }
+            }
+    }
+
+    public void setMusicVolume(double musicVolume)
+    {
+        this.musicVolume = musicVolume;
+        for (int i = 0; i < SFXPlayers.size(); i++)
+            {
+            if (SFXPlayers.get(i).isMusic())
+                {
+                SFXPlayers.get(i).getPlayer().setVolume(masterVolume * musicVolume);
+                }
+            }
+    }
+
+    public void setSFXVolume(double SFXVolume)
+    {
+        this.SFXVolume = SFXVolume;
+        for (int i = 0; i < SFXPlayers.size(); i++)
+            {
+            if (SFXPlayers.get(i).isSoundEffect())
+                {
+                SFXPlayers.get(i).getPlayer().setVolume(masterVolume * SFXVolume);
+                }
+            }
+    }
+
+    public double getMasterVolume()
+    {
+        return masterVolume;
+    }
+
+    public double getMusicVolume()
+    {
+        return musicVolume;
+    }
+
+    public double getSFXVolume()
+    {
+        return SFXVolume;
+    }
+
+    private File getFile(String path)
+    {
+        File file = null;
+        String resource = path;
+        URL res = getClass().getResource(resource);
+        if (res.toString().startsWith("jar:"))
+            {
+            try
+                {
+                InputStream input = getClass().getResourceAsStream(resource);
+                file = File.createTempFile("tempfile", ".tmp");
+                OutputStream out = new FileOutputStream(file);
+                int read;
+                byte[] bytes = new byte[1024];
+
+                while ((read = input.read(bytes)) != -1)
+                    {
+                    out.write(bytes, 0, read);
+                    }
+                file.deleteOnExit();
+                }
+            catch (IOException ex)
+                {
+                ex.printStackTrace();
+                }
+            }
+        else
+            {
+            file = new File(res.getFile());
+            }
+
+        if (file != null && !file.exists())
+            {
+            throw new RuntimeException("Error: File " + file + " not found!");
+            }
+        return file;
+    }
+
+    //Gui things:
+    public boolean openStartScherm()
     {
         Stage stage = new Stage();
         final ToggleGroup group = new ToggleGroup();
@@ -1013,7 +750,137 @@ public class MainScherm extends BorderPane
             }
     }
 
-    public void pause()
+    public void init()
+    {
+        initMenuBar();
+
+        initPanels();
+        setBindings();
+        tabNaarHuidigeSpeler();
+        bottomButtonsPanel.update();
+        try
+            {
+            Media media = new Media(getFile("/SFX/Akker1.mp3").toURI().toString());
+            //System.out.println("Media " + media.getSource());
+            }
+        catch (Exception e)
+            {
+            e.printStackTrace();
+            }
+    }
+
+    private void initMenuBar()
+    {
+        Menu optionsMenu = new Menu("Options");
+        menuBar = new MenuBar();
+        menuBar.getMenus().add(optionsMenu);
+        MenuItem close = new MenuItem("Close");
+        MenuItem toggleButtons = new MenuItem("toggleButtons");
+        toggleButtons.setOnAction(new EventHandler<ActionEvent>()
+        {
+            public void handle(ActionEvent t)
+            {
+                bottomButtonsPanel.toggleButtons();
+            }
+
+        });
+        close.setOnAction(new EventHandler<ActionEvent>()
+        {
+            public void handle(ActionEvent t)
+            {
+                Platform.exit();
+                System.exit(0);
+            }
+
+        });
+        optionsMenu.getItems().add(close);
+        optionsMenu.getItems().add(toggleButtons);
+
+    }
+
+    private void initPanels()
+    {
+        accept = new boolean[controller.getAantalSpelers()];
+        bottomVBox = new VBox();
+        centerLeftVbox = new VBox();
+        centerRightInventoryMainVbox = new VBox();
+        centerMainHBox = new HBox();
+        spelbordPane = new CenterPane(this);
+        consolePane = new ConsolePane(console, stage);
+        centerRightInventoryMainPane = new Pane();
+        bottomButtonsPanel = new ButtonsPane(controller, console, this);
+        stapelsPanel = new StapelsPane(this);
+
+        centerLeftVbox.getChildren().add(spelbordPane);
+        centerLeftVbox.getChildren().add(stapelsPanel);
+        spelbordPane.setStyle("-fx-background-color:blue;");
+        centerMainHBox.getChildren().add(centerLeftVbox);
+        centerMainHBox.getChildren().add(centerRightInventoryMainPane);
+        bottomVBox.getChildren().add(bottomButtonsPanel);
+        bottomVBox.getChildren().add(consolePane);
+
+        setTop(menuBar);
+        setCenter(centerMainHBox);
+        setBottom(bottomVBox);
+
+    }
+
+    private void setBindings()
+    {
+        //Bindings for Bottom Panels
+        bottomVBox.prefWidthProperty().bind(widthProperty());
+        bottomVBox.minWidthProperty().bind(widthProperty());
+        bottomVBox.maxWidthProperty().bind(widthProperty());
+        bottomVBox.prefHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
+        bottomVBox.minHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
+        bottomVBox.maxHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
+
+        bottomButtonsPanel.prefWidthProperty().bind(bottomVBox.widthProperty());
+        bottomButtonsPanel.minWidthProperty().bind(bottomVBox.widthProperty());
+        bottomButtonsPanel.maxWidthProperty().bind(bottomVBox.widthProperty());
+        bottomButtonsPanel.prefHeightProperty().bind(bottomVBox.heightProperty().multiply(0.24));
+        bottomButtonsPanel.minHeightProperty().bind(bottomVBox.heightProperty().multiply(0.24));
+        bottomButtonsPanel.maxHeightProperty().bind(bottomVBox.heightProperty().multiply(0.24));
+
+        consolePane.prefWidthProperty().bind(bottomVBox.widthProperty());
+        consolePane.minWidthProperty().bind(bottomVBox.widthProperty());
+        consolePane.maxWidthProperty().bind(bottomVBox.widthProperty());
+        consolePane.prefHeightProperty().bind(bottomVBox.heightProperty().multiply(0.76));
+        consolePane.minHeightProperty().bind(bottomVBox.heightProperty().multiply(0.76));
+        consolePane.maxHeightProperty().bind(bottomVBox.heightProperty().multiply(0.76));
+
+        // Center Panels
+        centerMainHBox.prefHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
+        centerMainHBox.minHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
+        centerMainHBox.maxHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
+        centerMainHBox.prefWidthProperty().bind(stage.widthProperty());
+        centerMainHBox.maxWidthProperty().bind(stage.widthProperty());
+        centerMainHBox.minWidthProperty().bind(stage.widthProperty());
+
+        centerLeftVbox.prefHeightProperty().bind(centerMainHBox.heightProperty());
+        centerLeftVbox.minHeightProperty().bind(centerMainHBox.heightProperty());
+        centerLeftVbox.maxHeightProperty().bind(centerMainHBox.heightProperty());
+        centerLeftVbox.prefWidthProperty().bind(centerMainHBox.widthProperty().multiply(0.8));
+        centerLeftVbox.maxWidthProperty().bind(centerMainHBox.widthProperty().multiply(0.8));
+        centerLeftVbox.minWidthProperty().bind(centerMainHBox.widthProperty().multiply(0.8));
+
+        spelbordPane.prefWidthProperty().bind(centerLeftVbox.widthProperty());
+        spelbordPane.minWidthProperty().bind(centerLeftVbox.widthProperty());
+        spelbordPane.maxWidthProperty().bind(centerLeftVbox.widthProperty());
+        spelbordPane.prefHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.84));
+        spelbordPane.minHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.84));
+        spelbordPane.maxHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.84));
+
+        stapelsPanel.prefWidthProperty().bind(centerLeftVbox.widthProperty());
+        stapelsPanel.minWidthProperty().bind(centerLeftVbox.widthProperty());
+        stapelsPanel.maxWidthProperty().bind(centerLeftVbox.widthProperty());
+        stapelsPanel.prefHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.16));
+        stapelsPanel.minHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.16));
+        stapelsPanel.maxHeightProperty().bind(centerLeftVbox.heightProperty().multiply(0.16));
+
+    }
+
+    public void openPauzeMenu()
     {
         PauzePane p = new PauzePane(this.stage, this);
 
@@ -1027,7 +894,7 @@ public class MainScherm extends BorderPane
 
     }
 
-    public void unPause()
+    public void closePauzeMenu()
     {
         getChildren().clear();
         setTop(menuBar);
@@ -1037,6 +904,118 @@ public class MainScherm extends BorderPane
         StartGui.togglePause();
         centerMainHBox.requestFocus();
 
+    }
+
+    public void tabNaarHuidigeSpeler()
+    {
+        setInventoryPane(new InventoryPane(controller.getHuidigeSpeler(), this, centerRightInventoryMainVbox));
+    }
+
+    public void tabNaarSpeler(int index)
+    {
+        setInventoryPane(new InventoryPane(controller.getSpelers().get(index), this, centerRightInventoryMainVbox));
+    }
+
+    public void setPionnenImages(Locatie locatie, int aantal, Speler speler)
+    {
+        spelbordPane.setLocatieImages(locatie, aantal, speler);
+
+    }
+
+    public void setEindScherm(EndOfGamePane eindScherm)
+    {
+        getChildren().clear();
+
+        getChildren().add(eindScherm);
+    }
+
+    public void setKoopHutPane(KoopHutPane koopHutPane)
+    {
+
+        centerMainHBox.getChildren().clear();
+
+        centerMainHBox.getChildren().add(koopHutPane);
+
+    }
+
+    public void setInventoryPane(InventoryPane inventoryPane)
+    {
+        this.inventoryPane = inventoryPane;
+        centerMainHBox.getChildren().clear();
+        centerMainHBox.getChildren().add(centerLeftVbox);
+        centerMainHBox.getChildren().add(this.inventoryPane);
+        this.inventoryPane.requestFocus();
+    }
+
+    public void setDobbelPane(DobbelPane dobbelPane)
+    {
+        if (firstDobbel)
+            {
+
+            if (controller.getRondeNummer() <= 3)
+                {
+                spelbordPane.toggleArrow();
+                }
+
+            firstDobbel = false;
+            }
+        centerMainHBox.getChildren().clear();
+        centerMainHBox.getChildren().add(centerLeftVbox);
+        centerMainHBox.getChildren().add(dobbelPane);
+        dobbelPane.requestFocus();
+    }
+
+    public void setVoedselPane(VoedselPane voedselPane)
+    {
+        centerMainHBox.getChildren().clear();
+        centerMainHBox.getChildren().add(voedselPane);
+        voedselPane.requestFocus();
+
+    }
+
+    public void setEindeRondePane(EindeRondePane eindeRondePane)
+    {
+
+        //System.err.println("setVoedselPanel()");
+        centerMainHBox.getChildren().clear();
+
+        centerMainHBox.getChildren().add(eindeRondePane);
+        eindeRondePane.requestFocus();
+    }
+
+    public Stage getStage()
+    {
+        return stage;
+    }
+
+    public Pane getSpelbordPane()
+    {
+        return spelbordPane;
+    }
+
+    public VBox getCenterRightInventoryMainVbox()
+    {
+        return centerRightInventoryMainVbox;
+    }
+
+    public Pane getCenterRightInventoryMainPane()
+    {
+        return centerRightInventoryMainPane;
+    }
+
+    public Pane getCenterLeftVBox()
+    {
+        return centerLeftVbox;
+    }
+
+    public StapelsPane getStapelsPane()
+    {
+        return stapelsPanel;
+    }
+
+    public ButtonsPane getBottomButtonsPanel()
+    {
+        return bottomButtonsPanel;
     }
 
 }

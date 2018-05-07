@@ -157,7 +157,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.unPause();
+                mainScherm.closePauzeMenu();
             }
 
         });

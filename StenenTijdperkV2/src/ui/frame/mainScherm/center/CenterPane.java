@@ -300,7 +300,7 @@ public class CenterPane extends Pane
 
         bos.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
 
                 if (controller.getLocatie("bos").getAantalPlaatsenVrij() > 0)
@@ -315,7 +315,7 @@ public class CenterPane extends Pane
             });
         leemgroeve.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
                     {
@@ -328,7 +328,7 @@ public class CenterPane extends Pane
             });
         steengroeve.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("steengroeve").getAantalPlaatsenVrij() > 0)
                     {
@@ -341,7 +341,7 @@ public class CenterPane extends Pane
             });
         rivier.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("rivier").getAantalPlaatsenVrij() > 0)
                     {
@@ -355,7 +355,7 @@ public class CenterPane extends Pane
             });
         jacht.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("jacht").getAantalPlaatsenVrij() > 0)
                     {
@@ -369,7 +369,7 @@ public class CenterPane extends Pane
             });
         akker.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("akker").getAantalPlaatsenVrij() > 0)
                     {
@@ -384,7 +384,7 @@ public class CenterPane extends Pane
             });
         gereedschapsmaker.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("gereedschapsmaker").getAantalPlaatsenVrij() > 0)
                     {
@@ -397,7 +397,7 @@ public class CenterPane extends Pane
             });
         lovehut.setOnAction((event) ->
             {
-            if (mainScherm.pionnenPlaatsen())
+            if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("lovehut").getAantalPlaatsenVrij() > 0)
                     {
