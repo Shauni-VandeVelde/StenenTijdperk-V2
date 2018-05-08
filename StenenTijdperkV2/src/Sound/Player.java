@@ -197,8 +197,8 @@ public class Player
                 break;
             case "negative":
                 soundEffect = true;
-
-                path = "/SFX/Negative.mp3";
+                volume = 100;
+                path = "/SFX/MagNiet.mp3";
                 break;
             case "gong":
                 soundEffect = true;
