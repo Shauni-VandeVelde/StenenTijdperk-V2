@@ -46,7 +46,10 @@ public class PauzePane extends Pane
     public PauzePane(Stage stage, MainScherm mainScherm)
     {
         super();
-
+        if (mainScherm.shouldPlayConfirmSound())
+            {
+            mainScherm.queueSFX("menu", 80);
+            }
         menuOptionsVBox = new VBox();
         soundMenuVBox = new VBox();
         mainHBox = new HBox();
@@ -196,7 +199,11 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 80);
+                if (mainScherm.shouldPlayConfirmSound())
+                    {
+                    mainScherm.queueSFX("menu", 80);
+                    }
+
                 mainScherm.closePauzeMenu();
             }
 
@@ -208,7 +215,10 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 80);
+                if (mainScherm.shouldPlayConfirmSound())
+                    {
+                    mainScherm.queueSFX("menu", 80);
+                    }
                 toggleSavePane();
             }
 
@@ -219,7 +229,10 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 80);
+                if (mainScherm.shouldPlayConfirmSound())
+                    {
+                    mainScherm.queueSFX("menu", 80);
+                    }
                 toggleLoadPane();
             }
 
@@ -230,7 +243,10 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 80);
+                if (mainScherm.shouldPlayConfirmSound())
+                    {
+                    mainScherm.queueSFX("menu", 80);
+                    }
             }
 
         });
@@ -240,7 +256,10 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 80);
+                if (mainScherm.shouldPlayConfirmSound())
+                    {
+                    mainScherm.queueSFX("menu", 80);
+                    }
                 stage.close();
             }
 
