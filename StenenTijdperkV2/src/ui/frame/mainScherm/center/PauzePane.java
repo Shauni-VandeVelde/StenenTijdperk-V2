@@ -46,7 +46,7 @@ public class PauzePane extends Pane
     public PauzePane(Stage stage, MainScherm mainScherm)
     {
         super();
-
+        mainScherm.queueSFX("menu", 0);
         menuOptionsVBox = new VBox();
         soundMenuVBox = new VBox();
         mainHBox = new HBox();
@@ -136,6 +136,7 @@ public class PauzePane extends Pane
 
     public void toggleSoundMenu()
     {
+        mainScherm.queueSFX("menu", 0);
         if (soundMenuActive)
             {
             getChildren().clear();
@@ -151,36 +152,40 @@ public class PauzePane extends Pane
             soundMenuActive = true;
             }
     }
-    
-        public void toggleSavePane(){
-        if(savePaneActive)
-        {
+
+    public void toggleSavePane()
+    {
+        mainScherm.queueSFX("menu", 0);
+        if (savePaneActive)
+            {
             getChildren().clear();
             getChildren().add(background);
             getChildren().add(menuOptionsVBox);
-        }
+            }
         else
-        {
+            {
             getChildren().clear();
             getChildren().add(new SavePane());
-        }
-        
+            }
+
         savePaneActive = !savePaneActive;
     }
-    
-    public void toggleLoadPane(){
-        if(loadPaneActive)
-        {
+
+    public void toggleLoadPane()
+    {
+        mainScherm.queueSFX("menu", 0);
+        if (loadPaneActive)
+            {
             getChildren().clear();
             getChildren().add(background);
             getChildren().add(menuOptionsVBox);
-        }
+            }
         else
-        {
+            {
             getChildren().clear();
             getChildren().add(new LoadPane());
-        }
-        
+            }
+
         loadPaneActive = !loadPaneActive;
     }
 
@@ -191,6 +196,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
+                mainScherm.queueSFX("menu", 0);
                 mainScherm.closePauzeMenu();
             }
 

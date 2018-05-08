@@ -216,6 +216,12 @@ public class Player
                 volume = 0.85;
                 path = "/SFX/gong.mp3";
                 break;
+            case "menu":
+                soundEffect = true;
+                volume = 1;
+                path = "/SFX/Menu.mp3";
+
+                break;
             }
 
     }
