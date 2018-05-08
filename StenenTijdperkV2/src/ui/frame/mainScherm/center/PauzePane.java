@@ -39,6 +39,8 @@ public class PauzePane extends Pane
     private Button btnSluiten;
     private Button btnSoundOptions;
     private boolean soundMenuActive = false;
+    private boolean savePaneActive = false;
+    private boolean loadPaneActive = false;
     private ImageView background;
 
     public PauzePane(Stage stage, MainScherm mainScherm)
@@ -149,6 +151,38 @@ public class PauzePane extends Pane
             soundMenuActive = true;
             }
     }
+    
+        public void toggleSavePane(){
+        if(savePaneActive)
+        {
+            getChildren().clear();
+            getChildren().add(background);
+            getChildren().add(menuOptionsVBox);
+        }
+        else
+        {
+            getChildren().clear();
+            getChildren().add(new SavePane());
+        }
+        
+        savePaneActive = !savePaneActive;
+    }
+    
+    public void toggleLoadPane(){
+        if(loadPaneActive)
+        {
+            getChildren().clear();
+            getChildren().add(background);
+            getChildren().add(menuOptionsVBox);
+        }
+        else
+        {
+            getChildren().clear();
+            getChildren().add(new LoadPane());
+        }
+        
+        loadPaneActive = !loadPaneActive;
+    }
 
     private void setActions()
     {
@@ -168,6 +202,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
+                toggleSavePane();
             }
 
         });
@@ -177,6 +212,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
+                toggleLoadPane();
             }
 
         });
