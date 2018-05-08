@@ -161,7 +161,6 @@ public class ButtonsPane extends Pane
                             hasPlaced = true;
                             controller.plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
                             mainScherm.setPionnenImages(gekozenLocatie, gekozenLocatie.getMaxPionnen(), controller.getHuidigeSpeler());
-
                             mainScherm.volgendeSpeler();
                             }
                         resetSlider();
@@ -187,7 +186,6 @@ public class ButtonsPane extends Pane
                         hasPlaced = true;
                         controller.plaatsPionnenOpVeld(gekozenLocatie, (int) sliderPionnen.getValue());
                         mainScherm.setPionnenImages(gekozenLocatie, (int) sliderPionnen.getValue(), controller.getHuidigeSpeler());
-
                         resetSlider();
                         resetCBOPlaatsPionnen();
                         clear = true;
@@ -211,7 +209,7 @@ public class ButtonsPane extends Pane
             }
         if (hasPlaced)
             {
-            mainScherm.queueSFX(gekozenLocatie.getNaam(), 0);
+            mainScherm.queueSFX(gekozenLocatie.getNaam(), -1);
             }
     }
 
