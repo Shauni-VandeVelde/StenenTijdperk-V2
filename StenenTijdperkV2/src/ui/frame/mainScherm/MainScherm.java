@@ -945,10 +945,7 @@ public class MainScherm extends BorderPane
         setTop(menuBar);
         setCenter(centerMainHBox);
         setBottom(bottomVBox);
-        if (!bottomButtonsPanel.isVisible())
-            {
-            bottomButtonsPanel.setVisible(true);
-            }
+        getBottomButtonsPanel().toggleButtons();
         StartGui.togglePause();
         centerMainHBox.requestFocus();
 

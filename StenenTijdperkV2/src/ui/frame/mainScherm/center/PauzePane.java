@@ -46,6 +46,10 @@ public class PauzePane extends Pane
     public PauzePane(Stage stage, MainScherm mainScherm)
     {
         super();
+        if (mainScherm.getBottomButtonsPanel().isVisible())
+            {
+            mainScherm.getBottomButtonsPanel().toggleButtons();
+            }
         if (mainScherm.shouldPlayMenuSFX())
             {
             mainScherm.queueSFX("menu", 80);
@@ -199,6 +203,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
+
                 if (mainScherm.shouldPlayMenuSFX())
                     {
                     mainScherm.queueSFX("menu", 80);

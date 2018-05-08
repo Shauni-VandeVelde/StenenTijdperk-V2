@@ -115,11 +115,13 @@ public class SoundMenu extends RightPaneBlueprint
         getChildren().add(sliders);
         getChildren().add(acceptButton);
         getChildren().add(options);
+        options.layoutXProperty().bind(widthProperty().multiply(0.01));
+        options.layoutYProperty().bind(heightProperty().multiply(0.725));
 
         labels.layoutXProperty().bind(widthProperty().multiply(0.1));
-        labels.layoutYProperty().bind(heightProperty().multiply(0.13));
+        labels.layoutYProperty().bind(heightProperty().multiply(0.07));
         sliders.layoutXProperty().bind(widthProperty().multiply(0.48));
-        sliders.layoutYProperty().bind(heightProperty().multiply(0.13));
+        sliders.layoutYProperty().bind(heightProperty().multiply(0.07));
         acceptButton.layoutXProperty().bind(widthProperty().multiply(0.35));
         acceptButton.layoutYProperty().bind(heightProperty().multiply(0.875));
         labels.prefWidthProperty().bind(masterLabelPaneel.widthProperty());
