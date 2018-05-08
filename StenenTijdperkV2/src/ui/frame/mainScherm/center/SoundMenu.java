@@ -185,31 +185,46 @@ public class SoundMenu extends RightPaneBlueprint
         SFXVolumeSlider.setShowTickMarks(false);
         SFXVolumeSlider.setShowTickLabels(false);
 
-        if (mainScherm.shouldPlayConfirmSFX())
+        if (mainScherm.shouldPlayMenuSFX())
             {
             menuSounds.setSelected(true);
+            }
+        else
+            {
+            menuSounds.setSelected(false);
             }
         if (mainScherm.shouldPlayDobbelSFX())
             {
             dobbelSounds.setSelected(true);
             }
+        else
+            {
+            dobbelSounds.setSelected(false);
+            }
         if (mainScherm.shouldPlayEndOfRoundSFX())
             {
             endOfRoundSounds.setSelected(true);
+            }
+        else
+            {
+            endOfRoundSounds.setSelected(false);
             }
         if (mainScherm.shouldPlayKoopHutSFX())
             {
             koopHutSounds.setSelected(true);
             }
+        else
+            {
+            koopHutSounds.setSelected(false);
+            }
         if (mainScherm.shouldPlayLocatieSFX())
             {
             locationSounds.setSelected(true);
             }
-
-        locationSounds.setSelected(true);
-        endOfRoundSounds.setSelected(true);
-        koopHutSounds.setSelected(true);
-        dobbelSounds.setSelected(true);
+        else
+            {
+            locationSounds.setSelected(false);
+            }
 
         masterSliderPaneel.setAlignment(Pos.CENTER);
         musicSliderPaneel.setAlignment(Pos.CENTER);
@@ -242,7 +257,7 @@ public class SoundMenu extends RightPaneBlueprint
             });
         acceptButton.setOnAction((event) ->
             {
-            if (mainScherm.shouldPlayConfirmSFX())
+            if (mainScherm.shouldPlayMenuSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }
@@ -255,7 +270,7 @@ public class SoundMenu extends RightPaneBlueprint
             });
         menuSounds.selectedProperty().addListener(e ->
             {
-            if (mainScherm.shouldPlayConfirmSFX())
+            if (mainScherm.shouldPlayMenuSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }
@@ -263,7 +278,7 @@ public class SoundMenu extends RightPaneBlueprint
             });
         dobbelSounds.selectedProperty().addListener(e ->
             {
-            if (mainScherm.shouldPlayConfirmSFX())
+            if (mainScherm.shouldPlayMenuSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }
@@ -271,7 +286,7 @@ public class SoundMenu extends RightPaneBlueprint
             });
         koopHutSounds.selectedProperty().addListener(e ->
             {
-            if (mainScherm.shouldPlayConfirmSFX())
+            if (mainScherm.shouldPlayMenuSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }
@@ -279,7 +294,7 @@ public class SoundMenu extends RightPaneBlueprint
             });
         endOfRoundSounds.selectedProperty().addListener(e ->
             {
-            if (mainScherm.shouldPlayConfirmSFX())
+            if (mainScherm.shouldPlayMenuSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }
@@ -287,7 +302,7 @@ public class SoundMenu extends RightPaneBlueprint
             });
         locationSounds.selectedProperty().addListener(e ->
             {
-            if (mainScherm.shouldPlayConfirmSFX())
+            if (mainScherm.shouldPlayMenuSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }

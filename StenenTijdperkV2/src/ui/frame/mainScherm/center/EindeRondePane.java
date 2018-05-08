@@ -79,7 +79,7 @@ public class EindeRondePane extends RightPaneBlueprint
         addChild(buttonPanel);
         button.setOnAction((event) ->
             {
-            if (mainScherm.shouldPlayConfirmSFX())
+            if (mainScherm.shouldPlayMenuSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }

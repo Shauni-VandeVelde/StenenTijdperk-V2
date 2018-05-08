@@ -103,7 +103,7 @@ public class MainScherm extends BorderPane
     private boolean shouldPlayKoopHutSFX = true;
     private boolean shouldPlayEndOfRoundSFX = true;
     private boolean shouldPlayDobbelSFX = true;
-    private boolean shouldPlayConfirmSound = true;
+    private boolean shouldPlayMenuSound = true;
     private boolean shouldPlayLocatieSFX = true;
     private ArrayList<Player> SFXPlayers = new ArrayList<>();
     private double masterVolume = 0.8, musicVolume = 0.45, SFXVolume = 0.8;
@@ -173,14 +173,20 @@ public class MainScherm extends BorderPane
         setPionnenImages(locatiePane.getLocatie(), locatiePane.getCurrentlySelectedNumber(), controller.getHuidigeSpeler());
         getStapelsPane().updateStapels();
         volgendeSpeler();
-        queueSFX(locatiePane.getLocatie().getNaam(), -1);
+        if (shouldPlayLocatieSFX)
+            {
+            queueSFX(locatiePane.getLocatie().getNaam(), -1);
+            }
     }
 
     public void startDobbel()
     {
         if (first)
             {
-            queueSFX("dice1", -1);
+            if (shouldPlayDobbelSFX)
+                {
+                queueSFX("dice1", -1);
+                }
 
             magPionnenPlaatsen = false;
             controller.setHuidigeSpelerIndex();
@@ -207,12 +213,14 @@ public class MainScherm extends BorderPane
 
     public void bevestigDobbel(DobbelPane dobbel)
     {
-
-        queueSFX("dice2", -1);
+        if (shouldPlayDobbelSFX)
+            {
+            queueSFX("dice2", -1);
+            }
 
         if ((dobbel.getSpeler() != null) && (dobbel.getCurrentLocatie() != null) && (dobbel.getCurrentRol() != -1))
             {
-            if (shouldPlayConfirmSound)
+            if (shouldPlayMenuSound)
                 {
                 queueSFX("menu", 80);
                 }
@@ -527,7 +535,7 @@ public class MainScherm extends BorderPane
         else
             {
 
-            queueSFX("mainMenu", 85);
+            queueSFX("mainMenu", 65);
             }
     }
 
@@ -578,7 +586,7 @@ public class MainScherm extends BorderPane
 
     public void toggleMenuSFX()
     {
-        shouldPlayConfirmSound = !shouldPlayConfirmSound;
+        shouldPlayMenuSound = !shouldPlayMenuSound;
     }
 
     public void toggleDobbelSFX()
@@ -937,7 +945,10 @@ public class MainScherm extends BorderPane
         setTop(menuBar);
         setCenter(centerMainHBox);
         setBottom(bottomVBox);
-        bottomButtonsPanel.toggleButtons();
+        if (!bottomButtonsPanel.isVisible())
+            {
+            bottomButtonsPanel.setVisible(true);
+            }
         StartGui.togglePause();
         centerMainHBox.requestFocus();
 
@@ -1012,7 +1023,10 @@ public class MainScherm extends BorderPane
 
     public void setEindeRondePane(EindeRondePane eindeRondePane)
     {
-        queueSFX("gong", 85);
+        if (shouldPlayEndOfRoundSFX)
+            {
+            queueSFX("gong", 85);
+            }
         //System.err.println("setVoedselPanel()");
         centerMainHBox.getChildren().clear();
 
@@ -1026,10 +1040,10 @@ public class MainScherm extends BorderPane
         return shouldPlayKoopHutSFX;
     }
 
-    public boolean shouldPlayConfirmSFX()
+    public boolean shouldPlayMenuSFX()
 
     {
-        return shouldPlayConfirmSound;
+        return shouldPlayMenuSound;
     }
 
     public boolean shouldPlayDobbelSFX()

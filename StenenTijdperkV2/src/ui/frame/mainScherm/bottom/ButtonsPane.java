@@ -209,7 +209,10 @@ public class ButtonsPane extends Pane
             }
         if (hasPlaced)
             {
-            mainScherm.queueSFX(gekozenLocatie.getNaam(), -1);
+            if (mainScherm.shouldPlayLocatieSFX())
+                {
+                mainScherm.queueSFX(gekozenLocatie.getNaam(), -1);
+                }
             }
     }
 

@@ -450,7 +450,10 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 40);
+                    if (mainScherm.shouldPlayLocatieSFX())
+                        {
+                        mainScherm.queueSFX("negative", 40);
+                        }
                     }
                 }
             });
@@ -476,7 +479,10 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 40);
+                    if (mainScherm.shouldPlayLocatieSFX())
+                        {
+                        mainScherm.queueSFX("negative", 40);
+                        }
                     }
                 }
             });
@@ -502,7 +508,10 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 40);
+                    if (mainScherm.shouldPlayLocatieSFX())
+                        {
+                        mainScherm.queueSFX("negative", 40);
+                        }
                     }
                 }
             });
@@ -528,7 +537,10 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 40);
+                    if (mainScherm.shouldPlayLocatieSFX())
+                        {
+                        mainScherm.queueSFX("negative", 40);
+                        }
                     }
                 }
             });
@@ -554,7 +566,10 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 40);
+                    if (mainScherm.shouldPlayLocatieSFX())
+                        {
+                        mainScherm.queueSFX("negative", 40);
+                        }
                     }
                 }
             });
@@ -580,7 +595,10 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 40);
+                    if (mainScherm.shouldPlayLocatieSFX())
+                        {
+                        mainScherm.queueSFX("negative", 40);
+                        }
                     }
                 }
             });
@@ -607,7 +625,10 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 40);
+                    if (mainScherm.shouldPlayLocatieSFX())
+                        {
+                        mainScherm.queueSFX("negative", 40);
+                        }
                     }
                 }
             });
@@ -634,7 +655,10 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 40);
+                    if (mainScherm.shouldPlayLocatieSFX())
+                        {
+                        mainScherm.queueSFX("negative", 40);
+                        }
                     }
                 }
             });
@@ -672,8 +696,10 @@ public class CenterPane extends Pane
 
             if (negative)
                 {
-
-                mainScherm.queueSFX("negative", 70);
+                if (mainScherm.shouldPlayLocatieSFX())
+                    {
+                    mainScherm.queueSFX("negative", 70);
+                    }
 
                 }
             });
@@ -710,8 +736,10 @@ public class CenterPane extends Pane
 
             if (negative)
                 {
-
-                mainScherm.queueSFX("negative", 40);
+                if (mainScherm.shouldPlayLocatieSFX())
+                    {
+                    mainScherm.queueSFX("negative", 40);
+                    }
 
                 }
             });
@@ -748,8 +776,10 @@ public class CenterPane extends Pane
 
             if (negative)
                 {
-
-                mainScherm.queueSFX("negative", 40);
+                if (mainScherm.shouldPlayLocatieSFX())
+                    {
+                    mainScherm.queueSFX("negative", 40);
+                    }
 
                 }
             });
