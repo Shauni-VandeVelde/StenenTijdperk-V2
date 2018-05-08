@@ -222,24 +222,18 @@ public class Player
 
     public void setVolume()
     {
-        if (path.toLowerCase().contains("dice2"))
-            {
-            mediaPlayer.setVolume(1);
-            }
-        else
-            {
-            double j = 0;
-            if (music)
-                {
-                j = mainScherm.getMasterVolume() * (mainScherm.getMusicVolume() * volume);
-                }
-            if (soundEffect)
-                {
-                j = mainScherm.getMasterVolume() * (mainScherm.getSFXVolume() * volume);
-                }
 
-            mediaPlayer.setVolume(j);
+        double j = 0;
+        if (music)
+            {
+            j = mainScherm.getMasterVolume() * (mainScherm.getMusicVolume() * volume);
             }
+        if (soundEffect)
+            {
+            j = mainScherm.getMasterVolume() * (mainScherm.getSFXVolume() * volume);
+            }
+
+        mediaPlayer.setVolume(j);
 
     }
 

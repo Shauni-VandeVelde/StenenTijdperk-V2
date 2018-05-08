@@ -100,6 +100,11 @@ public class MainScherm extends BorderPane
     private boolean spelGedaan = false;
     private boolean isPlaying = true;
     private boolean firstDobbel = true;
+    private boolean shouldPlayKoopHutSFX = true;
+    private boolean shouldPlayEndOfRoundSFX = true;
+    private boolean shouldPlayVoedselSFX = true;
+    private boolean shouldPlayDobbelSFX = true;
+
     private ArrayList<Player> SFXPlayers = new ArrayList<>();
     private double masterVolume = 0.8, musicVolume = 0.7, SFXVolume = 0.9;
 
@@ -982,6 +987,11 @@ public class MainScherm extends BorderPane
 
         centerMainHBox.getChildren().add(eindeRondePane);
         eindeRondePane.requestFocus();
+    }
+
+    public boolean shouldPlayKoopHutSFX()
+    {
+        return shouldPlayKoopHutSFX;
     }
 
     public Stage getStage()
