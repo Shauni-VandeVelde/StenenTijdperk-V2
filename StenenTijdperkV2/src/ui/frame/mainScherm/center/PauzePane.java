@@ -196,7 +196,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 0);
+                mainScherm.queueSFX("menu", 80);
                 mainScherm.closePauzeMenu();
             }
 
@@ -208,7 +208,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 0);
+                mainScherm.queueSFX("menu", 80);
                 toggleSavePane();
             }
 
@@ -219,7 +219,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 0);
+                mainScherm.queueSFX("menu", 80);
                 toggleLoadPane();
             }
 
@@ -230,7 +230,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 0);
+                mainScherm.queueSFX("menu", 80);
             }
 
         });
@@ -240,7 +240,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                mainScherm.queueSFX("menu", 0);
+                mainScherm.queueSFX("menu", 80);
                 stage.close();
             }
 

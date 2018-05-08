@@ -45,11 +45,11 @@ public class Speler
 
         setVoedselPerBeurt(8);
         setPunten(0);
-        setAantalHout(5);
-        setAantalLeem(5);
-        setAantalSteen(5);
-        setAantalGoud(5);
-        setAantalVoedsel(0);
+        setAantalHout(0);
+        setAantalLeem(0);
+        setAantalSteen(0);
+        setAantalGoud(0);
+        setAantalVoedsel(12);
         addedVoedsel = 0;
         voedselEindeVorigeBeurt = aantalVoedsel;
         previousPionnenSize = hoeveelheidPionnenStart;
