@@ -193,7 +193,13 @@ public class Player
                 volume = 1;
                 path = "/SFX/LoveHut.mp3";
                 break;
+            case "negative":
+                soundEffect = true;
+                volume = 1;
+                path = "/SFX/Negative.mp3";
+                break;
             }
+
     }
 
     public void setVolume()

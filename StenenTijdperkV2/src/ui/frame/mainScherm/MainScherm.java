@@ -492,7 +492,7 @@ public class MainScherm extends BorderPane
     }
 
     //Sound related:
-    private void queueSFX(String type, double volume)
+    public void queueSFX(String type, double volume)
     {
         //System.out.println("type: " + type + " volume " + volume);
         SFXPlayers.add(new Player(this, type, volume));

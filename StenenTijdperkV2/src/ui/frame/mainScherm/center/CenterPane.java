@@ -300,6 +300,7 @@ public class CenterPane extends Pane
 
         bos.setOnAction((event) ->
             {
+            boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
 
@@ -310,11 +311,24 @@ public class CenterPane extends Pane
                         {
                         getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("bos")));
                         }
+                    else
+                        {
+                        negative = true;
+                        }
+                    }
+                else
+                    {
+                    negative = true;
+                    }
+                if (negative)
+                    {
+                    mainScherm.queueSFX("negative", 60);
                     }
                 }
             });
         leemgroeve.setOnAction((event) ->
             {
+            boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
@@ -323,11 +337,24 @@ public class CenterPane extends Pane
                         {
                         getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("leemgroeve")));
                         }
+                    else
+                        {
+                        negative = true;
+                        }
+                    }
+                else
+                    {
+                    negative = true;
+                    }
+                if (negative)
+                    {
+                    mainScherm.queueSFX("negative", 60);
                     }
                 }
             });
         steengroeve.setOnAction((event) ->
             {
+            boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("steengroeve").getAantalPlaatsenVrij() > 0)
@@ -336,11 +363,24 @@ public class CenterPane extends Pane
                         {
                         getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("steengroeve")));
                         }
+                    else
+                        {
+                        negative = true;
+                        }
+                    }
+                else
+                    {
+                    negative = true;
+                    }
+                if (negative)
+                    {
+                    mainScherm.queueSFX("negative", 60);
                     }
                 }
             });
         rivier.setOnAction((event) ->
             {
+            boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("rivier").getAantalPlaatsenVrij() > 0)
@@ -350,11 +390,24 @@ public class CenterPane extends Pane
                         {
                         getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("rivier")));
                         }
+                    else
+                        {
+                        negative = true;
+                        }
+                    }
+                else
+                    {
+                    negative = true;
+                    }
+                if (negative)
+                    {
+                    mainScherm.queueSFX("negative", 60);
                     }
                 }
             });
         jacht.setOnAction((event) ->
             {
+            boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("jacht").getAantalPlaatsenVrij() > 0)
@@ -364,11 +417,24 @@ public class CenterPane extends Pane
                         {
                         getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("jacht")));
                         }
+                    else
+                        {
+                        negative = true;
+                        }
+                    }
+                else
+                    {
+                    negative = true;
+                    }
+                if (negative)
+                    {
+                    mainScherm.queueSFX("negative", 60);
                     }
                 }
             });
         akker.setOnAction((event) ->
             {
+            boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("akker").getAantalPlaatsenVrij() > 0)
@@ -380,13 +446,34 @@ public class CenterPane extends Pane
                             {
                             mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("akker")));
                             }
+                        else
+                            {
+                            negative = true;
+                            }
+
+                        }
+                    else
+                        {
+                        negative = true;
                         }
 
                     }
+                else
+                    {
+                    negative = true;
+                    }
+                }
+
+            if (negative)
+                {
+
+                mainScherm.queueSFX("negative", 80);
+
                 }
             });
         gereedschapsmaker.setOnAction((event) ->
             {
+            boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("gereedschapsmaker").getAantalPlaatsenVrij() > 0)
@@ -397,12 +484,34 @@ public class CenterPane extends Pane
                             {
                             mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("gereedschapsmaker")));
                             }
+                        else
+                            {
+                            negative = true;
+                            }
+
                         }
+                    else
+                        {
+                        negative = true;
+                        }
+
                     }
+                else
+                    {
+                    negative = true;
+                    }
+                }
+
+            if (negative)
+                {
+
+                mainScherm.queueSFX("negative", 80);
+
                 }
             });
         lovehut.setOnAction((event) ->
             {
+            boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
                 if (controller.getLocatie("lovehut").getAantalPlaatsenVrij() > 0)
@@ -413,8 +522,29 @@ public class CenterPane extends Pane
                             {
                             mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("lovehut")));
                             }
+                        else
+                            {
+                            negative = true;
+                            }
+
                         }
+                    else
+                        {
+                        negative = true;
+                        }
+
                     }
+                else
+                    {
+                    negative = true;
+                    }
+                }
+
+            if (negative)
+                {
+
+                mainScherm.queueSFX("negative", 80);
+
                 }
             });
     }
