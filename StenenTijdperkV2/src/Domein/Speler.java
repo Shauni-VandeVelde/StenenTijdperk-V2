@@ -52,15 +52,19 @@ public class Speler
         setAantalVoedsel(12);
         addedVoedsel = 0;
         voedselEindeVorigeBeurt = aantalVoedsel;
+        previousPionnenSize = hoeveelheidPionnenStart;
+        previousHuttenSize = hutten.size();
         int hoeveelheidPionnenStart = 5;
-        for (int i = 0; i < hoeveelheidPionnenStart; ++i)
+        for (int i = 0; i < hoeveelheidPionnenStart; i++)
             {
             pionnen.add(i, new Pion(kleur));
 
-            }
+            }/*
+        for (int i = 0; i < 12; i++)
+            {
+            geefNieuwGereedschap();
+            }*/
 
-        previousPionnenSize = hoeveelheidPionnenStart;
-        previousHuttenSize = hutten.size();
 
     }
 

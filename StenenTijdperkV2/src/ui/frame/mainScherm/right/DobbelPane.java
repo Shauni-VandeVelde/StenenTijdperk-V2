@@ -9,6 +9,7 @@ import Domein.GereedschapsFiche;
 import Domein.Locatie;
 import Domein.Speler;
 import java.util.ArrayList;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -100,12 +101,12 @@ public class DobbelPane extends RightPaneBlueprint
                 gereedschapsficheButton3.setGraphic(temp6);
                 break;
             }
-        HBox dobbelBox = getHBox(vbox, style, true, true, 5, 2, 0.75, new Node[]
+        HBox dobbelBox = getHBox(vbox, style, true, true, 5, 1.8, 0.75, new Node[]
             {
-            dobbelBekerImage, dobbelSteenLabel
+
             }, new String[]
             {
-            "image", "label"
+
             }, 27);
         HBox locatieBox = getHBox(vbox, style, true, true, 5, 1, 0.9, new Node[]
             {
@@ -127,7 +128,7 @@ public class DobbelPane extends RightPaneBlueprint
             }, new String[]
             {
             "label"
-            }, 32);
+            }, 26);
         HBox acceptBox = getHBox(vbox, style, false, true, 9.665, 1.2, 0.9, new Node[]
             {
             acceptButton
@@ -138,7 +139,12 @@ public class DobbelPane extends RightPaneBlueprint
         DeelPaneel g1 = new DeelPaneel(0.2437, 0.095, vbox, true);
         DeelPaneel g2 = new DeelPaneel(0.2437, 0.095, vbox, true);
         DeelPaneel g3 = new DeelPaneel(0.2437, 0.095, vbox, true);
-
+        DeelPaneel dobbelImageDeelPaneel = new DeelPaneel(0.42, 0.23, vbox, true);
+        DeelPaneel dobbelLabelDeelPaneel = new DeelPaneel(0.58, 0.23, vbox, true);
+        dobbelImageDeelPaneel.addBackgroundImage(dobbelBekerImage);
+        dobbelLabelDeelPaneel.addLabel(dobbelSteenLabel, 1, 18.5, Pos.CENTER, style);
+        dobbelBox.getChildren().add(dobbelImageDeelPaneel);
+        dobbelBox.getChildren().add(dobbelLabelDeelPaneel);
         g1.addButton(gereedschapsficheButton1, 1, 1);
         g2.addButton(gereedschapsficheButton2, 1, 1);
         g3.addButton(gereedschapsficheButton3, 1, 1);

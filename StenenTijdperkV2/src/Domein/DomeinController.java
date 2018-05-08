@@ -105,7 +105,6 @@ public class DomeinController
             stapel.clearPionnen();
             return false;
             }
-
     }
 
     public void verrekenAkker()
