@@ -376,7 +376,10 @@ public class CenterPane extends Pane
 
                     if (controller.isLocatieNogNietGebruikt(controller.getLocatie("akker")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("akker")));
+                        if (controller.getHuidigeSpeler().getAantalPionnenOver() >= 1)
+                            {
+                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("akker")));
+                            }
                         }
 
                     }
@@ -390,7 +393,10 @@ public class CenterPane extends Pane
                     {
                     if (controller.isLocatieNogNietGebruikt(controller.getLocatie("gereedschapsmaker")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("gereedschapsmaker")));
+                        if (controller.getHuidigeSpeler().getAantalPionnenOver() >= 1)
+                            {
+                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("gereedschapsmaker")));
+                            }
                         }
                     }
                 }
@@ -403,7 +409,10 @@ public class CenterPane extends Pane
                     {
                     if (controller.isLocatieNogNietGebruikt(controller.getLocatie("lovehut")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("lovehut")));
+                        if (controller.getHuidigeSpeler().getAantalPionnenOver() >= 2)
+                            {
+                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("lovehut")));
+                            }
                         }
                     }
                 }
