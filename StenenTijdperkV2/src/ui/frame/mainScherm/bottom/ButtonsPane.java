@@ -138,7 +138,7 @@ public class ButtonsPane extends Pane
 
     public void bevestigPlaatsPionnen()
     {
-
+        boolean hasPlaced = false;
         if (gekozenLocatie != null)
             {
             if (!gekozenLocatie.magPionnenSelecteren())
@@ -149,7 +149,7 @@ public class ButtonsPane extends Pane
                         {
                         if (gekozenLocatie.getNaam().contains("Stapel"))
                             {
-
+                            hasPlaced = true;
                             controller.plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
                             mainScherm.getStapelsPane().updateStapels();
                             mainScherm.volgendeSpeler();
@@ -157,6 +157,7 @@ public class ButtonsPane extends Pane
                             }
                         else
                             {
+                            hasPlaced = true;
                             controller.plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
                             mainScherm.setPionnenImages(gekozenLocatie, gekozenLocatie.getMaxPionnen(), controller.getHuidigeSpeler());
 
@@ -182,6 +183,7 @@ public class ButtonsPane extends Pane
                     {
                     if (gekozenLocatie.heeftPlaatsGenoeg((int) sliderPionnen.getValue()))
                         {
+                        hasPlaced = true;
                         controller.plaatsPionnenOpVeld(gekozenLocatie, (int) sliderPionnen.getValue());
                         mainScherm.setPionnenImages(gekozenLocatie, (int) sliderPionnen.getValue(), controller.getHuidigeSpeler());
 
@@ -205,6 +207,10 @@ public class ButtonsPane extends Pane
             {
 
             MainScherm.console.printLine("Gelieve eerst een locatie te selecteren!");
+            }
+        if (hasPlaced)
+            {
+            mainScherm.queueSFX(gekozenLocatie.getNaam(), 0);
             }
     }
 

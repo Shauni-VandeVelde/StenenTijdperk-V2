@@ -43,7 +43,7 @@ public class Player
                 // System.out.println("Media " + media.getSource());
                 mediaPlayer = new MediaPlayer(media);
 
-                this.volume = volume / 100;
+                //this.volume = volume / 100;
                 setVolume();
 
                 mediaPlayer.play();
@@ -79,8 +79,14 @@ public class Player
     private void setPath(String type)
     {
         Random random = new Random();
+        if (type.toLowerCase().trim().contains("stapel"))
+            {
+            type = "stapel";
+            System.out.println("Stapel");
+            }
         switch (type.toLowerCase().trim())
             {
+
             ////// Music files:
             case "musicloop":
                 music = true;
@@ -131,18 +137,18 @@ public class Player
             case "dice1":
                 soundEffect = true;
                 path = "/SFX/Dice1.mp3";
-                volume = 0.6;
+                volume = 0.5;
                 break;
             case "dice2":
                 soundEffect = true;
                 path = "/SFX/Dice2.mp3";
-                volume = 0.6;
+                volume = 0.5;
                 break;
 
             case "bos":
                 soundEffect = true;
                 path = "/SFX/bos2.mp3";
-                volume = 0.8;
+                volume = 0.45;
                 break;
             case "leemgroeve":
                 soundEffect = true;
@@ -152,11 +158,11 @@ public class Player
             case "steengroeve":
                 soundEffect = true;
                 path = "/SFX/Steengroeve1.mp3";
-                volume = 0.9;
+                volume = 0.6;
                 break;
             case "rivier":
                 soundEffect = true;
-                volume = 0.9;
+                volume = 0.5;
                 if (random.nextBoolean())
                     {
                     path = "/SFX/Rivier1.mp3";
@@ -170,7 +176,7 @@ public class Player
                 break;
             case "jacht":
                 soundEffect = true;
-                volume = 0.75;
+                volume = 0.55;
                 if (random.nextBoolean())
                     {
                     path = "/SFX/Jacht1.mp3";
@@ -182,27 +188,32 @@ public class Player
                 break;
             case "akker":
                 soundEffect = true;
-                volume = 0.8;
+                volume = 0.45;
                 path = "/SFX/Akker1.mp3";
                 break;
             case "gereedschapsmaker":
                 soundEffect = true;
-                volume = 0.9;
+                volume = 0.5;
                 path = "/SFX/Gereedschapsmaker1.mp3";
                 break;
             case "lovehut":
                 soundEffect = true;
-                volume = 1;
+                volume = 0.9;
                 path = "/SFX/LoveHut.mp3";
+                break;
+            case "stapel":
+                soundEffect = true;
+                volume = 0.35;
+                path = "/SFX/Stapel.mp3";
                 break;
             case "negative":
                 soundEffect = true;
-                volume = 100;
+                volume = 0.85;
                 path = "/SFX/MagNiet.mp3";
                 break;
             case "gong":
                 soundEffect = true;
-                volume = 1;
+                volume = 0.85;
                 path = "/SFX/gong.mp3";
                 break;
             }

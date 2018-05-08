@@ -157,9 +157,15 @@ public class StapelsPane extends Pane
 
                 if (mainScherm.getController().getStapel(0).getAantalPlaatsenVrij() > 0)
                     {
+
                     mainScherm.getController().plaatsPionnenOpVeld(mainScherm.getController().getStapel(0), 1);
+                    mainScherm.queueSFX("stapel", 50);
                     updateStapels();
                     mainScherm.volgendeSpeler();
+                    }
+                else
+                    {
+                    mainScherm.queueSFX("negative", 50);
                     }
                 }
             });
@@ -171,8 +177,13 @@ public class StapelsPane extends Pane
                 if (mainScherm.getController().getStapel(1).getAantalPlaatsenVrij() > 0)
                     {
                     mainScherm.getController().plaatsPionnenOpVeld(mainScherm.getController().getStapel(1), 1);
+                    mainScherm.queueSFX("stapel", 50);
                     updateStapels();
                     mainScherm.volgendeSpeler();
+                    }
+                else
+                    {
+                    mainScherm.queueSFX("negative", 50);
                     }
                 }
             });
@@ -185,8 +196,13 @@ public class StapelsPane extends Pane
                 if (mainScherm.getController().getStapel(2).getAantalPlaatsenVrij() > 0)
                     {
                     mainScherm.getController().plaatsPionnenOpVeld(mainScherm.getController().getStapel(2), 1);
+                    mainScherm.queueSFX("stapel", 50);
                     updateStapels();
                     mainScherm.volgendeSpeler();
+                    }
+                else
+                    {
+                    mainScherm.queueSFX("negative", 50);
                     }
                 }
             });
@@ -199,8 +215,13 @@ public class StapelsPane extends Pane
                 if (mainScherm.getController().getStapel(3).getAantalPlaatsenVrij() > 0)
                     {
                     mainScherm.getController().plaatsPionnenOpVeld(mainScherm.getController().getStapel(3), 1);
+                    mainScherm.queueSFX("stapel", 50);
                     updateStapels();
                     mainScherm.volgendeSpeler();
+                    }
+                else
+                    {
+                    mainScherm.queueSFX("negative", 50);
                     }
                 }
             });
