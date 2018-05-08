@@ -974,7 +974,7 @@ public class MainScherm extends BorderPane
 
     public void setEindeRondePane(EindeRondePane eindeRondePane)
     {
-
+        queueSFX("gong", 90);
         //System.err.println("setVoedselPanel()");
         centerMainHBox.getChildren().clear();
 

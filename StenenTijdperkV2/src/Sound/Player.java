@@ -198,6 +198,11 @@ public class Player
                 volume = 1;
                 path = "/SFX/Negative.mp3";
                 break;
+            case "gong":
+                soundEffect = true;
+                volume = 1;
+                path = "/SFX/gong.mp3";
+                break;
             }
 
     }
