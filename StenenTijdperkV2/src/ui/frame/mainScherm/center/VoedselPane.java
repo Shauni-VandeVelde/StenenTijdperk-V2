@@ -287,7 +287,7 @@ public class VoedselPane extends RightPaneBlueprint
             temp += (int) goudSlider.getValue();
             if (temp == speler.getVoedseltekort())
                 {
-                if (mainScherm.shouldPlayConfirmSound())
+                if (mainScherm.shouldPlayConfirmSFX())
                     {
                     mainScherm.queueSFX("menu", 80);
                     }
@@ -297,7 +297,7 @@ public class VoedselPane extends RightPaneBlueprint
             });
         no.setOnAction((event) ->
             {
-            if (mainScherm.shouldPlayConfirmSound())
+            if (mainScherm.shouldPlayConfirmSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }

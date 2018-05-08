@@ -6,9 +6,11 @@
 package ui.frame.mainScherm.center;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import ui.frame.mainScherm.MainScherm;
 import ui.frame.mainScherm.right.DeelPaneel;
@@ -21,7 +23,10 @@ import ui.frame.mainScherm.right.RightPaneBlueprint;
  */
 public class SoundMenu extends RightPaneBlueprint
 {
-    Slider masterVolumeSlider, musicVolumeSlider, SFXVolumeSlider;
+    private Slider masterVolumeSlider, musicVolumeSlider, SFXVolumeSlider;
+    private Button acceptButton;
+    private CheckBox menuSounds, locationSounds, endOfRoundSounds, koopHutSounds, dobbelSounds;
+    private Label masterLabel, musicLabel, SFXLabel;
     private PauzePane pauzePane;
     private double masterVolume, musicVolume, SFXVolume;
 
@@ -30,17 +35,44 @@ public class SoundMenu extends RightPaneBlueprint
         super(mainScherm, mainScherm.getController().getSpelers().get(0), pauzePane, 1, 0.7395);
         this.pauzePane = pauzePane;
         init();
+        setActions();
     }
 
     public void init()
     {
+        HBox options = new HBox();
+        menuSounds = new CheckBox("Menu SFX");
+        locationSounds = new CheckBox("Locaties SFX");
+        endOfRoundSounds = new CheckBox("Einde Ronde SFX");
+        koopHutSounds = new CheckBox("Koop Hut SFX");
+        dobbelSounds = new CheckBox("Dobbel SFX");
+        menuSounds.setWrapText(true);
+        locationSounds.setWrapText(true);
+        endOfRoundSounds.setWrapText(true);
+        koopHutSounds.setWrapText(true);
+        dobbelSounds.setWrapText(true);
+
+        menuSounds.setStyle("-fx-text-fill:white;");
+        locationSounds.setStyle("-fx-text-fill:white;");
+        endOfRoundSounds.setStyle("-fx-text-fill:white;");
+        koopHutSounds.setStyle("-fx-text-fill:white;");
+        dobbelSounds.setStyle("-fx-text-fill:white;");
+
         ImageView background = new ImageView(this.getClass().getClassLoader().getResource("img/PauzeMenuBg.png").toExternalForm());
         background.fitWidthProperty().bind(widthProperty());
         background.fitHeightProperty().bind(heightProperty());
+
         getChildren().add(background);
         DeelPaneel masterLabelPaneel = new DeelPaneel(0.4, 0.24, this, true);
         DeelPaneel musicLabelPaneel = new DeelPaneel(0.4, 0.24, this, true);
         DeelPaneel SFXLabelPaneel = new DeelPaneel(0.4, 0.24, this, true);
+
+        DeelPaneel menuSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
+        DeelPaneel locationSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
+        DeelPaneel endOfRoundSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
+        DeelPaneel koopHutSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
+        DeelPaneel dobbelSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
+
         VBox labels = new VBox();
         VBox sliders = new VBox();
         VBox masterSliderPaneel = new VBox();
@@ -49,10 +81,22 @@ public class SoundMenu extends RightPaneBlueprint
         masterVolumeSlider = new Slider();
         musicVolumeSlider = new Slider();
         SFXVolumeSlider = new Slider();
-        Button acceptButton = new Button("Bevestig");
-        Label masterLabel = new Label("Master Volume: " + mainScherm.getMasterVolume());
-        Label musicLabel = new Label("Music Volume: " + mainScherm.getMusicVolume());
-        Label SFXLabel = new Label("Effects Volume: " + mainScherm.getSFXVolume());
+        acceptButton = new Button("Bevestig");
+        masterLabel = new Label("Master Volume: " + mainScherm.getMasterVolume());
+        musicLabel = new Label("Music Volume: " + mainScherm.getMusicVolume());
+        SFXLabel = new Label("Effects Volume: " + mainScherm.getSFXVolume());
+
+        menuSoundsDeelPaneel.addCheckBox(menuSounds, 1, 1);
+        locationSoundsDeelPaneel.addCheckBox(locationSounds, 1, 1);
+        endOfRoundSoundsDeelPaneel.addCheckBox(endOfRoundSounds, 1, 1);
+        koopHutSoundsDeelPaneel.addCheckBox(koopHutSounds, 1, 1);
+        dobbelSoundsDeelPaneel.addCheckBox(dobbelSounds, 1, 1);
+
+        options.getChildren().add(menuSoundsDeelPaneel);
+        options.getChildren().add(locationSoundsDeelPaneel);
+        options.getChildren().add(endOfRoundSoundsDeelPaneel);
+        options.getChildren().add(koopHutSoundsDeelPaneel);
+        options.getChildren().add(dobbelSoundsDeelPaneel);
 
         labels.getChildren().add(masterLabelPaneel);
         labels.getChildren().add(musicLabelPaneel);
@@ -70,6 +114,7 @@ public class SoundMenu extends RightPaneBlueprint
         getChildren().add(labels);
         getChildren().add(sliders);
         getChildren().add(acceptButton);
+        getChildren().add(options);
 
         labels.layoutXProperty().bind(widthProperty().multiply(0.1));
         labels.layoutYProperty().bind(heightProperty().multiply(0.13));
@@ -116,6 +161,12 @@ public class SoundMenu extends RightPaneBlueprint
         musicLabelPaneel.setFontTracking(musicLabel, 27);
         SFXLabelPaneel.setFontTracking(SFXLabel, 27);
 
+        menuSoundsDeelPaneel.setFontTracking(menuSounds, 24);
+        locationSoundsDeelPaneel.setFontTracking(locationSounds, 24);
+        endOfRoundSoundsDeelPaneel.setFontTracking(endOfRoundSounds, 24);
+        koopHutSoundsDeelPaneel.setFontTracking(koopHutSounds, 24);
+        dobbelSoundsDeelPaneel.setFontTracking(dobbelSounds, 24);
+
         masterVolumeSlider.setValue(mainScherm.getMasterVolume());
         musicVolumeSlider.setValue(mainScherm.getMusicVolume());
         SFXVolumeSlider.setValue(mainScherm.getSFXVolume());
@@ -134,12 +185,45 @@ public class SoundMenu extends RightPaneBlueprint
         SFXVolumeSlider.setShowTickMarks(false);
         SFXVolumeSlider.setShowTickLabels(false);
 
+        if (mainScherm.shouldPlayConfirmSFX())
+            {
+            menuSounds.setSelected(true);
+            }
+        if (mainScherm.shouldPlayDobbelSFX())
+            {
+            dobbelSounds.setSelected(true);
+            }
+        if (mainScherm.shouldPlayEndOfRoundSFX())
+            {
+            endOfRoundSounds.setSelected(true);
+            }
+        if (mainScherm.shouldPlayKoopHutSFX())
+            {
+            koopHutSounds.setSelected(true);
+            }
+        if (mainScherm.shouldPlayLocatieSFX())
+            {
+            locationSounds.setSelected(true);
+            }
+
+        locationSounds.setSelected(true);
+        endOfRoundSounds.setSelected(true);
+        koopHutSounds.setSelected(true);
+        dobbelSounds.setSelected(true);
+
         masterSliderPaneel.setAlignment(Pos.CENTER);
         musicSliderPaneel.setAlignment(Pos.CENTER);
         effectsSliderPaneel.setAlignment(Pos.CENTER);
         masterLabel.setAlignment(Pos.CENTER);
         musicLabel.setAlignment(Pos.CENTER);
         SFXLabel.setAlignment(Pos.CENTER);
+
+        acceptButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
+
+    }
+
+    public void setActions()
+    {
 
         masterVolumeSlider.valueProperty().addListener(e ->
             {
@@ -158,6 +242,10 @@ public class SoundMenu extends RightPaneBlueprint
             });
         acceptButton.setOnAction((event) ->
             {
+            if (mainScherm.shouldPlayConfirmSFX())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
             masterVolume = masterVolumeSlider.getValue();
             musicVolume = musicVolumeSlider.getValue();
             SFXVolume = SFXVolumeSlider.getValue();
@@ -165,9 +253,46 @@ public class SoundMenu extends RightPaneBlueprint
             pauzePane.confirmSFX(this);
 
             });
-
-        acceptButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
-
+        menuSounds.selectedProperty().addListener(e ->
+            {
+            if (mainScherm.shouldPlayConfirmSFX())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
+            mainScherm.toggleMenuSFX();
+            });
+        dobbelSounds.selectedProperty().addListener(e ->
+            {
+            if (mainScherm.shouldPlayConfirmSFX())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
+            mainScherm.toggleDobbelSFX();
+            });
+        koopHutSounds.selectedProperty().addListener(e ->
+            {
+            if (mainScherm.shouldPlayConfirmSFX())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
+            mainScherm.toggleKoopHutSFX();
+            });
+        endOfRoundSounds.selectedProperty().addListener(e ->
+            {
+            if (mainScherm.shouldPlayConfirmSFX())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
+            mainScherm.toggleEndOfRoundSFX();
+            });
+        locationSounds.selectedProperty().addListener(e ->
+            {
+            if (mainScherm.shouldPlayConfirmSFX())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
+            mainScherm.toggleLocatieSFX();
+            });
     }
 
     public double getSFXVolume()

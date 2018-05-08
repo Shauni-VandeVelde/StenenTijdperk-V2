@@ -104,6 +104,7 @@ public class MainScherm extends BorderPane
     private boolean shouldPlayEndOfRoundSFX = true;
     private boolean shouldPlayDobbelSFX = true;
     private boolean shouldPlayConfirmSound = true;
+    private boolean shouldPlayLocatieSFX = true;
     private ArrayList<Player> SFXPlayers = new ArrayList<>();
     private double masterVolume = 0.8, musicVolume = 0.45, SFXVolume = 0.8;
 
@@ -575,6 +576,31 @@ public class MainScherm extends BorderPane
             }
     }
 
+    public void toggleMenuSFX()
+    {
+        shouldPlayConfirmSound = !shouldPlayConfirmSound;
+    }
+
+    public void toggleDobbelSFX()
+    {
+        shouldPlayDobbelSFX = !shouldPlayDobbelSFX;
+    }
+
+    public void toggleKoopHutSFX()
+    {
+        shouldPlayKoopHutSFX = !shouldPlayKoopHutSFX;
+    }
+
+    public void toggleEndOfRoundSFX()
+    {
+        shouldPlayEndOfRoundSFX = !shouldPlayEndOfRoundSFX;
+    }
+
+    public void toggleLocatieSFX()
+    {
+        shouldPlayLocatieSFX = !shouldPlayLocatieSFX;
+    }
+
     public void setMasterVolume(double masterVolume)
     {
         this.masterVolume = masterVolume;
@@ -1000,7 +1026,7 @@ public class MainScherm extends BorderPane
         return shouldPlayKoopHutSFX;
     }
 
-    public boolean shouldPlayConfirmSound()
+    public boolean shouldPlayConfirmSFX()
 
     {
         return shouldPlayConfirmSound;
@@ -1014,6 +1040,11 @@ public class MainScherm extends BorderPane
     public boolean shouldPlayEndOfRoundSFX()
     {
         return shouldPlayEndOfRoundSFX;
+    }
+
+    public boolean shouldPlayLocatieSFX()
+    {
+        return shouldPlayLocatieSFX;
     }
 
     public Stage getStage()

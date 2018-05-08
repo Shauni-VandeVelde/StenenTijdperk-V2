@@ -206,7 +206,7 @@ public class LocatiePane extends VBox
     {
         plus.setOnAction((event) ->
             {
-            if (mainScherm.shouldPlayConfirmSound())
+            if (mainScherm.shouldPlayConfirmSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }
@@ -218,7 +218,7 @@ public class LocatiePane extends VBox
             });
         minus.setOnAction((event) ->
             {
-            if (mainScherm.shouldPlayConfirmSound())
+            if (mainScherm.shouldPlayConfirmSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }

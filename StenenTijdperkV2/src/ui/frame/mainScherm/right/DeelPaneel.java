@@ -13,6 +13,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
@@ -96,6 +97,24 @@ public class DeelPaneel extends Pane
         getChildren().add(button);
     }
 
+    public void addCheckBox(CheckBox checkBox, double x, double y)
+    {
+        getChildren().clear();
+        if (image != null)
+            {
+            getChildren().add(image);
+            }
+
+        checkBox.prefWidthProperty().bind(widthProperty().multiply(x));
+        checkBox.prefHeightProperty().bind(heightProperty().multiply(y));
+        checkBox.minWidthProperty().bind(widthProperty().multiply(x));
+        checkBox.minHeightProperty().bind(heightProperty().multiply(y));
+        checkBox.maxWidthProperty().bind(widthProperty().multiply(x));
+        checkBox.maxHeightProperty().bind(heightProperty().multiply(y));
+
+        getChildren().add(checkBox);
+    }
+
     public void addSlider(Slider slider, double scale)
     {
         getChildren().clear();
@@ -153,18 +172,18 @@ public class DeelPaneel extends Pane
         label.setStyle(style);
     }
 
-    public void setFontTracking(Label label, double fontSize)
+    public void setFontTracking(CheckBox checkBox, double fontSize)
     {
         ObjectProperty<Font> fontTracking = new SimpleObjectProperty<Font>(Font.getDefault());
 
-        label.fontProperty().bind(fontTracking);
-        label.heightProperty().addListener(new ChangeListener<Number>()
+        checkBox.fontProperty().bind(fontTracking);
+        checkBox.heightProperty().addListener(new ChangeListener<Number>()
         {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight)
             {
                 //
-                fontTracking.set(Font.font(label.getFont().getFamily(), FontWeight.EXTRA_BOLD, newHeight.doubleValue() / 100 * fontSize));
+                fontTracking.set(Font.font(checkBox.getFont().getFamily(), FontWeight.EXTRA_BOLD, newHeight.doubleValue() / 100 * fontSize));
 
             }
 
@@ -184,6 +203,25 @@ public class DeelPaneel extends Pane
             {
 
                 fontTracking.set(Font.font(button.getFont().getFamily(), FontWeight.EXTRA_BOLD, newHeight.doubleValue() / 100 * fontSize));
+
+            }
+
+        });
+
+    }
+
+    public void setFontTracking(Label label, double fontSize)
+    {
+        ObjectProperty<Font> fontTracking = new SimpleObjectProperty<Font>(Font.getDefault());
+
+        label.fontProperty().bind(fontTracking);
+        label.heightProperty().addListener(new ChangeListener<Number>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight)
+            {
+                //
+                fontTracking.set(Font.font(label.getFont().getFamily(), FontWeight.EXTRA_BOLD, newHeight.doubleValue() / 100 * fontSize));
 
             }
 

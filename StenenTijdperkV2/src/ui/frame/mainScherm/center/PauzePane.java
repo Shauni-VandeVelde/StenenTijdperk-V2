@@ -46,7 +46,7 @@ public class PauzePane extends Pane
     public PauzePane(Stage stage, MainScherm mainScherm)
     {
         super();
-        if (mainScherm.shouldPlayConfirmSound())
+        if (mainScherm.shouldPlayConfirmSFX())
             {
             mainScherm.queueSFX("menu", 80);
             }
@@ -199,7 +199,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                if (mainScherm.shouldPlayConfirmSound())
+                if (mainScherm.shouldPlayConfirmSFX())
                     {
                     mainScherm.queueSFX("menu", 80);
                     }
@@ -215,7 +215,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                if (mainScherm.shouldPlayConfirmSound())
+                if (mainScherm.shouldPlayConfirmSFX())
                     {
                     mainScherm.queueSFX("menu", 80);
                     }
@@ -229,7 +229,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                if (mainScherm.shouldPlayConfirmSound())
+                if (mainScherm.shouldPlayConfirmSFX())
                     {
                     mainScherm.queueSFX("menu", 80);
                     }
@@ -243,7 +243,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                if (mainScherm.shouldPlayConfirmSound())
+                if (mainScherm.shouldPlayConfirmSFX())
                     {
                     mainScherm.queueSFX("menu", 80);
                     }
@@ -256,7 +256,7 @@ public class PauzePane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                if (mainScherm.shouldPlayConfirmSound())
+                if (mainScherm.shouldPlayConfirmSFX())
                     {
                     mainScherm.queueSFX("menu", 80);
                     }

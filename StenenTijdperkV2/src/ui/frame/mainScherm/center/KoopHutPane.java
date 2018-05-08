@@ -81,7 +81,7 @@ public class KoopHutPane extends RightPaneBlueprint
             });
         bevestig.setOnAction((event) ->
             {
-            if (mainScherm.shouldPlayConfirmSound())
+            if (mainScherm.shouldPlayConfirmSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }
@@ -89,7 +89,7 @@ public class KoopHutPane extends RightPaneBlueprint
             });
         weiger.setOnAction((event) ->
             {
-            if (mainScherm.shouldPlayConfirmSound())
+            if (mainScherm.shouldPlayConfirmSFX())
                 {
                 mainScherm.queueSFX("menu", 80);
                 }
