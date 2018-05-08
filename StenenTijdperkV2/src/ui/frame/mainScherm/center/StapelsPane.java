@@ -8,6 +8,7 @@ package ui.frame.mainScherm.center;
 import Domein.Hut;
 import Domein.Stapel;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -39,6 +40,7 @@ public class StapelsPane extends Pane
     {
         this.mainScherm = mainScherm;
         init();
+        setActions();
     }
 
     private void init()
@@ -109,6 +111,44 @@ public class StapelsPane extends Pane
         stapel2DeelPaneel.addButton(button2, 1, 1);
         stapel3DeelPaneel.addButton(button3, 1, 1);
         stapel4DeelPaneel.addButton(button4, 1, 1);
+
+    }
+
+    private void setActions()
+    {
+        button1.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        button1.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        button2.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        button2.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        button3.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        button3.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        button4.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        button4.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+
         button1.setOnAction((event) ->
             {
 

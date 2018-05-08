@@ -43,9 +43,11 @@ public class Player
                 // System.out.println("Media " + media.getSource());
                 mediaPlayer = new MediaPlayer(media);
 
-//                setVolume();
-                mediaPlayer.play();
+                this.volume = volume / 100;
                 setVolume();
+
+                mediaPlayer.play();
+
                 mediaPlayer.setOnEndOfMedia(new Runnable()
                 {
                     @Override
@@ -195,7 +197,7 @@ public class Player
                 break;
             case "negative":
                 soundEffect = true;
-                volume = 1;
+
                 path = "/SFX/Negative.mp3";
                 break;
             case "gong":

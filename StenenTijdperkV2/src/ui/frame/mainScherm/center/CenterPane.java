@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -34,14 +35,17 @@ public class CenterPane extends Pane
             jachtLocaties, stapelLocaties, lovehutLocaties, gereedschapsmakerLocaties, akkerLocaties;
     private PionnenLocatieDeelPane arrowPane;
     private boolean arrowShown = false;
-    Button bos = new Button();
-    Button leemgroeve;
-    Button steengroeve;
-    Button rivier;
-    Button jacht;
-    Button akker;
-    Button gereedschapsmaker;
-    Button lovehut;
+    private Button bos = new Button();
+    private Button leemgroevePT1;
+    private Button leemgroevePT2;
+    private Button leemgroevePT3;
+    private Button steengroevePT1;
+    private Button steengroevePT2;
+    private Button rivier;
+    private Button jacht;
+    private Button akker;
+    private Button gereedschapsmaker;
+    private Button lovehut;
     private Timeline timeline;
 
     public CenterPane(MainScherm mainScherm)
@@ -194,8 +198,11 @@ public class CenterPane extends Pane
     {
 
         bos = new Button();
-        leemgroeve = new Button();
-        steengroeve = new Button();
+        leemgroevePT1 = new Button();
+        leemgroevePT2 = new Button();
+        leemgroevePT3 = new Button();
+        steengroevePT1 = new Button();
+        steengroevePT2 = new Button();
         rivier = new Button();
         jacht = new Button();
         akker = new Button();
@@ -203,8 +210,11 @@ public class CenterPane extends Pane
         lovehut = new Button();
 
         bos.setStyle("-fx-background-color:transparent;");
-        leemgroeve.setStyle("-fx-background-color:transparent;");
-        steengroeve.setStyle("-fx-background-color:transparent;");
+        leemgroevePT1.setStyle("-fx-background-color:transparent;");
+        leemgroevePT2.setStyle("-fx-background-color:transparent;");
+        leemgroevePT3.setStyle("-fx-background-color:transparent;");
+        steengroevePT1.setStyle("-fx-background-color:transparent;");
+        steengroevePT2.setStyle("-fx-background-color:transparent;");
         rivier.setStyle("-fx-background-color:transparent;");
         jacht.setStyle("-fx-background-color:transparent;");
         akker.setStyle("-fx-background-color:transparent;");
@@ -212,8 +222,12 @@ public class CenterPane extends Pane
         lovehut.setStyle("-fx-background-color:transparent;");
 
         getChildren().add(bos);
-        getChildren().add(leemgroeve);
-        getChildren().add(steengroeve);
+        getChildren().add(leemgroevePT1);
+        getChildren().add(leemgroevePT2);
+        getChildren().add(leemgroevePT3);
+
+        getChildren().add(steengroevePT1);
+        getChildren().add(steengroevePT2);
         getChildren().add(rivier);
         getChildren().add(jacht);
         getChildren().add(akker);
@@ -221,8 +235,8 @@ public class CenterPane extends Pane
         getChildren().add(lovehut);
 
         //Bindings
-        gereedschapsmaker.prefWidthProperty().bind(widthProperty().multiply(0.18));
-        gereedschapsmaker.minWidthProperty().bind(widthProperty().multiply(0.18));
+        gereedschapsmaker.prefWidthProperty().bind(widthProperty().multiply(0.12));
+        gereedschapsmaker.minWidthProperty().bind(widthProperty().multiply(0.12));
         gereedschapsmaker.maxWidthProperty().bind(widthProperty().multiply(0.18));
         gereedschapsmaker.prefHeightProperty().bind(heightProperty().multiply(0.2));
         gereedschapsmaker.minHeightProperty().bind(heightProperty().multiply(0.2));
@@ -257,30 +271,56 @@ public class CenterPane extends Pane
         bos.layoutXProperty().bind(widthProperty().multiply(0.29));
         bos.layoutYProperty().bind(heightProperty().multiply(0));
 
-        leemgroeve.prefWidthProperty().bind(widthProperty().multiply(0.34));
-        leemgroeve.minWidthProperty().bind(widthProperty().multiply(0.34));
-        leemgroeve.maxWidthProperty().bind(widthProperty().multiply(0.34));
-        leemgroeve.prefHeightProperty().bind(heightProperty().multiply(0.27));
-        leemgroeve.minHeightProperty().bind(heightProperty().multiply(0.27));
-        leemgroeve.maxHeightProperty().bind(heightProperty().multiply(0.27));
-        leemgroeve.layoutXProperty().bind(widthProperty().multiply(0.58));
-        leemgroeve.layoutYProperty().bind(heightProperty().multiply(0));
+        leemgroevePT1.prefWidthProperty().bind(widthProperty().multiply(0.1));
+        leemgroevePT1.minWidthProperty().bind(widthProperty().multiply(0.1));
+        leemgroevePT1.maxWidthProperty().bind(widthProperty().multiply(0.1));
+        leemgroevePT1.prefHeightProperty().bind(heightProperty().multiply(0.265));
+        leemgroevePT1.minHeightProperty().bind(heightProperty().multiply(0.265));
+        leemgroevePT1.maxHeightProperty().bind(heightProperty().multiply(0.265));
+        leemgroevePT1.layoutXProperty().bind(widthProperty().multiply(0.58));
+        leemgroevePT1.layoutYProperty().bind(heightProperty().multiply(0));
 
-        steengroeve.prefWidthProperty().bind(widthProperty().multiply(0.38));
-        steengroeve.minWidthProperty().bind(widthProperty().multiply(0.38));
-        steengroeve.maxWidthProperty().bind(widthProperty().multiply(0.38));
-        steengroeve.prefHeightProperty().bind(heightProperty().multiply(0.385));
-        steengroeve.minHeightProperty().bind(heightProperty().multiply(0.385));
-        steengroeve.maxHeightProperty().bind(heightProperty().multiply(0.385));
-        steengroeve.layoutXProperty().bind(widthProperty().multiply(0.622));
-        steengroeve.layoutYProperty().bind(heightProperty().multiply(0.275));
+        leemgroevePT2.prefWidthProperty().bind(widthProperty().multiply(0.13));
+        leemgroevePT2.minWidthProperty().bind(widthProperty().multiply(0.13));
+        leemgroevePT2.maxWidthProperty().bind(widthProperty().multiply(0.13));
+        leemgroevePT2.prefHeightProperty().bind(heightProperty().multiply(0.195));
+        leemgroevePT2.minHeightProperty().bind(heightProperty().multiply(0.195));
+        leemgroevePT2.maxHeightProperty().bind(heightProperty().multiply(0.195));
+        leemgroevePT2.layoutXProperty().bind(widthProperty().multiply(0.68));
+        leemgroevePT2.layoutYProperty().bind(heightProperty().multiply(0));
 
+        leemgroevePT3.prefWidthProperty().bind(widthProperty().multiply(0.16));
+        leemgroevePT3.minWidthProperty().bind(widthProperty().multiply(0.16));
+        leemgroevePT3.maxWidthProperty().bind(widthProperty().multiply(0.16));
+        leemgroevePT3.prefHeightProperty().bind(heightProperty().multiply(0.125));
+        leemgroevePT3.minHeightProperty().bind(heightProperty().multiply(0.125));
+        leemgroevePT3.maxHeightProperty().bind(heightProperty().multiply(0.125));
+        leemgroevePT3.layoutXProperty().bind(widthProperty().multiply(0.81));
+        leemgroevePT3.layoutYProperty().bind(heightProperty().multiply(0));
+
+        steengroevePT1.prefWidthProperty().bind(widthProperty().multiply(0.35));
+        steengroevePT1.minWidthProperty().bind(widthProperty().multiply(0.35));
+        steengroevePT1.maxWidthProperty().bind(widthProperty().multiply(0.35));
+        steengroevePT1.prefHeightProperty().bind(heightProperty().multiply(0.25));
+        steengroevePT1.minHeightProperty().bind(heightProperty().multiply(0.25));
+        steengroevePT1.maxHeightProperty().bind(heightProperty().multiply(0.25));
+        steengroevePT1.layoutXProperty().bind(widthProperty().multiply(0.64));
+        steengroevePT1.layoutYProperty().bind(heightProperty().multiply(0.31));
+
+        steengroevePT2.prefWidthProperty().bind(widthProperty().multiply(0.2));
+        steengroevePT2.minWidthProperty().bind(widthProperty().multiply(0.2));
+        steengroevePT2.maxWidthProperty().bind(widthProperty().multiply(0.2));
+        steengroevePT2.prefHeightProperty().bind(heightProperty().multiply(0.16));
+        steengroevePT2.minHeightProperty().bind(heightProperty().multiply(0.16));
+        steengroevePT2.maxHeightProperty().bind(heightProperty().multiply(0.16));
+        steengroevePT2.layoutXProperty().bind(widthProperty().multiply(0.8));
+        steengroevePT2.layoutYProperty().bind(heightProperty().multiply(0.15));
         rivier.prefWidthProperty().bind(widthProperty().multiply(0.385));
         rivier.minWidthProperty().bind(widthProperty().multiply(0.385));
         rivier.maxWidthProperty().bind(widthProperty().multiply(0.385));
-        rivier.prefHeightProperty().bind(heightProperty().multiply(0.33));
-        rivier.minHeightProperty().bind(heightProperty().multiply(0.33));
-        rivier.maxHeightProperty().bind(heightProperty().multiply(0.33));
+        rivier.prefHeightProperty().bind(heightProperty().multiply(0.31));
+        rivier.minHeightProperty().bind(heightProperty().multiply(0.31));
+        rivier.maxHeightProperty().bind(heightProperty().multiply(0.31));
         rivier.layoutXProperty().bind(widthProperty().multiply(0.6145));
         rivier.layoutYProperty().bind(heightProperty().multiply(0.665));
 
@@ -298,6 +338,94 @@ public class CenterPane extends Pane
     public void setActions()
     {
 
+        bos.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        bos.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        leemgroevePT1.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        leemgroevePT1.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        leemgroevePT2.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        leemgroevePT2.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        leemgroevePT3.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        leemgroevePT3.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        steengroevePT1.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        steengroevePT1.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        steengroevePT2.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        steengroevePT2.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        rivier.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        rivier.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        jacht.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        jacht.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        akker.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        akker.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        gereedschapsmaker.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        gereedschapsmaker.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
+        lovehut.setOnMouseEntered((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            });
+        lovehut.setOnMouseExited((event) ->
+            {
+            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            });
         bos.setOnAction((event) ->
             {
             boolean negative = false;
@@ -322,11 +450,11 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 60);
+                    mainScherm.queueSFX("negative", 40);
                     }
                 }
             });
-        leemgroeve.setOnAction((event) ->
+        leemgroevePT1.setOnAction((event) ->
             {
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
@@ -348,11 +476,63 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 60);
+                    mainScherm.queueSFX("negative", 40);
                     }
                 }
             });
-        steengroeve.setOnAction((event) ->
+        leemgroevePT2.setOnAction((event) ->
+            {
+            boolean negative = false;
+            if (mainScherm.magPionnenPlaatsen())
+                {
+                if (controller.getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
+                    {
+                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("leemgroeve")))
+                        {
+                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("leemgroeve")));
+                        }
+                    else
+                        {
+                        negative = true;
+                        }
+                    }
+                else
+                    {
+                    negative = true;
+                    }
+                if (negative)
+                    {
+                    mainScherm.queueSFX("negative", 40);
+                    }
+                }
+            });
+        leemgroevePT3.setOnAction((event) ->
+            {
+            boolean negative = false;
+            if (mainScherm.magPionnenPlaatsen())
+                {
+                if (controller.getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
+                    {
+                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("leemgroeve")))
+                        {
+                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("leemgroeve")));
+                        }
+                    else
+                        {
+                        negative = true;
+                        }
+                    }
+                else
+                    {
+                    negative = true;
+                    }
+                if (negative)
+                    {
+                    mainScherm.queueSFX("negative", 40);
+                    }
+                }
+            });
+        steengroevePT1.setOnAction((event) ->
             {
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
@@ -374,7 +554,33 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 60);
+                    mainScherm.queueSFX("negative", 40);
+                    }
+                }
+            });
+        steengroevePT2.setOnAction((event) ->
+            {
+            boolean negative = false;
+            if (mainScherm.magPionnenPlaatsen())
+                {
+                if (controller.getLocatie("steengroeve").getAantalPlaatsenVrij() > 0)
+                    {
+                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("steengroeve")))
+                        {
+                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("steengroeve")));
+                        }
+                    else
+                        {
+                        negative = true;
+                        }
+                    }
+                else
+                    {
+                    negative = true;
+                    }
+                if (negative)
+                    {
+                    mainScherm.queueSFX("negative", 40);
                     }
                 }
             });
@@ -401,7 +607,7 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 60);
+                    mainScherm.queueSFX("negative", 40);
                     }
                 }
             });
@@ -428,7 +634,7 @@ public class CenterPane extends Pane
                     }
                 if (negative)
                     {
-                    mainScherm.queueSFX("negative", 60);
+                    mainScherm.queueSFX("negative", 40);
                     }
                 }
             });
@@ -467,7 +673,7 @@ public class CenterPane extends Pane
             if (negative)
                 {
 
-                mainScherm.queueSFX("negative", 80);
+                mainScherm.queueSFX("negative", 70);
 
                 }
             });
@@ -505,7 +711,7 @@ public class CenterPane extends Pane
             if (negative)
                 {
 
-                mainScherm.queueSFX("negative", 80);
+                mainScherm.queueSFX("negative", 40);
 
                 }
             });
@@ -543,7 +749,7 @@ public class CenterPane extends Pane
             if (negative)
                 {
 
-                mainScherm.queueSFX("negative", 80);
+                mainScherm.queueSFX("negative", 40);
 
                 }
             });

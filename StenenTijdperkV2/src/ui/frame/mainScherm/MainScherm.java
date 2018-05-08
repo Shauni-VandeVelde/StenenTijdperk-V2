@@ -175,7 +175,7 @@ public class MainScherm extends BorderPane
     {
         if (first)
             {
-            queueSFX("dice1", 75);
+            queueSFX("dice1", 70);
 
             magPionnenPlaatsen = false;
             controller.setHuidigeSpelerIndex();
@@ -692,6 +692,7 @@ public class MainScherm extends BorderPane
         twee.setSelected(true);
         drie.setToggleGroup(group);
         vier.setToggleGroup(group);
+//        getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Cursor.css").toExternalForm());
 
         okButton.setOnAction(new EventHandler<ActionEvent>()
         {
@@ -719,11 +720,12 @@ public class MainScherm extends BorderPane
         Scene scene = new Scene(mainPanel);
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
-        //playMusic();
+        playMusic();
         stage.showAndWait();
-        //musicPlayer.stop();
-        spelGestart = true;
 
+        spelGestart = true;
+        stopMusic();
+        playMusic();
         /* Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1.5),
                         new KeyValue(musicPlayer.volumeProperty(), 0)));
@@ -974,7 +976,7 @@ public class MainScherm extends BorderPane
 
     public void setEindeRondePane(EindeRondePane eindeRondePane)
     {
-        queueSFX("gong", 90);
+        queueSFX("gong", 85);
         //System.err.println("setVoedselPanel()");
         centerMainHBox.getChildren().clear();
 
