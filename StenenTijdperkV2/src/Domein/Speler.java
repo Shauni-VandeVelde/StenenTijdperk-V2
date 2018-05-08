@@ -30,7 +30,7 @@ public class Speler
     private int previousWaardeGereedschap;
     private int addedVoedsel;
     private int upkeep;
-
+    private int hoeveelheidPionnenStart = 5;
     private int previousHuttenSize;
 
     private ArrayList<GereedschapsFiche> gereedschapsFiches = new ArrayList<>();
@@ -54,7 +54,7 @@ public class Speler
         voedselEindeVorigeBeurt = aantalVoedsel;
         previousPionnenSize = hoeveelheidPionnenStart;
         previousHuttenSize = hutten.size();
-        int hoeveelheidPionnenStart = 5;
+
         for (int i = 0; i < hoeveelheidPionnenStart; i++)
             {
             pionnen.add(i, new Pion(kleur));
