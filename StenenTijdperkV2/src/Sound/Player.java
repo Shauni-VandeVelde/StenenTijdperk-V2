@@ -44,6 +44,10 @@ public class Player
                 mediaPlayer = new MediaPlayer(media);
 
                 //this.volume = volume / 100;
+                if (volume != -1)
+                    {
+                    this.volume = volume;
+                    }
                 setVolume();
 
                 mediaPlayer.play();
@@ -218,7 +222,7 @@ public class Player
                 break;
             case "menu":
                 soundEffect = true;
-                volume = 1;
+
                 path = "/SFX/Menu.mp3";
 
                 break;

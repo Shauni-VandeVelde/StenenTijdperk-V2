@@ -150,6 +150,7 @@ public class ButtonsPane extends Pane
                         if (gekozenLocatie.getNaam().contains("Stapel"))
                             {
                             hasPlaced = true;
+
                             controller.plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
                             mainScherm.getStapelsPane().updateStapels();
                             mainScherm.volgendeSpeler();

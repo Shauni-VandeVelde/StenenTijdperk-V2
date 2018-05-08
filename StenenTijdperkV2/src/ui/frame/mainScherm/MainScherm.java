@@ -102,11 +102,10 @@ public class MainScherm extends BorderPane
     private boolean firstDobbel = true;
     private boolean shouldPlayKoopHutSFX = true;
     private boolean shouldPlayEndOfRoundSFX = true;
-    private boolean shouldPlayVoedselSFX = true;
     private boolean shouldPlayDobbelSFX = true;
-
+    private boolean shouldPlayConfirmSound = true;
     private ArrayList<Player> SFXPlayers = new ArrayList<>();
-    private double masterVolume = 0.8, musicVolume = 0.7, SFXVolume = 0.9;
+    private double masterVolume = 0.8, musicVolume = 0.45, SFXVolume = 0.8;
 
 
         {
@@ -173,14 +172,14 @@ public class MainScherm extends BorderPane
         setPionnenImages(locatiePane.getLocatie(), locatiePane.getCurrentlySelectedNumber(), controller.getHuidigeSpeler());
         getStapelsPane().updateStapels();
         volgendeSpeler();
-        queueSFX(locatiePane.getLocatie().getNaam(), 100);
+        queueSFX(locatiePane.getLocatie().getNaam(), -1);
     }
 
     public void startDobbel()
     {
         if (first)
             {
-            queueSFX("dice1", 70);
+            queueSFX("dice1", -1);
 
             magPionnenPlaatsen = false;
             controller.setHuidigeSpelerIndex();
@@ -208,10 +207,14 @@ public class MainScherm extends BorderPane
     public void bevestigDobbel(DobbelPane dobbel)
     {
 
-        queueSFX("dice2", 100);
+        queueSFX("dice2", -1);
 
         if ((dobbel.getSpeler() != null) && (dobbel.getCurrentLocatie() != null) && (dobbel.getCurrentRol() != -1))
             {
+            if (shouldPlayConfirmSound)
+                {
+                queueSFX("menu", 80);
+                }
             if (dobbel.getSpeler().getAantalBruikbaarGereedschap() == 0)
                 {
 
@@ -269,6 +272,7 @@ public class MainScherm extends BorderPane
 
     public void koopHut()
     {
+
         if (controller.getRondeNummer() <= 3)
             {
             spelbordPane.toggleArrow();
@@ -334,6 +338,7 @@ public class MainScherm extends BorderPane
 
     public void beeindigKoopHut(Stapel stapel, KoopHutPane koopHutPane, boolean accepted)
     {
+
         if (accepted)
             {
             controller.verrekenStapel(stapel, koopHutPane.getSpeler());
@@ -991,7 +996,24 @@ public class MainScherm extends BorderPane
 
     public boolean shouldPlayKoopHutSFX()
     {
+
         return shouldPlayKoopHutSFX;
+    }
+
+    public boolean shouldPlayConfirmSound()
+
+    {
+        return shouldPlayConfirmSound;
+    }
+
+    public boolean shouldPlayDobbelSFX()
+    {
+        return shouldPlayDobbelSFX;
+    }
+
+    public boolean shouldPlayEndOfRoundSFX()
+    {
+        return shouldPlayEndOfRoundSFX;
     }
 
     public Stage getStage()

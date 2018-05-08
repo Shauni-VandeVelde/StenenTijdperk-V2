@@ -206,6 +206,10 @@ public class LocatiePane extends VBox
     {
         plus.setOnAction((event) ->
             {
+            if (mainScherm.shouldPlayConfirmSound())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
             if (currentlySelectedNumber + 1 <= locatie.getBruikbarePionnen(mainScherm.getController().getHuidigeSpeler()))
                 {
                 currentlySelectedNumber++;
@@ -214,6 +218,10 @@ public class LocatiePane extends VBox
             });
         minus.setOnAction((event) ->
             {
+            if (mainScherm.shouldPlayConfirmSound())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
             if (!getLocatie().getNaam().toLowerCase().equals("lovehut"))
                 {
                 if (currentlySelectedNumber - 1 > 0)
@@ -226,6 +234,7 @@ public class LocatiePane extends VBox
             });
         bevestig.setOnAction((event) ->
             {
+
             if (currentlySelectedNumber != 0)
                 {
                 if (locatie.getNaam().toLowerCase().equals("lovehut"))

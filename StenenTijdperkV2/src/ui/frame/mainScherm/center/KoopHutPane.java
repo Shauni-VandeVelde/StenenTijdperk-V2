@@ -81,12 +81,18 @@ public class KoopHutPane extends RightPaneBlueprint
             });
         bevestig.setOnAction((event) ->
             {
-
+            if (mainScherm.shouldPlayConfirmSound())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
             mainScherm.beeindigKoopHut(stapel, this, true);
             });
         weiger.setOnAction((event) ->
             {
-
+            if (mainScherm.shouldPlayConfirmSound())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
             mainScherm.beeindigKoopHut(stapel, this, false);
             });
 

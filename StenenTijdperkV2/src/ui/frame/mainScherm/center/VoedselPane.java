@@ -230,6 +230,7 @@ public class VoedselPane extends RightPaneBlueprint
         goudLabel.setStyle(style);
         yes.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
         no.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
+        yes.setOpacity(0.5);
     }
 
     private void setActions()
@@ -279,18 +280,27 @@ public class VoedselPane extends RightPaneBlueprint
         });
         yes.setOnAction((event) ->
             {
+
             int temp = (int) houtSlider.getValue();
             temp += (int) leemSlider.getValue();
             temp += (int) steenSlider.getValue();
             temp += (int) goudSlider.getValue();
             if (temp == speler.getVoedseltekort())
                 {
+                if (mainScherm.shouldPlayConfirmSound())
+                    {
+                    mainScherm.queueSFX("menu", 80);
+                    }
                 inOrde = true;
                 mainScherm.beeindigVoeden(this);
                 }
             });
         no.setOnAction((event) ->
             {
+            if (mainScherm.shouldPlayConfirmSound())
+                {
+                mainScherm.queueSFX("menu", 80);
+                }
             inOrde = false;
             mainScherm.beeindigVoeden(this);
             });
@@ -306,15 +316,18 @@ public class VoedselPane extends RightPaneBlueprint
         if (result > 0)
             {
             voedselLabel.setText("Nog " + result + " voedsel te weinig!");
+            yes.setOpacity(0.5);
             }
         if (result == 0)
             {
             voedselLabel.setText("Druk op bevestig.");
+            yes.setOpacity(1);
 
             }
         if (result < 0)
             {
             voedselLabel.setText("" + result + " grondstoffen te veel!");
+            yes.setOpacity(0.5);
             }
 
     }
