@@ -22,7 +22,6 @@ import ui.frame.mainScherm.MainScherm;
  */
 public class StartGui extends Application
 {
-
     private final boolean showSelectScreen = true;
     public static boolean isPaused = false;
     private DomeinController controller;
