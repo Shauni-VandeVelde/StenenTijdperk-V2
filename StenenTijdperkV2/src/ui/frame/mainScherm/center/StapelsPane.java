@@ -8,12 +8,13 @@ package ui.frame.mainScherm.center;
 import Domein.Hut;
 import Domein.Stapel;
 import javafx.geometry.Insets;
-import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import ui.CustomCursor;
 import ui.frame.mainScherm.MainScherm;
 import ui.frame.mainScherm.right.DeelPaneel;
 import ui.frame.mainScherm.right.RightPaneBlueprint;
@@ -118,35 +119,45 @@ public class StapelsPane extends Pane
     {
         button1.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            });
-        button1.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
-        button2.setOnMouseEntered((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            });
-        button2.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
-        button3.setOnMouseEntered((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            });
-        button3.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
         button4.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
+        button2.setOnMouseEntered((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        button3.setOnMouseEntered((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        button1.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+
+        button2.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        button3.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+
         button4.setOnMouseExited((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
 
         button1.setOnAction((event) ->

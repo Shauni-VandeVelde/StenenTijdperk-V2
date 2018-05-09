@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import ui.CustomCursor;
 import ui.frame.mainScherm.MainScherm;
 
 
@@ -341,94 +341,125 @@ public class CenterPane extends Pane
 
         bos.setOnMouseEntered((event) ->
             {
-            ImageView image = new ImageView(this.getClass().getClassLoader().getResource("img/hand.png").toExternalForm());
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
 
-            mainScherm.getStage().getScene().setCursor(new ImageCursor(image.getImage()));
-            //mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            });
-        bos.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
         leemgroevePT1.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
-        leemgroevePT1.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
+
         leemgroevePT2.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
-        leemgroevePT2.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
+
         leemgroevePT3.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
-        leemgroevePT3.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
+
         steengroevePT1.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
-        steengroevePT1.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
-        steengroevePT2.setOnMouseEntered((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            });
-        steengroevePT2.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
-        rivier.setOnMouseEntered((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            });
-        rivier.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
-            });
+
         jacht.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            });
-        jacht.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
         akker.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            });
-        akker.setOnMouseExited((event) ->
-            {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
         gereedschapsmaker.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
-        gereedschapsmaker.setOnMouseExited((event) ->
+        steengroevePT2.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        rivier.setOnMouseEntered((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
         lovehut.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, false);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
+
+        //
+        bos.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        leemgroevePT1.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        leemgroevePT2.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        leemgroevePT3.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        steengroevePT1.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+        steengroevePT2.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+
+        rivier.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+
+        jacht.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+
+        akker.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+
+        gereedschapsmaker.setOnMouseExited((event) ->
+            {
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+            });
+
         lovehut.setOnMouseExited((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
+            CustomCursor tempCursor = new CustomCursor(mainScherm, true);
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
             });
         bos.setOnAction((event) ->
             {
