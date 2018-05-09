@@ -336,6 +336,46 @@ public class CenterPane extends Pane
 
     }
 
+    /*
+
+    private void fadeCursor(boolean bool)
+    {
+
+        if (bool)
+            {
+            CustomCursor currentCursor = new CustomCursor(mainScherm, true);
+
+            Label label = new Label();
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(currentCursor.getImage()));
+            currentCursor.getImageView().setOpacity(getOpacity() - 0.1);
+            FadeTransition ft = new FadeTransition(Duration.millis(10), label);
+            ft.setFromValue(1);
+            ft.setToValue(0.0);
+            ft.setCycleCount(1);
+            ft.play();
+            if (label.getOpacity() > 0.25)
+                {
+                ft.setOnFinished(e -> fadeCursor(bool));
+                }
+            }
+    }
+
+
+         Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.millis(600),
+                            new KeyValue(currentCursor.getImageView().opacityProperty(), 0)));
+            timeline.setOnFinished(new EventHandler<ActionEvent>()
+            {
+                public void handle(ActionEvent event)
+                {
+                    // startDobbel();
+                }
+
+            });
+            timeline.play();
+
+
+     */
     public void setActions()
     {
 

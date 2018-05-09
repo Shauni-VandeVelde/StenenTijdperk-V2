@@ -26,6 +26,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -42,6 +43,7 @@ import javafx.scene.media.Media;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import ui.CustomCursor;
 import ui.frame.StartGui;
 import ui.frame.mainScherm.bottom.ButtonsPane;
 import ui.frame.mainScherm.bottom.Console;
@@ -161,6 +163,8 @@ public class MainScherm extends BorderPane
             tabNaarHuidigeSpeler();
             bottomButtonsPanel.setHuidigeSpeler();
             }
+        CustomCursor tempCursor = new CustomCursor(this, false);
+        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
     }
 
     public void bevestigPlaatsen(LocatiePane locatiePane)
@@ -184,6 +188,7 @@ public class MainScherm extends BorderPane
 
     public void startDobbel()
     {
+
         if (first)
             {
             if (shouldPlayDobbelSFX)
@@ -195,7 +200,8 @@ public class MainScherm extends BorderPane
             controller.setHuidigeSpelerIndex();
             first = false;
             }
-
+        CustomCursor tempCursor = new CustomCursor(this, false);
+        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
         int spelerIndex = getVolgendeSpeler();
         if (spelerIndex != -1)
             {
@@ -323,7 +329,8 @@ public class MainScherm extends BorderPane
 
                     if (stapel.getBovensteHut().kanHutKopen(speler))
                         {
-
+                        CustomCursor tempCursor = new CustomCursor(this, false);
+                        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
                         setKoopHutPane(new KoopHutPane(this, centerMainHBox, speler, stapel));
 
                         }
@@ -372,7 +379,8 @@ public class MainScherm extends BorderPane
 
         Speler speler = controller.getSpelers().get(controller.getHuidigeSpelerIndex());
         boolean finished = controller.voerVoedenUit(accept);
-
+        CustomCursor tempCursor = new CustomCursor(this, false);
+        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
         if (finished)
             {
 
@@ -984,6 +992,8 @@ public class MainScherm extends BorderPane
         getChildren().clear();
 
         getChildren().add(eindScherm);
+        CustomCursor tempCursor = new CustomCursor(this, false);
+        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
     }
 
     public void setKoopHutPane(KoopHutPane koopHutPane)

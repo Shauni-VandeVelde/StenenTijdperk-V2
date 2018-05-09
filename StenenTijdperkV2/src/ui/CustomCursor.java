@@ -57,7 +57,7 @@ public class CustomCursor
                     break;
 
                 }
-            //path = "img/hand.png";
+            //  path = "img/hand.png";
             }
         else
             {
@@ -87,6 +87,11 @@ public class CustomCursor
     public Image getImage()
     {
         return imageView.getImage();
+    }
+
+    public ImageView getImageView()
+    {
+        return imageView;
     }
 
 }
