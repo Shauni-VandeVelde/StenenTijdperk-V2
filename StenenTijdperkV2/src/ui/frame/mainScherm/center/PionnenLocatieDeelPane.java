@@ -6,8 +6,10 @@
 package ui.frame.mainScherm.center;
 
 import Domein.Pion;
+import javafx.animation.FadeTransition;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import ui.frame.mainScherm.MainScherm;
 
 
@@ -36,6 +38,21 @@ public class PionnenLocatieDeelPane extends Pane
     public void reset()
     {
 
+        if (getChildren().size() == 1)
+            {
+            FadeTransition ft = new FadeTransition(Duration.millis(2000), getChildren().get(0));
+            ft.setFromValue(1.0);
+            ft.setToValue(0.0);
+
+            ft.play();
+            ft.setOnFinished(e -> finishReset());
+
+            }
+
+    }
+
+    private void finishReset()
+    {
         getChildren().clear();
         pion = null;
         hasImage = false;
@@ -49,6 +66,12 @@ public class PionnenLocatieDeelPane extends Pane
         image.fitWidthProperty().bind(widthProperty());
         image.fitHeightProperty().bind(heightProperty());;
         getChildren().add(image);
+        image.setOpacity(0);
+        FadeTransition ft = new FadeTransition(Duration.millis(600), image);
+        ft.setFromValue(0);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.play();
         hasImage = true;
     }
 
