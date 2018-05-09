@@ -934,7 +934,7 @@ public class MainScherm extends BorderPane
         setCenter(p);
         setBottom(bottomVBox);
 
-        StartGui.togglePause();
+        StartGui.isPaused = true;
         p.requestFocus();
 
     }
@@ -946,7 +946,7 @@ public class MainScherm extends BorderPane
         setCenter(centerMainHBox);
         setBottom(bottomVBox);
         getBottomButtonsPanel().toggleButtons();
-        StartGui.togglePause();
+        StartGui.isPaused = false;
         centerMainHBox.requestFocus();
 
     }

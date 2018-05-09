@@ -343,15 +343,15 @@ public class ButtonsPane extends Pane
             @Override
             public void handle(ActionEvent event)
             {
-                if (!StartGui.isPaused)
+                if (StartGui.isPaused)
                     {
                     mainScherm.closePauzeMenu();
-                    StartGui.isPaused = false;
+
                     }
                 else
                     {
                     mainScherm.openPauzeMenu();
-                    StartGui.isPaused = true;
+
                     }
 
             }
