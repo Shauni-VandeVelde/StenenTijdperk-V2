@@ -15,6 +15,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -340,7 +341,10 @@ public class CenterPane extends Pane
 
         bos.setOnMouseEntered((event) ->
             {
-            mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
+            ImageView image = new ImageView(this.getClass().getClassLoader().getResource("img/hand.png").toExternalForm());
+
+            mainScherm.getStage().getScene().setCursor(new ImageCursor(image.getImage()));
+            //mainScherm.getStage().getScene().setCursor(Cursor.HAND); //Change cursor to hand
             });
         bos.setOnMouseExited((event) ->
             {
