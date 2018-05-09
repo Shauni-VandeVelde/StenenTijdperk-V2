@@ -105,6 +105,7 @@ public class StartGui extends Application
 
         main.requestFocus();
         main.requestFocus();
+        main.activateCursor();
 
     }
 

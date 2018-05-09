@@ -133,6 +133,12 @@ public class MainScherm extends BorderPane
 
     }
 
+    public void activateCursor()
+    {
+        CustomCursor tempCursor = new CustomCursor(this, false);
+        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+    }
+
     public void volgendeSpeler()
     {
         Button temp = new Button();
@@ -832,6 +838,11 @@ public class MainScherm extends BorderPane
             {
             e.printStackTrace();
             }
+    }
+
+    public void cursor()
+    {
+
     }
 
     private void initMenuBar()
