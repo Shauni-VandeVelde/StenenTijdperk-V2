@@ -262,6 +262,14 @@ public class StapelsPane extends Pane
 
     }
 
+    public void clearPionnen()
+    {
+        stapel1DeelPaneel.removeContent();
+        stapel2DeelPaneel.removeContent();
+        stapel3DeelPaneel.removeContent();
+        stapel4DeelPaneel.removeContent();
+    }
+
     private void updatePionnen()
     {
         for (int i = 0; i < 4; i++)
@@ -299,14 +307,26 @@ public class StapelsPane extends Pane
 
     private void updateStapelImages()
     {
-        stapel1DeelPaneel.addBackgroundImage(stapel1);
-        stapel2DeelPaneel.addBackgroundImage(stapel2);
-        stapel3DeelPaneel.addBackgroundImage(stapel3);
-        stapel4DeelPaneel.addBackgroundImage(stapel4);
-        stapel1DeelPaneel.addButton(button1, 1, 1);
-        stapel2DeelPaneel.addButton(button2, 1, 1);
-        stapel3DeelPaneel.addButton(button3, 1, 1);
-        stapel4DeelPaneel.addButton(button4, 1, 1);
+        if (stapel1DeelPaneel.getChildren().size() == 0)
+            {
+            stapel1DeelPaneel.addBackgroundImage(stapel1);
+            stapel1DeelPaneel.addButton(button1, 1, 1);
+            }
+        if (stapel2DeelPaneel.getChildren().size() == 0)
+            {
+            stapel2DeelPaneel.addBackgroundImage(stapel2);
+            stapel2DeelPaneel.addButton(button2, 1, 1);
+            }
+        if (stapel3DeelPaneel.getChildren().size() == 0)
+            {
+            stapel3DeelPaneel.addBackgroundImage(stapel3);
+            stapel3DeelPaneel.addButton(button3, 1, 1);
+            }
+        if (stapel4DeelPaneel.getChildren().size() == 0)
+            {
+            stapel4DeelPaneel.addBackgroundImage(stapel4);
+            stapel4DeelPaneel.addButton(button4, 1, 1);
+            }
     }
 
     private void updateImages()

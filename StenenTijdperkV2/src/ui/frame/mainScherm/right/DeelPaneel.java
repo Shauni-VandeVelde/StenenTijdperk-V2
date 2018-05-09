@@ -7,6 +7,7 @@ package ui.frame.mainScherm.right;
 
 import Domein.Kleur;
 import Domein.Speler;
+import javafx.animation.FadeTransition;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
@@ -20,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.util.Duration;
 import ui.frame.mainScherm.MainScherm;
 
 
@@ -231,28 +233,38 @@ public class DeelPaneel extends Pane
 
     public void setPion(Speler speler)
     {
-        ImageView pion = new ImageView(MainScherm.getUrl("wood"));
-        if (speler.getKleur() == Kleur.ROOD)
+        if (getChildren().size() != 0)
             {
-            pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionRood")).toExternalForm());
+            ImageView pion = new ImageView(MainScherm.getUrl("wood"));
+            if (speler.getKleur() == Kleur.ROOD)
+                {
+                pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionRood")).toExternalForm());
+                }
+            if (speler.getKleur() == Kleur.GEEL)
+                {
+                pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionGeel")).toExternalForm());
+                }
+            if (speler.getKleur() == Kleur.GROEN)
+                {
+                pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionGroen")).toExternalForm());
+                }
+            if (speler.getKleur() == Kleur.BLAUW)
+                {
+                pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionBlauw")).toExternalForm());
+                }
+            pion.fitWidthProperty().bind(widthProperty().multiply(0.25));
+            pion.fitHeightProperty().bind(heightProperty().multiply(0.25));
+            pion.layoutXProperty().bind(widthProperty().multiply(0.31));
+            pion.layoutYProperty().bind(heightProperty().multiply(0.31));
+
+            getChildren().add(pion);
+            pion.setOpacity(0);
+            FadeTransition ft = new FadeTransition(Duration.millis(600), pion);
+            ft.setFromValue(0);
+            ft.setToValue(1);
+            ft.setCycleCount(1);
+            ft.play();
             }
-        if (speler.getKleur() == Kleur.GEEL)
-            {
-            pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionGeel")).toExternalForm());
-            }
-        if (speler.getKleur() == Kleur.GROEN)
-            {
-            pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionGroen")).toExternalForm());
-            }
-        if (speler.getKleur() == Kleur.BLAUW)
-            {
-            pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionBlauw")).toExternalForm());
-            }
-        pion.fitWidthProperty().bind(widthProperty().multiply(0.25));
-        pion.fitHeightProperty().bind(heightProperty().multiply(0.25));
-        pion.layoutXProperty().bind(widthProperty().multiply(0.31));
-        pion.layoutYProperty().bind(heightProperty().multiply(0.31));
-        getChildren().add(pion);
 
     }
 

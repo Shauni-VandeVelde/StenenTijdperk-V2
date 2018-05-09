@@ -91,18 +91,18 @@ public class CenterPane extends Pane
 
     public void resetAkker()
     {
-        akkerLocaties[0].reset();
+        akkerLocaties[0].reset(true);
     }
 
     public void resetGereedschapsMaker()
     {
-        gereedschapsmakerLocaties[0].reset();
+        gereedschapsmakerLocaties[0].reset(true);
     }
 
     public void resetLovehut()
     {
-        lovehutLocaties[0].reset();
-        lovehutLocaties[1].reset();
+        lovehutLocaties[0].reset(true);
+        lovehutLocaties[1].reset(true);
 
     }
 
@@ -115,7 +115,7 @@ public class CenterPane extends Pane
                 {
                 if (array[i].getPion().getKleur() == speler.getKleur())
                     {
-                    array[i].reset();
+                    array[i].reset(false);
                     }
                 }
             }

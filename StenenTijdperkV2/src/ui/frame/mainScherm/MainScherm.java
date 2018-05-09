@@ -273,26 +273,7 @@ public class MainScherm extends BorderPane
                 ft.setCycleCount(1);
                 ft.play();
                 ft.setOnFinished(e -> koopHut());
-                /*
-                FadeTransition ft2 = new FadeTransition(Duration.millis(1200), stapelsPanel);
-                ft2.setFromValue(1);
-                ft2.setToValue(0.5);
-                ft2.setCycleCount(1);
-                ft2.play();
-                FadeTransition ft = new FadeTransition(Duration.millis(1200), spelbordPane);
-                ft.setFromValue(1);
-                ft.setToValue(0.5);
-                ft.setCycleCount(1);
-                ft.play();
-                ft.setOnFinished(e -> koopHut());
-                FadeTransition ft3 = new FadeTransition(Duration.millis(1200), getRight());
-                ft3.setFromValue(1);
-                ft3.setToValue(0.5);
-                ft3.setCycleCount(1);
-                ft3.play();
 
-
-                 */
                 first = true;
                 }
             }
@@ -474,6 +455,7 @@ public class MainScherm extends BorderPane
             spelbordPane.resetAkker();
             spelbordPane.resetLovehut();
             spelbordPane.resetGereedschapsMaker();
+            stapelsPanel.clearPionnen();
             resetAccept();
 
             controller.resetGebruiktGereedschap();

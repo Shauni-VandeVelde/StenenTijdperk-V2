@@ -35,18 +35,24 @@ public class PionnenLocatieDeelPane extends Pane
         layoutYProperty().bind(heightProperty().multiply(y));
     }
 
-    public void reset()
+    public void reset(boolean full)
     {
-
-        if (getChildren().size() == 1)
+        if (full)
             {
-            FadeTransition ft = new FadeTransition(Duration.millis(600), getChildren().get(0));
-            ft.setFromValue(1.0);
-            ft.setToValue(0.0);
+            finishReset();
+            }
+        else
+            {
+            if (getChildren().size() == 1)
+                {
+                FadeTransition ft = new FadeTransition(Duration.millis(600), getChildren().get(0));
+                ft.setFromValue(1.0);
+                ft.setToValue(0.0);
 
-            ft.play();
-            ft.setOnFinished(e -> finishReset());
+                ft.play();
+                ft.setOnFinished(e -> finishReset());
 
+                }
             }
 
     }
@@ -60,7 +66,7 @@ public class PionnenLocatieDeelPane extends Pane
 
     public void setImage(String type, Pion pion)
     {
-        reset();
+        reset(true);
         this.pion = pion;
         ImageView image = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl(type)).toExternalForm());
         image.fitWidthProperty().bind(widthProperty());
