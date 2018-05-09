@@ -44,16 +44,16 @@ public class CustomCursor
             switch (speler.index())
                 {
                 case 0:
-                    path = "img/PionRood.png";
+                    path = "img/Cursors/Cursor_Red_Hover2.png";
                     break;
                 case 1:
-                    path = "img/PionBlauw.png";
+                    path = "img/Cursors/Cursor_Blue_Hover.png";
                     break;
                 case 2:
-                    path = "img/PionGeel.png";
+                    path = "img/Cursors/Cursor_Yellow_Hover.png";
                     break;
                 case 3:
-                    path = "img/PionGroen.png";
+                    path = "img/Cursors/Cursor_Green_Hover.png";
                     break;
 
                 }
@@ -64,20 +64,20 @@ public class CustomCursor
             switch (speler.index())
                 {
                 case 0:
-                    path = "img/cursorRood.png";
+                    path = "img/Cursors/Cursor_Red_Std2.png";
                     break;
                 case 1:
-                    path = "img/cursorBlauw.png";
+                    path = "img/Cursors/Cursor_Blue_Std.png";
                     break;
                 case 2:
-                    path = "img/cursorGeel.png";
+                    path = "img/Cursors/Cursor_Yellow_Std.png";
                     break;
                 case 3:
-                    path = "img/cursorGroen.png";
+                    path = "img/Cursors/Cursor_Green_Std.png";
                     break;
 
                 }
-            path = "img/hand.png";
+            //path = "img/hand.png";
             }
 
         imageView = new ImageView(this.getClass().getClassLoader().getResource(path).toExternalForm());
