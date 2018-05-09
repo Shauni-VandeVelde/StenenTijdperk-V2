@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -177,6 +178,13 @@ public class MainScherm extends BorderPane
             {
             queueSFX(locatiePane.getLocatie().getNaam(), -1);
             }
+        FadeTransition ft = new FadeTransition(Duration.millis(150), locatiePane);
+        ft.setFromValue(1);
+        ft.setToValue(0.0);
+        ft.setCycleCount(1);
+        ft.play();
+        ft.setOnFinished(e -> spelbordPane.getChildren().remove(locatiePane));
+
     }
 
     public void startDobbel()
@@ -258,12 +266,33 @@ public class MainScherm extends BorderPane
                 {
                 controller.setHuidigeSpelerIndex();
                 resetAccept();
+                HBox hbox = new HBox();
+                FadeTransition ft = new FadeTransition(Duration.millis(800), hbox);
+                ft.setFromValue(1);
+                ft.setToValue(0.0);
+                ft.setCycleCount(1);
+                ft.play();
+                ft.setOnFinished(e -> koopHut());
+                /*
+                FadeTransition ft2 = new FadeTransition(Duration.millis(1200), stapelsPanel);
+                ft2.setFromValue(1);
+                ft2.setToValue(0.5);
+                ft2.setCycleCount(1);
+                ft2.play();
+                FadeTransition ft = new FadeTransition(Duration.millis(1200), spelbordPane);
+                ft.setFromValue(1);
+                ft.setToValue(0.5);
+                ft.setCycleCount(1);
+                ft.play();
+                ft.setOnFinished(e -> koopHut());
+                FadeTransition ft3 = new FadeTransition(Duration.millis(1200), getRight());
+                ft3.setFromValue(1);
+                ft3.setToValue(0.5);
+                ft3.setCycleCount(1);
+                ft3.play();
 
-                Timeline timeline = new Timeline(new KeyFrame(
-                        Duration.millis(400),
-                        ae -> koopHut()));
-                timeline.play();
 
+                 */
                 first = true;
                 }
             }

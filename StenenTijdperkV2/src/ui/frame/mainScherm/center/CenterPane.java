@@ -932,6 +932,47 @@ public class CenterPane extends Pane
 
     }
 
+    public boolean zijnAllePionnenWeg()
+    {
+        for (int i = 0; i < bosLocaties.length; i++)
+            {
+            if (bosLocaties[i].hasImage())
+                {
+                return false;
+                }
+            }
+        for (int i = 0; i < leemgroeveLocaties.length; i++)
+            {
+            if (leemgroeveLocaties[i].hasImage())
+                {
+                return false;
+                }
+            }
+        for (int i = 0; i < steengroeveLocaties.length; i++)
+            {
+            if (steengroeveLocaties[i].hasImage())
+                {
+                return false;
+                }
+            }
+        for (int i = 0; i < rivierLocaties.length; i++)
+            {
+            if (rivierLocaties[i].hasImage())
+                {
+                return false;
+                }
+            }
+        for (int i = 0; i < jachtLocaties.length; i++)
+            {
+            if (jachtLocaties[i].hasImage())
+                {
+                return false;
+                }
+            }
+
+        return true;
+    }
+
     public PionnenLocatieDeelPane[] getLocatieDeelPane(Locatie locatie)
     {
 

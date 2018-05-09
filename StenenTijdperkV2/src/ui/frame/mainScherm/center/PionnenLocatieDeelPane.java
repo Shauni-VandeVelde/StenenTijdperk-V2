@@ -40,7 +40,7 @@ public class PionnenLocatieDeelPane extends Pane
 
         if (getChildren().size() == 1)
             {
-            FadeTransition ft = new FadeTransition(Duration.millis(2000), getChildren().get(0));
+            FadeTransition ft = new FadeTransition(Duration.millis(600), getChildren().get(0));
             ft.setFromValue(1.0);
             ft.setToValue(0.0);
 
