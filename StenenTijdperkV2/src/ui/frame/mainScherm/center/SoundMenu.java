@@ -261,7 +261,7 @@ public class SoundMenu extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             masterVolume = masterVolumeSlider.getValue();
             musicVolume = musicVolumeSlider.getValue();
@@ -274,7 +274,7 @@ public class SoundMenu extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             mainScherm.toggleMenuSFX();
             });
@@ -282,7 +282,7 @@ public class SoundMenu extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             mainScherm.toggleDobbelSFX();
             });
@@ -290,7 +290,7 @@ public class SoundMenu extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             mainScherm.toggleKoopHutSFX();
             });
@@ -298,7 +298,7 @@ public class SoundMenu extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             mainScherm.toggleEndOfRoundSFX();
             });
@@ -306,7 +306,7 @@ public class SoundMenu extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             mainScherm.toggleLocatieSFX();
             });

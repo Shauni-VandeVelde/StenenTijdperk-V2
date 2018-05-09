@@ -289,7 +289,7 @@ public class VoedselPane extends RightPaneBlueprint
                 {
                 if (mainScherm.shouldPlayMenuSFX())
                     {
-                    mainScherm.queueSFX("menu", 80);
+                    mainScherm.queueSFX("menu", -1);
                     }
                 inOrde = true;
                 mainScherm.beeindigVoeden(this);
@@ -299,7 +299,7 @@ public class VoedselPane extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             inOrde = false;
             mainScherm.beeindigVoeden(this);

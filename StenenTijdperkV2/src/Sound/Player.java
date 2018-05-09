@@ -28,6 +28,7 @@ public class Player
     private MainScherm mainScherm;
     private boolean music = false;
     private boolean soundEffect = false;
+    private boolean isMusicLoop = false;
 
     public Player(MainScherm mainscherm, String type, double volume)
     {
@@ -94,6 +95,7 @@ public class Player
             ////// Music files:
             case "musicloop":
                 music = true;
+                isMusicLoop = true;
                 path = getRandomSong();
                 break;
             case "egypt1":
@@ -300,6 +302,11 @@ public class Player
     public boolean isSoundEffect()
     {
         return soundEffect;
+    }
+
+    public boolean isMusicLoop()
+    {
+        return isMusicLoop;
     }
 
     public boolean pathContains(String string)

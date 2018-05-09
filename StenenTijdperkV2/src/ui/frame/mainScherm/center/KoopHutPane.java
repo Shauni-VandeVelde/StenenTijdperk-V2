@@ -83,7 +83,7 @@ public class KoopHutPane extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             mainScherm.beeindigKoopHut(stapel, this, true);
             });
@@ -91,7 +91,7 @@ public class KoopHutPane extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             mainScherm.beeindigKoopHut(stapel, this, false);
             });

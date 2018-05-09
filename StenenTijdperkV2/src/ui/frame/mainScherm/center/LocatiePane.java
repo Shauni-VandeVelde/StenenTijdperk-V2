@@ -208,7 +208,7 @@ public class LocatiePane extends VBox
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             if (currentlySelectedNumber + 1 <= locatie.getBruikbarePionnen(mainScherm.getController().getHuidigeSpeler()))
                 {
@@ -220,7 +220,7 @@ public class LocatiePane extends VBox
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             if (!getLocatie().getNaam().toLowerCase().equals("lovehut"))
                 {

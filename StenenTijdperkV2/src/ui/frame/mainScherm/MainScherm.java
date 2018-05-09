@@ -107,12 +107,7 @@ public class MainScherm extends BorderPane
     private boolean shouldPlayMenuSound = true;
     private boolean shouldPlayLocatieSFX = true;
     private ArrayList<Player> SFXPlayers = new ArrayList<>();
-    private double masterVolume = 0.8, musicVolume = 0.45, SFXVolume = 0.8;
-
-
-        {
-        this.SFXVolume = SFXVolume;
-        }
+    private double masterVolume = 0.8, musicVolume = 0.38, SFXVolume = 0.7;
 
     public static String getUrl(String type)
     {
@@ -524,12 +519,18 @@ public class MainScherm extends BorderPane
     //Sound related:
     public void queueSFX(String type, double volume)
     {
+        Player player = new Player(this, type, volume);
         //System.out.println("type: " + type + " volume " + volume);
-        SFXPlayers.add(new Player(this, type, volume));
+        SFXPlayers.add(player);
+
     }
 
     public void removeSFX(Player player)
     {
+        if (player.isMusicLoop())
+            {
+            queueSFX("musicLoop", -1);
+            }
         SFXPlayers.remove(player);
     }
 
@@ -540,13 +541,13 @@ public class MainScherm extends BorderPane
             if (!spelGedaan)
                 {
                 stopMusic();
-                queueSFX("musicLoop", 80);
+                queueSFX("musicLoop", -1);
                 }
             }
         else
             {
 
-            queueSFX("mainMenu", 65);
+            queueSFX("mainMenu", -1);
             }
     }
 

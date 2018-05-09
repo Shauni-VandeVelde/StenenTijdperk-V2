@@ -81,7 +81,7 @@ public class EindeRondePane extends RightPaneBlueprint
             {
             if (mainScherm.shouldPlayMenuSFX())
                 {
-                mainScherm.queueSFX("menu", 80);
+                mainScherm.queueSFX("menu", -1);
                 }
             mainScherm.finishRound();
             //System.err.println("FinishRound()");

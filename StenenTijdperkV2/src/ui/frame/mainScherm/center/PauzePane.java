@@ -52,7 +52,7 @@ public class PauzePane extends Pane
             }
         if (mainScherm.shouldPlayMenuSFX())
             {
-            mainScherm.queueSFX("menu", 80);
+            mainScherm.queueSFX("menu", -1);
             }
         menuOptionsVBox = new VBox();
         soundMenuVBox = new VBox();
@@ -206,7 +206,7 @@ public class PauzePane extends Pane
 
                 if (mainScherm.shouldPlayMenuSFX())
                     {
-                    mainScherm.queueSFX("menu", 80);
+                    mainScherm.queueSFX("menu", -1);
                     }
 
                 mainScherm.closePauzeMenu();
@@ -222,7 +222,7 @@ public class PauzePane extends Pane
             {
                 if (mainScherm.shouldPlayMenuSFX())
                     {
-                    mainScherm.queueSFX("menu", 80);
+                    mainScherm.queueSFX("menu", -1);
                     }
                 toggleSavePane();
             }
@@ -236,7 +236,7 @@ public class PauzePane extends Pane
             {
                 if (mainScherm.shouldPlayMenuSFX())
                     {
-                    mainScherm.queueSFX("menu", 80);
+                    mainScherm.queueSFX("menu", -1);
                     }
                 toggleLoadPane();
             }
@@ -250,7 +250,7 @@ public class PauzePane extends Pane
             {
                 if (mainScherm.shouldPlayMenuSFX())
                     {
-                    mainScherm.queueSFX("menu", 80);
+                    mainScherm.queueSFX("menu", -1);
                     }
             }
 
@@ -263,7 +263,7 @@ public class PauzePane extends Pane
             {
                 if (mainScherm.shouldPlayMenuSFX())
                     {
-                    mainScherm.queueSFX("menu", 80);
+                    mainScherm.queueSFX("menu", -1);
                     }
                 stage.close();
             }
