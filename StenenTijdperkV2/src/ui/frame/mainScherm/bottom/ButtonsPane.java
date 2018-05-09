@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import ui.frame.StartGui;
 import ui.frame.mainScherm.MainScherm;
 
 
@@ -35,7 +36,7 @@ public class ButtonsPane extends Pane
     private Slider sliderPionnen;
     private HBox firstPanel, secondPanel, mainPanel;
     private int gekozenIndex = 99;
-    private Button pionnenOkButton, toggleMusicButton;
+    private Button pionnenOkButton, PauzeButton;
     private TextField txfHuidigeSpeler;
     private DomeinController controller;
     private MainScherm mainScherm;
@@ -60,7 +61,7 @@ public class ButtonsPane extends Pane
         firstPanel = new HBox();
         mainPanel = new HBox();
         pionnenOkButton = new Button("Ok");
-        toggleMusicButton = new Button("Toggle Music");
+        PauzeButton = new Button("Pauze Game");
         txfHuidigeSpeler = new TextField("Huidige Speler: " + (controller.getHuidigeSpelerIndex() + 1));
         ImageView buttonPannelImage = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("wood")).toExternalForm());
         clear = false;
@@ -84,12 +85,12 @@ public class ButtonsPane extends Pane
         firstPanel.getChildren().add(sliderPionnen);
         firstPanel.getChildren().add(pionnenOkButton);
         secondPanel.getChildren().add(txfHuidigeSpeler);
-        secondPanel.getChildren().add(toggleMusicButton);
+        secondPanel.getChildren().add(PauzeButton);
         mainPanel.getChildren().add(firstPanel);
         mainPanel.getChildren().add(secondPanel);
         getChildren().add(buttonPannelImage);
         getChildren().add(mainPanel);
-
+        PauzeButton.setMaxHeight(Double.MAX_VALUE);
         txfHuidigeSpeler.setMaxHeight(Double.MAX_VALUE);
         pionnenOkButton.setMaxHeight(Double.MAX_VALUE);
         sliderPionnen.setMaxHeight(Double.MAX_VALUE);
@@ -337,13 +338,21 @@ public class ButtonsPane extends Pane
             }
 
         });
-        toggleMusicButton.setOnAction(new EventHandler<ActionEvent>()
+        PauzeButton.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
             public void handle(ActionEvent event)
             {
-
-                mainScherm.toggleMusic();
+                if (!StartGui.isPaused)
+                    {
+                    mainScherm.closePauzeMenu();
+                    StartGui.isPaused = false;
+                    }
+                else
+                    {
+                    mainScherm.openPauzeMenu();
+                    StartGui.isPaused = true;
+                    }
 
             }
 

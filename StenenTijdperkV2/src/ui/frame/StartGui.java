@@ -24,7 +24,7 @@ public class StartGui extends Application
 {
 
     private final boolean showSelectScreen = true;
-    private static boolean isPaused = false;
+    public static boolean isPaused = false;
     private DomeinController controller;
     private Cmd cmd;
 
