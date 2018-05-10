@@ -494,8 +494,8 @@ public class MainScherm extends BorderPane
 
         if (controller.isHetSpelGedaan())
             {
-            setEindScherm(new EndOfGamePane(this, centerRightInventoryMainPane));
             stopMusic();
+            setEindScherm(new EndOfGamePane(this, centerRightInventoryMainPane));
 
             }
 
@@ -585,8 +585,18 @@ public class MainScherm extends BorderPane
 
             if (SFXPlayers.get(i).isMusic())
                 {
+                SFXPlayers.get(i).getPlayer().stop();
+                }
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.millis(50),
+                            new KeyValue(SFXPlayers.get(i).getPlayer().volumeProperty(), 0)));
+            timeline.play();
+            int index = i;
+            if (i < SFXPlayers.size())
+                {
 
-                SFXPlayers.remove(SFXPlayers.get(i));
+                int j = i;
+                timeline.setOnFinished(e -> SFXPlayers.remove(SFXPlayers.get(j)));
 
                 }
 
