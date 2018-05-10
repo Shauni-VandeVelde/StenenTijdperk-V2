@@ -47,7 +47,7 @@ public class Stapel extends Locatie
     void maakHutten()
     {
         hutten = new ArrayList<>();
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < currentTopIndex + 1; i++)
             {
             hutten.add(new Hut());
             }

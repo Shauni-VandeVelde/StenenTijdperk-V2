@@ -80,7 +80,7 @@ public class Player
     {
 
         mainScherm.removeSFX(this);
-        mainScherm.playMusic();
+
     }
 
     private void setPath(String type)
@@ -99,6 +99,10 @@ public class Player
                 music = true;
                 isMusicLoop = true;
                 path = getRandomSong();
+                break;
+            case "win":
+                music = true;
+                path = "/Music/win.mp3";
                 break;
             case "egypt1":
                 music = true;

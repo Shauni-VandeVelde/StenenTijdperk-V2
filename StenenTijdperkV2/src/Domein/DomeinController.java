@@ -383,7 +383,7 @@ public class DomeinController
 
         for (int i = 0; i < 4; i++)
             {
-            if (spelbord.getStapel(0).getCurrentTopIndex() < 0)
+            if (spelbord.getStapel(i).getHutten().size() == 0)
                 {
                 isEenStapelLeeg = true;
                 }

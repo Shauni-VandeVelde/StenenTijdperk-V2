@@ -133,7 +133,7 @@ public class MainScherm extends BorderPane
 
     public void startSpel(int aantal)
     {
-        stopMusic();
+        fadeMusic();
         spelGestart = true;
         playMusic();
         initPanels();
@@ -490,9 +490,12 @@ public class MainScherm extends BorderPane
             tabNaarHuidigeSpeler();
 
             }
+
         if (controller.isHetSpelGedaan())
             {
             setEindScherm(new EndOfGamePane(this, centerRightInventoryMainPane));
+            stopMusic();
+
             }
 
     }
@@ -563,7 +566,7 @@ public class MainScherm extends BorderPane
             {
             if (!spelGedaan)
                 {
-                stopMusic();
+                fadeMusic();
                 queueSFX("musicLoop", -1);
                 }
             }
@@ -578,6 +581,22 @@ public class MainScherm extends BorderPane
     {
         for (int i = 0; i < SFXPlayers.size(); i++)
             {
+
+            if (SFXPlayers.get(i).isMusic())
+                {
+
+                SFXPlayers.remove(SFXPlayers.get(i));
+
+                }
+
+            }
+    }
+
+    public void fadeMusic()
+    {
+        for (int i = 0; i < SFXPlayers.size(); i++)
+            {
+
             if (SFXPlayers.get(i).isMusic())
                 {
                 Timeline timeline = new Timeline(
@@ -585,9 +604,22 @@ public class MainScherm extends BorderPane
                                 new KeyValue(SFXPlayers.get(i).getPlayer().volumeProperty(), 0)));
                 timeline.play();
                 int index = i;
-                timeline.setOnFinished(e -> SFXPlayers.get(index).getPlayer().stop());
+                if (i < SFXPlayers.size())
+                    {
+                    try
+                        {
+                        timeline.setOnFinished(e -> SFXPlayers.get(index).getPlayer().stop());
+
+                        }
+                    catch (IndexOutOfBoundsException e)
+                        {
+                        //Indien een van de SFX zich ondertussen heeft verwijdert uit de lijst.
+                        continue;
+                        }
+                    }
 
                 }
+
             }
     }
 
@@ -897,11 +929,13 @@ public class MainScherm extends BorderPane
 
     public void setEindScherm(EndOfGamePane eindScherm)
     {
+        queueSFX("win", 80);
         getChildren().clear();
 
         getChildren().add(eindScherm);
-        CustomCursor tempCursor = new CustomCursor(this, false);
-        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
+        /// controller.setHuidigeSpelerIndex();
+        // CustomCursor tempCursor = new CustomCursor(this, false);
+        //getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
     }
 
     public void setKoopHutPane(KoopHutPane koopHutPane)
