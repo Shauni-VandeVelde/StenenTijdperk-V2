@@ -38,7 +38,7 @@ public class VoedselPane extends RightPaneBlueprint
 
     public VoedselPane(MainScherm mainScherm, Pane container, Speler speler)
     {
-        super(mainScherm, speler, container, 1, 0.75);
+        super(mainScherm, speler, container, 1, 0.77);
         this.speler = speler;
         index = speler.index();
         init();

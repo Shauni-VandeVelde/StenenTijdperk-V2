@@ -34,7 +34,7 @@ public class DobbelPane extends RightPaneBlueprint
 
     public DobbelPane(MainScherm mainScherm, Speler speler, VBox vbox2, int currentRol, Locatie currentLocatie)
     {
-        super(mainScherm, speler, vbox2, 0.19, 0.748);
+        super(mainScherm, speler, vbox2, 0.19, 0.77);
         this.speler = speler;
         this.mainScherm = mainScherm;
         this.currentRol = currentRol;
@@ -176,8 +176,6 @@ public class DobbelPane extends RightPaneBlueprint
 
         consoleBackgroundImage.fitWidthProperty().bind(widthProperty());
         consoleBackgroundImage.fitHeightProperty().bind(heightProperty());
-        vbox.prefWidthProperty().bind(widthProperty());
-        vbox.prefHeightProperty().bind(heightProperty());
 
         setActions();
     }

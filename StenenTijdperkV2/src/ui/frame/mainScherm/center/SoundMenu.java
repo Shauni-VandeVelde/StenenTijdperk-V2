@@ -32,7 +32,7 @@ public class SoundMenu extends RightPaneBlueprint
 
     public SoundMenu(MainScherm mainScherm, PauzePane pauzePane)
     {
-        super(mainScherm, mainScherm.getController().getSpelers().get(0), pauzePane, 1, 0.7395);
+        super(mainScherm, mainScherm.getController().getSpelers().get(0), pauzePane, 1, 0.77);
         this.pauzePane = pauzePane;
         init();
         setActions();

@@ -29,9 +29,6 @@ import javafx.event.EventHandler;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -85,7 +82,6 @@ public class MainScherm extends BorderPane
     private DomeinController controller;
     public static Console console = new Console();
     private Stage stage;
-    private MenuBar menuBar;
     private VBox bottomVBox, centerRightInventoryMainVbox, centerLeftVbox;
     private HBox centerMainHBox;
     private Pane centerRightInventoryMainPane;
@@ -131,12 +127,6 @@ public class MainScherm extends BorderPane
         this.controller = controller;
         this.stage = stage;
 
-    }
-
-    public void activateCursor()
-    {
-        CustomCursor tempCursor = new CustomCursor(this, false);
-        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
     }
 
     public void volgendeSpeler()
@@ -237,7 +227,7 @@ public class MainScherm extends BorderPane
             {
             if (shouldPlayMenuSound)
                 {
-                queueSFX("menu", 80);
+                queueSFX("menu", -1);
                 }
             if (dobbel.getSpeler().getAantalBruikbaarGereedschap() == 0)
                 {
@@ -823,7 +813,6 @@ public class MainScherm extends BorderPane
 
     public void init()
     {
-        initMenuBar();
 
         initPanels();
         setBindings();
@@ -838,40 +827,15 @@ public class MainScherm extends BorderPane
             {
             e.printStackTrace();
             }
+        CustomCursor tempCursor = new CustomCursor(this, false);
+        ;
+        Platform.runLater(() -> getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage())));
     }
 
-    public void cursor()
+    public void initCursor()
     {
-
-    }
-
-    private void initMenuBar()
-    {
-        Menu optionsMenu = new Menu("Options");
-        menuBar = new MenuBar();
-        menuBar.getMenus().add(optionsMenu);
-        MenuItem close = new MenuItem("Close");
-        MenuItem toggleButtons = new MenuItem("toggleButtons");
-        toggleButtons.setOnAction(new EventHandler<ActionEvent>()
-        {
-            public void handle(ActionEvent t)
-            {
-                bottomButtonsPanel.toggleButtons();
-            }
-
-        });
-        close.setOnAction(new EventHandler<ActionEvent>()
-        {
-            public void handle(ActionEvent t)
-            {
-                Platform.exit();
-                System.exit(0);
-            }
-
-        });
-        optionsMenu.getItems().add(close);
-        optionsMenu.getItems().add(toggleButtons);
-
+        CustomCursor tempCursor = new CustomCursor(this, false);
+        getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
     }
 
     private void initPanels()
@@ -895,7 +859,6 @@ public class MainScherm extends BorderPane
         bottomVBox.getChildren().add(bottomButtonsPanel);
         bottomVBox.getChildren().add(consolePane);
 
-        setTop(menuBar);
         setCenter(centerMainHBox);
         setBottom(bottomVBox);
 
@@ -907,9 +870,9 @@ public class MainScherm extends BorderPane
         bottomVBox.prefWidthProperty().bind(widthProperty());
         bottomVBox.minWidthProperty().bind(widthProperty());
         bottomVBox.maxWidthProperty().bind(widthProperty());
-        bottomVBox.prefHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
-        bottomVBox.minHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
-        bottomVBox.maxHeightProperty().bind(stage.heightProperty().subtract(menuBar.heightProperty()).multiply(0.23));
+        bottomVBox.prefHeightProperty().bind(stage.heightProperty().multiply(0.23));
+        bottomVBox.minHeightProperty().bind(stage.heightProperty().multiply(0.23));
+        bottomVBox.maxHeightProperty().bind(stage.heightProperty().multiply(0.23));
 
         bottomButtonsPanel.prefWidthProperty().bind(bottomVBox.widthProperty());
         bottomButtonsPanel.minWidthProperty().bind(bottomVBox.widthProperty());
@@ -926,9 +889,9 @@ public class MainScherm extends BorderPane
         consolePane.maxHeightProperty().bind(bottomVBox.heightProperty().multiply(0.76));
 
         // Center Panels
-        centerMainHBox.prefHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
-        centerMainHBox.minHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
-        centerMainHBox.maxHeightProperty().bind((stage.heightProperty().subtract(menuBar.heightProperty())).multiply(0.77));
+        centerMainHBox.prefHeightProperty().bind((stage.heightProperty().multiply(0.77)));
+        centerMainHBox.minHeightProperty().bind((stage.heightProperty().multiply(0.77)));
+        centerMainHBox.maxHeightProperty().bind((stage.heightProperty().multiply(0.77)));
         centerMainHBox.prefWidthProperty().bind(stage.widthProperty());
         centerMainHBox.maxWidthProperty().bind(stage.widthProperty());
         centerMainHBox.minWidthProperty().bind(stage.widthProperty());
@@ -961,7 +924,7 @@ public class MainScherm extends BorderPane
         PauzePane p = new PauzePane(this.stage, this);
 
         getChildren().clear();
-        setTop(menuBar);
+
         setCenter(p);
         setBottom(bottomVBox);
 
@@ -973,7 +936,7 @@ public class MainScherm extends BorderPane
     public void closePauzeMenu()
     {
         getChildren().clear();
-        setTop(menuBar);
+
         setCenter(centerMainHBox);
         setBottom(bottomVBox);
         getBottomButtonsPanel().toggleButtons();
@@ -1055,7 +1018,7 @@ public class MainScherm extends BorderPane
     {
         if (shouldPlayEndOfRoundSFX)
             {
-            queueSFX("gong", 85);
+            queueSFX("gong", -1);
             }
         //System.err.println("setVoedselPanel()");
         centerMainHBox.getChildren().clear();

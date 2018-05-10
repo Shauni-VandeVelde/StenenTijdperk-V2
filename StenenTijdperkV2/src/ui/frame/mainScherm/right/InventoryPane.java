@@ -36,7 +36,7 @@ public class InventoryPane extends RightPaneBlueprint
 
     public InventoryPane(Speler speler, MainScherm mainScherm, VBox vbox)
     {
-        super(mainScherm, speler, new VBox(), 0.19, 0.748);
+        super(mainScherm, speler, new VBox(), 0.19, 0.77);
 
         this.mainScherm = mainScherm;
         this.controller = mainScherm.getController();

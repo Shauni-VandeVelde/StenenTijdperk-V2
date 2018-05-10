@@ -35,7 +35,7 @@ public class EindeRondePane extends RightPaneBlueprint
 
     public EindeRondePane(MainScherm mainScherm, Pane container)
     {
-        super(mainScherm, mainScherm.getController().getSpelers().get(0), container, 1, 0.75);
+        super(mainScherm, mainScherm.getController().getSpelers().get(0), container, 1, 0.77);
         this.mainScherm = mainScherm;
         controller = mainScherm.getController();
         if (controller.getSpelers().size() == 4)

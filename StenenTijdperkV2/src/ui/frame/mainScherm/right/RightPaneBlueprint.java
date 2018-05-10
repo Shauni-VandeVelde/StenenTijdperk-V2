@@ -224,11 +224,11 @@ public abstract class RightPaneBlueprint extends Pane
         this.speler = speler;
         vbox = new VBox();
         Stage s = mainScherm.getStage();
-        vbox.prefHeightProperty().bind(s.heightProperty().multiply(0.35));
+        vbox.prefHeightProperty().bind(s.heightProperty().multiply(0.45));
         vbox.prefWidthProperty().bind(s.widthProperty().multiply(0.2));
-        vbox.minHeightProperty().bind(s.heightProperty().multiply(0.35));
+        vbox.minHeightProperty().bind(s.heightProperty().multiply(0.45));
         vbox.minWidthProperty().bind(s.widthProperty().multiply(0.2));
-        vbox.maxHeightProperty().bind(s.heightProperty().multiply(0.35));
+        vbox.maxHeightProperty().bind(s.heightProperty().multiply(0.45));
         vbox.maxWidthProperty().bind(s.widthProperty().multiply(0.2));
         prefWidthProperty().bind(container.prefWidthProperty());
         minWidthProperty().bind(container.prefWidthProperty());
