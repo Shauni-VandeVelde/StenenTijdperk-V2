@@ -117,16 +117,19 @@ public class MainScherm extends BorderPane
 
     public MainScherm(Stage stage)
     {
-
         this.stage = stage;
-        //controller = new DomeinController(true);
-
-        StartScherm startScherm = new StartScherm(this);
-        initPanels();
         getChildren().clear();
-        setStyle("-fx-background-color:transparent;");
+        StartScherm startScherm = new StartScherm(this);
+
         getChildren().add(startScherm);
 
+        startScherm.setOpacity(0);
+
+        FadeTransition ft = new FadeTransition(Duration.millis(2800), startScherm);
+        ft.setFromValue(0);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.play();
     }
 
     public void startSpel(int aantal)
@@ -134,20 +137,19 @@ public class MainScherm extends BorderPane
         stopMusic();
         spelGestart = true;
         playMusic();
+        initPanels();
         controller = new DomeinController(true);
         controller.setAantalSpelers(aantal);
         controller.startSpel();
         stapelsPanel.init();
         bottomButtonsPanel.initAfter();
         setOpacity(0);
-        FadeTransition ft = new FadeTransition(Duration.millis(800), this);
+        FadeTransition ft = new FadeTransition(Duration.millis(1900), this);
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(1);
         ft.play();
         init();
-
-        //ft.setOnFinished(e -> mainScherm.startSpel(aantal));
     }
 
     public void volgendeSpeler()

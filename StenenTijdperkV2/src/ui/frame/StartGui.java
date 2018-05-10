@@ -5,12 +5,16 @@
  */
 package ui.frame;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import testing.Cmd;
 import ui.frame.mainScherm.MainScherm;
 
@@ -49,7 +53,19 @@ public class StartGui extends Application
         stage.setTitle("Stenen Tijdperk");
         stage.setMinWidth(1030);
         stage.setMinHeight(650);
+        double op = 0;
+        Button b = new Button();
+        stage.setOpacity(op);
+
+        FadeTransition ft = new FadeTransition(Duration.millis(400), b);
+        ft.setFromValue(0);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.play();
+        ft.setOnFinished(e -> stage.setOpacity(1));
+
         stage.show();
+        //
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
             {
