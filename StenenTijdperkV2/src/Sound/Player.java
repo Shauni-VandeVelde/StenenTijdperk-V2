@@ -78,7 +78,9 @@ public class Player
 
     private void finish()
     {
+
         mainScherm.removeSFX(this);
+        mainScherm.playMusic();
     }
 
     private void setPath(String type)

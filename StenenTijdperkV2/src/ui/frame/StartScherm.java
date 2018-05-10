@@ -216,7 +216,7 @@ public class StartScherm extends RightPaneBlueprint
 
     private void fadeAndStart(int aantal)
     {
-        FadeTransition ft = new FadeTransition(Duration.millis(600), this);
+        FadeTransition ft = new FadeTransition(Duration.millis(450), this);
         ft.setFromValue(1);
         ft.setToValue(0.0);
         ft.setCycleCount(1);

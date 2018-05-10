@@ -124,7 +124,6 @@ public class MainScherm extends BorderPane
         getChildren().add(startScherm);
 
         startScherm.setOpacity(0);
-
         FadeTransition ft = new FadeTransition(Duration.millis(2800), startScherm);
         ft.setFromValue(0);
         ft.setToValue(1);
@@ -144,9 +143,9 @@ public class MainScherm extends BorderPane
         stapelsPanel.init();
         bottomButtonsPanel.initAfter();
         setOpacity(0);
-        FadeTransition ft = new FadeTransition(Duration.millis(2100), this);
+        FadeTransition ft = new FadeTransition(Duration.millis(1200), this);
         ft.setFromValue(0);
-        ft.setToValue(1);
+        ft.setToValue(1.1);
         ft.setCycleCount(1);
         ft.play();
         init();
@@ -554,10 +553,7 @@ public class MainScherm extends BorderPane
 
     public void removeSFX(Player player)
     {
-        if (player.isMusicLoop())
-            {
-            queueSFX("musicLoop", -1);
-            }
+
         SFXPlayers.remove(player);
     }
 
@@ -585,7 +581,7 @@ public class MainScherm extends BorderPane
             if (SFXPlayers.get(i).isMusic())
                 {
                 Timeline timeline = new Timeline(
-                        new KeyFrame(Duration.millis(2600),
+                        new KeyFrame(Duration.millis(1200),
                                 new KeyValue(SFXPlayers.get(i).getPlayer().volumeProperty(), 0)));
                 timeline.play();
                 int index = i;
