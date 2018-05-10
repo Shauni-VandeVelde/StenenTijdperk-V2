@@ -102,6 +102,11 @@ public class Player
                 break;
             case "win":
                 music = true;
+                path = "/SFX/Applause.mp3";
+                mainScherm.queueSFX("end", 65);
+                break;
+            case "end":
+                music = true;
                 path = "/Music/win.mp3";
                 break;
             case "egypt1":

@@ -8,7 +8,7 @@ public class Stapel extends Locatie
 
     private ArrayList<Hut> hutten;
     private boolean heeftPion;
-    private int currentTopIndex = 6;
+    private int currentTopIndex = 0;
     private DomeinController controller;
 
     Stapel(DomeinController controller, int index)
