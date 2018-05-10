@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Spelbord
 {
+    private DomeinController controller;
     private Rivier rivier;
     private Bos bos;
     private Steengroeve steengroeve;
@@ -13,10 +14,12 @@ public class Spelbord
     private LoveHut loveHut;
     private Gereedschapsmaker gereedschapsmaker;
     private Jacht jacht;
+
     private ArrayList<Stapel> stapels = new ArrayList<Stapel>();
 
     public Spelbord(DomeinController controller)
     {
+        this.controller = controller;
         this.rivier = new Rivier();
         this.bos = new Bos();
         this.steengroeve = new Steengroeve();

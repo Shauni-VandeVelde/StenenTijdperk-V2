@@ -15,7 +15,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -97,6 +99,24 @@ public class DeelPaneel extends Pane
         button.maxHeightProperty().bind(heightProperty().multiply(y));
 
         getChildren().add(button);
+    }
+
+    public void addControl(Control control, double x, double y)
+    {
+        getChildren().clear();
+        if (image != null)
+            {
+            getChildren().add(image);
+            }
+
+        control.prefWidthProperty().bind(widthProperty().multiply(x));
+        control.prefHeightProperty().bind(heightProperty().multiply(y));
+        control.minWidthProperty().bind(widthProperty().multiply(x));
+        control.minHeightProperty().bind(heightProperty().multiply(y));
+        control.maxWidthProperty().bind(widthProperty().multiply(x));
+        control.maxHeightProperty().bind(heightProperty().multiply(y));
+
+        getChildren().add(control);
     }
 
     public void addCheckBox(CheckBox checkBox, double x, double y)
@@ -191,6 +211,24 @@ public class DeelPaneel extends Pane
 
         });
 
+    }
+
+    public void setFontTracking(RadioButton radioButton, double fontSize)
+    {
+        ObjectProperty<Font> fontTracking = new SimpleObjectProperty<Font>(Font.getDefault());
+
+        radioButton.fontProperty().bind(fontTracking);
+        radioButton.heightProperty().addListener(new ChangeListener<Number>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight)
+            {
+
+                fontTracking.set(Font.font(radioButton.getFont().getFamily(), FontWeight.EXTRA_BOLD, newHeight.doubleValue() / 100 * fontSize));
+
+            }
+
+        });
     }
 
     public void setFontTracking(Button button, double fontSize)

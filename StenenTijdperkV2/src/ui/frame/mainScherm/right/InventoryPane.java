@@ -5,7 +5,6 @@
  */
 package ui.frame.mainScherm.right;
 
-import Domein.DomeinController;
 import Domein.Speler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,7 +25,7 @@ public class InventoryPane extends RightPaneBlueprint
 {
 
     private MainScherm mainScherm;
-    private DomeinController controller;
+
     private HBox voedselPane, houtPane, leemPane, steenPane, goudPane, pionnenPane, gereedschapsPane, rondePane, voedselPerBeurtPane;
     private Label steenLabel, voedselLabel, houtLabel, leemLabel, goudLabel, pionnenLabel, rondeLabel, voedselPerBeurtLabel;
     private DeelPaneel gereedschapSlot1, gereedschapSlot2, gereedschapSlot3;
@@ -39,7 +38,7 @@ public class InventoryPane extends RightPaneBlueprint
         super(mainScherm, speler, new VBox(), 0.19, 0.77);
 
         this.mainScherm = mainScherm;
-        this.controller = mainScherm.getController();
+
         init();
         setLabels();
     }
@@ -69,7 +68,7 @@ public class InventoryPane extends RightPaneBlueprint
         ImageView g2 = new ImageView(this.getClass().getClassLoader().getResource("img/GF_2.png").toExternalForm());
         ImageView g3 = new ImageView(this.getClass().getClassLoader().getResource("img/GF_3.png").toExternalForm());
 
-        RightPaneBlueprint.getHBox(vbox, inventoryButtonsPaneel, false, mainScherm, "", 10, controller.getSpelers().size(), 1, inventoryButtons, buttonsString, false, 18);
+        RightPaneBlueprint.getHBox(vbox, inventoryButtonsPaneel, false, mainScherm, "", 10, mainScherm.getController().getSpelers().size(), 1, inventoryButtons, buttonsString, false, 18);
 
         voedselPerBeurtPane = getHBox(vbox, style, false, true, columns, 1, 1, new Node[]
             {

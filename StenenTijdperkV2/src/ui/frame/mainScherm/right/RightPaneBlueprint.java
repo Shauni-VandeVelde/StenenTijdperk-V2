@@ -33,7 +33,7 @@ import ui.frame.mainScherm.MainScherm;
 public abstract class RightPaneBlueprint extends Pane
 {
 
-    protected MainScherm mainScherm;
+    public MainScherm mainScherm;
     protected VBox vbox;
     protected ImageView pionnenImage;
     protected String style;
@@ -259,6 +259,22 @@ public abstract class RightPaneBlueprint extends Pane
 
         style += "-fx-font-size:1.4em; -fx-font-weight:900; -fx-stroke: black -fx-stroke-width: 2px";
 
+    }
+
+    protected RightPaneBlueprint(MainScherm mainScherm, Pane container, double x, double y)
+    {
+        this.mainScherm = mainScherm;
+        this.x = x;
+        this.y = y;
+
+        Stage s = mainScherm.getStage();
+
+        prefWidthProperty().bind(container.prefWidthProperty().multiply(x));
+        minWidthProperty().bind(container.prefWidthProperty().multiply(x));
+        maxWidthProperty().bind(container.prefWidthProperty().multiply(x));
+        prefHeightProperty().bind(container.prefHeightProperty().multiply(y));
+        minHeightProperty().bind(container.prefHeightProperty().multiply(y));
+        maxHeightProperty().bind(container.prefHeightProperty().multiply(y));
     }
 
     protected void addChild(Node node)

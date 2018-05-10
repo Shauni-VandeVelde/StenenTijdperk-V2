@@ -38,7 +38,7 @@ public class ButtonsPane extends Pane
     private int gekozenIndex = 99;
     private Button pionnenOkButton, PauzeButton;
     private TextField txfHuidigeSpeler;
-    private DomeinController controller;
+
     private MainScherm mainScherm;
     private boolean enabled = true;
     private Locatie gekozenLocatie;
@@ -46,7 +46,7 @@ public class ButtonsPane extends Pane
     public ButtonsPane(DomeinController dc, Console console, MainScherm mainScherm)
     {
         this.mainScherm = mainScherm;
-        this.controller = dc;
+
         init();
         setActions();
         clear = false;
@@ -54,7 +54,6 @@ public class ButtonsPane extends Pane
 
     public void init()
     {
-
         cboPlaatsPionnen = new ComboBox();
         sliderPionnen = new Slider();
         secondPanel = new HBox();
@@ -62,7 +61,7 @@ public class ButtonsPane extends Pane
         mainPanel = new HBox();
         pionnenOkButton = new Button("Ok");
         PauzeButton = new Button("Pauze Game");
-        txfHuidigeSpeler = new TextField("Huidige Speler: " + (controller.getHuidigeSpelerIndex() + 1));
+        txfHuidigeSpeler = new TextField();
         ImageView buttonPannelImage = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("wood")).toExternalForm());
         clear = false;
 
@@ -72,15 +71,6 @@ public class ButtonsPane extends Pane
             requestFocus();
             });
         firstPanel.setSpacing(10);
-        initSlider();
-        resetCBOPlaatsPionnen();
-
-        ArrayList<Locatie> all = controller.getAllLocaties();
-        for (int i = 0; i < all.size(); i++)
-            {
-            cboPlaatsPionnen.getItems().add(all.get(i));
-            }
-
         firstPanel.getChildren().add(cboPlaatsPionnen);
         firstPanel.getChildren().add(sliderPionnen);
         firstPanel.getChildren().add(pionnenOkButton);
@@ -117,6 +107,21 @@ public class ButtonsPane extends Pane
         txfHuidigeSpeler.setStyle("-fx-background-color: transparent;;-fx-text-inner-color: white;-fx-font-size: 14pt; -fx-font-weight: 900;-fx-font-family: \"Calibri\" ;");
         setStyle("-fx-background-color: transparent;");
 
+        initSlider();
+        resetCBOPlaatsPionnen();
+    }
+
+    public void initAfter()
+    {
+
+        txfHuidigeSpeler.setText("Huidige Speler: " + (mainScherm.getController().getHuidigeSpelerIndex() + 1));
+
+        ArrayList<Locatie> all = mainScherm.getController().getAllLocaties();
+        for (int i = 0; i < all.size(); i++)
+            {
+            cboPlaatsPionnen.getItems().add(all.get(i));
+            }
+
     }
 
     public void initSlider()
@@ -144,7 +149,7 @@ public class ButtonsPane extends Pane
             {
             if (!gekozenLocatie.magPionnenSelecteren())
                 {
-                if (gekozenLocatie.kanLocatieVullen(controller.getHuidigeSpeler()))
+                if (gekozenLocatie.kanLocatieVullen(mainScherm.getController().getHuidigeSpeler()))
                     {
                     if (gekozenLocatie.getHuidigAantalPionnen() == 0)
                         {
@@ -152,7 +157,7 @@ public class ButtonsPane extends Pane
                             {
                             hasPlaced = true;
 
-                            controller.plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
+                            mainScherm.getController().plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
                             mainScherm.getStapelsPane().updateStapels();
                             mainScherm.volgendeSpeler();
 
@@ -160,8 +165,8 @@ public class ButtonsPane extends Pane
                         else
                             {
                             hasPlaced = true;
-                            controller.plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
-                            mainScherm.setPionnenImages(gekozenLocatie, gekozenLocatie.getMaxPionnen(), controller.getHuidigeSpeler());
+                            mainScherm.getController().plaatsPionnenOpVeld(gekozenLocatie, gekozenLocatie.getMaxPionnen());
+                            mainScherm.setPionnenImages(gekozenLocatie, gekozenLocatie.getMaxPionnen(), mainScherm.getController().getHuidigeSpeler());
                             mainScherm.volgendeSpeler();
                             }
                         resetSlider();
@@ -185,8 +190,8 @@ public class ButtonsPane extends Pane
                     if (gekozenLocatie.heeftPlaatsGenoeg((int) sliderPionnen.getValue()))
                         {
                         hasPlaced = true;
-                        controller.plaatsPionnenOpVeld(gekozenLocatie, (int) sliderPionnen.getValue());
-                        mainScherm.setPionnenImages(gekozenLocatie, (int) sliderPionnen.getValue(), controller.getHuidigeSpeler());
+                        mainScherm.getController().plaatsPionnenOpVeld(gekozenLocatie, (int) sliderPionnen.getValue());
+                        mainScherm.setPionnenImages(gekozenLocatie, (int) sliderPionnen.getValue(), mainScherm.getController().getHuidigeSpeler());
                         resetSlider();
                         resetCBOPlaatsPionnen();
                         clear = true;
@@ -224,7 +229,7 @@ public class ButtonsPane extends Pane
         boolean valid = true;
         Locatie gekozenLoc = (Locatie) cboPlaatsPionnen.getItems().get(gekozenIndex);
 
-        if (controller.isLocatieNogNietGebruikt(gekozenLoc))
+        if (mainScherm.getController().isLocatieNogNietGebruikt(gekozenLoc))
             {
             valid = true;
             gekozenLocatie = gekozenLoc;
@@ -367,13 +372,13 @@ public class ButtonsPane extends Pane
 
     public void setHuidigeSpeler()
     {
-        txfHuidigeSpeler.setText("Huidige Speler: " + (controller.getHuidigeSpelerIndex() + 1) + "");
+        txfHuidigeSpeler.setText("Huidige Speler: " + (mainScherm.getController().getHuidigeSpelerIndex() + 1) + "");
     }
 
     public void setAantalPionnenSlider()
     {
 
-        sliderPionnen.setMax(gekozenLocatie.getBruikbarePionnen(controller.getHuidigeSpeler()));
+        sliderPionnen.setMax(gekozenLocatie.getBruikbarePionnen(mainScherm.getController().getHuidigeSpeler()));
     }
 
     public ComboBox getCBOPlaatsPionn()

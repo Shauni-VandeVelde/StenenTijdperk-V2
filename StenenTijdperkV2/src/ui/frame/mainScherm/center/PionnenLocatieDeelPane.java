@@ -45,7 +45,7 @@ public class PionnenLocatieDeelPane extends Pane
             {
             if (getChildren().size() == 1)
                 {
-                FadeTransition ft = new FadeTransition(Duration.millis(600), getChildren().get(0));
+                FadeTransition ft = new FadeTransition(Duration.millis(500), getChildren().get(0));
                 ft.setFromValue(1.0);
                 ft.setToValue(0.0);
 
@@ -73,7 +73,7 @@ public class PionnenLocatieDeelPane extends Pane
         image.fitHeightProperty().bind(heightProperty());;
         getChildren().add(image);
         image.setOpacity(0);
-        FadeTransition ft = new FadeTransition(Duration.millis(600), image);
+        FadeTransition ft = new FadeTransition(Duration.millis(500), image);
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(1);

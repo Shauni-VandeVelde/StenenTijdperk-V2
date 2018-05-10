@@ -22,26 +22,20 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.ImageCursor;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import ui.CustomCursor;
 import ui.frame.StartGui;
+import ui.frame.StartScherm;
 import ui.frame.mainScherm.bottom.ButtonsPane;
 import ui.frame.mainScherm.bottom.Console;
 import ui.frame.mainScherm.bottom.ConsolePane;
@@ -67,11 +61,11 @@ public class MainScherm extends BorderPane
     public static String[][] urls = new String[][]
         {
             {
-            "arrow", "voedsel", "wood", "console", "dobbelbeker", "gereedschapfiche1", "gereedschapfiche2", "gereedschapfiche3", "gereedschapFiche4", "goud", "hout", "leem", "steen", "pionRood",
+            "start", "arrow", "voedsel", "wood", "console", "dobbelbeker", "gereedschapfiche1", "gereedschapfiche2", "gereedschapfiche3", "gereedschapFiche4", "goud", "hout", "leem", "steen", "pionRood",
             "pionBlauw", "pionGeel", "pionGroen", "StapelKaarten", "stapelscherm", "inventory"
             },
             {
-            "img/YellowArrow.png", "img/Voedselfiches.png", "img/TextureWoodResized.png", "img/ConsoleScherm.png", "img/DobbelSteenBeker.png", "img/GF_1.png", "img/GF_2.png", "img/GF_3.png", "img/GF_4.png", "img/Goud.png", "img/Hout.png", "img/Leem.png", "img/Steen.png", "img/PionRood2S.png", "img/PionBlauw2S.png", "img/PionGeel2S.png", "img/PionGroen2S.png", "img/StapelKaarten.png", "img/StapelPaneSchermB.png", "img/TextureInventory2.png"
+            "img/StartScherm.jpg", "img/YellowArrow.png", "img/Voedselfiches.png", "img/TextureWoodResized.png", "img/ConsoleScherm.png", "img/DobbelSteenBeker.png", "img/GF_1.png", "img/GF_2.png", "img/GF_3.png", "img/GF_4.png", "img/Goud.png", "img/Hout.png", "img/Leem.png", "img/Steen.png", "img/PionRood2S.png", "img/PionBlauw2S.png", "img/PionGeel2S.png", "img/PionGroen2S.png", "img/StapelKaarten.png", "img/StapelPaneSchermB.png", "img/TextureInventory2.png"
             }
         };
 
@@ -121,12 +115,39 @@ public class MainScherm extends BorderPane
         return url;
     }
 
-    public MainScherm(DomeinController controller, Stage stage)
+    public MainScherm(Stage stage)
     {
 
-        this.controller = controller;
         this.stage = stage;
+        //controller = new DomeinController(true);
 
+        StartScherm startScherm = new StartScherm(this);
+        initPanels();
+        getChildren().clear();
+        setStyle("-fx-background-color:transparent;");
+        getChildren().add(startScherm);
+
+    }
+
+    public void startSpel(int aantal)
+    {
+        stopMusic();
+        spelGestart = true;
+        playMusic();
+        controller = new DomeinController(true);
+        controller.setAantalSpelers(aantal);
+        controller.startSpel();
+        stapelsPanel.init();
+        bottomButtonsPanel.initAfter();
+        setOpacity(0);
+        FadeTransition ft = new FadeTransition(Duration.millis(800), this);
+        ft.setFromValue(0);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.play();
+        init();
+
+        //ft.setOnFinished(e -> mainScherm.startSpel(aantal));
     }
 
     public void volgendeSpeler()
@@ -538,7 +559,7 @@ public class MainScherm extends BorderPane
         SFXPlayers.remove(player);
     }
 
-    private void playMusic()
+    public void playMusic()
     {
         if (spelGestart)
             {
@@ -719,102 +740,11 @@ public class MainScherm extends BorderPane
     }
 
     //Gui things:
-    public boolean openStartScherm()
-    {
-        Stage stage = new Stage();
-        final ToggleGroup group = new ToggleGroup();
-        VBox mainPanel = new VBox();
-        TextField label = new TextField("Kies het aantal spelers: ");
-        label.setEditable(false);
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        label.focusedProperty().addListener((observable, oldValue, newValue) ->
-            {
-            if (newValue && firstTime.get())
-                {
-                mainPanel.requestFocus();
-                firstTime.setValue(false);
-                }
-            });
-        HBox choicePanel = new HBox();
-        Button okButton = new Button("Bevestig");
-        RadioButton twee = new RadioButton("Twee Spelers");
-        RadioButton drie = new RadioButton("Drie Spelers");
-        RadioButton vier = new RadioButton("Vier Spelers");
-        choicePanel.getChildren().add(twee);
-        choicePanel.getChildren().add(drie);
-        choicePanel.getChildren().add(vier);
-        mainPanel.getChildren().add(label);
-        mainPanel.getChildren().add(choicePanel);
-        mainPanel.getChildren().add(okButton);
-
-        Platform.runLater(() -> okButton.setPrefWidth(mainPanel.getWidth()));
-        twee.setToggleGroup(group);
-        twee.setSelected(true);
-        drie.setToggleGroup(group);
-        vier.setToggleGroup(group);
-//        getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Cursor.css").toExternalForm());
-
-        okButton.setOnAction(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-
-                if (twee.isSelected())
-                    {
-                    controller.setAantalSpelers(2);
-                    }
-                if (drie.isSelected())
-                    {
-                    controller.setAantalSpelers(3);
-                    }
-                if (vier.isSelected())
-                    {
-                    controller.setAantalSpelers(4);
-                    }
-
-                stage.close();
-            }
-
-        });
-        Scene scene = new Scene(mainPanel);
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        playMusic();
-        stage.showAndWait();
-
-        spelGestart = true;
-        stopMusic();
-        playMusic();
-        /* Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1.5),
-                        new KeyValue(musicPlayer.volumeProperty(), 0)));
-        timeline.setOnFinished(new EventHandler<ActionEvent>()
-        {
-            public void handle(ActionEvent event)
-            {
-
-                playMusic();
-            }
-
-        });
-        timeline.play();*/
-        playMusic();
-
-        if (controller.getAantalSpelers() != 0)
-            {
-            return true;
-            }
-        else
-            {
-            return false;
-            }
-    }
-
     public void init()
     {
-
-        initPanels();
+        accept = new boolean[controller.getAantalSpelers()];
+        setCenter(centerMainHBox);
+        setBottom(bottomVBox);
         setBindings();
         tabNaarHuidigeSpeler();
         bottomButtonsPanel.update();
@@ -840,7 +770,7 @@ public class MainScherm extends BorderPane
 
     private void initPanels()
     {
-        accept = new boolean[controller.getAantalSpelers()];
+
         bottomVBox = new VBox();
         centerLeftVbox = new VBox();
         centerRightInventoryMainVbox = new VBox();

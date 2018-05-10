@@ -5,7 +5,6 @@
  */
 package ui.frame.mainScherm.center;
 
-import Domein.DomeinController;
 import Domein.Kleur;
 import Domein.Locatie;
 import Domein.Pion;
@@ -31,7 +30,7 @@ public class CenterPane extends Pane
 {
 
     private MainScherm mainScherm;
-    private DomeinController controller;
+
     private PionnenLocatieDeelPane[] bosLocaties, steengroeveLocaties, leemgroeveLocaties, rivierLocaties,
             jachtLocaties, stapelLocaties, lovehutLocaties, gereedschapsmakerLocaties, akkerLocaties;
     private PionnenLocatieDeelPane arrowPane;
@@ -53,7 +52,7 @@ public class CenterPane extends Pane
     {
 
         this.mainScherm = mainScherm;
-        controller = mainScherm.getController();
+
         init();
         setActions();
     }
@@ -507,12 +506,12 @@ public class CenterPane extends Pane
             if (mainScherm.magPionnenPlaatsen())
                 {
 
-                if (controller.getLocatie("bos").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("bos").getAantalPlaatsenVrij() > 0)
                     {
 
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("bos")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("bos")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("bos")));
+                        getChildren().add(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("bos")));
                         }
                     else
                         {
@@ -537,11 +536,11 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
                     {
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("leemgroeve")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("leemgroeve")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("leemgroeve")));
+                        getChildren().add(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("leemgroeve")));
                         }
                     else
                         {
@@ -566,11 +565,11 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
                     {
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("leemgroeve")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("leemgroeve")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("leemgroeve")));
+                        getChildren().add(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("leemgroeve")));
                         }
                     else
                         {
@@ -595,11 +594,11 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("leemgroeve").getAantalPlaatsenVrij() > 0)
                     {
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("leemgroeve")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("leemgroeve")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("leemgroeve")));
+                        getChildren().add(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("leemgroeve")));
                         }
                     else
                         {
@@ -624,11 +623,11 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("steengroeve").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("steengroeve").getAantalPlaatsenVrij() > 0)
                     {
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("steengroeve")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("steengroeve")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("steengroeve")));
+                        getChildren().add(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("steengroeve")));
                         }
                     else
                         {
@@ -653,11 +652,11 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("steengroeve").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("steengroeve").getAantalPlaatsenVrij() > 0)
                     {
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("steengroeve")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("steengroeve")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("steengroeve")));
+                        getChildren().add(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("steengroeve")));
                         }
                     else
                         {
@@ -682,12 +681,12 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("rivier").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("rivier").getAantalPlaatsenVrij() > 0)
                     {
 
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("rivier")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("rivier")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("rivier")));
+                        getChildren().add(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("rivier")));
                         }
                     else
                         {
@@ -712,12 +711,12 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("jacht").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("jacht").getAantalPlaatsenVrij() > 0)
                     {
 
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("jacht")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("jacht")))
                         {
-                        getChildren().add(new LocatiePane(mainScherm, this, controller.getLocatie("jacht")));
+                        getChildren().add(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("jacht")));
                         }
                     else
                         {
@@ -742,14 +741,14 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("akker").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("akker").getAantalPlaatsenVrij() > 0)
                     {
 
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("akker")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("akker")))
                         {
-                        if (controller.getHuidigeSpeler().getAantalPionnenOver() >= 1)
+                        if (mainScherm.getController().getHuidigeSpeler().getAantalPionnenOver() >= 1)
                             {
-                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("akker")));
+                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("akker")));
                             }
                         else
                             {
@@ -783,13 +782,13 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("gereedschapsmaker").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("gereedschapsmaker").getAantalPlaatsenVrij() > 0)
                     {
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("gereedschapsmaker")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("gereedschapsmaker")))
                         {
-                        if (controller.getHuidigeSpeler().getAantalPionnenOver() >= 1)
+                        if (mainScherm.getController().getHuidigeSpeler().getAantalPionnenOver() >= 1)
                             {
-                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("gereedschapsmaker")));
+                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("gereedschapsmaker")));
                             }
                         else
                             {
@@ -823,13 +822,13 @@ public class CenterPane extends Pane
             boolean negative = false;
             if (mainScherm.magPionnenPlaatsen())
                 {
-                if (controller.getLocatie("lovehut").getAantalPlaatsenVrij() > 0)
+                if (mainScherm.getController().getLocatie("lovehut").getAantalPlaatsenVrij() > 0)
                     {
-                    if (controller.isLocatieNogNietGebruikt(controller.getLocatie("lovehut")))
+                    if (mainScherm.getController().isLocatieNogNietGebruikt(mainScherm.getController().getLocatie("lovehut")))
                         {
-                        if (controller.getHuidigeSpeler().getAantalPionnenOver() >= 2)
+                        if (mainScherm.getController().getHuidigeSpeler().getAantalPionnenOver() >= 2)
                             {
-                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, controller.getLocatie("lovehut")));
+                            mainScherm.bevestigPlaatsen(new LocatiePane(mainScherm, this, mainScherm.getController().getLocatie("lovehut")));
                             }
                         else
                             {
@@ -862,7 +861,7 @@ public class CenterPane extends Pane
 
     public void openLocationMenu(String location)
     {
-        Locatie locatie = controller.getLocatie(location);
+        Locatie locatie = mainScherm.getController().getLocatie(location);
 
     }
 
@@ -1055,35 +1054,35 @@ public class CenterPane extends Pane
             {
             return stapelLocaties;
             }
-        if (locatie == controller.getLocatie("akker"))
+        if (locatie == mainScherm.getController().getLocatie("akker"))
             {
             return akkerLocaties;
             }
-        if (locatie == controller.getLocatie("gereedschapsmaker"))
+        if (locatie == mainScherm.getController().getLocatie("gereedschapsmaker"))
             {
             return gereedschapsmakerLocaties;
             }
-        if (locatie == controller.getLocatie("lovehut"))
+        if (locatie == mainScherm.getController().getLocatie("lovehut"))
             {
             return lovehutLocaties;
             }
-        if (locatie == controller.getLocatie("jacht"))
+        if (locatie == mainScherm.getController().getLocatie("jacht"))
             {
             return jachtLocaties;
             }
-        if (locatie == controller.getLocatie("bos"))
+        if (locatie == mainScherm.getController().getLocatie("bos"))
             {
             return bosLocaties;
             }
-        if (locatie == controller.getLocatie("steengroeve"))
+        if (locatie == mainScherm.getController().getLocatie("steengroeve"))
             {
             return steengroeveLocaties;
             }
-        if (locatie == controller.getLocatie("leemgroeve"))
+        if (locatie == mainScherm.getController().getLocatie("leemgroeve"))
             {
             return leemgroeveLocaties;
             }
-        if (locatie == controller.getLocatie("rivier"))
+        if (locatie == mainScherm.getController().getLocatie("rivier"))
             {
             return rivierLocaties;
             }

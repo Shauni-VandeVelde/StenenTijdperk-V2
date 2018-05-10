@@ -5,7 +5,6 @@
  */
 package ui.frame.mainScherm.center;
 
-import Domein.DomeinController;
 import Domein.Speler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,7 +27,7 @@ public class EindeRondePane extends RightPaneBlueprint
 {
 
     MainScherm mainScherm;
-    DomeinController controller;
+
     HBox hbox = new HBox();
     double x = 0.2;
     double y = 0.08;
@@ -37,16 +36,16 @@ public class EindeRondePane extends RightPaneBlueprint
     {
         super(mainScherm, mainScherm.getController().getSpelers().get(0), container, 1, 0.77);
         this.mainScherm = mainScherm;
-        controller = mainScherm.getController();
-        if (controller.getSpelers().size() == 4)
+
+        if (mainScherm.getController().getSpelers().size() == 4)
             {
             x = 0.2;
             }
-        if (controller.getSpelers().size() == 3)
+        if (mainScherm.getController().getSpelers().size() == 3)
             {
             x = 0.238;
             }
-        if (controller.getSpelers().size() == 2)
+        if (mainScherm.getController().getSpelers().size() == 2)
             {
             x = 0.33;
             }
@@ -64,7 +63,7 @@ public class EindeRondePane extends RightPaneBlueprint
 
         addChild(hbox);
         toonNamen();
-        for (int i = 0; i < controller.getSpelers().size(); i++)
+        for (int i = 0; i < mainScherm.getController().getSpelers().size(); i++)
             {
             toonSpeler(i);
             }
@@ -175,7 +174,7 @@ public class EindeRondePane extends RightPaneBlueprint
                 break;
 
             }
-        Speler s = controller.getSpelers().get(index);
+        Speler s = mainScherm.getController().getSpelers().get(index);
         //String style = "-fx-background-color:blue;";
 
         Label spelerLabel = new Label(s.getKleur() + "");

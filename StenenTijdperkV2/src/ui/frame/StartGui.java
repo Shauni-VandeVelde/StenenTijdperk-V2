@@ -5,12 +5,11 @@
  */
 package ui.frame;
 
-import Domein.DomeinController;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import testing.Cmd;
 import ui.frame.mainScherm.MainScherm;
@@ -24,36 +23,15 @@ public class StartGui extends Application
 {
     private final boolean showSelectScreen = true;
     public static boolean isPaused = false;
-    private DomeinController controller;
+
     private Cmd cmd;
 
     @Override
     public void start(Stage stage)
     {
-        MainScherm main;
-        if (showSelectScreen)
-            {
-            controller = new DomeinController(true);
-            main = new MainScherm(controller, stage);
-            if (main.openStartScherm())
-                {
-                controller.startSpel();
-//            main.opStartSpel();
-                }
-            else
-                {
-                Platform.exit();
-                System.exit(0);
-                }
-            }
-        else
-            {
-            controller = new DomeinController(true);
-            main = new MainScherm(controller, stage);
-            controller.setAantalSpelers(2);
-            controller.startSpel();
-            }
-        main.init();
+
+        MainScherm main = new MainScherm(stage);
+
         main.prefWidthProperty().bind(stage.widthProperty());
         main.minWidthProperty().bind(stage.widthProperty());
         main.maxWidthProperty().bind(stage.widthProperty());
@@ -61,8 +39,12 @@ public class StartGui extends Application
         main.minHeightProperty().bind(stage.heightProperty());
         main.maxHeightProperty().bind(stage.heightProperty());
 
-        cmd = new Cmd(main, controller);
-        Scene scene = new Scene(main, 1024, 768);
+        // cmd = new Cmd(main, mainScherm.getController());
+        Pane pane = new Pane();
+        pane.getChildren().add(main);
+        pane.setStyle("-fx-background-color:black;");
+        Scene scene = new Scene(pane, 1024, 768);
+
         stage.setScene(scene);
         stage.setTitle("Stenen Tijdperk");
         stage.setMinWidth(1030);

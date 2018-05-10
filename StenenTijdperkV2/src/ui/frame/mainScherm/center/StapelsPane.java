@@ -40,11 +40,11 @@ public class StapelsPane extends Pane
     public StapelsPane(MainScherm mainScherm)
     {
         this.mainScherm = mainScherm;
-        init();
-        setActions();
+
+        // setActions();
     }
 
-    private void init()
+    public void init()
     {
         updateImages();
         background = new ImageView(this.getClass().getClassLoader().getResource("img/StapelsPaneBg.png").toExternalForm());
@@ -112,7 +112,7 @@ public class StapelsPane extends Pane
         stapel2DeelPaneel.addButton(button2, 1, 1);
         stapel3DeelPaneel.addButton(button3, 1, 1);
         stapel4DeelPaneel.addButton(button4, 1, 1);
-
+        setActions();
     }
 
     private void setActions()
