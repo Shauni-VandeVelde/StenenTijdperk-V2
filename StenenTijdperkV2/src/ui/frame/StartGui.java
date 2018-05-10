@@ -48,7 +48,7 @@ public class StartGui extends Application
         pane.getChildren().add(main);
         pane.setStyle("-fx-background-color:black;");
         Scene scene = new Scene(pane, 1024, 768);
-
+        stage.setFullScreen(true);
         stage.setScene(scene);
         stage.setTitle("Stenen Tijdperk");
         stage.setMinWidth(1030);
