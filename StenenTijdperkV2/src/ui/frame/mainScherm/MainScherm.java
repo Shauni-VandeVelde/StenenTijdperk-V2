@@ -144,7 +144,7 @@ public class MainScherm extends BorderPane
         stapelsPanel.init();
         bottomButtonsPanel.initAfter();
         setOpacity(0);
-        FadeTransition ft = new FadeTransition(Duration.millis(1900), this);
+        FadeTransition ft = new FadeTransition(Duration.millis(2100), this);
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(1);

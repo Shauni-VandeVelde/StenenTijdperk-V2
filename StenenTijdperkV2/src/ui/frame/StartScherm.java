@@ -199,7 +199,7 @@ public class StartScherm extends RightPaneBlueprint
 
                     fadeAndStart(4);
                     }
-
+                bevestigButton.setDisable(true);
             }
 
         });
