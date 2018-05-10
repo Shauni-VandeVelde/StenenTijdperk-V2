@@ -47,7 +47,7 @@ public class StapelsPane extends Pane
     public void init()
     {
         updateImages();
-        background = new ImageView(this.getClass().getClassLoader().getResource("img/StapelsPaneBg.png").toExternalForm());
+        background = mainScherm.getImageView("img/StapelsPaneBg.png");
         background.fitWidthProperty().bind(widthProperty());
         background.fitHeightProperty().bind(heightProperty());
         hbox = new HBox();
@@ -344,7 +344,7 @@ public class StapelsPane extends Pane
     {
         for (int i = 0; i < 4; i++)
             {
-            ImageView image = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionRood")).toExternalForm());
+            ImageView image = mainScherm.getImageView(mainScherm.getUrl("pionRood"));
 
             Stapel stapel = (Stapel) mainScherm.getController().getStapel(i);
             if (stapel == null)
@@ -447,7 +447,7 @@ public class StapelsPane extends Pane
                 {
                 path = "img/Hutten/Hut3000.png";
                 }
-            image = new ImageView(this.getClass().getClassLoader().getResource(path).toExternalForm());
+            image = mainScherm.getImageView(path);
             switch (i)
                 {
                 case 0:

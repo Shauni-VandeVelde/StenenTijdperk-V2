@@ -47,16 +47,16 @@ public class StartScherm extends RightPaneBlueprint
 
     private void showHomeScreen()
     {
-        backgroundImage = new ImageView(this.getClass().getClassLoader().getResource(mainScherm.getUrl("start")).toExternalForm());
+        backgroundImage = mainScherm.getImageView(mainScherm.getUrl("start"));
         mainBorderPane = new BorderPane();
 
         VBox homeScreenVBox = new VBox();
         nieuwSpel = new Button("Nieuw Spel");
         laadSpel = new Button("Laad Spel");
         highscores = new Button("Highscores");
-        DeelPaneel nieuwSpelDeelPaneel = new DeelPaneel(1, 0.33, homeScreenVBox, true);
-        DeelPaneel loadSpelDeelPaneel = new DeelPaneel(1, 0.33, homeScreenVBox, true);
-        DeelPaneel highscoresDeelPaneel = new DeelPaneel(1, 0.33, homeScreenVBox, true);
+        DeelPaneel nieuwSpelDeelPaneel = new DeelPaneel(mainScherm,1, 0.33, homeScreenVBox, true);
+        DeelPaneel loadSpelDeelPaneel = new DeelPaneel(mainScherm,1, 0.33, homeScreenVBox, true);
+        DeelPaneel highscoresDeelPaneel = new DeelPaneel(mainScherm,1, 0.33, homeScreenVBox, true);
 
         nieuwSpelDeelPaneel.addButton(nieuwSpel, 1, 0.8);
         loadSpelDeelPaneel.addButton(laadSpel, 1, 0.8);
@@ -120,12 +120,12 @@ public class StartScherm extends RightPaneBlueprint
         RadioButton vierSpelersRadioButton = new RadioButton("Vier");
         Label aantalSpelersLabel = new Label("Kies het aantal spelers: ");
 
-        DeelPaneel bevestigDeelPaneel = new DeelPaneel(0.4, 0.25, selectPlayersVBox, true);
+        DeelPaneel bevestigDeelPaneel = new DeelPaneel(mainScherm,0.4, 0.25, selectPlayersVBox, true);
 
-        DeelPaneel tweeSpelerDeelPaneel = new DeelPaneel(0.38, 1, keuzePaneel, true);
-        DeelPaneel drieSpelerDeelPaneel = new DeelPaneel(0.38, 1, keuzePaneel, true);
-        DeelPaneel vierSpelerDeelPaneel = new DeelPaneel(0.38, 1, keuzePaneel, true);
-        DeelPaneel aantalSpelersDeelPaneel = new DeelPaneel(0.8, 0.25, selectPlayersVBox, true);
+        DeelPaneel tweeSpelerDeelPaneel = new DeelPaneel(mainScherm,0.38, 1, keuzePaneel, true);
+        DeelPaneel drieSpelerDeelPaneel = new DeelPaneel(mainScherm,0.38, 1, keuzePaneel, true);
+        DeelPaneel vierSpelerDeelPaneel = new DeelPaneel(mainScherm,0.38, 1, keuzePaneel, true);
+        DeelPaneel aantalSpelersDeelPaneel = new DeelPaneel(mainScherm,0.8, 0.25, selectPlayersVBox, true);
 
         //
         mainBorderPane.getChildren().clear();

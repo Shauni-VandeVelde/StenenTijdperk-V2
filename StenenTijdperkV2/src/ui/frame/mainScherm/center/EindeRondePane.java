@@ -68,7 +68,7 @@ public class EindeRondePane extends RightPaneBlueprint
             toonSpeler(i);
             }
 
-        DeelPaneel buttonPanel = new DeelPaneel(1, 0.3, vbox, true);
+        DeelPaneel buttonPanel = new DeelPaneel(mainScherm,1, 0.3, vbox, true);
         Button button = new Button("Volgende Ronde");
 
         button.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
@@ -108,17 +108,17 @@ public class EindeRondePane extends RightPaneBlueprint
         Label bruikbaarGereedschapLabel = new Label("Waarde v. gereedschap");
         Label huttenLabel = new Label("Hut(ten)");
 
-        DeelPaneel spelerPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel houtPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel leemPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel steenPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel goudPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel voedselPane = new DeelPaneel(x + 0.06, y * 3.25, this, true);
-        DeelPaneel pionnenPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel puntenPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel voedselPerBeurtPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel bruikbaarGereedschapPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
-        DeelPaneel huttenPane = new DeelPaneel(x + 0.06, y / 1.25, this, true);
+        DeelPaneel spelerPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel houtPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel leemPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel steenPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel goudPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel voedselPane = new DeelPaneel(mainScherm,x + 0.06, y * 3.25, this, true);
+        DeelPaneel pionnenPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel puntenPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel voedselPerBeurtPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel bruikbaarGereedschapPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
+        DeelPaneel huttenPane = new DeelPaneel(mainScherm,x + 0.06, y / 1.25, this, true);
 
         spelerPane.addLabel(spelerLabel, 1, 50, Pos.CENTER, style);
         houtPane.addLabel(houtLabel, 1, 50, Pos.CENTER, style);
@@ -196,19 +196,19 @@ public class EindeRondePane extends RightPaneBlueprint
         Label bruikbaarGereedschapLabel = new Label(s.getPreviousWaardeGereedschap() + " -> " + s.getHoeveelheidGereedschap());
         Label huttenBijgekochtLabel = new Label(s.getPreviousHuttenSize() + " -> " + s.getHutten().size());
 
-        DeelPaneel spelerPaneel = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel houtPaneel = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel leemPaneel = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel steenPaneel = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel goudPaneel = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel voedselPaneel = new DeelPaneel(x, y * 3.25, this, true);
-        DeelPaneel pionnenPaneel = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel puntenPaneel = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel voedselPerBeurtPane = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel bruikbaarGereedschapPane = new DeelPaneel(x, y / 1.25, this, true);
-        DeelPaneel huttenBijgekochtPane = new DeelPaneel(x, y / 1.25, this, true);
+        DeelPaneel spelerPaneel = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel houtPaneel = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel leemPaneel = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel steenPaneel = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel goudPaneel = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel voedselPaneel = new DeelPaneel(mainScherm,x, y * 3.25, this, true);
+        DeelPaneel pionnenPaneel = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel puntenPaneel = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel voedselPerBeurtPane = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel bruikbaarGereedschapPane = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
+        DeelPaneel huttenBijgekochtPane = new DeelPaneel(mainScherm,x, y / 1.25, this, true);
 
-        // DeelPaneel SHuttenPane = new DeelPaneel(x, y, mainScherm, this, true);
+        // DeelPaneel SHuttenPane = new DeelPaneel(mainScherm,x, y, mainScherm, this, true);
         spelerPaneel.addLabel(spelerLabel,
                 1, 50, Pos.CENTER, style);
         houtPaneel.addLabel(houtLabel,

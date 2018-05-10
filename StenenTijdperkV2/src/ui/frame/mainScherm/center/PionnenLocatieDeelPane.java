@@ -19,12 +19,13 @@ import ui.frame.mainScherm.MainScherm;
  */
 public class PionnenLocatieDeelPane extends Pane
 {
-
+    private MainScherm mainScherm;
     private boolean hasImage = false;
     private Pion pion;
 
     public PionnenLocatieDeelPane(MainScherm mainScherm, Pane container, double scale, double x, double y)
     {
+        this.mainScherm = mainScherm;
         prefWidthProperty().bind(container.widthProperty().divide(scale * 0.5));
         minWidthProperty().bind(container.widthProperty().multiply(scale * 0.5));
         maxWidthProperty().bind(container.widthProperty().multiply(scale * 0.5));
@@ -68,7 +69,7 @@ public class PionnenLocatieDeelPane extends Pane
     {
         reset(true);
         this.pion = pion;
-        ImageView image = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl(type)).toExternalForm());
+        ImageView image = mainScherm.getImageView(mainScherm.getUrl(type));
         image.fitWidthProperty().bind(widthProperty());
         image.fitHeightProperty().bind(heightProperty());;
         getChildren().add(image);

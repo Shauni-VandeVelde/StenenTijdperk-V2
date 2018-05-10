@@ -53,11 +53,11 @@ public class KoopHutPane extends RightPaneBlueprint
         Button weiger = new Button("Weiger");
         ImageView hut = getHut();
 
-        DeelPaneel mededelingDeelPaneel = new DeelPaneel(0.85, 0.16, vbox, true);
-        DeelPaneel vraagDeelPaneel = new DeelPaneel(0.85, 0.16, vbox, true);
-        DeelPaneel bevestigDeelPaneel = new DeelPaneel(0.5, 0.13, vbox, true);
-        DeelPaneel weigerDeelPaneel = new DeelPaneel(0.5, 0.13, vbox, true);
-        DeelPaneel hutDeelPaneel = new DeelPaneel(0.25, 0.30, vbox, true);
+        DeelPaneel mededelingDeelPaneel = new DeelPaneel(mainScherm,0.85, 0.16, vbox, true);
+        DeelPaneel vraagDeelPaneel = new DeelPaneel(mainScherm,0.85, 0.16, vbox, true);
+        DeelPaneel bevestigDeelPaneel = new DeelPaneel(mainScherm,0.5, 0.13, vbox, true);
+        DeelPaneel weigerDeelPaneel = new DeelPaneel(mainScherm,0.5, 0.13, vbox, true);
+        DeelPaneel hutDeelPaneel = new DeelPaneel(mainScherm,0.25, 0.30, vbox, true);
 
         hutDeelPaneel.addBackgroundImage(hut);
         mededelingDeelPaneel.addLabel(mededelingLabel, 1);
@@ -111,7 +111,7 @@ public class KoopHutPane extends RightPaneBlueprint
     public ImageView getHut()
     {
 
-        ImageView image = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionRood")).toExternalForm());
+        ImageView image = mainScherm.getImageView(mainScherm.getUrl("pionRood"));
 
         if (stapel == null)
             {
@@ -213,7 +213,7 @@ public class KoopHutPane extends RightPaneBlueprint
             {
             path = "img/Hutten/Hut3000.png";
             }
-        image = new ImageView(this.getClass().getClassLoader().getResource(path).toExternalForm());
+        image = mainScherm.getImageView(path);
         return image;
 
     }

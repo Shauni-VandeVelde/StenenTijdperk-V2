@@ -26,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -812,7 +813,7 @@ public class MainScherm extends BorderPane
         centerRightInventoryMainVbox = new VBox();
         centerMainHBox = new HBox();
         spelbordPane = new CenterPane(this);
-        consolePane = new ConsolePane(console, stage);
+        consolePane = new ConsolePane(this, console, stage);
         centerRightInventoryMainPane = new Pane();
         bottomButtonsPanel = new ButtonsPane(controller, console, this);
         stapelsPanel = new StapelsPane(this);
@@ -1055,6 +1056,22 @@ public class MainScherm extends BorderPane
     public ButtonsPane getBottomButtonsPanel()
     {
         return bottomButtonsPanel;
+    }
+
+    public ImageView getImageView(String path)
+    {
+        ImageView imageView;
+        try
+            {
+            imageView = new ImageView(this.getClass().getClassLoader().getResource(path).toExternalForm());
+            return imageView;
+            }
+        catch (Exception e)
+            {
+            System.err.println("File Not Found: " + path);
+            }
+        return null;
+
     }
 
 }

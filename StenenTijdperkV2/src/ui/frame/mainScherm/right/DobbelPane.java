@@ -57,8 +57,9 @@ public class DobbelPane extends RightPaneBlueprint
         gereedschapsficheButton1 = new Button();
         gereedschapsficheButton2 = new Button();
         gereedschapsficheButton3 = new Button();
-        ImageView consoleBackgroundImage = new ImageView(this.getClass().getClassLoader().getResource("img/TextureInventory2B.png").toExternalForm());
-        ImageView dobbelBekerImage = new ImageView(this.getClass().getClassLoader().getResource("img/DobbelSteenBeker.png").toExternalForm());
+
+        ImageView consoleBackgroundImage = mainScherm.getImageView("img/TextureInventory2B.png");
+        ImageView dobbelBekerImage = mainScherm.getImageView("img/DobbelSteenBeker.png");
 
         rollenLabel.setText("Dobbelen");
         locatieLabel.setText("Locatie: Akker");
@@ -69,15 +70,15 @@ public class DobbelPane extends RightPaneBlueprint
 
                 break;
             case 1:
-                ImageView temp1 = new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
+                ImageView temp1 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
                 temp1.fitWidthProperty().bind(gereedschapsficheButton1.widthProperty());
                 temp1.fitHeightProperty().bind(gereedschapsficheButton1.heightProperty());
                 gereedschapsficheButton1.setGraphic(temp1);
 
                 break;
             case 2:
-                ImageView temp2 = new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
-                ImageView temp3 = new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(1).getWaarde()));
+                ImageView temp2 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
+                ImageView temp3 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(1).getWaarde()));
                 temp2.fitWidthProperty().bind(gereedschapsficheButton1.widthProperty());
                 temp2.fitHeightProperty().bind(gereedschapsficheButton1.heightProperty());
                 temp3.fitWidthProperty().bind(gereedschapsficheButton2.widthProperty());
@@ -87,9 +88,9 @@ public class DobbelPane extends RightPaneBlueprint
                 break;
             case 3:
 
-                ImageView temp4 = new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
-                ImageView temp5 = new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(1).getWaarde()));
-                ImageView temp6 = new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(2).getWaarde()));
+                ImageView temp4 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
+                ImageView temp5 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(1).getWaarde()));
+                ImageView temp6 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(2).getWaarde()));
                 temp4.fitWidthProperty().bind(gereedschapsficheButton1.widthProperty());
                 temp4.fitHeightProperty().bind(gereedschapsficheButton1.heightProperty());
                 temp5.fitWidthProperty().bind(gereedschapsficheButton2.widthProperty());
@@ -136,11 +137,11 @@ public class DobbelPane extends RightPaneBlueprint
             {
             "button"
             }, 14);
-        DeelPaneel g1 = new DeelPaneel(0.2437, 0.095, vbox, true);
-        DeelPaneel g2 = new DeelPaneel(0.2437, 0.095, vbox, true);
-        DeelPaneel g3 = new DeelPaneel(0.2437, 0.095, vbox, true);
-        DeelPaneel dobbelImageDeelPaneel = new DeelPaneel(0.42, 0.23, vbox, true);
-        DeelPaneel dobbelLabelDeelPaneel = new DeelPaneel(0.58, 0.23, vbox, true);
+        DeelPaneel g1 = new DeelPaneel(mainScherm, 0.2437, 0.095, vbox, true);
+        DeelPaneel g2 = new DeelPaneel(mainScherm, 0.2437, 0.095, vbox, true);
+        DeelPaneel g3 = new DeelPaneel(mainScherm, 0.2437, 0.095, vbox, true);
+        DeelPaneel dobbelImageDeelPaneel = new DeelPaneel(mainScherm, 0.42, 0.23, vbox, true);
+        DeelPaneel dobbelLabelDeelPaneel = new DeelPaneel(mainScherm, 0.58, 0.23, vbox, true);
         dobbelImageDeelPaneel.addBackgroundImage(dobbelBekerImage);
         dobbelLabelDeelPaneel.addLabel(dobbelSteenLabel, 1, 18.5, Pos.CENTER, style);
         dobbelBox.getChildren().add(dobbelImageDeelPaneel);

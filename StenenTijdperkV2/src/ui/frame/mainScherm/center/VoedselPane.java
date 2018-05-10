@@ -64,10 +64,10 @@ public class VoedselPane extends RightPaneBlueprint
         yes = new Button("Bevestig");
         no = new Button("Nee");
 
-        ImageView houtImage = new ImageView(this.getClass().getClassLoader().getResource("img/HoutStack.png").toExternalForm());
-        ImageView leemImage = new ImageView(this.getClass().getClassLoader().getResource("img/LeemStack.png").toExternalForm());
-        ImageView steenImage = new ImageView(this.getClass().getClassLoader().getResource("img/SteenStack.png").toExternalForm());
-        ImageView goudImage = new ImageView(this.getClass().getClassLoader().getResource("img/GoudStack.png").toExternalForm());
+        ImageView houtImage = mainScherm.getImageView("img/HoutStack.png");
+        ImageView leemImage = mainScherm.getImageView("img/LeemStack.png");
+        ImageView steenImage = mainScherm.getImageView("img/SteenStack.png");
+        ImageView goudImage = mainScherm.getImageView("img/GoudStack.png");
 
         goudSlider = getSlider();
         leemSlider = getSlider();
@@ -79,18 +79,18 @@ public class VoedselPane extends RightPaneBlueprint
         steenSlider.setMax(speler.getAantalHout());
         goudSlider.setMax(speler.getAantalHout());
 
-        DeelPaneel houtImageDeel = new DeelPaneel(0.120, 0.135, vbox, false);
-        DeelPaneel houtSliderDeel = new DeelPaneel(0.65, 0.08, vbox, true);
-        DeelPaneel leemImageDeel = new DeelPaneel(0.120, 0.135, vbox, false);
-        DeelPaneel leemSliderDeel = new DeelPaneel(0.65, 0.08, vbox, true);
-        DeelPaneel steenImageDeel = new DeelPaneel(0.120, 0.135, vbox, false);
-        DeelPaneel steenSliderDeel = new DeelPaneel(0.65, 0.08, vbox, true);
-        DeelPaneel goudImageDeel = new DeelPaneel(0.120, 0.135, vbox, false);
-        DeelPaneel goudSliderDeel = new DeelPaneel(0.65, 0.08, vbox, true);
-        DeelPaneel houtLabelDeel = new DeelPaneel(0.8, 0.07, vbox, false);
-        DeelPaneel leemLabelDeel = new DeelPaneel(0.8, 0.07, vbox, false);
-        DeelPaneel steenLabelDeel = new DeelPaneel(0.8, 0.07, vbox, false);
-        DeelPaneel goudLabelDeel = new DeelPaneel(0.8, 0.07, vbox, false);
+        DeelPaneel houtImageDeel = new DeelPaneel(mainScherm,0.120, 0.135, vbox, false);
+        DeelPaneel houtSliderDeel = new DeelPaneel(mainScherm,0.65, 0.08, vbox, true);
+        DeelPaneel leemImageDeel = new DeelPaneel(mainScherm,0.120, 0.135, vbox, false);
+        DeelPaneel leemSliderDeel = new DeelPaneel(mainScherm,0.65, 0.08, vbox, true);
+        DeelPaneel steenImageDeel = new DeelPaneel(mainScherm,0.120, 0.135, vbox, false);
+        DeelPaneel steenSliderDeel = new DeelPaneel(mainScherm,0.65, 0.08, vbox, true);
+        DeelPaneel goudImageDeel = new DeelPaneel(mainScherm,0.120, 0.135, vbox, false);
+        DeelPaneel goudSliderDeel = new DeelPaneel(mainScherm,0.65, 0.08, vbox, true);
+        DeelPaneel houtLabelDeel = new DeelPaneel(mainScherm,0.8, 0.07, vbox, false);
+        DeelPaneel leemLabelDeel = new DeelPaneel(mainScherm,0.8, 0.07, vbox, false);
+        DeelPaneel steenLabelDeel = new DeelPaneel(mainScherm,0.8, 0.07, vbox, false);
+        DeelPaneel goudLabelDeel = new DeelPaneel(mainScherm,0.8, 0.07, vbox, false);
 
         HBox houtBox = new HBox();
         HBox leemBox = new HBox();

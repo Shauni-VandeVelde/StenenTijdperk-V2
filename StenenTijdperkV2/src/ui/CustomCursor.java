@@ -80,7 +80,7 @@ public class CustomCursor
             //path = "img/hand.png";
             }
 
-        imageView = new ImageView(this.getClass().getClassLoader().getResource(path).toExternalForm());
+        imageView = mainScherm.getImageView(path);
 
     }
 

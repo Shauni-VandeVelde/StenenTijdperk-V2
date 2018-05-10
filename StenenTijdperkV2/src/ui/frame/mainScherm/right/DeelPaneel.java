@@ -34,9 +34,11 @@ import ui.frame.mainScherm.MainScherm;
 public class DeelPaneel extends Pane
 {
     private ImageView image;
+    private MainScherm mainScherm;
 
-    public DeelPaneel(Pane pane, double divW, double divH)
+    public DeelPaneel(MainScherm mainScherm, Pane pane, double divW, double divH)
     {
+        this.mainScherm = mainScherm;
         prefWidthProperty().bind(pane.widthProperty().divide(divW).multiply(divH));
         prefHeightProperty().bind(pane.heightProperty().multiply(divH));
         minWidthProperty().bind(pane.widthProperty().divide(divW).multiply(divH));
@@ -45,8 +47,9 @@ public class DeelPaneel extends Pane
         maxHeightProperty().bind(pane.heightProperty().multiply(divH));
     }
 
-    public DeelPaneel(double divW, double divH, Pane pane, boolean binding)
+    public DeelPaneel(MainScherm mainScherm, double divW, double divH, Pane pane, boolean binding)
     {
+        this.mainScherm = mainScherm;
         if (binding)
             {
             prefWidthProperty().bind(pane.widthProperty().multiply(divW));
@@ -273,22 +276,22 @@ public class DeelPaneel extends Pane
     {
         if (getChildren().size() != 0)
             {
-            ImageView pion = new ImageView(MainScherm.getUrl("wood"));
+            ImageView pion = mainScherm.getImageView("img/HoutStack.png");
             if (speler.getKleur() == Kleur.ROOD)
                 {
-                pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionRood")).toExternalForm());
+                pion = mainScherm.getImageView(MainScherm.getUrl("pionRood"));
                 }
             if (speler.getKleur() == Kleur.GEEL)
                 {
-                pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionGeel")).toExternalForm());
+                pion = mainScherm.getImageView(MainScherm.getUrl("pionGeel"));
                 }
             if (speler.getKleur() == Kleur.GROEN)
                 {
-                pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionGroen")).toExternalForm());
+                pion = mainScherm.getImageView(MainScherm.getUrl("pionGroen"));
                 }
             if (speler.getKleur() == Kleur.BLAUW)
                 {
-                pion = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionBlauw")).toExternalForm());
+                pion = mainScherm.getImageView(MainScherm.getUrl("pionBlauw"));
                 }
             pion.fitWidthProperty().bind(widthProperty().multiply(0.25));
             pion.fitHeightProperty().bind(heightProperty().multiply(0.25));

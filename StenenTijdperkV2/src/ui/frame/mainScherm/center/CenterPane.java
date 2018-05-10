@@ -179,7 +179,7 @@ public class CenterPane extends Pane
         gereedschapsmakerLocaties = new PionnenLocatieDeelPane[1];
         lovehutLocaties = new PionnenLocatieDeelPane[2];
 
-        ImageView spelbordBackground = new ImageView(this.getClass().getClassLoader().getResource("img/backgroundMap.png").toExternalForm());
+        ImageView spelbordBackground = mainScherm.getImageView("img/backgroundMap.png");
         spelbordBackground.fitWidthProperty().bind(widthProperty());
         spelbordBackground.fitHeightProperty().bind(heightProperty());
 

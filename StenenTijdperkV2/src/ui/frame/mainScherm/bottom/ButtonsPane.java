@@ -62,7 +62,7 @@ public class ButtonsPane extends Pane
         pionnenOkButton = new Button("Ok");
         PauzeButton = new Button("Pauze Game");
         txfHuidigeSpeler = new TextField();
-        ImageView buttonPannelImage = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("wood")).toExternalForm());
+        ImageView buttonPannelImage = mainScherm.getImageView(mainScherm.getUrl("wood"));
         clear = false;
 
         txfHuidigeSpeler.setEditable(false);

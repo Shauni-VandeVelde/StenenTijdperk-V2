@@ -64,7 +64,7 @@ public class PauzePane extends Pane
         btnSoundOptions = new Button("Sound");
         btnTerugNaarMenu = new Button("Terug naar menu");
         btnSluiten = new Button("Sluit spel");
-        background = new ImageView(this.getClass().getClassLoader().getResource("img/PauzeMenuBg.png").toExternalForm());
+        background = mainScherm.getImageView("img/PauzeMenuBg.png");
 
         setLayout();
         getChildren().add(background);
@@ -172,7 +172,7 @@ public class PauzePane extends Pane
         else
             {
             getChildren().clear();
-            getChildren().add(new SavePane());
+            getChildren().add(new SavePane(mainScherm, this));
             }
 
         savePaneActive = !savePaneActive;
@@ -190,7 +190,7 @@ public class PauzePane extends Pane
         else
             {
             getChildren().clear();
-            getChildren().add(new LoadPane());
+            getChildren().add(new LoadPane(mainScherm, this));
             }
 
         loadPaneActive = !loadPaneActive;

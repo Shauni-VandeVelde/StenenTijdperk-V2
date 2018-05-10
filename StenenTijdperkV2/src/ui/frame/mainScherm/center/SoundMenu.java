@@ -58,20 +58,20 @@ public class SoundMenu extends RightPaneBlueprint
         koopHutSounds.setStyle("-fx-text-fill:white;");
         dobbelSounds.setStyle("-fx-text-fill:white;");
 
-        ImageView background = new ImageView(this.getClass().getClassLoader().getResource("img/PauzeMenuBg.png").toExternalForm());
+        ImageView background = mainScherm.getImageView("img/PauzeMenuBg.png");
         background.fitWidthProperty().bind(widthProperty());
         background.fitHeightProperty().bind(heightProperty());
 
         getChildren().add(background);
-        DeelPaneel masterLabelPaneel = new DeelPaneel(0.4, 0.24, this, true);
-        DeelPaneel musicLabelPaneel = new DeelPaneel(0.4, 0.24, this, true);
-        DeelPaneel SFXLabelPaneel = new DeelPaneel(0.4, 0.24, this, true);
+        DeelPaneel masterLabelPaneel = new DeelPaneel(mainScherm,0.4, 0.24, this, true);
+        DeelPaneel musicLabelPaneel = new DeelPaneel(mainScherm,0.4, 0.24, this, true);
+        DeelPaneel SFXLabelPaneel = new DeelPaneel(mainScherm,0.4, 0.24, this, true);
 
-        DeelPaneel menuSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
-        DeelPaneel locationSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
-        DeelPaneel endOfRoundSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
-        DeelPaneel koopHutSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
-        DeelPaneel dobbelSoundsDeelPaneel = new DeelPaneel(0.2, 0.15, this, true);
+        DeelPaneel menuSoundsDeelPaneel = new DeelPaneel(mainScherm,0.2, 0.15, this, true);
+        DeelPaneel locationSoundsDeelPaneel = new DeelPaneel(mainScherm,0.2, 0.15, this, true);
+        DeelPaneel endOfRoundSoundsDeelPaneel = new DeelPaneel(mainScherm,0.2, 0.15, this, true);
+        DeelPaneel koopHutSoundsDeelPaneel = new DeelPaneel(mainScherm,0.2, 0.15, this, true);
+        DeelPaneel dobbelSoundsDeelPaneel = new DeelPaneel(mainScherm,0.2, 0.15, this, true);
 
         VBox labels = new VBox();
         VBox sliders = new VBox();

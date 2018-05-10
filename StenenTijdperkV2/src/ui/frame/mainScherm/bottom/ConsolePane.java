@@ -18,12 +18,13 @@ import ui.frame.mainScherm.MainScherm;
  */
 public class ConsolePane extends Pane
 {
-
+    MainScherm mainScherm;
     private Console console;
     private Stage stage;
 
-    public ConsolePane(Console console, Stage stage)
+    public ConsolePane(MainScherm mainScherm, Console console, Stage stage)
     {
+        this.mainScherm = mainScherm;
         this.stage = stage;
         this.console = console;
         init();
@@ -31,7 +32,7 @@ public class ConsolePane extends Pane
 
     private void init()
     {
-        ImageView consoleBackgroundImage = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("console")).toExternalForm());
+        ImageView consoleBackgroundImage = mainScherm.getImageView(mainScherm.getUrl("console"));
 
         consoleBackgroundImage.fitWidthProperty().bind(widthProperty());
         consoleBackgroundImage.fitHeightProperty().bind(heightProperty());

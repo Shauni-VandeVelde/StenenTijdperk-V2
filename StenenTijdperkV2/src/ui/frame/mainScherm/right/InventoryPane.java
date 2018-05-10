@@ -59,14 +59,14 @@ public class InventoryPane extends RightPaneBlueprint
         voedselLabel = new Label();
         voedselPerBeurtLabel = new Label();
         rondeLabel = new Label();
-        ImageView steenImage = new ImageView(this.getClass().getClassLoader().getResource("img/SteenStackS.png").toExternalForm());
-        ImageView houtImage = new ImageView(this.getClass().getClassLoader().getResource("img/G_HoutS.png").toExternalForm());
-        ImageView leemImage = new ImageView(this.getClass().getClassLoader().getResource("img/G_LeemS.png").toExternalForm());
-        ImageView goudImage = new ImageView(this.getClass().getClassLoader().getResource("img/G_GoudS.png").toExternalForm());
-        ImageView voedselImage = new ImageView(this.getClass().getClassLoader().getResource("img/Voedselfiches.png").toExternalForm());
-        ImageView g1 = new ImageView(this.getClass().getClassLoader().getResource("img/GF_1.png").toExternalForm());
-        ImageView g2 = new ImageView(this.getClass().getClassLoader().getResource("img/GF_2.png").toExternalForm());
-        ImageView g3 = new ImageView(this.getClass().getClassLoader().getResource("img/GF_3.png").toExternalForm());
+        ImageView steenImage = mainScherm.getImageView("img/SteenStackS.png");
+        ImageView houtImage = mainScherm.getImageView("img/G_HoutS.png");
+        ImageView leemImage = mainScherm.getImageView("img/G_LeemS.png");
+        ImageView goudImage = mainScherm.getImageView("img/G_GoudS.png");
+        ImageView voedselImage = mainScherm.getImageView("img/Voedselfiches.png");
+        ImageView g1 = mainScherm.getImageView("img/GF_1.png");
+        ImageView g2 = mainScherm.getImageView("img/GF_2.png");
+        ImageView g3 = mainScherm.getImageView("img/GF_3.png");
 
         RightPaneBlueprint.getHBox(vbox, inventoryButtonsPaneel, false, mainScherm, "", 10, mainScherm.getController().getSpelers().size(), 1, inventoryButtons, buttonsString, false, 18);
 

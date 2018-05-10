@@ -80,7 +80,7 @@ public abstract class RightPaneBlueprint extends Pane
         for (int i = 0; i < nodes.length; i++)
             {
 
-            DeelPaneel labelPane = new DeelPaneel(vbox, aantal, scale);
+            DeelPaneel labelPane = new DeelPaneel(mainScherm, vbox, aantal, scale);
             if (types[i].equals("button"))
                 {
                 style = "";
@@ -191,25 +191,25 @@ public abstract class RightPaneBlueprint extends Pane
         if (speler.getKleur().toString().equals("ROOD"))
             {
             style = "-fx-text-fill: red;";;
-            pionnenImage = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionRood")).toExternalForm());
+            pionnenImage = mainScherm.getImageView(MainScherm.getUrl("pionRood"));
 
             }
         else if (speler.getKleur().toString().equals("BLAUW"))
             {
             style = "-fx-text-fill: blue;";;
-            pionnenImage = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionBlauw")).toExternalForm());
+            pionnenImage = mainScherm.getImageView(MainScherm.getUrl("pionBlauw"));
 
             }
         else if (speler.getKleur().toString().equals("GEEL"))
             {
             style = "-fx-text-fill: #8e800c;";
-            pionnenImage = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionGeel")).toExternalForm());
+            pionnenImage = mainScherm.getImageView(MainScherm.getUrl("pionGeel"));
 
             }
         else if (speler.getKleur().toString().equals("GROEN"))
             {
             style = "-fx-text-fill: green;";;
-            pionnenImage = new ImageView(this.getClass().getClassLoader().getResource(MainScherm.getUrl("pionGroen")).toExternalForm());
+            pionnenImage = mainScherm.getImageView(MainScherm.getUrl("pionGroen"));
 
             }
 
@@ -239,22 +239,22 @@ public abstract class RightPaneBlueprint extends Pane
         if (speler.getKleur().toString().equals("ROOD"))
             {
             style = "-fx-text-fill: red;";;
-            pionnenImage = new ImageView(this.getClass().getClassLoader().getResource(mainScherm.getUrl("pionRood")).toExternalForm());
+            pionnenImage = mainScherm.getImageView(mainScherm.getUrl("pionRood"));
             }
         else if (speler.getKleur().toString().equals("BLAUW"))
             {
             style = "-fx-text-fill: blue;";;
-            pionnenImage = new ImageView(this.getClass().getClassLoader().getResource(mainScherm.getUrl("pionBlauw")).toExternalForm());
+            pionnenImage = mainScherm.getImageView(mainScherm.getUrl("pionBlauw"));
             }
         else if (speler.getKleur().toString().equals("GEEL"))
             {
             style = "-fx-text-fill: #fff21a;";
-            pionnenImage = new ImageView(this.getClass().getClassLoader().getResource(mainScherm.getUrl("pionGeel")).toExternalForm());
+            pionnenImage = mainScherm.getImageView(mainScherm.getUrl("pionGeel"));
             }
         else if (speler.getKleur().toString().equals("GROEN"))
             {
             style = "-fx-text-fill: green;";;
-            pionnenImage = new ImageView(this.getClass().getClassLoader().getResource(mainScherm.getUrl("pionGroen")).toExternalForm());
+            pionnenImage = mainScherm.getImageView(mainScherm.getUrl("pionGroen"));
             }
 
         style += "-fx-font-size:1.4em; -fx-font-weight:900; -fx-stroke: black -fx-stroke-width: 2px";
@@ -320,7 +320,7 @@ public abstract class RightPaneBlueprint extends Pane
      */
     protected void setImageView(Button button, String path)
     {
-        ImageView image = new ImageView(this.getClass().getClassLoader().getResource(path).toExternalForm());
+        ImageView image = mainScherm.getImageView(path);
         image.fitWidthProperty().bind(button.prefWidthProperty());
         image.fitHeightProperty().bind(button.prefHeightProperty());
         button.setGraphic(image);
@@ -335,7 +335,7 @@ public abstract class RightPaneBlueprint extends Pane
     protected void setBackgroundImage(String path)
     {
         getChildren().clear();
-        ImageView consoleBackgroundImage = new ImageView(this.getClass().getClassLoader().getResource(path).toExternalForm());
+        ImageView consoleBackgroundImage = mainScherm.getImageView(path);
 
         consoleBackgroundImage.fitWidthProperty().bind(mainScherm.getStage().widthProperty().multiply(x));
         consoleBackgroundImage.fitHeightProperty().bind(mainScherm.getStage().heightProperty().multiply(y));
@@ -409,7 +409,7 @@ public abstract class RightPaneBlueprint extends Pane
         for (int i = 0; i < nodes.length; i++)
             {
 
-            DeelPaneel labelPane = new DeelPaneel(tempPane, aantal, scale);
+            DeelPaneel labelPane = new DeelPaneel(mainScherm, tempPane, aantal, scale);
             if (types[i].equals("slider"))
                 {
                 Slider slider = (Slider) nodes[i];
