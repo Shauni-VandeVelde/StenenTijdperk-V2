@@ -53,11 +53,11 @@ public class KoopHutPane extends RightPaneBlueprint
         Button weiger = new Button("Weiger");
         ImageView hut = getHut();
 
-        DeelPaneel mededelingDeelPaneel = new DeelPaneel(mainScherm,0.85, 0.16, vbox, true);
-        DeelPaneel vraagDeelPaneel = new DeelPaneel(mainScherm,0.85, 0.16, vbox, true);
-        DeelPaneel bevestigDeelPaneel = new DeelPaneel(mainScherm,0.5, 0.13, vbox, true);
-        DeelPaneel weigerDeelPaneel = new DeelPaneel(mainScherm,0.5, 0.13, vbox, true);
-        DeelPaneel hutDeelPaneel = new DeelPaneel(mainScherm,0.25, 0.30, vbox, true);
+        DeelPaneel mededelingDeelPaneel = new DeelPaneel(mainScherm, 0.85, 0.16, vbox, true);
+        DeelPaneel vraagDeelPaneel = new DeelPaneel(mainScherm, 0.85, 0.16, vbox, true);
+        DeelPaneel bevestigDeelPaneel = new DeelPaneel(mainScherm, 0.5, 0.13, vbox, true);
+        DeelPaneel weigerDeelPaneel = new DeelPaneel(mainScherm, 0.5, 0.13, vbox, true);
+        DeelPaneel hutDeelPaneel = new DeelPaneel(mainScherm, 0.25, 0.30, vbox, true);
 
         hutDeelPaneel.addBackgroundImage(hut);
         mededelingDeelPaneel.addLabel(mededelingLabel, 1);

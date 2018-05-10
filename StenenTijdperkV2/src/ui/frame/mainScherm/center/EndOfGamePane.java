@@ -61,7 +61,7 @@ public class EndOfGamePane extends RightPaneBlueprint
     private void initTop()
     {
         mainBox = new HBox();
-        DeelPaneel mededelingDeelPaneel = new DeelPaneel(mainScherm,0.85, 0.16, vbox, true);
+        DeelPaneel mededelingDeelPaneel = new DeelPaneel(mainScherm, 0.85, 0.16, vbox, true);
         Label mededelingLabel = new Label("Speler" + (speler.index() + 1) + " heeft gewonnen!");
         Button bevestig = new Button("Bevestig");
         mededelingDeelPaneel.addLabel(mededelingLabel, 1);
@@ -109,10 +109,10 @@ public class EndOfGamePane extends RightPaneBlueprint
         Label huttenLabel = new Label("Punten: hutten ");
         Label totaalLabel = new Label("Totaal: ");
 
-        DeelPaneel spelerDeelPaneel = new DeelPaneel(mainScherm,0.15, 0.14, vbox, true);
-        DeelPaneel huttenPuntenDeelPaneel = new DeelPaneel(mainScherm,widthDiv, 0.14, vbox, true);
-        DeelPaneel grondstoffenPuntenDeelPaneel = new DeelPaneel(mainScherm,widthDiv, 0.14, vbox, true);
-        DeelPaneel totaalPuntenDeelPaneel = new DeelPaneel(mainScherm,widthDiv, 0.14, vbox, true);
+        DeelPaneel spelerDeelPaneel = new DeelPaneel(mainScherm, 0.15, 0.14, vbox, true);
+        DeelPaneel huttenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
+        DeelPaneel grondstoffenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
+        DeelPaneel totaalPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
 
         //spelerDeelPaneel.setStyle("-fx-background-color:blue;");
         //huttenPuntenDeelPaneel.setStyle("-fx-background-color:red;");
@@ -180,10 +180,10 @@ public class EndOfGamePane extends RightPaneBlueprint
         Label huttenPuntenLabel = new Label("" + speler.getHutten().size() * 3);
         Label totaalPuntenLabel = new Label("" + ((speler.getHutten().size() * 3) + speler.getWaardeVanResources()));
 
-        DeelPaneel spelerDeelPaneel = new DeelPaneel(mainScherm,0.15, 0.14, vbox, true);
-        DeelPaneel huttenPuntenDeelPaneel = new DeelPaneel(mainScherm,widthDiv, 0.14, vbox, true);
-        DeelPaneel grondstoffenPuntenDeelPaneel = new DeelPaneel(mainScherm,widthDiv, 0.14, vbox, true);
-        DeelPaneel totaalPuntenDeelPaneel = new DeelPaneel(mainScherm,widthDiv, 0.14, vbox, true);
+        DeelPaneel spelerDeelPaneel = new DeelPaneel(mainScherm, 0.15, 0.14, vbox, true);
+        DeelPaneel huttenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
+        DeelPaneel grondstoffenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
+        DeelPaneel totaalPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
 
         // spelerDeelPaneel.setStyle("-fx-background-color:blue;");
         // huttenPuntenDeelPaneel.setStyle("-fx-background-color:red;");
