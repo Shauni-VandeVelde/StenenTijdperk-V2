@@ -672,4 +672,8 @@ public class DomeinController
         return spelbord.getStapel(index);
     }
 
+    public Spelbord getSpelbord(){
+        return spelbord;
+    }
+    
 }
