@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 11, 2018, 5:16:41 PM
+    Author     : Shauni
+*/
+
+.button {
+/*    -fx-background-image: url("/img/Button.png");
+    -fx-background-size: cover; 
+    -fx-background-repeat: no-repeat;*/
+   
+    -fx-text-fill:white;
+
+
+    -fx-font-weight: bold;
+    
+    -fx-background-insets: 0;
+    -fx-background-radius: 5;
+}
+.button:hover{
+    /*-fx-background-image: url("/img/Button.png");*/
+
+}

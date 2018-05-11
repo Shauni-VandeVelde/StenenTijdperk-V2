@@ -6,14 +6,19 @@
 package ui.frame.mainScherm.center;
 
 import Domein.DomeinController;
-import Persistentie.PersistentieController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -34,8 +39,8 @@ public class PauzePane extends Pane
     private VBox menuOptionsVBox, soundMenuVBox;
     private HBox mainHBox;
     private Label lblPauzeMenu;
-    private Button btnTerugNaarSpel;
-    private Button btnSave;
+    private ImageButton btnTerugNaarSpel;
+    private ImageButton btnSave;
     private Button btnLoad;
     private Button btnTerugNaarMenu;
     private Button btnSluiten;
@@ -44,6 +49,7 @@ public class PauzePane extends Pane
     private boolean savePaneActive = false;
     private boolean loadPaneActive = false;
     private ImageView background;
+    private Image buttonBackground;
 
     public PauzePane(Stage stage, MainScherm mainScherm, DomeinController dc)
     {
@@ -61,13 +67,15 @@ public class PauzePane extends Pane
         soundMenuVBox = new VBox();
         mainHBox = new HBox();
         lblPauzeMenu = new Label("Pauze Menu");
-        btnTerugNaarSpel = new Button("Terug naar spel");
-        btnSave = new Button("Save");
-        btnLoad = new Button("Load");
-        btnSoundOptions = new Button("Sound");
-        btnTerugNaarMenu = new Button("Terug naar menu");
-        btnSluiten = new Button("Sluit spel");
+        btnTerugNaarSpel = new ImageButton("/img/Buttons/btnTerugNaarSpel.png");
+        btnSave = new ImageButton("/img/Buttons/btnSave.png");
+        btnLoad = new ImageButton("/img/Buttons/btnLoad.png");
+        btnSoundOptions = new ImageButton("/img/Buttons/btnGeluidsopties.png");
+        btnTerugNaarMenu = new ImageButton("/img/Buttons/btnTerugNaarMenu.png");
+        btnSluiten = new ImageButton("/img/Buttons/btnAfsluiten.png");
         background = mainScherm.getImageView("img/PauzeMenuBg.png");
+       // buttonBackground = new Image("img/Button.png");
+        
 
         setLayout();
         getChildren().add(background);
@@ -81,12 +89,12 @@ public class PauzePane extends Pane
 
         getChildren().add(menuOptionsVBox);
 
-        btnTerugNaarSpel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
-        btnSoundOptions.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
-        btnSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
-        btnLoad.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
-        btnTerugNaarMenu.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
-        btnSluiten.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
+        btnTerugNaarSpel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+        btnSoundOptions.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+        btnSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+        btnLoad.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+        btnTerugNaarMenu.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+        btnSluiten.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
 
         setActions();
 
@@ -96,6 +104,15 @@ public class PauzePane extends Pane
 
     private void setLayout()
     {
+        
+//        btnTerugNaarSpel.setGraphic(new ImageView(buttonBackground));
+//        btnSoundOptions.setGraphic(new ImageView(buttonBackground));
+//        btnSave.setGraphic(new ImageView(buttonBackground));
+//        btnLoad.setGraphic(new ImageView(buttonBackground));
+//        btnTerugNaarMenu.setGraphic(new ImageView(buttonBackground));
+//        btnSluiten.setGraphic(new ImageView(buttonBackground));
+        
+        
         mainHBox.setAlignment(Pos.CENTER);
         mainHBox.prefWidthProperty().bind(widthProperty());
 
@@ -105,6 +122,7 @@ public class PauzePane extends Pane
         soundMenuVBox.prefHeightProperty().bind(heightProperty());
 
         menuOptionsVBox.setAlignment(Pos.CENTER);
+        menuOptionsVBox.setSpacing(10);
 
         lblPauzeMenu.setFont(new Font("Arial", 30));
 
@@ -112,7 +130,7 @@ public class PauzePane extends Pane
 
         //btnTerugNaarSpel.prefHeightProperty().bind(heightProperty());
         //Alle buttonwidths en heights worden gelijk gezet aan die van btnTerugNaarSpel
-        btnSoundOptions.prefWidthProperty().bind(btnTerugNaarSpel.widthProperty());
+        btnSoundOptions.prefWidthProperty().bind(btnTerugNaarSpel.widthProperty()); 
         btnSave.prefWidthProperty().bind(btnTerugNaarSpel.widthProperty());
         //btnSave.prefHeightProperty().bind(btnTerugNaarSpel.widthProperty());
         btnLoad.prefWidthProperty().bind(btnTerugNaarSpel.widthProperty());
