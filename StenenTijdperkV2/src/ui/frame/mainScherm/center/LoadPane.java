@@ -5,11 +5,13 @@
  */
 package ui.frame.mainScherm.center;
 
+import Persistentie.PersistentieController;
 import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 import ui.frame.mainScherm.MainScherm;
 import ui.frame.mainScherm.right.RightPaneBlueprint;
 
@@ -20,8 +22,10 @@ import ui.frame.mainScherm.right.RightPaneBlueprint;
  */
 public class LoadPane extends RightPaneBlueprint
 {
+    private ArrayList<String> saves;
     private ArrayList<Button> loadButtons;
     private VBox vBox;
+    private PersistentieController pc;
     private MainScherm mainScherm;
     private ImageView backgroundImg;
 
@@ -29,17 +33,18 @@ public class LoadPane extends RightPaneBlueprint
     {
         super(mainScherm, mainScherm.getController().getSpelers().get(0), pauzePane, 1, 0.77);
         this.mainScherm = mainScherm;
+        this.pc = new PersistentieController();
+        this.saves = new ArrayList<String>();
         loadButtons = new ArrayList<Button>();
-
-        loadButtons.add(new Button("Save 1"));
-        loadButtons.add(new Button("Save 2"));
 
         backgroundImg = mainScherm.getImageView("img/PauzeMenuBg.png");
 
         vBox = new VBox();
 
+        setLoadButtons();        
         setLayout();
         setStyleSheets();
+
 
         this.getChildren().add(backgroundImg);
 
@@ -74,4 +79,19 @@ public class LoadPane extends RightPaneBlueprint
             }
     }
 
+    private void setLoadButtons(){
+        System.out.println("FEMKLFSJKBFJBj");
+        ArrayList<Pair> temp = pc.getSaveNamesWithRoundNr();
+        System.out.println("no pls no");
+        
+        System.out.println("Start Loop");
+        for(int i = 0; i < temp.size(); ++i)
+        {
+            saves.add(temp.get(i).getKey().toString());
+            loadButtons.add(new Button("Save " + (i + 1) + " - " + "Naam: " + temp.get(i).getKey().toString() + " - " + "Ronde: " + temp.get(i).getValue().toString()));
+        }
+        System.out.println("END Loop");
+
+    }
 }
+

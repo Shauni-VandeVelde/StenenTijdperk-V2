@@ -175,10 +175,7 @@ public class PersistentieController {
     public ArrayList<Pair> getSaveNamesWithRoundNr() {
         ArrayList<Pair> saves = new ArrayList<Pair>();
         
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-            try (Connection con = DriverManager.getConnection(JDBC_URL)) 
+        try (Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")) 
             {
                 PreparedStatement qryGetSave = con.prepareStatement("SELECT domeinControllerNaam, rondeNummer FROM domeincontroller");
                 ResultSet rs = qryGetSave.executeQuery();
@@ -188,12 +185,8 @@ public class PersistentieController {
                     saves.add(temp);
                 }
             }
-            catch(SQLException ex){
+        catch(SQLException ex){
                 System.out.println(ex);
-            }
-        }
-        catch(ClassNotFoundException ex){
-            System.out.println(ex);
         }
 
         return saves;
