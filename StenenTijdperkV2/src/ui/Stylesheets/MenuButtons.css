@@ -8,19 +8,25 @@ and open the template in the editor.
     Author     : Shauni
 */
 
-.button {
-/*    -fx-background-image: url("/img/Button.png");
-    -fx-background-size: cover; 
-    -fx-background-repeat: no-repeat;*/
-   
-    -fx-text-fill:white;
 
+.button { 
+    -fx-background-image: url("/img/Button.png");
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-text-fill:white;
+    -fx-margin: 15 15 15 15;
+    
+   -fx-background-color: transparent;
+   
+/*
 
     -fx-font-weight: bold;
     
     -fx-background-insets: 0;
-    -fx-background-radius: 5;
+    -fx-background-radius: 5;*/
 }
+
 .button:hover{
     /*-fx-background-image: url("/img/Button.png");*/
 
