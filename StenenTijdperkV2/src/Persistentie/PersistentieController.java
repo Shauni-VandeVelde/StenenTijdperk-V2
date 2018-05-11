@@ -81,6 +81,7 @@ public class PersistentieController {
                         temp.setInt(1, i);
                         temp.setString(2, naam);
                         temp.setInt(3, gf.getWaarde());
+                        temp.setBoolean(4, gf.isGebruikt());
                         
                         qrySaveGereedschapsFiches.add(temp);
                     }
@@ -103,7 +104,7 @@ public class PersistentieController {
                 PreparedStatement qrySaveStapels[] = new PreparedStatement[dc.getSpelbord().getStapels().size()];
                 
                 for(int i = 0; i < dc.getSpelbord().getStapels().size(); ++i){
-                    qrySaveStapels[i] = con.prepareStatement("INSERT INTO stapel(stapelID, dcNaam) VALUES(?, ?)");
+                    qrySaveStapels[i] = con.prepareStatement("INSERT INTO stapel(stapelIndex, dcNaam) VALUES(?, ?)");
                     
                     qrySaveStapels[i].setInt(1, i);
                     qrySaveStapels[i].setString(2, naam);

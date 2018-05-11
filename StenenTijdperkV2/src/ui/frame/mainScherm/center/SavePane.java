@@ -30,6 +30,7 @@ public class SavePane extends RightPaneBlueprint
     private Button btnNewSave;
     private ArrayList<Button> existingSavesButtons;
     private VBox vBox;
+    private PauzePane pauzePane;
 
     private ImageView backgroundImg;
 
@@ -37,6 +38,7 @@ public class SavePane extends RightPaneBlueprint
     {
         super(mainScherm, mainScherm.getController().getSpelers().get(0), pauzePane, 1, 0.77);
         this.mainScherm = mainScherm;
+        this.pauzePane = pauzePane;
         this.pc = new PersistentieController();
         this.dc = dc;
         btnNewSave = new Button("New Save");
@@ -100,7 +102,8 @@ public class SavePane extends RightPaneBlueprint
             public void handle(ActionEvent event)
             {
                 System.out.println("NEW SAVE FIRED!");
-                pc.saveNew("Test01", dc);
+                pc.saveNew("Test06", dc);
+                pauzePane.toggleSavePane();
             }
         });
     }
