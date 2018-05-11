@@ -14,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 import ui.frame.mainScherm.MainScherm;
 import ui.frame.mainScherm.right.RightPaneBlueprint;
 
@@ -28,6 +29,7 @@ public class SavePane extends RightPaneBlueprint
     private PersistentieController pc;
     private DomeinController dc;
     private Button btnNewSave;
+    private ArrayList<String> saves;
     private ArrayList<Button> existingSavesButtons;
     private VBox vBox;
     private PauzePane pauzePane;
@@ -42,10 +44,10 @@ public class SavePane extends RightPaneBlueprint
         this.pc = new PersistentieController();
         this.dc = dc;
         btnNewSave = new Button("New Save");
+        saves = new ArrayList<String>();
         existingSavesButtons = new ArrayList<Button>();
 
-        existingSavesButtons.add(new Button("Save 1"));
-        existingSavesButtons.add(new Button("Save 2"));
+        loadExistingSaveButtons();
 
         backgroundImg = mainScherm.getImageView("img/PauzeMenuBg.png");
 
@@ -101,11 +103,19 @@ public class SavePane extends RightPaneBlueprint
             @Override
             public void handle(ActionEvent event)
             {
-                System.out.println("NEW SAVE FIRED!");
-                pc.saveNew("Test06", dc);
+                pc.saveNew("Test07", dc);
                 pauzePane.toggleSavePane();
             }
         });
     }
 
+    private void loadExistingSaveButtons(){
+        ArrayList<Pair> temp = pc.getSaveNamesWithRoundNr();
+        
+        for(int i = 0; i < temp.size(); ++i)
+        {
+            saves.add(temp.get(i).getKey().toString());
+            existingSavesButtons.add(new Button("Save " + (i + 1) + " - " + "Naam: " + temp.get(i).getKey().toString() + " - " + "Ronde: " + temp.get(i).getValue().toString()));
+        }
+    }
 }
