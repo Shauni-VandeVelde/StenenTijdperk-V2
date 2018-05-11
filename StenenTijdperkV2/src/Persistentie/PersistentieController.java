@@ -103,7 +103,7 @@ public class PersistentieController {
                 PreparedStatement qrySaveStapels[] = new PreparedStatement[dc.getSpelbord().getStapels().size()];
                 
                 for(int i = 0; i < dc.getSpelbord().getStapels().size(); ++i){
-                    qrySaveStapels[i] = con.prepareStatement("INSERT INTO stapel(stapelIndex, dcNaam) VALUES(?, ?)");
+                    qrySaveStapels[i] = con.prepareStatement("INSERT INTO stapel(stapelID, dcNaam) VALUES(?, ?)");
                     
                     qrySaveStapels[i].setInt(1, i);
                     qrySaveStapels[i].setString(2, naam);
@@ -156,7 +156,7 @@ public class PersistentieController {
                     p.executeUpdate();
                 }
 
-                System.out.println("SAVE SUCCES!");
+                System.out.println("SAVE [" + naam + "] SUCCES!");
             } catch (SQLException ex) {
                 System.out.println(ex);
             }

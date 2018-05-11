@@ -898,7 +898,7 @@ public class MainScherm extends BorderPane
 
     public void openPauzeMenu()
     {
-        PauzePane p = new PauzePane(this.stage, this);
+        PauzePane p = new PauzePane(this.stage, this, controller);
 
         getChildren().clear();
 

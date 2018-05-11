@@ -5,7 +5,11 @@
  */
 package ui.frame.mainScherm.center;
 
+import Domein.DomeinController;
+import Persistentie.PersistentieController;
 import java.util.ArrayList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -21,16 +25,20 @@ import ui.frame.mainScherm.right.RightPaneBlueprint;
 public class SavePane extends RightPaneBlueprint
 {
     private MainScherm mainScherm;
+    private PersistentieController pc;
+    private DomeinController dc;
     private Button btnNewSave;
     private ArrayList<Button> existingSavesButtons;
     private VBox vBox;
 
     private ImageView backgroundImg;
 
-    SavePane(MainScherm mainScherm, PauzePane pauzePane)
+    SavePane(MainScherm mainScherm, PauzePane pauzePane, DomeinController dc)
     {
         super(mainScherm, mainScherm.getController().getSpelers().get(0), pauzePane, 1, 0.77);
         this.mainScherm = mainScherm;
+        this.pc = new PersistentieController();
+        this.dc = dc;
         btnNewSave = new Button("New Save");
         existingSavesButtons = new ArrayList<Button>();
 
@@ -43,6 +51,7 @@ public class SavePane extends RightPaneBlueprint
 
         setLayout();
         setStyleSheets();
+        setActions();
 
         this.getChildren().add(backgroundImg);
 
@@ -81,6 +90,19 @@ public class SavePane extends RightPaneBlueprint
             {
             b.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
             }
+    }
+    
+    private void setActions()
+    {
+        btnNewSave.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                System.out.println("NEW SAVE FIRED!");
+                pc.saveNew("Test01", dc);
+            }
+        });
     }
 
 }

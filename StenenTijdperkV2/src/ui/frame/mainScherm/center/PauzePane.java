@@ -5,6 +5,8 @@
  */
 package ui.frame.mainScherm.center;
 
+import Domein.DomeinController;
+import Persistentie.PersistentieController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,8 +28,8 @@ import ui.frame.mainScherm.MainScherm;
  */
 public class PauzePane extends Pane
 {
-
     private Stage stage;
+    private DomeinController dc;
     private MainScherm mainScherm;
     private VBox menuOptionsVBox, soundMenuVBox;
     private HBox mainHBox;
@@ -43,9 +45,10 @@ public class PauzePane extends Pane
     private boolean loadPaneActive = false;
     private ImageView background;
 
-    public PauzePane(Stage stage, MainScherm mainScherm)
+    public PauzePane(Stage stage, MainScherm mainScherm, DomeinController dc)
     {
         super();
+        this.dc = dc;
         if (mainScherm.getBottomButtonsPanel().isVisible())
             {
             mainScherm.getBottomButtonsPanel().toggleButtons();
@@ -172,7 +175,7 @@ public class PauzePane extends Pane
         else
             {
             getChildren().clear();
-            getChildren().add(new SavePane(mainScherm, this));
+            getChildren().add(new SavePane(mainScherm, this, dc));
             }
 
         savePaneActive = !savePaneActive;
