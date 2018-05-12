@@ -184,7 +184,7 @@ public class PersistentieController {
             PreparedStatement qryDeleteGereedschapsFiches = con.prepareStatement(saveUpdateModeOff + "DELETE FROM gereedschapsfiche WHERE dcNaam = ?");
             PreparedStatement qryDeleteSpelers = con.prepareStatement(saveUpdateModeOff + "DELETE FROM speler WHERE dcNaam = ?");
             PreparedStatement qryDeleteStapels = con.prepareStatement(saveUpdateModeOff + "DELETE FROM stapel WHERE dcNaam = ?");
-            PreparedStatement qryDeleteDomeinController = con.prepareStatement(saveUpdateModeOff + "DELETE FROM domeincontroller WHERE dcNaam = ?");
+            PreparedStatement qryDeleteDomeinController = con.prepareStatement(saveUpdateModeOff + "DELETE FROM domeincontroller WHERE domeinControllerNaam = ?");
 
             qryDeleteHutten.setString(1, naam);
             qryDeletePionnen.setString(1, naam);
