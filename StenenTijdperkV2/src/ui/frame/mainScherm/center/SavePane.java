@@ -92,6 +92,8 @@ public class SavePane extends RightPaneBlueprint
         vBox.prefWidthProperty().bind(widthProperty());
         vBox.prefHeightProperty().bind(heightProperty());
         vBox.setAlignment(Pos.CENTER);
+        
+        vBox.setSpacing(10);
 
         lblSave.setFont(new Font("Arial", 30));
         backButton.setFont(new Font("Arial", 30));
