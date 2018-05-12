@@ -125,7 +125,7 @@ public class EndOfGamePane extends RightPaneBlueprint
         String style = "-fx-text-fill:red;" + "-fx-border-color: black;-fx-border-insets: 0;-fx-border-width: 1;-fx-border-style: solid;";
         HBox spelerPaneel = new HBox();
         Label spelerLabel = new Label("Speler: ");
-        Label puntenLabel = new Label("Punten: ");
+        Label penaltyLabel = new Label("Penalty: ");
         Label GrondstoffenLabel = new Label("Punten grondstoffen: ");
         Label huttenLabel = new Label("Punten: hutten ");
         Label totaalLabel = new Label("Totaal: ");
@@ -142,25 +142,25 @@ public class EndOfGamePane extends RightPaneBlueprint
         //totaalPuntenDeelPaneel.setStyle("-fx-background-color:orange;");
         spelerLabel.setAlignment(Pos.CENTER);
         GrondstoffenLabel.setAlignment(Pos.CENTER);
-        puntenLabel.setAlignment(Pos.CENTER);
+        penaltyLabel.setAlignment(Pos.CENTER);
         huttenLabel.setAlignment(Pos.CENTER);
         totaalLabel.setAlignment(Pos.CENTER);
 
         spelerLabel.setStyle(style);
         GrondstoffenLabel.setStyle(style);
         huttenPuntenDeelPaneel.setStyle(style);
-        puntenLabel.setStyle(style);
+        penaltyLabel.setStyle(style);
         huttenLabel.setStyle(style);
         totaalLabel.setStyle(style);
 
         spelerDeelPaneel.addLabel(spelerLabel, 1);
-        puntenDeelPaneel.addLabel(puntenLabel, 1);
+        puntenDeelPaneel.addLabel(penaltyLabel, 1);
         huttenPuntenDeelPaneel.addLabel(huttenLabel, 1);
         grondstoffenPuntenDeelPaneel.addLabel(GrondstoffenLabel, 1);
         totaalPuntenDeelPaneel.addLabel(totaalLabel, 1);
 
         spelerDeelPaneel.setFontTracking(spelerLabel, 25.5);
-        puntenDeelPaneel.setFontTracking(puntenLabel, 25.5);
+        puntenDeelPaneel.setFontTracking(penaltyLabel, 25.5);
         huttenPuntenDeelPaneel.setFontTracking(huttenLabel, fontSize);
         grondstoffenPuntenDeelPaneel.setFontTracking(GrondstoffenLabel, fontSize);
         totaalPuntenDeelPaneel.setFontTracking(totaalLabel, fontSize);
@@ -205,7 +205,7 @@ public class EndOfGamePane extends RightPaneBlueprint
         Label spelerLabel = new Label("" + kleur);
         Label resourcesPuntenLabel = new Label("" + speler.getWaardeVanResources());
         Label huttenPuntenLabel = new Label("" + speler.berekenPuntenVanHutten());
-        Label puntenLabel = new Label("" + speler.getPunten());
+        Label penaltyLabel = new Label("" + speler.getTotaalPenalty());
         Label totaalPuntenLabel = new Label("" + ((speler.getPunten()) + speler.getWaardeVanResources()));
 
         DeelPaneel spelerDeelPaneel = new DeelPaneel(mainScherm, 0.15, 0.14, vbox, true);
@@ -219,26 +219,26 @@ public class EndOfGamePane extends RightPaneBlueprint
         //  grondstoffenPuntenDeelPaneel.setStyle("-fx-background-color:purple;");
         // totaalPuntenDeelPaneel.setStyle("-fx-background-color:orange;");
         spelerLabel.setAlignment(Pos.CENTER);
-        puntenLabel.setAlignment(Pos.CENTER);
+        penaltyLabel.setAlignment(Pos.CENTER);
         resourcesPuntenLabel.setAlignment(Pos.CENTER);
         huttenPuntenLabel.setAlignment(Pos.CENTER);
         totaalPuntenLabel.setAlignment(Pos.CENTER);
 
         spelerLabel.setStyle(style);
-        puntenLabel.setStyle(style);
+        penaltyLabel.setStyle(style);
         resourcesPuntenLabel.setStyle(style);
         huttenPuntenDeelPaneel.setStyle(style);
         huttenPuntenLabel.setStyle(style);
         totaalPuntenLabel.setStyle(style);
 
         spelerDeelPaneel.addLabel(spelerLabel, 1);
-        puntenDeelPaneel.addLabel(puntenLabel, 1);
+        puntenDeelPaneel.addLabel(penaltyLabel, 1);
         huttenPuntenDeelPaneel.addLabel(huttenPuntenLabel, 1);
         grondstoffenPuntenDeelPaneel.addLabel(resourcesPuntenLabel, 1);
         totaalPuntenDeelPaneel.addLabel(totaalPuntenLabel, 1);
 
         spelerDeelPaneel.setFontTracking(spelerLabel, 25.5);
-        puntenDeelPaneel.setFontTracking(puntenLabel, 25.5);
+        puntenDeelPaneel.setFontTracking(penaltyLabel, 25.5);
         huttenPuntenDeelPaneel.setFontTracking(huttenPuntenLabel, fontSize);
         grondstoffenPuntenDeelPaneel.setFontTracking(resourcesPuntenLabel, fontSize);
         totaalPuntenDeelPaneel.setFontTracking(totaalPuntenLabel, fontSize);

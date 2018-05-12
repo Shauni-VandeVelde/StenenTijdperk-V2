@@ -32,6 +32,7 @@ public class Speler
     private int upkeep;
     private int hoeveelheidPionnenStart = 5;
     private int previousHuttenSize;
+    private int totaalPenalty = 0;
     private DomeinController dc;
     private ArrayList<GereedschapsFiche> gereedschapsFiches = new ArrayList<>();
     private ArrayList<Hut> hutten = new ArrayList<>();
@@ -403,6 +404,8 @@ public class Speler
         if (aantalVoedsel < 0)
             {
             setPunten(getPunten() - 10);
+            totaalPenalty -= 10;
+
             resetFood();
             }
     }
@@ -636,6 +639,11 @@ public class Speler
     public int getAddedVoedsel()
     {
         return addedVoedsel;
+    }
+
+    public int getTotaalPenalty()
+    {
+        return totaalPenalty;
     }
 
     boolean verrekenStapel(Stapel stapel)
