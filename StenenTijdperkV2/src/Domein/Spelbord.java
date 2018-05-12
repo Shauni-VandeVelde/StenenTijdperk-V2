@@ -91,4 +91,9 @@ public class Spelbord
         return this.stapels;
     }
 
+    public void clearStapelsInhoud(){
+        for(Stapel st : stapels){
+            st.clear();
+        }
+    }
 }

@@ -597,6 +597,10 @@ public class DomeinController
     {
         return spelers;
     }
+    
+    public void addSpeler(Speler sp){
+        spelers.add(sp);
+    }
 
     public ArrayList<Locatie> getAllLocaties()
     {

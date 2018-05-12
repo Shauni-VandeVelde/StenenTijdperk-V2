@@ -174,5 +174,16 @@ public class Stapel extends Locatie
     {
         return currentTopIndex;
     }
-
+    
+    public void clear(){
+        this.hutten.clear();
+        this.currentTopIndex = 0;
+        this.heeftPion = false;
+    }
+    
+    public void refill(ArrayList<Hut> hutten){
+        this.hutten = hutten;
+        this.currentTopIndex = hutten.size() - 1;
+        this.heeftPion = false;
+    }
 }

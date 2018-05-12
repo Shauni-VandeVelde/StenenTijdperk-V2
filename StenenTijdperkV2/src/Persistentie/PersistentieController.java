@@ -221,10 +221,27 @@ public class PersistentieController {
                 Speler temp = new Speler(newDC, kleur, index);
                 temp.setVoedselPerBeurt(rs.getInt("voedselPerBeurt"));
                 temp.setPunten(rs.getInt("punten"));
+                temp.setAantalGoud(rs.getInt("aantalGoud"));
+                temp.setAantalHout(rs.getInt("aantalHout"));
+                temp.setAantalLeem(rs.getInt("aantalLeem"));
+                temp.setAantalSteen(rs.getInt("aantalSteen"));
+                temp.setAantalVoedsel(rs.getInt("aantalvoedsel"));
+                temp.setPreviousGoud(rs.getInt("previousGoud"));
+                temp.setPreviousHout(rs.getInt("previousHout"));
+                temp.setPreviousLeem(rs.getInt("previousLeem"));
+                temp.setPreviousSteen(rs.getInt("previousSteen"));
+                temp.setPreviousVoedsel(rs.getInt("previousVoedsel"));
+                temp.setPreviousPunten(rs.getInt("previousPunten"));
+                temp.setPreviousVoedselPerBeurt(rs.getInt("previousVoedselPerBeurt"));
+                temp.setPreviousPionnenSize(rs.getInt("previousPionnenSize"));
+                temp.setPreviousWaardeGereedschap(rs.getInt("previousWaardeGereedschap"));
+                temp.setPreviousHuttenSize(rs.getInt("previousHuttenSize"));
                 
-                
-                
+                newDC.addSpeler(temp);
             }
+            
+            //Stapels clearen
+            
             
         }
         catch(SQLException ex){

@@ -266,7 +266,7 @@ public class Speler
         return gereedschapsFiches;
     }
 
-    void reset()
+    public void reset()
     {
         voedselEindeVorigeBeurt = aantalVoedsel;
         previousVoedselPerBeurt = voedselPerBeurt;
@@ -309,7 +309,7 @@ public class Speler
         aantalVoedsel = 0;
     }
 
-    void voegHutToe(Hut hut)
+    public void voegHutToe(Hut hut)
     {
         hutten.add(hut);
         System.out.println("Hut Added");
@@ -449,44 +449,44 @@ public class Speler
         this.kleur = kleur;
     }
 
-    void setVoedselPerBeurt(int voedselPerBeurt)
+    public void setVoedselPerBeurt(int voedselPerBeurt)
     {
         previousVoedselPerBeurt = this.voedselPerBeurt;
         this.voedselPerBeurt = voedselPerBeurt;
     }
 
-    void setPunten(int punten)
+    public void setPunten(int punten)
     {
         previousPunten = this.punten;
 
         this.punten = punten;
     }
 
-    void setAantalGoud(int aantalGoud)
+    public void setAantalGoud(int aantalGoud)
     {
         previousGoud = this.aantalGoud;
         this.aantalGoud = aantalGoud;
     }
 
-    void setAantalHout(int aantalHout)
+    public void setAantalHout(int aantalHout)
     {
         previousHout = this.aantalHout;
         this.aantalHout = aantalHout;
     }
 
-    void setAantalLeem(int aantalLeem)
+    public void setAantalLeem(int aantalLeem)
     {
         previousLeem = this.aantalLeem;
         this.aantalLeem = aantalLeem;
     }
 
-    void setAantalSteen(int aantalSteen)
+    public void setAantalSteen(int aantalSteen)
     {
         previousSteen = this.aantalSteen;
         this.aantalSteen = aantalSteen;
     }
 
-    void setAantalVoedsel(int aantalVoedsel)
+    public void setAantalVoedsel(int aantalVoedsel)
     {
 
         this.aantalVoedsel = aantalVoedsel;
