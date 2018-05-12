@@ -155,7 +155,6 @@ public class DomeinController
 
     public void startSpel()
     {
-
         for (int i = 0; i < getAantalSpelers(); i++)
             {
             spelers.add(i, new Speler(this, Kleur.values()[i], i));

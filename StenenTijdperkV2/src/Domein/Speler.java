@@ -17,7 +17,6 @@ public class Speler
     private int aantalLeem;
     private int aantalVoedsel;
     private int aantalSteen;
-
     private int previousHout;
     private int previousLeem;
     private int previousSteen;
