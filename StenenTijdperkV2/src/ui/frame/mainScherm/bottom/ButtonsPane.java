@@ -38,7 +38,6 @@ public class ButtonsPane extends Pane
     private int gekozenIndex = 99;
     private Button pionnenOkButton, PauzeButton;
     private TextField txfHuidigeSpeler;
-
     private MainScherm mainScherm;
     private boolean enabled = true;
     private Locatie gekozenLocatie;
@@ -106,7 +105,6 @@ public class ButtonsPane extends Pane
         secondPanel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/ButtonPanel.css").toExternalForm());
         txfHuidigeSpeler.setStyle("-fx-background-color: transparent;;-fx-text-inner-color: white;-fx-font-size: 14pt; -fx-font-weight: 900;-fx-font-family: \"Calibri\" ;");
         setStyle("-fx-background-color: transparent;");
-
         initSlider();
         resetCBOPlaatsPionnen();
     }

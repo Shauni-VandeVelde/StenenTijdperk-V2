@@ -31,19 +31,12 @@ public class Stapel extends Locatie
         return hutten;
     }
 
-    /**
-     * Can be used with both versions. Verwijdert een kaart van de stapel (dus
-     * de bovenste)
-     */
     void verwijder()
     {
         hutten.remove(hutten.size() - 1);
         --currentTopIndex;
     }
 
-    /**
-     * Can be used with both versions.
-     */
     void maakHutten()
     {
         hutten = new ArrayList<>();
@@ -98,6 +91,12 @@ public class Stapel extends Locatie
         return errorMessage;
     }
 
+    public void verwijderPion()
+    {
+        this.heeftPion = false;
+        this.getPionnenList().clear();
+    }
+
     public void verwijderBovensteHut()
     {
         hutten.remove(currentTopIndex);
@@ -122,12 +121,6 @@ public class Stapel extends Locatie
                 }
             }
         return index;
-    }
-
-    public void verwijderPion()
-    {
-        this.heeftPion = false;
-        this.getPionnenList().clear();
     }
 
     /**
