@@ -131,9 +131,9 @@ public class Hut
         this.steenKost = Steenkost;
     }
 
-    int berekenPunten(int houtWaarde, int leemWaarde, int steenWaarde, int goudWaarde)
+    int berekenPunten()
     {
-        return houtWaarde * houtKost + leemWaarde * leemKost + steenWaarde * steenKost + goudWaarde * goudKost;
+        return (houtKost * 3) + (leemKost * 4) + (steenKost * 5) + (goudKost * 6);
     }
 
     public int getSteenKost()

@@ -204,9 +204,9 @@ public class EndOfGamePane extends RightPaneBlueprint
         HBox spelerPaneel = new HBox();
         Label spelerLabel = new Label("" + kleur);
         Label resourcesPuntenLabel = new Label("" + speler.getWaardeVanResources());
-        Label huttenPuntenLabel = new Label("" + speler.getHutten().size() * 3);
+        Label huttenPuntenLabel = new Label("" + speler.berekenPuntenVanHutten());
         Label puntenLabel = new Label("" + speler.getPunten());
-        Label totaalPuntenLabel = new Label("" + ((speler.getPunten()) + (speler.getHutten().size() * 3) + speler.getWaardeVanResources()));
+        Label totaalPuntenLabel = new Label("" + ((speler.getPunten()) + speler.getWaardeVanResources()));
 
         DeelPaneel spelerDeelPaneel = new DeelPaneel(mainScherm, 0.15, 0.14, vbox, true);
         DeelPaneel puntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);

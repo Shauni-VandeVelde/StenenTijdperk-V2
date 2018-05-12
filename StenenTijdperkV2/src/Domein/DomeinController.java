@@ -88,23 +88,7 @@ public class DomeinController
 
     public boolean verrekenStapel(Stapel stapel, Speler speler)
     {
-        Hut hut = stapel.getBovensteHut();
-        if ((hut.getGoudKost() < speler.getAantalGoud()) && (hut.getHoutKost() < speler.getAantalHout()) && (hut.getLeemKost() < speler.getAantalLeem()) && (hut.getSteenKost() < speler.getAantalSteen()))
-            {
-            speler.setAantalHout(speler.getAantalGoud() - hut.getHoutKost());
-            speler.setAantalLeem(speler.getAantalGoud() - hut.getLeemKost());
-            speler.setAantalSteen(speler.getAantalGoud() - hut.getSteenKost());
-            speler.setAantalGoud(speler.getAantalGoud() - hut.getGoudKost());
-            speler.voegHutToe(hut);
-            stapel.verwijderBovensteHut();
-            stapel.clearPionnen();
-            return true;
-            }
-        else
-            {
-            stapel.clearPionnen();
-            return false;
-            }
+        return speler.verrekenStapel(stapel);
     }
 
     public void verrekenAkker()
@@ -174,7 +158,7 @@ public class DomeinController
 
         for (int i = 0; i < getAantalSpelers(); i++)
             {
-            spelers.add(i, new Speler(Kleur.values()[i], i));
+            spelers.add(i, new Speler(this, Kleur.values()[i], i));
             }
 
         vorigeLocaties = new String[getAantalSpelers()];
@@ -196,7 +180,7 @@ public class DomeinController
 
         for (Speler speler : spelers)
             {
-            speler.berekenPuntenVanHutten(houtWaarde, leemWaarde, steenWaarde, goudWaarde);
+            speler.setPunten(speler.berekenPuntenVanHutten());
             speler.converteerGrondstoffenNaarPunten();
             }
 

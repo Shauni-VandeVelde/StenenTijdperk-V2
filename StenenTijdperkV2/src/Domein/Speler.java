@@ -32,23 +32,24 @@ public class Speler
     private int upkeep;
     private int hoeveelheidPionnenStart = 5;
     private int previousHuttenSize;
-
+    private DomeinController dc;
     private ArrayList<GereedschapsFiche> gereedschapsFiches = new ArrayList<>();
     private ArrayList<Hut> hutten = new ArrayList<>();
     private ArrayList<Pion> pionnen = new ArrayList<>();
 
-    Speler(Kleur kleur, int index)
+    Speler(DomeinController dc, Kleur kleur, int index)
     {
+        this.dc = dc;
         this.index = index;
         this.kleur = kleur;
         Random rand = new Random();
 
         setVoedselPerBeurt(0);
         setPunten(0);
-        setAantalHout(0);
-        setAantalLeem(0);
-        setAantalSteen(0);
-        setAantalGoud(0);
+        setAantalHout(5);
+        setAantalLeem(5);
+        setAantalSteen(5);
+        setAantalGoud(5);
         setAantalVoedsel(12);
         addedVoedsel = 0;
         voedselEindeVorigeBeurt = aantalVoedsel;
@@ -230,16 +231,17 @@ public class Speler
 
     }
 
-    void berekenPuntenVanHutten(int houtWaarde, int leemWaarde, int steenWaarde, int goudWaarde)
+    public int berekenPuntenVanHutten()
     {
-        int punten = 0;
+        int totaal = 0;
 
         for (Hut hut : hutten)
             {
-            punten += hut.berekenPunten(houtWaarde, leemWaarde, steenWaarde, goudWaarde);
+            totaal += hut.berekenPunten();
+
             }
 
-        this.punten = punten;
+        return totaal;
     }
 
     void converteerGrondstoffenNaarPunten()
@@ -634,6 +636,30 @@ public class Speler
     public int getAddedVoedsel()
     {
         return addedVoedsel;
+    }
+
+    boolean verrekenStapel(Stapel stapel)
+    {
+        Hut hut = stapel.getBovensteHut();
+        if ((hut.getGoudKost() < aantalGoud) && (hut.getHoutKost() < aantalHout) && (hut.getLeemKost() < aantalLeem) && (hut.getSteenKost() < aantalSteen))
+            {
+            aantalHout = aantalHout - hut.getHoutKost();
+            aantalLeem = aantalLeem - hut.getLeemKost();
+            aantalSteen = aantalSteen - hut.getSteenKost();
+            aantalGoud = aantalGoud - hut.getGoudKost();
+            System.out.println("Hut Kost " + hut.getHoutKost() + hut.getLeemKost() + hut.getSteenKost() + hut.getGoudKost());
+            punten += hut.berekenPunten();
+            System.err.println("Punten: " + punten);
+            voegHutToe(hut);
+            stapel.verwijderBovensteHut();
+            stapel.clearPionnen();
+            return true;
+            }
+        else
+            {
+            stapel.clearPionnen();
+            return false;
+            }
     }
 
     public boolean kanVoedselTeKortBetalen()
