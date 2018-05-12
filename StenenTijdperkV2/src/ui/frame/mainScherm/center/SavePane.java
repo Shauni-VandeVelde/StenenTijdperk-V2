@@ -137,6 +137,16 @@ public class SavePane extends RightPaneBlueprint
             }
 
         });
+        backButton.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                System.out.println("Called toggle");
+                pauzePane.toggleSavePane();
+            }
+
+        });
 
          backButton.setOnAction(new EventHandler<ActionEvent>()
         {
