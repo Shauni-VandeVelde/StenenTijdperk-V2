@@ -41,7 +41,7 @@ public class CustomCursor
         String path = "";
         if (!standard)
             {
-            switch (speler.index())
+            switch (speler.getIndex())
                 {
                 case 0:
                     path = "img/Cursors/Cursor_Red_Hover2.png";
@@ -61,7 +61,7 @@ public class CustomCursor
             }
         else
             {
-            switch (speler.index())
+            switch (speler.getIndex())
                 {
                 case 0:
                     path = "img/Cursors/Cursor_Red_Std2.png";

@@ -61,7 +61,7 @@ public class DomeinController
     public void voedselPenalty(Speler speler)
     {
         speler.setAantalVoedsel(0);
-        geefMinpunten(speler.index());
+        geefMinpunten(speler.getIndex());
     }
 
     /**
@@ -181,7 +181,7 @@ public class DomeinController
         for (Speler speler : spelers)
             {
             speler.setPunten(speler.berekenPuntenVanHutten());
-            speler.converteerGrondstoffenNaarPunten();
+            speler.getWaardeVanResources();
             }
 
         Speler winnaar = getSpelerMetHoogstePunten();

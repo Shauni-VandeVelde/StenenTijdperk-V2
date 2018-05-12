@@ -40,7 +40,7 @@ public class VoedselPane extends RightPaneBlueprint
     {
         super(mainScherm, speler, container, 1, 0.77);
         this.speler = speler;
-        index = speler.index();
+        index = speler.getIndex();
         init();
 
     }

@@ -63,7 +63,7 @@ public class EndOfGamePane extends RightPaneBlueprint
     {
         mainBox = new HBox();
         DeelPaneel mededelingDeelPaneel = new DeelPaneel(mainScherm, 0.85, 0.16, vbox, true);
-        mededelingLabel = new Label("Speler" + (speler.index() + 1) + " heeft gewonnen!");
+        mededelingLabel = new Label("Speler" + (speler.getIndex() + 1) + " heeft gewonnen!");
         Button bevestig = new Button("Bevestig");
         mededelingDeelPaneel.addLabel(mededelingLabel, 1);
         mededelingLabel.setAlignment(Pos.CENTER);
@@ -96,7 +96,7 @@ public class EndOfGamePane extends RightPaneBlueprint
             {
             if (i == 0)
                 {
-                switch (orderedWinnaars.get(i).index())
+                switch (orderedWinnaars.get(i).getIndex())
                     {
                     case 0:
                         mededelingLabel.setStyle("-fx-text-fill:red;");
@@ -111,7 +111,7 @@ public class EndOfGamePane extends RightPaneBlueprint
                         mededelingLabel.setStyle("-fx-text-fill:green;");
                         break;
                     }
-                mededelingLabel.setText("Speler" + (orderedWinnaars.get(i).index() + 1) + " heeft gewonnen!");
+                mededelingLabel.setText("Speler" + (orderedWinnaars.get(i).getIndex() + 1) + " heeft gewonnen!");
                 }
             addChild(getSpelerPaneel(orderedWinnaars.get(i), orderedWinnaars.size()));
             }

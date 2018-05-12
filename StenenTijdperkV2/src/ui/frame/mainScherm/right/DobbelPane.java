@@ -64,21 +64,21 @@ public class DobbelPane extends RightPaneBlueprint
         rollenLabel.setText("Dobbelen");
         locatieLabel.setText("Locatie: Akker");
 
-        switch (mainScherm.getController().getSpelers().get(speler.index()).getGereedschapsFiches().size())
+        switch (mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedschapsFiches().size())
             {
             case 0:
 
                 break;
             case 1:
-                ImageView temp1 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
+                ImageView temp1 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(0).getWaarde()));
                 temp1.fitWidthProperty().bind(gereedschapsficheButton1.widthProperty());
                 temp1.fitHeightProperty().bind(gereedschapsficheButton1.heightProperty());
                 gereedschapsficheButton1.setGraphic(temp1);
 
                 break;
             case 2:
-                ImageView temp2 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
-                ImageView temp3 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(1).getWaarde()));
+                ImageView temp2 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(0).getWaarde()));
+                ImageView temp3 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(1).getWaarde()));
                 temp2.fitWidthProperty().bind(gereedschapsficheButton1.widthProperty());
                 temp2.fitHeightProperty().bind(gereedschapsficheButton1.heightProperty());
                 temp3.fitWidthProperty().bind(gereedschapsficheButton2.widthProperty());
@@ -88,9 +88,9 @@ public class DobbelPane extends RightPaneBlueprint
                 break;
             case 3:
 
-                ImageView temp4 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde()));
-                ImageView temp5 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(1).getWaarde()));
-                ImageView temp6 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(2).getWaarde()));
+                ImageView temp4 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(0).getWaarde()));
+                ImageView temp5 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(1).getWaarde()));
+                ImageView temp6 = mainScherm.getImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(2).getWaarde()));
                 temp4.fitWidthProperty().bind(gereedschapsficheButton1.widthProperty());
                 temp4.fitHeightProperty().bind(gereedschapsficheButton1.heightProperty());
                 temp5.fitWidthProperty().bind(gereedschapsficheButton2.widthProperty());

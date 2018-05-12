@@ -241,15 +241,15 @@ public class InventoryPane extends RightPaneBlueprint
      */
     private void setLabels()
     {
-        steenLabel.setText(mainScherm.getController().getSpelers().get(speler.index()).getAantalSteen() + "");
-        houtLabel.setText(mainScherm.getController().getSpelers().get(speler.index()).getAantalHout() + "");
-        leemLabel.setText(mainScherm.getController().getSpelers().get(speler.index()).getAantalLeem() + "");
-        goudLabel.setText(mainScherm.getController().getSpelers().get(speler.index()).getAantalGoud() + "");
-        voedselLabel.setText(mainScherm.getController().getSpelers().get(speler.index()).getAantalVoedsel() + "");
-        voedselPerBeurtLabel.setText("Voedsel Per beurt: " + mainScherm.getController().getSpelers().get(speler.index()).getVoedselPerBeurt());
-        pionnenLabel.setText(mainScherm.getController().getSpelers().get(speler.index()).getAantalPionnenOver() + "");
+        steenLabel.setText(mainScherm.getController().getSpelers().get(speler.getIndex()).getAantalSteen() + "");
+        houtLabel.setText(mainScherm.getController().getSpelers().get(speler.getIndex()).getAantalHout() + "");
+        leemLabel.setText(mainScherm.getController().getSpelers().get(speler.getIndex()).getAantalLeem() + "");
+        goudLabel.setText(mainScherm.getController().getSpelers().get(speler.getIndex()).getAantalGoud() + "");
+        voedselLabel.setText(mainScherm.getController().getSpelers().get(speler.getIndex()).getAantalVoedsel() + "");
+        voedselPerBeurtLabel.setText("Voedsel Per beurt: " + mainScherm.getController().getSpelers().get(speler.getIndex()).getVoedselPerBeurt());
+        pionnenLabel.setText(mainScherm.getController().getSpelers().get(speler.getIndex()).getAantalPionnenOver() + "");
 
-        switch (mainScherm.getController().getSpelers().get(speler.index()).getGereedschapsFiches().size())
+        switch (mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedschapsFiches().size())
             {
             case 0:
                 gereedschapSlot1.setVisible(false);
@@ -259,24 +259,24 @@ public class InventoryPane extends RightPaneBlueprint
                 break;
             case 1:
 
-                gereedschapSlot1.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde())));
+                gereedschapSlot1.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(0).getWaarde())));
                 gereedschapSlot1.setVisible(true);
                 gereedschapSlot2.setVisible(false);
                 gereedschapSlot3.setVisible(false);
                 break;
             case 2:
 
-                gereedschapSlot1.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde())));
-                gereedschapSlot2.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(1).getWaarde())));
+                gereedschapSlot1.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(0).getWaarde())));
+                gereedschapSlot2.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(1).getWaarde())));
                 gereedschapSlot1.setVisible(true);
                 gereedschapSlot2.setVisible(true);
                 gereedschapSlot3.setVisible(false);
                 break;
             case 3:
 
-                gereedschapSlot1.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(0).getWaarde())));
-                gereedschapSlot2.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(1).getWaarde())));
-                gereedschapSlot3.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.index()).getGereedchapsFiche(2).getWaarde())));
+                gereedschapSlot1.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(0).getWaarde())));
+                gereedschapSlot2.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(1).getWaarde())));
+                gereedschapSlot3.addBackgroundImage(new ImageView(getUrl(mainScherm.getController().getSpelers().get(speler.getIndex()).getGereedchapsFiche(2).getWaarde())));
 
                 gereedschapSlot1.setVisible(true);
                 gereedschapSlot2.setVisible(true);

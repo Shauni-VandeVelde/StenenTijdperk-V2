@@ -257,7 +257,7 @@ public class MainScherm extends BorderPane
             if (dobbel.getSpeler().getAantalBruikbaarGereedschap() == 0)
                 {
 
-                controller.geefResources(dobbel.getSpeler().index(), dobbel.getCurrentRol(), dobbel.getCurrentLocatie(), 0);
+                controller.geefResources(dobbel.getSpeler().getIndex(), dobbel.getCurrentRol(), dobbel.getCurrentLocatie(), 0);
                 console.printLine("Speler " + dobbel.getSpeler().getKleur() + " heeft " + dobbel.getCurrentRol() + " gerold op locatie: " + dobbel.getCurrentLocatie().getNaam());
                 console.printLine("Hij kreeg hiervoor " + (dobbel.getCurrentRol() / dobbel.getCurrentLocatie().getWaarde()) + " " + controller.getNaamVanResource(dobbel.getCurrentLocatie()) + ".");
                 }
@@ -274,7 +274,7 @@ public class MainScherm extends BorderPane
                         controller.setGereedschapGebruikt(dobbel.getSpeler(), i);
                         }
                     }
-                controller.geefResources(dobbel.getSpeler().index(), dobbel.getCurrentRol(),
+                controller.geefResources(dobbel.getSpeler().getIndex(), dobbel.getCurrentRol(),
                         dobbel.getCurrentLocatie(),
                         totaalGereedschap);
 
@@ -282,7 +282,7 @@ public class MainScherm extends BorderPane
 
                 console.printLine("En kreeg hiervoor " + (dobbel.getCurrentRol() / dobbel.getCurrentLocatie().getWaarde()) + " " + controller.getNaamVanResource(dobbel.getCurrentLocatie()) + ".");
                 }
-            controller.clearPionnenVanSpeler(dobbel.getSpeler().index(), dobbel.getCurrentLocatie());
+            controller.clearPionnenVanSpeler(dobbel.getSpeler().getIndex(), dobbel.getCurrentLocatie());
 
             spelbordPane.clearPionnenVanLocatie(dobbel.getCurrentLocatie(), dobbel.getSpeler());
             if (getVolgendeSpeler() != -1)
@@ -346,7 +346,7 @@ public class MainScherm extends BorderPane
         else
             {
             Speler speler = controller.getHuidigeSpeler();
-            if (accept[speler.index()] == false)
+            if (accept[speler.getIndex()] == false)
                 {
                 if (controller.getBezetteStapel(speler) != null)
                     {
@@ -367,7 +367,7 @@ public class MainScherm extends BorderPane
                     }
                 else
                     {
-                    accept[speler.index()] = true;
+                    accept[speler.getIndex()] = true;
                     controller.incrementHuidigeSpelerIndex();
                     koopHut();
                     }
@@ -456,7 +456,7 @@ public class MainScherm extends BorderPane
             }
         else
             {
-            accept[v.getSpeler().index()] = true;
+            accept[v.getSpeler().getIndex()] = true;
             console.printLine("Speler " + v.getSpeler().getKleur() + " wou de upkeep van pionnen niet betalen en kreeg 10 minpunten.");
             }
         controller.incrementHuidigeSpelerIndex();
@@ -559,7 +559,7 @@ public class MainScherm extends BorderPane
 
         for (int i = 0; i < controller.getAantalSpelers(); i++)
             {
-            index = controller.getHuidigeSpeler().index();
+            index = controller.getHuidigeSpeler().getIndex();
 
             if (controller.getVolgendeBezetteLocatie(index) != null)
                 {

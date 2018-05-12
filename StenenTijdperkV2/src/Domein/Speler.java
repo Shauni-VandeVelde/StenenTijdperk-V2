@@ -245,19 +245,6 @@ public class Speler
         return totaal;
     }
 
-    void converteerGrondstoffenNaarPunten()
-    {
-        punten += aantalGoud;
-        punten += aantalHout;
-        punten += aantalLeem;
-        punten += aantalSteen;
-
-        aantalGoud = 0;
-        aantalHout = 0;
-        aantalLeem = 0;
-        aantalSteen = 0;
-    }
-
     public int getWaardeVanResources()
     {
         int resources = 0;
@@ -292,7 +279,7 @@ public class Speler
         aantalVoedsel += hoeveelheid;
     }
 
-    public void setIndex(int index)
+    private void setIndex(int index)
     {
         this.index = index;
     }
@@ -556,14 +543,9 @@ public class Speler
         return temp;
     }
 
-    public int index()
+    public int getIndex()
     {
         return index;
-    }
-
-    public int getAantalSteen()
-    {
-        return aantalSteen;
     }
 
     public int getVoedselPerBeurt()
@@ -584,6 +566,11 @@ public class Speler
     public int getAantalVoedsel()
     {
         return aantalVoedsel;
+    }
+
+    public int getAantalSteen()
+    {
+        return aantalSteen;
     }
 
     public int getAantalHout()
@@ -668,24 +655,6 @@ public class Speler
             stapel.clearPionnen();
             return false;
             }
-    }
-
-    public boolean kanVoedselTeKortBetalen()
-    {
-        int voedseltekort = getVoedseltekort();
-        int somResources = aantalGoud + aantalHout + aantalLeem + aantalSteen;
-
-        if (voedseltekort <= 0)
-            {
-            return true;
-            }
-
-        if (somResources >= voedseltekort)
-            {
-            return true;
-            }
-
-        return false;
     }
 
     public void printInfo()
