@@ -576,8 +576,8 @@ public class DomeinController
             Speler speler = temp.get(0);
             for (int j = 0; j < temp.size(); j++)
                 {
-                int a = speler.getWaardeVanResources() + speler.getHutten().size() * 3;
-                int b = temp.get(j).getWaardeVanResources() + temp.get(j).getHutten().size() * 3;
+                int a = speler.getPunten() + speler.getWaardeVanResources() + speler.getHutten().size() * 3;
+                int b = temp.get(j).getPunten() + temp.get(j).getWaardeVanResources() + temp.get(j).getHutten().size() * 3;
                 if (a < b)
                     {
                     speler = temp.get(j);
@@ -672,8 +672,9 @@ public class DomeinController
         return spelbord.getStapel(index);
     }
 
-    public Spelbord getSpelbord(){
+    public Spelbord getSpelbord()
+    {
         return spelbord;
     }
-    
+
 }

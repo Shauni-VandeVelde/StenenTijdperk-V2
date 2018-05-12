@@ -120,16 +120,18 @@ public class EndOfGamePane extends RightPaneBlueprint
     private HBox getNamenPaneel(int aantal)
     {
 
-        double widthDiv = 0.283333333;
+        double widthDiv = 0.22;
         double fontSize = 23;
         String style = "-fx-text-fill:red;" + "-fx-border-color: black;-fx-border-insets: 0;-fx-border-width: 1;-fx-border-style: solid;";
         HBox spelerPaneel = new HBox();
         Label spelerLabel = new Label("Speler: ");
+        Label puntenLabel = new Label("Punten: ");
         Label GrondstoffenLabel = new Label("Punten grondstoffen: ");
         Label huttenLabel = new Label("Punten: hutten ");
         Label totaalLabel = new Label("Totaal: ");
 
         DeelPaneel spelerDeelPaneel = new DeelPaneel(mainScherm, 0.15, 0.14, vbox, true);
+        DeelPaneel puntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
         DeelPaneel huttenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
         DeelPaneel grondstoffenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
         DeelPaneel totaalPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
@@ -140,26 +142,31 @@ public class EndOfGamePane extends RightPaneBlueprint
         //totaalPuntenDeelPaneel.setStyle("-fx-background-color:orange;");
         spelerLabel.setAlignment(Pos.CENTER);
         GrondstoffenLabel.setAlignment(Pos.CENTER);
+        puntenLabel.setAlignment(Pos.CENTER);
         huttenLabel.setAlignment(Pos.CENTER);
         totaalLabel.setAlignment(Pos.CENTER);
 
         spelerLabel.setStyle(style);
         GrondstoffenLabel.setStyle(style);
         huttenPuntenDeelPaneel.setStyle(style);
+        puntenLabel.setStyle(style);
         huttenLabel.setStyle(style);
         totaalLabel.setStyle(style);
 
         spelerDeelPaneel.addLabel(spelerLabel, 1);
+        puntenDeelPaneel.addLabel(puntenLabel, 1);
         huttenPuntenDeelPaneel.addLabel(huttenLabel, 1);
         grondstoffenPuntenDeelPaneel.addLabel(GrondstoffenLabel, 1);
         totaalPuntenDeelPaneel.addLabel(totaalLabel, 1);
 
         spelerDeelPaneel.setFontTracking(spelerLabel, 25.5);
+        puntenDeelPaneel.setFontTracking(puntenLabel, 25.5);
         huttenPuntenDeelPaneel.setFontTracking(huttenLabel, fontSize);
         grondstoffenPuntenDeelPaneel.setFontTracking(GrondstoffenLabel, fontSize);
         totaalPuntenDeelPaneel.setFontTracking(totaalLabel, fontSize);
 
         spelerPaneel.getChildren().add(spelerDeelPaneel);
+        spelerPaneel.getChildren().add(puntenDeelPaneel);
         spelerPaneel.getChildren().add(huttenPuntenDeelPaneel);
         spelerPaneel.getChildren().add(grondstoffenPuntenDeelPaneel);
         spelerPaneel.getChildren().add(totaalPuntenDeelPaneel);
@@ -192,15 +199,17 @@ public class EndOfGamePane extends RightPaneBlueprint
             style = "-fx-text-fill: green;";
             }
         style += "-fx-border-color: black;-fx-border-insets: 0;-fx-border-width: 1;-fx-border-style: solid;";
-        double widthDiv = 0.283333333;
+        double widthDiv = 0.22;
         double fontSize = 30;
         HBox spelerPaneel = new HBox();
         Label spelerLabel = new Label("" + kleur);
         Label resourcesPuntenLabel = new Label("" + speler.getWaardeVanResources());
         Label huttenPuntenLabel = new Label("" + speler.getHutten().size() * 3);
-        Label totaalPuntenLabel = new Label("" + ((speler.getHutten().size() * 3) + speler.getWaardeVanResources()));
+        Label puntenLabel = new Label("" + speler.getPunten());
+        Label totaalPuntenLabel = new Label("" + ((speler.getPunten()) + (speler.getHutten().size() * 3) + speler.getWaardeVanResources()));
 
         DeelPaneel spelerDeelPaneel = new DeelPaneel(mainScherm, 0.15, 0.14, vbox, true);
+        DeelPaneel puntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
         DeelPaneel huttenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
         DeelPaneel grondstoffenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
         DeelPaneel totaalPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
@@ -210,27 +219,32 @@ public class EndOfGamePane extends RightPaneBlueprint
         //  grondstoffenPuntenDeelPaneel.setStyle("-fx-background-color:purple;");
         // totaalPuntenDeelPaneel.setStyle("-fx-background-color:orange;");
         spelerLabel.setAlignment(Pos.CENTER);
+        puntenLabel.setAlignment(Pos.CENTER);
         resourcesPuntenLabel.setAlignment(Pos.CENTER);
         huttenPuntenLabel.setAlignment(Pos.CENTER);
         totaalPuntenLabel.setAlignment(Pos.CENTER);
 
         spelerLabel.setStyle(style);
+        puntenLabel.setStyle(style);
         resourcesPuntenLabel.setStyle(style);
         huttenPuntenDeelPaneel.setStyle(style);
         huttenPuntenLabel.setStyle(style);
         totaalPuntenLabel.setStyle(style);
 
         spelerDeelPaneel.addLabel(spelerLabel, 1);
+        puntenDeelPaneel.addLabel(puntenLabel, 1);
         huttenPuntenDeelPaneel.addLabel(huttenPuntenLabel, 1);
         grondstoffenPuntenDeelPaneel.addLabel(resourcesPuntenLabel, 1);
         totaalPuntenDeelPaneel.addLabel(totaalPuntenLabel, 1);
 
         spelerDeelPaneel.setFontTracking(spelerLabel, 25.5);
+        puntenDeelPaneel.setFontTracking(puntenLabel, 25.5);
         huttenPuntenDeelPaneel.setFontTracking(huttenPuntenLabel, fontSize);
         grondstoffenPuntenDeelPaneel.setFontTracking(resourcesPuntenLabel, fontSize);
         totaalPuntenDeelPaneel.setFontTracking(totaalPuntenLabel, fontSize);
 
         spelerPaneel.getChildren().add(spelerDeelPaneel);
+        spelerPaneel.getChildren().add(puntenDeelPaneel);
         spelerPaneel.getChildren().add(huttenPuntenDeelPaneel);
         spelerPaneel.getChildren().add(grondstoffenPuntenDeelPaneel);
         spelerPaneel.getChildren().add(totaalPuntenDeelPaneel);
