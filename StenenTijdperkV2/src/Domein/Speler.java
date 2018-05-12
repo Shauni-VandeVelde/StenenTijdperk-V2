@@ -225,6 +225,8 @@ public class Speler
     void voegHutToe(Hut hut)
     {
         hutten.add(hut);
+        System.out.println("Hut Added");
+
     }
 
     void berekenPuntenVanHutten(int houtWaarde, int leemWaarde, int steenWaarde, int goudWaarde)

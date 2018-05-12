@@ -452,40 +452,52 @@ public class MainScherm extends BorderPane
         startVoeden();
     }
 
+    private void endGame()
+    {
+        setEindScherm(new EndOfGamePane(this, centerRightInventoryMainPane));
+        FadeTransition ft = new FadeTransition(Duration.millis(550), this);
+        ft.setFromValue(0);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.play();
+    }
+
     public void finishRound()
     {
 
         if (finishRoundFirst)
             {
-
             controller.voedPionnen();
             controller.verrekenAkker();
             controller.verrekenGereedschapsmaker();
             controller.verrekenLoveHut();
-            setEindeRondePane(new EindeRondePane(this, centerMainHBox));
             finishRoundFirst = false;
             firstDobbel = true;
+            if (!controller.isHetSpelGedaan())
+                {
+                setEindeRondePane(new EindeRondePane(this, centerMainHBox));
+                }
             }
         else
             {
             finishRoundFirst = true;
             first = true;
             System.err.println("Round " + controller.getRondeNummer() + ": " + " Finished");
+            resetAccept();
             controller.resetVorigeLocaties();
             controller.resetLocaties();
             controller.resetPionnen();
+            controller.resetGebruiktGereedschap();
+            controller.incrementRondeNummer();
+            controller.incrementStartSpelerNummer();
+            controller.setHuidigeSpelerIndex();
             spelbordPane.resetAkker();
             spelbordPane.resetLovehut();
             spelbordPane.resetGereedschapsMaker();
             stapelsPanel.clearPionnen();
-            resetAccept();
 
-            controller.resetGebruiktGereedschap();
-            stapelsPanel.updateStapels();
             spelbordPane.turnOffArrow();
-            controller.incrementRondeNummer();
-            controller.incrementStartSpelerNummer();
-            controller.setHuidigeSpelerIndex();
+            stapelsPanel.updateStapels();
             bottomButtonsPanel.update();
             magPionnenPlaatsen = true;
             tabNaarHuidigeSpeler();
@@ -494,8 +506,13 @@ public class MainScherm extends BorderPane
 
         if (controller.isHetSpelGedaan())
             {
+            FadeTransition ft = new FadeTransition(Duration.millis(550), this);
+            ft.setFromValue(1);
+            ft.setToValue(0);
+            ft.setCycleCount(1);
+            ft.play();
+            ft.setOnFinished(e -> endGame());
             stopMusic();
-            setEindScherm(new EndOfGamePane(this, centerRightInventoryMainPane));
 
             }
 

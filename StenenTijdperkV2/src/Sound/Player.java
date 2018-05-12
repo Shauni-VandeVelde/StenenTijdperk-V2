@@ -35,7 +35,7 @@ public class Player
         this.mainScherm = mainscherm;
 
         setPath(type);
-        System.out.println(path);
+        //System.out.println(path);
         if (!path.equals(""))
             {
             try
@@ -89,7 +89,6 @@ public class Player
         if (type.toLowerCase().trim().contains("stapel"))
             {
             type = "stapel";
-            System.out.println("Stapel");
             }
         switch (type.toLowerCase().trim())
             {
