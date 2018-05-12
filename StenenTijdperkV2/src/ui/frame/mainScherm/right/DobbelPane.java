@@ -143,7 +143,7 @@ public class DobbelPane extends RightPaneBlueprint
         DeelPaneel dobbelImageDeelPaneel = new DeelPaneel(mainScherm, 0.42, 0.23, vbox, true);
         DeelPaneel dobbelLabelDeelPaneel = new DeelPaneel(mainScherm, 0.58, 0.23, vbox, true);
         dobbelImageDeelPaneel.addBackgroundImage(dobbelBekerImage);
-        dobbelLabelDeelPaneel.addLabel(dobbelSteenLabel, 1, 18.5, Pos.CENTER, style);
+        dobbelLabelDeelPaneel.addControl(dobbelSteenLabel, 1, 18.5, Pos.CENTER, style);
         dobbelBox.getChildren().add(dobbelImageDeelPaneel);
         dobbelBox.getChildren().add(dobbelLabelDeelPaneel);
         g1.addButton(gereedschapsficheButton1, 1, 1);

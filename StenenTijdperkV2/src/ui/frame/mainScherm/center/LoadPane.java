@@ -41,10 +41,9 @@ public class LoadPane extends RightPaneBlueprint
 
         vBox = new VBox();
 
-        setLoadButtons();        
+        setLoadButtons();
         setLayout();
         setStyleSheets();
-
 
         this.getChildren().add(backgroundImg);
 
@@ -79,15 +78,16 @@ public class LoadPane extends RightPaneBlueprint
             }
     }
 
-    private void setLoadButtons(){
+    private void setLoadButtons()
+    {
         ArrayList<Pair> temp = pc.getSaveNamesWithRoundNr();
-        
-        for(int i = 0; i < temp.size(); ++i)
-        {
+
+        for (int i = 0; i < temp.size(); ++i)
+            {
             saves.add(temp.get(i).getKey().toString());
             loadButtons.add(new Button("Save " + (i + 1) + " - " + "Naam: " + temp.get(i).getKey().toString() + " - " + "Ronde: " + temp.get(i).getValue().toString()));
-        }
+            }
 
     }
-}
 
+}

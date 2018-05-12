@@ -104,9 +104,9 @@ public class SoundMenu extends RightPaneBlueprint
         sliders.getChildren().add(masterSliderPaneel);
         sliders.getChildren().add(musicSliderPaneel);
         sliders.getChildren().add(effectsSliderPaneel);
-        masterLabelPaneel.addLabel(masterLabel, 1);
-        musicLabelPaneel.addLabel(musicLabel, 1);
-        SFXLabelPaneel.addLabel(SFXLabel, 1);
+        masterLabelPaneel.addControl(masterLabel, 1, 1);
+        musicLabelPaneel.addControl(musicLabel, 1, 1);
+        SFXLabelPaneel.addControl(SFXLabel, 1, 1);
         masterSliderPaneel.getChildren().add(masterVolumeSlider);
         musicSliderPaneel.getChildren().add(musicVolumeSlider);
         effectsSliderPaneel.getChildren().add(SFXVolumeSlider);

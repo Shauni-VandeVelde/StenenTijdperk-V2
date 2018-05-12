@@ -138,7 +138,7 @@ public abstract class RightPaneBlueprint extends Pane
                 {
                 Label label = (Label) nodes[i];
                 label.setAlignment(Pos.CENTER);
-                labelPane.addLabel(label, scale);
+                labelPane.addControl(label, scale, scale);
                 label.prefHeightProperty().bind(hbox.heightProperty().multiply(scale));
                 label.prefWidthProperty().bind(hbox.widthProperty().divide(aantal).multiply(scale));
                 label.maxHeightProperty().bind(hbox.heightProperty().multiply(scale));
@@ -455,7 +455,7 @@ public abstract class RightPaneBlueprint extends Pane
                 Label label = (Label) nodes[i];
 
                 label.setAlignment(Pos.CENTER);
-                labelPane.addLabel(label, scale);
+                labelPane.addControl(label, scale, scale);
                 label.prefHeightProperty().bind(tempPane.heightProperty().multiply(scale));
                 label.prefWidthProperty().bind(tempPane.widthProperty().divide(aantal).multiply(scale));
                 label.maxHeightProperty().bind(tempPane.heightProperty().multiply(scale));

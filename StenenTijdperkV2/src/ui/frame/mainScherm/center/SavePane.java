@@ -15,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -34,7 +33,7 @@ public class SavePane extends RightPaneBlueprint
     private PersistentieController pc;
     private DomeinController dc;
     private Stage stage;
-    
+
     private Label lblSave;
     private Button btnNewSave;
     private Button backButton;
@@ -59,8 +58,6 @@ public class SavePane extends RightPaneBlueprint
         backButton = new Button("Terug");
         saves = new ArrayList<String>();
         existingSavesButtons = new ArrayList<Button>();
-        
-   
 
         loadExistingSaveButtons();
 
@@ -74,7 +71,7 @@ public class SavePane extends RightPaneBlueprint
 
         this.getChildren().add(backgroundImg);
         this.getChildren().add(backButton);
-        
+
         vBox.getChildren().add(lblSave);
         vBox.getChildren().add(btnNewSave);
 
@@ -95,20 +92,17 @@ public class SavePane extends RightPaneBlueprint
         vBox.prefWidthProperty().bind(widthProperty());
         vBox.prefHeightProperty().bind(heightProperty());
         vBox.setAlignment(Pos.CENTER);
-        
+
         lblSave.setFont(new Font("Arial", 30));
         backButton.setFont(new Font("Arial", 30));
 
         btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.2));
         btnNewSave.prefHeightProperty().bind(heightProperty().multiply(0.1));
-        
+
         backButton.setLayoutX(30);
         backButton.setLayoutY(100);
-        
-        
-//        btnNewSave.setBackground(buttonBG);
- 
 
+//        btnNewSave.setBackground(buttonBG);
         for (Button b : existingSavesButtons)
             {
             b.prefWidthProperty().bind(btnNewSave.widthProperty());
@@ -125,7 +119,7 @@ public class SavePane extends RightPaneBlueprint
             b.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
             }
     }
-    
+
     private void setActions()
     {
         btnNewSave.setOnAction(new EventHandler<ActionEvent>()
@@ -136,8 +130,9 @@ public class SavePane extends RightPaneBlueprint
                 pc.saveNew("Test07", dc);
                 pauzePane.toggleSavePane();
             }
+
         });
-        
+
 //         backButton.setOnAction(new EventHandler<ActionEvent>()
 //        {
 //            @Override
@@ -153,17 +148,17 @@ public class SavePane extends RightPaneBlueprint
 //            }
 //
 //        });
-        
     }
 
-    private void loadExistingSaveButtons(){
+    private void loadExistingSaveButtons()
+    {
         ArrayList<Pair> temp = pc.getSaveNamesWithRoundNr();
-        
-        for(int i = 0; i < temp.size(); ++i)
-        {
+
+        for (int i = 0; i < temp.size(); ++i)
+            {
             saves.add(temp.get(i).getKey().toString());
             existingSavesButtons.add(new Button("Save " + (i + 1) + " - " + "Naam: " + temp.get(i).getKey().toString() + " - " + "Ronde: " + temp.get(i).getValue().toString()));
-        }
+            }
     }
 //    public void toggleBackButton()
 //    {
@@ -171,7 +166,7 @@ public class SavePane extends RightPaneBlueprint
 //        if (backButtonActive)
 //            {
 //            getChildren().clear();
-//            
+//
 //            }
 //        else
 //            {
@@ -181,4 +176,5 @@ public class SavePane extends RightPaneBlueprint
 //
 //        backButtonActive = !backButtonActive;
 //    }
+
 }

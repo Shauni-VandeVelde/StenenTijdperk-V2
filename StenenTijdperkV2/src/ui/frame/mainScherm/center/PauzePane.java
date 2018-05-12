@@ -14,11 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -74,8 +69,7 @@ public class PauzePane extends Pane
         btnTerugNaarMenu = new ImageButton("/img/Buttons/btnTerugNaarMenu.png");
         btnSluiten = new ImageButton("/img/Buttons/btnAfsluiten.png");
         background = mainScherm.getImageView("img/PauzeMenuBg.png");
-       // buttonBackground = new Image("img/Button.png");
-        
+        // buttonBackground = new Image("img/Button.png");
 
         setLayout();
         getChildren().add(background);
@@ -95,7 +89,6 @@ public class PauzePane extends Pane
 //        btnLoad.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
 //        btnTerugNaarMenu.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
 //        btnSluiten.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
-
         setActions();
 
         this.stage = stage;
@@ -104,15 +97,13 @@ public class PauzePane extends Pane
 
     private void setLayout()
     {
-        
+
 //        btnTerugNaarSpel.setGraphic(new ImageView(buttonBackground));
 //        btnSoundOptions.setGraphic(new ImageView(buttonBackground));
 //        btnSave.setGraphic(new ImageView(buttonBackground));
 //        btnLoad.setGraphic(new ImageView(buttonBackground));
 //        btnTerugNaarMenu.setGraphic(new ImageView(buttonBackground));
 //        btnSluiten.setGraphic(new ImageView(buttonBackground));
-        
-        
         mainHBox.setAlignment(Pos.CENTER);
         mainHBox.prefWidthProperty().bind(widthProperty());
 
@@ -130,7 +121,7 @@ public class PauzePane extends Pane
 
         //btnTerugNaarSpel.prefHeightProperty().bind(heightProperty());
         //Alle buttonwidths en heights worden gelijk gezet aan die van btnTerugNaarSpel
-        btnSoundOptions.prefWidthProperty().bind(btnTerugNaarSpel.widthProperty()); 
+        btnSoundOptions.prefWidthProperty().bind(btnTerugNaarSpel.widthProperty());
         btnSave.prefWidthProperty().bind(btnTerugNaarSpel.widthProperty());
         //btnSave.prefHeightProperty().bind(btnTerugNaarSpel.widthProperty());
         btnLoad.prefWidthProperty().bind(btnTerugNaarSpel.widthProperty());

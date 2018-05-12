@@ -8,67 +8,83 @@ import ui.frame.mainScherm.MainScherm;
 public class Speler
 {
 
-    public void setPreviousHout(int previousHout) {
+    public void setPreviousHout(int previousHout)
+    {
         this.previousHout = previousHout;
     }
 
-    public void setPreviousLeem(int previousLeem) {
+    public void setPreviousLeem(int previousLeem)
+    {
         this.previousLeem = previousLeem;
     }
 
-    public void setPreviousSteen(int previousSteen) {
+    public void setPreviousSteen(int previousSteen)
+    {
         this.previousSteen = previousSteen;
     }
 
-    public void setPreviousGoud(int previousGoud) {
+    public void setPreviousGoud(int previousGoud)
+    {
         this.previousGoud = previousGoud;
     }
 
-    public void setPreviousVoedsel(int previousVoedsel) {
+    public void setPreviousVoedsel(int previousVoedsel)
+    {
         this.previousVoedsel = previousVoedsel;
     }
 
-    public void setVoedselEindeVorigeBeurt(int voedselEindeVorigeBeurt) {
+    public void setVoedselEindeVorigeBeurt(int voedselEindeVorigeBeurt)
+    {
         this.voedselEindeVorigeBeurt = voedselEindeVorigeBeurt;
     }
 
-    public void setPreviousPunten(int previousPunten) {
+    public void setPreviousPunten(int previousPunten)
+    {
         this.previousPunten = previousPunten;
     }
 
-    public void setPreviousVoedselPerBeurt(int previousVoedselPerBeurt) {
+    public void setPreviousVoedselPerBeurt(int previousVoedselPerBeurt)
+    {
         this.previousVoedselPerBeurt = previousVoedselPerBeurt;
     }
 
-    public void setPreviousPionnenSize(int previousPionnenSize) {
+    public void setPreviousPionnenSize(int previousPionnenSize)
+    {
         this.previousPionnenSize = previousPionnenSize;
     }
 
-    public void setPreviousWaardeGereedschap(int previousWaardeGereedschap) {
+    public void setPreviousWaardeGereedschap(int previousWaardeGereedschap)
+    {
         this.previousWaardeGereedschap = previousWaardeGereedschap;
     }
 
-    public void setAddedVoedsel(int addedVoedsel) {
+    public void setAddedVoedsel(int addedVoedsel)
+    {
         this.addedVoedsel = addedVoedsel;
     }
 
-    public void setUpkeep(int upkeep) {
+    public void setUpkeep(int upkeep)
+    {
         this.upkeep = upkeep;
     }
 
-    public void setHoeveelheidPionnenStart(int hoeveelheidPionnenStart) {
+    public void setHoeveelheidPionnenStart(int hoeveelheidPionnenStart)
+    {
         this.hoeveelheidPionnenStart = hoeveelheidPionnenStart;
     }
 
-    public void setPreviousHuttenSize(int previousHuttenSize) {
+    public void setPreviousHuttenSize(int previousHuttenSize)
+    {
         this.previousHuttenSize = previousHuttenSize;
     }
 
-    public void setTotaalPenalty(int totaalPenalty) {
+    public void setTotaalPenalty(int totaalPenalty)
+    {
         this.totaalPenalty = totaalPenalty;
     }
 
-    public void setDc(DomeinController dc) {
+    public void setDc(DomeinController dc)
+    {
         this.dc = dc;
     }
 

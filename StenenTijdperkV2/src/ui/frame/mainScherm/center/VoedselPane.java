@@ -162,10 +162,10 @@ public class VoedselPane extends RightPaneBlueprint
         DeelPaneel ja = (DeelPaneel) buttonBox.getChildren().get(0);
         DeelPaneel nee = (DeelPaneel) buttonBox.getChildren().get(1);
 
-        houtLabelDeel.addLabel(houtLabel, 0.9);
-        leemLabelDeel.addLabel(leemLabel, 0.9);
-        steenLabelDeel.addLabel(steenLabel, 0.9);
-        goudLabelDeel.addLabel(goudLabel, 0.9);
+        houtLabelDeel.addControl(houtLabel, 0.9, 0.9);
+        leemLabelDeel.addControl(leemLabel, 0.9, 0.9);
+        steenLabelDeel.addControl(steenLabel, 0.9, 0.9);
+        goudLabelDeel.addControl(goudLabel, 0.9, 0.9);
 
         houtSliderDeel.addSlider(houtSlider, 1);
         leemSliderDeel.addSlider(leemSlider, 1);

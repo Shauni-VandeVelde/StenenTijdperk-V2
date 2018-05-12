@@ -65,7 +65,7 @@ public class EndOfGamePane extends RightPaneBlueprint
         DeelPaneel mededelingDeelPaneel = new DeelPaneel(mainScherm, 0.85, 0.16, vbox, true);
         mededelingLabel = new Label("Speler" + (speler.getIndex() + 1) + " heeft gewonnen!");
         Button bevestig = new Button("Bevestig");
-        mededelingDeelPaneel.addLabel(mededelingLabel, 1);
+        mededelingDeelPaneel.addControl(mededelingLabel, 1, 1);
         mededelingLabel.setAlignment(Pos.CENTER);
         mededelingLabel.setStyle(style);
         mededelingDeelPaneel.setFontTracking(mededelingLabel, 43);
@@ -153,11 +153,11 @@ public class EndOfGamePane extends RightPaneBlueprint
         huttenLabel.setStyle(style);
         totaalLabel.setStyle(style);
 
-        spelerDeelPaneel.addLabel(spelerLabel, 1);
-        puntenDeelPaneel.addLabel(penaltyLabel, 1);
-        huttenPuntenDeelPaneel.addLabel(huttenLabel, 1);
-        grondstoffenPuntenDeelPaneel.addLabel(GrondstoffenLabel, 1);
-        totaalPuntenDeelPaneel.addLabel(totaalLabel, 1);
+        spelerDeelPaneel.addControl(spelerLabel, 1, 1);
+        puntenDeelPaneel.addControl(penaltyLabel, 1, 1);
+        huttenPuntenDeelPaneel.addControl(huttenLabel, 1, 1);
+        grondstoffenPuntenDeelPaneel.addControl(GrondstoffenLabel, 1, 1);
+        totaalPuntenDeelPaneel.addControl(totaalLabel, 1, 1);
 
         spelerDeelPaneel.setFontTracking(spelerLabel, 25.5);
         puntenDeelPaneel.setFontTracking(penaltyLabel, 25.5);
@@ -231,11 +231,11 @@ public class EndOfGamePane extends RightPaneBlueprint
         huttenPuntenLabel.setStyle(style);
         totaalPuntenLabel.setStyle(style);
 
-        spelerDeelPaneel.addLabel(spelerLabel, 1);
-        puntenDeelPaneel.addLabel(penaltyLabel, 1);
-        huttenPuntenDeelPaneel.addLabel(huttenPuntenLabel, 1);
-        grondstoffenPuntenDeelPaneel.addLabel(resourcesPuntenLabel, 1);
-        totaalPuntenDeelPaneel.addLabel(totaalPuntenLabel, 1);
+        spelerDeelPaneel.addControl(spelerLabel, 1, 1);
+        puntenDeelPaneel.addControl(penaltyLabel, 1, 1);
+        huttenPuntenDeelPaneel.addControl(huttenPuntenLabel, 1, 1);
+        grondstoffenPuntenDeelPaneel.addControl(resourcesPuntenLabel, 1, 1);
+        totaalPuntenDeelPaneel.addControl(totaalPuntenLabel, 1, 1);
 
         spelerDeelPaneel.setFontTracking(spelerLabel, 25.5);
         puntenDeelPaneel.setFontTracking(penaltyLabel, 25.5);

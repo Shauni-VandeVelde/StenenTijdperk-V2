@@ -120,17 +120,17 @@ public class EindeRondePane extends RightPaneBlueprint
         DeelPaneel bruikbaarGereedschapPane = new DeelPaneel(mainScherm, x + 0.06, y / 1.25, this, true);
         DeelPaneel huttenPane = new DeelPaneel(mainScherm, x + 0.06, y / 1.25, this, true);
 
-        spelerPane.addLabel(spelerLabel, 1, 50, Pos.CENTER, style);
-        houtPane.addLabel(houtLabel, 1, 50, Pos.CENTER, style);
-        leemPane.addLabel(leemLabel, 1, 50, Pos.CENTER, style);
-        steenPane.addLabel(steenLabel, 1, 50, Pos.CENTER, style);
-        goudPane.addLabel(goudLabel, 1, 50, Pos.CENTER, style);
-        voedselPane.addLabel(voedselLabel, 1, 20, Pos.CENTER, style);
-        pionnenPane.addLabel(pionnenLabel, 1, 50, Pos.CENTER, style);
-        puntenPane.addLabel(puntenLabel, 1, 50, Pos.CENTER, style);
-        voedselPerBeurtPane.addLabel(voedselPerBeurtLabel, 1, 50, Pos.CENTER, style);
-        bruikbaarGereedschapPane.addLabel(bruikbaarGereedschapLabel, 1, 50, Pos.CENTER, style);
-        huttenPane.addLabel(huttenLabel, 1, 50, Pos.CENTER, style);
+        spelerPane.addControl(spelerLabel, 1, 50, Pos.CENTER, style);
+        houtPane.addControl(houtLabel, 1, 50, Pos.CENTER, style);
+        leemPane.addControl(leemLabel, 1, 50, Pos.CENTER, style);
+        steenPane.addControl(steenLabel, 1, 50, Pos.CENTER, style);
+        goudPane.addControl(goudLabel, 1, 50, Pos.CENTER, style);
+        voedselPane.addControl(voedselLabel, 1, 20, Pos.CENTER, style);
+        pionnenPane.addControl(pionnenLabel, 1, 50, Pos.CENTER, style);
+        puntenPane.addControl(puntenLabel, 1, 50, Pos.CENTER, style);
+        voedselPerBeurtPane.addControl(voedselPerBeurtLabel, 1, 50, Pos.CENTER, style);
+        bruikbaarGereedschapPane.addControl(bruikbaarGereedschapLabel, 1, 50, Pos.CENTER, style);
+        huttenPane.addControl(huttenLabel, 1, 50, Pos.CENTER, style);
 
         namenBox = getVBox(new DeelPaneel[]
             {
@@ -209,27 +209,27 @@ public class EindeRondePane extends RightPaneBlueprint
         DeelPaneel huttenBijgekochtPane = new DeelPaneel(mainScherm, x, y / 1.25, this, true);
 
         // DeelPaneel SHuttenPane = new DeelPaneel(mainScherm,x, y, mainScherm, this, true);
-        spelerPaneel.addLabel(spelerLabel,
+        spelerPaneel.addControl(spelerLabel,
                 1, 50, Pos.CENTER, style);
-        houtPaneel.addLabel(houtLabel,
+        houtPaneel.addControl(houtLabel,
                 1, 50, Pos.CENTER, style);
-        leemPaneel.addLabel(leemLabel,
+        leemPaneel.addControl(leemLabel,
                 1, 50, Pos.CENTER, style);
-        steenPaneel.addLabel(steenLabel,
+        steenPaneel.addControl(steenLabel,
                 1, 50, Pos.CENTER, style);
-        goudPaneel.addLabel(goudLabel,
+        goudPaneel.addControl(goudLabel,
                 1, 50, Pos.CENTER, style);
-        voedselPaneel.addLabel(voedselLabel,
+        voedselPaneel.addControl(voedselLabel,
                 1, 12, Pos.CENTER, style);
-        pionnenPaneel.addLabel(pionnenLabel,
+        pionnenPaneel.addControl(pionnenLabel,
                 1, 50, Pos.CENTER, style);
-        puntenPaneel.addLabel(puntenLabel,
+        puntenPaneel.addControl(puntenLabel,
                 1, 50, Pos.CENTER, style);
-        voedselPerBeurtPane.addLabel(voedselPerBeurtLabel,
+        voedselPerBeurtPane.addControl(voedselPerBeurtLabel,
                 1, 50, Pos.CENTER, style);
-        bruikbaarGereedschapPane.addLabel(bruikbaarGereedschapLabel,
+        bruikbaarGereedschapPane.addControl(bruikbaarGereedschapLabel,
                 1, 50, Pos.CENTER, style);
-        huttenBijgekochtPane.addLabel(huttenBijgekochtLabel,
+        huttenBijgekochtPane.addControl(huttenBijgekochtLabel,
                 1, 50, Pos.CENTER, style);
         spelerLabel.setStyle(style);
 

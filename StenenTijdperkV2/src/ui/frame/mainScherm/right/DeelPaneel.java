@@ -158,22 +158,7 @@ public class DeelPaneel extends Pane
         getChildren().add(slider);
     }
 
-    public void addLabel(Label label, double scale)
-    {
-
-        getChildren().clear();
-
-        label.prefWidthProperty().bind(widthProperty().divide(scale));
-        label.prefHeightProperty().bind(heightProperty().divide(scale));
-        label.minWidthProperty().bind(widthProperty().divide(scale));
-        label.minHeightProperty().bind(heightProperty().divide(scale));
-        label.maxWidthProperty().bind(widthProperty().divide(scale));
-        label.maxHeightProperty().bind(heightProperty().divide(scale));
-
-        getChildren().add(label);
-    }
-
-    public void addLabel(Label label, double scale, double fontSize, Pos pos, String style)
+    public void addControl(Label label, double scale, double fontSize, Pos pos, String style)
     {
 
         getChildren().clear();
