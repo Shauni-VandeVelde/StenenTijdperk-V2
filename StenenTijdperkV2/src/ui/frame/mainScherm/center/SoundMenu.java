@@ -242,7 +242,7 @@ public class SoundMenu extends RightPaneBlueprint
         musicLabel.setAlignment(Pos.CENTER);
         SFXLabel.setAlignment(Pos.CENTER);
 
-        acceptButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
+        acceptButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
 
     }
 
