@@ -170,15 +170,17 @@ public class PersistentieController {
     }
 
     /**
-     * Verwijdert de oude save en roept dan 'saveNew' op om de huidige op te slaan onder dezelfde naam
+     * Verwijdert de oude save en roept dan 'saveNew' op om de huidige op te
+     * slaan onder dezelfde naam
+     *
      * @param naam
-     * @param dc 
+     * @param dc
      */
-    public void saveOverride(String naam, DomeinController dc){
+    public void saveOverride(String naam, DomeinController dc) {
         String saveUpdateModeOff = "SET SQL_SAFE_UPDATES = 0;";
         boolean success = false;
-        
-        try(Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")){
+
+        try (Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")) {
             PreparedStatement qryDeleteHutten = con.prepareStatement(saveUpdateModeOff + "DELETE FROM hut WHERE dcNaam = ?");
             PreparedStatement qryDeletePionnen = con.prepareStatement(saveUpdateModeOff + "DELETE FROM pion WHERE dcNaam = ?");
             PreparedStatement qryDeleteGereedschapsFiches = con.prepareStatement(saveUpdateModeOff + "DELETE FROM gereedschapsfiche WHERE dcNaam = ?");
@@ -192,77 +194,81 @@ public class PersistentieController {
             qryDeleteSpelers.setString(1, naam);
             qryDeleteStapels.setString(1, naam);
             qryDeleteDomeinController.setString(1, naam);
-            
+
             qryDeleteHutten.executeQuery();
             qryDeletePionnen.executeQuery();
             qryDeleteGereedschapsFiches.executeQuery();
             qryDeleteSpelers.executeQuery();
             qryDeleteStapels.executeQuery();
             qryDeleteDomeinController.executeQuery();
-            
+
             success = true;
-        }
-        catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
-        if(success){
+
+        if (success) {
             saveNew(naam, dc);
         }
     }
-    
+
     /**
-     * Returnt all domeincontroller in een pair van <String, int> volgens <naam, rondeNummer>
-     * @return 
+     * Returnt all domeincontroller in een pair van <String, int> volgens
+     * <naam, rondeNummer>
+     *
+     * @return
      */
     public ArrayList<Pair> getSaveNamesWithRoundNr() {
         ArrayList<Pair> saves = new ArrayList<Pair>();
-        
-        try (Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")) 
-            {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            try (Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")) {
                 PreparedStatement qryGetSave = con.prepareStatement("SELECT domeinControllerNaam, rondeNummer FROM domeincontroller");
                 ResultSet rs = qryGetSave.executeQuery();
-                
-                while(rs.next()){
+
+                while (rs.next()) {
                     Pair temp = new Pair(rs.getString("domeinControllerNaam"), rs.getInt("rondeNummer"));
                     saves.add(temp);
                 }
-            }
-        catch(SQLException ex){
+            } catch (SQLException ex) {
                 System.out.println(ex);
+            }
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
         }
 
         return saves;
     }
-    
+
     /**
      * Returnt een nieuwe domeincontroller met de stats van de gewenste save
+     *
      * @param naam
-     * @return 
+     * @return
      */
-    public DomeinController loadGame(String naam){
+    public DomeinController loadGame(String naam) {
         DomeinController newDC = new DomeinController(true);
-        
-        try(Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")){
+
+        try (Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")) {
             PreparedStatement qryGetDomeinController = con.prepareStatement("SELECT * FROM domeincontroller WHERE domeinControllerNaam = ?");
             qryGetDomeinController.setString(1, naam);
-            
+
             ResultSet rs = qryGetDomeinController.executeQuery();
-            
+
             rs.next();
             // Add dc
             newDC.setStartSpelerIndex(rs.getInt("startSpelerIndex"));
             newDC.setHuidigeSpelerIndex();
             newDC.setRondeNummer(rs.getInt("rondeNummer"));
-            
+
             PreparedStatement qryGetSpelers = con.prepareStatement("SELECT * FROM speler WHERE dcNaam = ?");
             qryGetSpelers.setString(1, naam);
-            
+
             rs = qryGetSpelers.executeQuery();
-            
+
             //Add spelers
-            while(rs.next())
-            {
+            while (rs.next()) {
                 Kleur kleur = Kleur.valueOf(rs.getString("kleur"));
                 int index = rs.getInt("spelerIndex");
                 Speler temp = new Speler(newDC, kleur, index);
@@ -283,103 +289,102 @@ public class PersistentieController {
                 temp.setPreviousPionnenSize(rs.getInt("previousPionnenSize"));
                 temp.setPreviousWaardeGereedschap(rs.getInt("previousWaardeGereedschap"));
                 temp.setPreviousHuttenSize(rs.getInt("previousHuttenSize"));
-                
+
                 newDC.addSpeler(temp);
             }
-            
+
             //Stapels clearen
             newDC.getSpelbord().clearStapelsInhoud();
-            
+
             //Stapels vullen met hutten
-            for(int i = 0; i < newDC.getSpelbord().getStapels().size(); ++i){
+            for (int i = 0; i < newDC.getSpelbord().getStapels().size(); ++i) {
                 PreparedStatement qryGetHuttenVoorStapels = con.prepareStatement("SELECT * FROM hut WHERE dcNaam = ? AND stapelIndex = ? AND spelerIndex IS NULL");
-                
+
                 qryGetHuttenVoorStapels.setString(1, naam);
                 qryGetHuttenVoorStapels.setInt(2, i);
-                
+
                 rs = qryGetHuttenVoorStapels.executeQuery();
-                
+
                 ArrayList<Hut> nieuweHutten = new ArrayList<Hut>();
-                while(rs.next()){
+                while (rs.next()) {
                     int houtKost, steenKost, leemKost, goudKost;
                     houtKost = rs.getInt("houtKost");
                     steenKost = rs.getInt("steenKost");
                     leemKost = rs.getInt("leemKost");
                     goudKost = rs.getInt("goudKost");
-                    
+
                     nieuweHutten.add(new Hut(houtKost, steenKost, goudKost, leemKost));
                 }
-                
+
                 newDC.getSpelbord().getStapels().get(i).refill(nieuweHutten);
             }
-            
+
             //Speler hutten
-            for(int i = 0; i < newDC.getSpelers().size(); ++i){
+            for (int i = 0; i < newDC.getSpelers().size(); ++i) {
                 PreparedStatement qryGetHutten = con.prepareStatement("SELECT * FROM hut WHERE dcNaam = ? AND spelerIndex = ?");
-                
+
                 qryGetHutten.setString(1, naam);
                 qryGetHutten.setInt(2, i);
-                
+
                 rs = qryGetHutten.executeQuery();
-                
+
                 ArrayList<Hut> nieuweHutten = new ArrayList<Hut>();
-                while(rs.next()){
+                while (rs.next()) {
                     int houtKost, steenKost, leemKost, goudKost;
                     houtKost = rs.getInt("houtKost");
                     steenKost = rs.getInt("steenKost");
                     leemKost = rs.getInt("leemKost");
                     goudKost = rs.getInt("goudKost");
-                    
+
                     nieuweHutten.add(new Hut(houtKost, steenKost, goudKost, leemKost));
                 }
-                
+
                 newDC.getSpelers().get(i).setHuttenRefresh(nieuweHutten);
             }
-            
+
             // Pionnen
-            for(int i = 0; i < newDC.getSpelers().size(); ++i){
+            for (int i = 0; i < newDC.getSpelers().size(); ++i) {
                 PreparedStatement qryGetPionnen = con.prepareStatement("SELECT COUNT(*) AS aantalPionnen FROM pion WHERE dcNaam = ? AND spelerID = ?");
-                
+
                 qryGetPionnen.setString(1, naam);
                 qryGetPionnen.setInt(2, i);
-                
+
                 rs = qryGetPionnen.executeQuery();
                 rs.next();
-                
+
                 int aantalPionnen = rs.getInt("aantalPionnen");
-                
+
                 ArrayList<Pion> nieuwePionnen = new ArrayList<Pion>();
-                for(int y = 0; y < aantalPionnen; ++y){
+                for (int y = 0; y < aantalPionnen; ++y) {
                     nieuwePionnen.add(new Pion(newDC.getSpelers().get(i).getKleur(), false));
                 }
-                
+
                 newDC.getSpelers().get(i).setPionnenRefresh(nieuwePionnen);
             }
-            
+
             // Gereedschapsfiche
-            for(int i = 0; i < newDC.getSpelers().size(); ++i){
+            for (int i = 0; i < newDC.getSpelers().size(); ++i) {
                 PreparedStatement qryGetGereedschapsFiches = con.prepareStatement("SELECT * FROM gereedschapsfiche WHERE dcNaam = ? AND spelerIndex = ?");
                 qryGetGereedschapsFiches.setString(1, naam);
                 qryGetGereedschapsFiches.setInt(2, i);
                 rs = qryGetGereedschapsFiches.executeQuery();
-                
+
                 ArrayList<GereedschapsFiche> nieuweGereedschapsFiches = new ArrayList<GereedschapsFiche>();
-                while(rs.next()){
+                while (rs.next()) {
                     int waarde = rs.getInt("waarde");
-                    
+
                     GereedschapsFiche temp = new GereedschapsFiche(waarde, false);
-                    
+
                     nieuweGereedschapsFiches.add(temp);
                 }
-                
+
                 newDC.getSpelers().get(i).setGereedschapsFiches(nieuweGereedschapsFiches);
             }
-        }
-        catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex);
             return null;
         }
-    
+
         return newDC;
     }
 
