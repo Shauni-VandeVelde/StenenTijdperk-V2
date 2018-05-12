@@ -53,10 +53,17 @@ public class SoundMenu extends RightPaneBlueprint
         dobbelSounds.setWrapText(true);
 
         menuSounds.setStyle("-fx-text-fill:white;");
+        
         locationSounds.setStyle("-fx-text-fill:white;");
         endOfRoundSounds.setStyle("-fx-text-fill:white;");
         koopHutSounds.setStyle("-fx-text-fill:white;");
         dobbelSounds.setStyle("-fx-text-fill:white;");
+        
+        menuSounds.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        locationSounds.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        endOfRoundSounds.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        koopHutSounds.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        dobbelSounds.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
 
         ImageView background = mainScherm.getImageView("img/PauzeMenuBg.png");
         background.fitWidthProperty().bind(widthProperty());
