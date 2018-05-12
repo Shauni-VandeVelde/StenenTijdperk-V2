@@ -106,6 +106,7 @@ public class SavePane extends RightPaneBlueprint
         for (Button b : existingSavesButtons)
             {
             b.prefWidthProperty().bind(btnNewSave.widthProperty());
+            b.prefHeightProperty().bind(btnNewSave.heightProperty());
             }
     }
 
@@ -113,6 +114,10 @@ public class SavePane extends RightPaneBlueprint
     {
         btnNewSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
         backButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+
+   
+
+        btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.65));
 
         for (Button b : existingSavesButtons)
             {
@@ -133,21 +138,21 @@ public class SavePane extends RightPaneBlueprint
 
         });
 
-//         backButton.setOnAction(new EventHandler<ActionEvent>()
-//        {
-//            @Override
-//            public void handle(ActionEvent event)
-//            {
-//
-//                if (mainScherm.shouldPlayMenuSFX())
-//                    {
-//                    mainScherm.queueSFX("menu", -1);
-//                    }
-//
+         backButton.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+
+                if (mainScherm.shouldPlayMenuSFX())
+                    {
+                    mainScherm.queueSFX("menu", -1);
+                    }
+
 //               toggleBackButton();
-//            }
-//
-//        });
+            }
+
+        });
     }
 
     private void loadExistingSaveButtons()
@@ -160,21 +165,12 @@ public class SavePane extends RightPaneBlueprint
             existingSavesButtons.add(new Button("Save " + (i + 1) + " - " + "Naam: " + temp.get(i).getKey().toString() + " - " + "Ronde: " + temp.get(i).getValue().toString()));
             }
     }
+    
+    
 //    public void toggleBackButton()
 //    {
-//
-//        if (backButtonActive)
-//            {
-//            getChildren().clear();
-//
-//            }
-//        else
-//            {
-//            getChildren().clear();
-//            getChildren().add(new PauzePane(stage, mainScherm, dc));
-//            }
-//
-//        backButtonActive = !backButtonActive;
+//            this.getChildren().clear();
+//            mainScherm.openPauzeMenu();
 //    }
 
 }
