@@ -245,7 +245,7 @@ public class PersistentieController {
             
             //Stapels vullen met hutten
             for(int i = 0; i < newDC.getSpelbord().getStapels().size(); ++i){
-                PreparedStatement qryGetHuttenVoorStapels = con.prepareStatement("SELECT * FROM hut WHERE dcNaam = ? AND hutIndex = ?");
+                PreparedStatement qryGetHuttenVoorStapels = con.prepareStatement("SELECT * FROM hut WHERE dcNaam = ? AND stapelIndex = ? AND spelerIndex IS NULL");
                 
                 qryGetHuttenVoorStapels.setString(1, naam);
                 qryGetHuttenVoorStapels.setInt(2, i);
@@ -264,6 +264,11 @@ public class PersistentieController {
                 }
                 
                 newDC.getSpelbord().getStapels().get(i).refill(nieuweHutten);
+            }
+            
+            //Speler hutten
+            for(int i = 0; i < newDC.getSpelers().size(); ++i){
+                
             }
         }
         catch(SQLException ex){
