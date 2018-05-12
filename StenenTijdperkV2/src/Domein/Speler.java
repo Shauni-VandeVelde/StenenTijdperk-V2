@@ -8,6 +8,70 @@ import ui.frame.mainScherm.MainScherm;
 public class Speler
 {
 
+    public void setPreviousHout(int previousHout) {
+        this.previousHout = previousHout;
+    }
+
+    public void setPreviousLeem(int previousLeem) {
+        this.previousLeem = previousLeem;
+    }
+
+    public void setPreviousSteen(int previousSteen) {
+        this.previousSteen = previousSteen;
+    }
+
+    public void setPreviousGoud(int previousGoud) {
+        this.previousGoud = previousGoud;
+    }
+
+    public void setPreviousVoedsel(int previousVoedsel) {
+        this.previousVoedsel = previousVoedsel;
+    }
+
+    public void setVoedselEindeVorigeBeurt(int voedselEindeVorigeBeurt) {
+        this.voedselEindeVorigeBeurt = voedselEindeVorigeBeurt;
+    }
+
+    public void setPreviousPunten(int previousPunten) {
+        this.previousPunten = previousPunten;
+    }
+
+    public void setPreviousVoedselPerBeurt(int previousVoedselPerBeurt) {
+        this.previousVoedselPerBeurt = previousVoedselPerBeurt;
+    }
+
+    public void setPreviousPionnenSize(int previousPionnenSize) {
+        this.previousPionnenSize = previousPionnenSize;
+    }
+
+    public void setPreviousWaardeGereedschap(int previousWaardeGereedschap) {
+        this.previousWaardeGereedschap = previousWaardeGereedschap;
+    }
+
+    public void setAddedVoedsel(int addedVoedsel) {
+        this.addedVoedsel = addedVoedsel;
+    }
+
+    public void setUpkeep(int upkeep) {
+        this.upkeep = upkeep;
+    }
+
+    public void setHoeveelheidPionnenStart(int hoeveelheidPionnenStart) {
+        this.hoeveelheidPionnenStart = hoeveelheidPionnenStart;
+    }
+
+    public void setPreviousHuttenSize(int previousHuttenSize) {
+        this.previousHuttenSize = previousHuttenSize;
+    }
+
+    public void setTotaalPenalty(int totaalPenalty) {
+        this.totaalPenalty = totaalPenalty;
+    }
+
+    public void setDc(DomeinController dc) {
+        this.dc = dc;
+    }
+
     private int index;
     private int voedselPerBeurt;
     private int punten;
@@ -37,7 +101,7 @@ public class Speler
     private ArrayList<Hut> hutten = new ArrayList<>();
     private ArrayList<Pion> pionnen = new ArrayList<>();
 
-    Speler(DomeinController dc, Kleur kleur, int index)
+    public Speler(DomeinController dc, Kleur kleur, int index)
     {
         this.dc = dc;
         this.index = index;

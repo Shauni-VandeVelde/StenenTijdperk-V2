@@ -677,5 +677,13 @@ public class DomeinController
     {
         return spelbord;
     }
+    
+    public void setStartSpelerIndex(int idx){
+        this.startSpelerindex = idx;
+    }
+    
+    public void setRondeNummer(int rondeNummer){
+        this.rondeNummer = rondeNummer;
+    }
 
 }

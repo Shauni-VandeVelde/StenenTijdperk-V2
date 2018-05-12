@@ -35,16 +35,12 @@ public class Player
         this.mainScherm = mainscherm;
 
         setPath(type);
-        //System.out.println(path);
         if (!path.equals(""))
             {
             try
                 {
                 Media media = new Media(getFile(path).toURI().toString());
-                // System.out.println("Media " + media.getSource());
                 mediaPlayer = new MediaPlayer(media);
-
-                //this.volume = volume / 100;
                 if (volume != -1)
                     {
                     this.volume = volume;
@@ -73,14 +69,11 @@ public class Player
             {
             System.err.println("Player -> Invalid type/path.");
             }
-
     }
 
     private void finish()
     {
-
         mainScherm.removeSFX(this);
-
     }
 
     private void setPath(String type)
