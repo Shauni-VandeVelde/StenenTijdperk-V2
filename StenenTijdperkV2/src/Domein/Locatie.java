@@ -43,7 +43,6 @@ public abstract class Locatie
     {
         pionnen.add(pion);
         pion.setGebruikt(true);
-
         huidigAantalPionnen = pionnen.size();
     }
 
@@ -103,9 +102,6 @@ public abstract class Locatie
         return getMaxPionnen() - getHuidigAantalPionnen();
     }
 
-    /**
-     * For use with Gui version
-     */
     protected void clearPionnen()
     {
         pionnen.clear();
@@ -129,11 +125,6 @@ public abstract class Locatie
             }
     }
 
-    /**
-     * Can be used with both versions.
-     *
-     * @return
-     */
     protected void reset()
     {
         setHuidigAantalPionnen(0);
@@ -209,13 +200,4 @@ public abstract class Locatie
         return naam;
     }
 
-    /**
-     * DEPRECATED, TEXT BASED VERSION ONLY!!!
-     */
-    /* public void printLocatieInfo()
-    {
-        System.out.println(this.getClass().getName() + ":");
-        System.out.println("huidigAantalPionnen: " + huidigAantalPionnen);
-        System.out.println("maxPionnen: " + maxPionnen);
-    }*/
 }

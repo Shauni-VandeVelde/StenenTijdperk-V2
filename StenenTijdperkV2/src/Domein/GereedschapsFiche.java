@@ -26,11 +26,6 @@ public class GereedschapsFiche
         isGebruikt = false;
     }
 
-    /**
-     * Can be used with both versions.
-     *
-     * @return
-     */
     void increment()
     {
         if (waarde < 4)
@@ -39,17 +34,11 @@ public class GereedschapsFiche
             }
     }
 
-    /**
-     * Can be used with both versions
-     */
     void reset()
     {
         isGebruikt = false;
     }
 
-    /**
-     * Can be used with both versions
-     */
     public void toggleGebruikt()
     {
         isGebruikt = !isGebruikt;
