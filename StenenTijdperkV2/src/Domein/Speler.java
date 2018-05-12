@@ -37,7 +37,7 @@ public class Speler
     private ArrayList<Hut> hutten = new ArrayList<>();
     private ArrayList<Pion> pionnen = new ArrayList<>();
 
-    Speler(DomeinController dc, Kleur kleur, int index)
+    public Speler(DomeinController dc, Kleur kleur, int index)
     {
         this.dc = dc;
         this.index = index;

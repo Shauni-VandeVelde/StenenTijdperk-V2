@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import javafx.util.Pair;
 
 /**
@@ -190,5 +191,45 @@ public class PersistentieController {
         }
 
         return saves;
+    }
+    
+    public DomeinController loadGame(String naam){
+        DomeinController newDC = new DomeinController(true);
+        
+        try(Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")){
+            PreparedStatement qryGetDomeinController = con.prepareStatement("SELECT * FROM domeincontroller WHERE domeinControllerNaam = ?");
+            qryGetDomeinController.setString(1, naam);
+            
+            ResultSet rs = qryGetDomeinController.executeQuery();
+            
+            rs.next();
+            // Add dc
+            newDC.setStartSpelerIndex(rs.getInt("startSpelerIndex"));
+            newDC.setHuidigeSpelerIndex();
+            newDC.setRondeNummer(rs.getInt("rondeNummer"));
+            
+            PreparedStatement qryGetSpelers = con.prepareStatement("SELECT * FROM speler WHERE dcNaam = ?");
+            qryGetSpelers.setString(1, naam);
+            
+            rs = qryGetSpelers.executeQuery();
+            
+            //Add spelers
+            while(rs.next())
+            {
+                Kleur kleur = Kleur.valueOf(rs.getString("kleur"));
+                int index = rs.getInt("spelerIndex");
+                Speler temp = new Speler(newDC, kleur, index);
+                
+                
+                
+                
+            }
+            
+        }
+        catch(SQLException ex){
+            System.out.println(ex);
+        }
+    
+        return newDC;
     }
 }

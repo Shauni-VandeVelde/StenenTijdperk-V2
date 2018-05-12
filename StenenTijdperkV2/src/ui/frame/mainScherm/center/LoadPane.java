@@ -80,17 +80,13 @@ public class LoadPane extends RightPaneBlueprint
     }
 
     private void setLoadButtons(){
-        System.out.println("FEMKLFSJKBFJBj");
         ArrayList<Pair> temp = pc.getSaveNamesWithRoundNr();
-        System.out.println("no pls no");
         
-        System.out.println("Start Loop");
         for(int i = 0; i < temp.size(); ++i)
         {
             saves.add(temp.get(i).getKey().toString());
             loadButtons.add(new Button("Save " + (i + 1) + " - " + "Naam: " + temp.get(i).getKey().toString() + " - " + "Ronde: " + temp.get(i).getValue().toString()));
         }
-        System.out.println("END Loop");
 
     }
 }
