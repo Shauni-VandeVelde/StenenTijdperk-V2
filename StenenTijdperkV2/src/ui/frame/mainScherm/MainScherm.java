@@ -574,6 +574,10 @@ public class MainScherm extends BorderPane
     {
         return controller;
     }
+    
+    public void printLine(String line){
+        console.printLine(line);
+    }
 
     //Sound related:
     public void queueSFX(String type, double volume)
