@@ -108,10 +108,10 @@ public class StapelsPane extends Pane
         button3.setStyle("-fx-background-color: transparent;");
 
         button4.setStyle("-fx-background-color:  transparent;");
-        stapel1DeelPaneel.addButton(button1, 1, 1);
-        stapel2DeelPaneel.addButton(button2, 1, 1);
-        stapel3DeelPaneel.addButton(button3, 1, 1);
-        stapel4DeelPaneel.addButton(button4, 1, 1);
+        stapel1DeelPaneel.addControl(button1, 1, 1);
+        stapel2DeelPaneel.addControl(button2, 1, 1);
+        stapel3DeelPaneel.addControl(button3, 1, 1);
+        stapel4DeelPaneel.addControl(button4, 1, 1);
         setActions();
     }
 
@@ -321,22 +321,22 @@ public class StapelsPane extends Pane
         if (stapel1DeelPaneel.getChildren().size() == 0)
             {
             stapel1DeelPaneel.addBackgroundImage(stapel1);
-            stapel1DeelPaneel.addButton(button1, 1, 1);
+            stapel1DeelPaneel.addControl(button1, 1, 1);
             }
         if (stapel2DeelPaneel.getChildren().size() == 0)
             {
             stapel2DeelPaneel.addBackgroundImage(stapel2);
-            stapel2DeelPaneel.addButton(button2, 1, 1);
+            stapel2DeelPaneel.addControl(button2, 1, 1);
             }
         if (stapel3DeelPaneel.getChildren().size() == 0)
             {
             stapel3DeelPaneel.addBackgroundImage(stapel3);
-            stapel3DeelPaneel.addButton(button3, 1, 1);
+            stapel3DeelPaneel.addControl(button3, 1, 1);
             }
         if (stapel4DeelPaneel.getChildren().size() == 0)
             {
             stapel4DeelPaneel.addBackgroundImage(stapel4);
-            stapel4DeelPaneel.addButton(button4, 1, 1);
+            stapel4DeelPaneel.addControl(button4, 1, 1);
             }
     }
 

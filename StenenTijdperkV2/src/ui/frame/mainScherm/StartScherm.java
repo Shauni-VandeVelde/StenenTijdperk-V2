@@ -58,9 +58,9 @@ public class StartScherm extends RightPaneBlueprint
         DeelPaneel loadSpelDeelPaneel = new DeelPaneel(mainScherm, 1, 0.33, homeScreenVBox, true);
         DeelPaneel highscoresDeelPaneel = new DeelPaneel(mainScherm, 1, 0.33, homeScreenVBox, true);
 
-        nieuwSpelDeelPaneel.addButton(nieuwSpel, 1, 0.8);
-        loadSpelDeelPaneel.addButton(laadSpel, 1, 0.8);
-        highscoresDeelPaneel.addButton(highscores, 1, 0.8);
+        nieuwSpelDeelPaneel.addControl(nieuwSpel, 1, 0.8);
+        loadSpelDeelPaneel.addControl(laadSpel, 1, 0.8);
+        highscoresDeelPaneel.addControl(highscores, 1, 0.8);
 
         //
         mainBorderPane.setCenter(homeScreenVBox);

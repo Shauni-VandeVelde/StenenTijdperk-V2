@@ -73,7 +73,7 @@ public class EindeRondePane extends RightPaneBlueprint
 
         button.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
 
-        buttonPanel.addButton(button, 0.5, 0.25);
+        buttonPanel.addControl(button, 0.5, 0.25);
         buttonPanel.setFontTracking(button, 50);
         addChild(buttonPanel);
         button.setOnAction((event) ->

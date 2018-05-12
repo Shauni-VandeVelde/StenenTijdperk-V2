@@ -72,6 +72,43 @@ public class DeelPaneel extends Pane
         image = null;
     }
 
+    public void setPion(Speler speler)
+    {
+        if (getChildren().size() != 0)
+            {
+            ImageView pion = mainScherm.getImageView("img/HoutStack.png");
+            if (speler.getKleur() == Kleur.ROOD)
+                {
+                pion = mainScherm.getImageView(MainScherm.getUrl("pionRood"));
+                }
+            if (speler.getKleur() == Kleur.GEEL)
+                {
+                pion = mainScherm.getImageView(MainScherm.getUrl("pionGeel"));
+                }
+            if (speler.getKleur() == Kleur.GROEN)
+                {
+                pion = mainScherm.getImageView(MainScherm.getUrl("pionGroen"));
+                }
+            if (speler.getKleur() == Kleur.BLAUW)
+                {
+                pion = mainScherm.getImageView(MainScherm.getUrl("pionBlauw"));
+                }
+            pion.fitWidthProperty().bind(widthProperty().multiply(0.25));
+            pion.fitHeightProperty().bind(heightProperty().multiply(0.25));
+            pion.layoutXProperty().bind(widthProperty().multiply(0.31));
+            pion.layoutYProperty().bind(heightProperty().multiply(0.31));
+
+            getChildren().add(pion);
+            pion.setOpacity(0);
+            FadeTransition ft = new FadeTransition(Duration.millis(600), pion);
+            ft.setFromValue(0);
+            ft.setToValue(1);
+            ft.setCycleCount(1);
+            ft.play();
+            }
+
+    }
+
     public void addBackgroundImage(ImageView image)
     {
         this.image = image;
@@ -79,59 +116,6 @@ public class DeelPaneel extends Pane
         image.fitWidthProperty().bind(widthProperty());
         image.fitHeightProperty().bind(heightProperty());
         getChildren().add(image);
-    }
-
-    public void addButton(Button button, double x, double y)
-    {
-        getChildren().clear();
-        if (image != null)
-            {
-            getChildren().add(image);
-            }
-        button.prefWidthProperty().bind(widthProperty().multiply(x));
-        button.prefHeightProperty().bind(heightProperty().multiply(y));
-        button.minWidthProperty().bind(widthProperty().multiply(x));
-        button.minHeightProperty().bind(heightProperty().multiply(y));
-        button.maxWidthProperty().bind(widthProperty().multiply(x));
-        button.maxHeightProperty().bind(heightProperty().multiply(y));
-
-        getChildren().add(button);
-    }
-
-    public void addControl(Control control, double x, double y)
-    {
-        getChildren().clear();
-        if (image != null)
-            {
-            getChildren().add(image);
-            }
-
-        control.prefWidthProperty().bind(widthProperty().multiply(x));
-        control.prefHeightProperty().bind(heightProperty().multiply(y));
-        control.minWidthProperty().bind(widthProperty().multiply(x));
-        control.minHeightProperty().bind(heightProperty().multiply(y));
-        control.maxWidthProperty().bind(widthProperty().multiply(x));
-        control.maxHeightProperty().bind(heightProperty().multiply(y));
-
-        getChildren().add(control);
-    }
-
-    public void addCheckBox(CheckBox checkBox, double x, double y)
-    {
-        getChildren().clear();
-        if (image != null)
-            {
-            getChildren().add(image);
-            }
-
-        checkBox.prefWidthProperty().bind(widthProperty().multiply(x));
-        checkBox.prefHeightProperty().bind(heightProperty().multiply(y));
-        checkBox.minWidthProperty().bind(widthProperty().multiply(x));
-        checkBox.minHeightProperty().bind(heightProperty().multiply(y));
-        checkBox.maxWidthProperty().bind(widthProperty().multiply(x));
-        checkBox.maxHeightProperty().bind(heightProperty().multiply(y));
-
-        getChildren().add(checkBox);
     }
 
     public void addSlider(Slider slider, double scale)
@@ -156,6 +140,24 @@ public class DeelPaneel extends Pane
             });
 
         getChildren().add(slider);
+    }
+
+    public void addControl(Control control, double x, double y)
+    {
+        getChildren().clear();
+        if (image != null)
+            {
+            getChildren().add(image);
+            }
+
+        control.prefWidthProperty().bind(widthProperty().multiply(x));
+        control.prefHeightProperty().bind(heightProperty().multiply(y));
+        control.minWidthProperty().bind(widthProperty().multiply(x));
+        control.minHeightProperty().bind(heightProperty().multiply(y));
+        control.maxWidthProperty().bind(widthProperty().multiply(x));
+        control.maxHeightProperty().bind(heightProperty().multiply(y));
+
+        getChildren().add(control);
     }
 
     public void addControl(Label label, double scale, double fontSize, Pos pos, String style)
@@ -248,43 +250,6 @@ public class DeelPaneel extends Pane
             }
 
         });
-
-    }
-
-    public void setPion(Speler speler)
-    {
-        if (getChildren().size() != 0)
-            {
-            ImageView pion = mainScherm.getImageView("img/HoutStack.png");
-            if (speler.getKleur() == Kleur.ROOD)
-                {
-                pion = mainScherm.getImageView(MainScherm.getUrl("pionRood"));
-                }
-            if (speler.getKleur() == Kleur.GEEL)
-                {
-                pion = mainScherm.getImageView(MainScherm.getUrl("pionGeel"));
-                }
-            if (speler.getKleur() == Kleur.GROEN)
-                {
-                pion = mainScherm.getImageView(MainScherm.getUrl("pionGroen"));
-                }
-            if (speler.getKleur() == Kleur.BLAUW)
-                {
-                pion = mainScherm.getImageView(MainScherm.getUrl("pionBlauw"));
-                }
-            pion.fitWidthProperty().bind(widthProperty().multiply(0.25));
-            pion.fitHeightProperty().bind(heightProperty().multiply(0.25));
-            pion.layoutXProperty().bind(widthProperty().multiply(0.31));
-            pion.layoutYProperty().bind(heightProperty().multiply(0.31));
-
-            getChildren().add(pion);
-            pion.setOpacity(0);
-            FadeTransition ft = new FadeTransition(Duration.millis(600), pion);
-            ft.setFromValue(0);
-            ft.setToValue(1);
-            ft.setCycleCount(1);
-            ft.play();
-            }
 
     }
 

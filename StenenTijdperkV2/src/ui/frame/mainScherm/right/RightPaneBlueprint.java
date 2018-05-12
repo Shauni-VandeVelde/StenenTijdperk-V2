@@ -87,7 +87,7 @@ public abstract class RightPaneBlueprint extends Pane
 
                 Button button = (Button) nodes[i];
 
-                labelPane.addButton(button, scale, scale);
+                labelPane.addControl(button, scale, scale);
                 button.prefHeightProperty().bind(hbox.heightProperty().multiply(scale));
                 button.maxHeightProperty().bind(hbox.heightProperty().multiply(scale));
                 button.minHeightProperty().bind(hbox.heightProperty().multiply(scale));
@@ -428,7 +428,7 @@ public abstract class RightPaneBlueprint extends Pane
                     button.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
                     }
 
-                labelPane.addButton(button, scale, scale);
+                labelPane.addControl(button, scale, scale);
 
                 button.prefHeightProperty().bind(tempPane.heightProperty().multiply(scale));
                 button.prefWidthProperty().bind(tempPane.widthProperty().divide(aantal).multiply(scale));

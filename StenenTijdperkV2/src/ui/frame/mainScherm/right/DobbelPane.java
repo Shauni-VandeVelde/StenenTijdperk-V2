@@ -146,9 +146,9 @@ public class DobbelPane extends RightPaneBlueprint
         dobbelLabelDeelPaneel.addControl(dobbelSteenLabel, 1, 18.5, Pos.CENTER, style);
         dobbelBox.getChildren().add(dobbelImageDeelPaneel);
         dobbelBox.getChildren().add(dobbelLabelDeelPaneel);
-        g1.addButton(gereedschapsficheButton1, 1, 1);
-        g2.addButton(gereedschapsficheButton2, 1, 1);
-        g3.addButton(gereedschapsficheButton3, 1, 1);
+        g1.addControl(gereedschapsficheButton1, 1, 1);
+        g2.addControl(gereedschapsficheButton2, 1, 1);
+        g3.addControl(gereedschapsficheButton3, 1, 1);
         HBox gereedschapsBox = getHBox(vbox, new DeelPaneel[]
             {
             g1, g2, g3

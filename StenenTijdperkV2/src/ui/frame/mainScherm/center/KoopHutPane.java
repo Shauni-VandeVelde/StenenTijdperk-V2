@@ -62,8 +62,8 @@ public class KoopHutPane extends RightPaneBlueprint
         hutDeelPaneel.addBackgroundImage(hut);
         mededelingDeelPaneel.addControl(mededelingLabel, 1, 1);
         vraagDeelPaneel.addControl(vraagLabel, 1, 1);
-        bevestigDeelPaneel.addButton(bevestig, 1, 1);
-        weigerDeelPaneel.addButton(weiger, 1, 1);
+        bevestigDeelPaneel.addControl(bevestig, 1, 1);
+        weigerDeelPaneel.addControl(weiger, 1, 1);
 
         hbox.getChildren().add(bevestigDeelPaneel);
         hbox.getChildren().add(weigerDeelPaneel);

@@ -86,11 +86,11 @@ public class SoundMenu extends RightPaneBlueprint
         musicLabel = new Label("Music Volume: " + mainScherm.getMusicVolume());
         SFXLabel = new Label("Effects Volume: " + mainScherm.getSFXVolume());
 
-        menuSoundsDeelPaneel.addCheckBox(menuSounds, 1, 1);
-        locationSoundsDeelPaneel.addCheckBox(locationSounds, 1, 1);
-        endOfRoundSoundsDeelPaneel.addCheckBox(endOfRoundSounds, 1, 1);
-        koopHutSoundsDeelPaneel.addCheckBox(koopHutSounds, 1, 1);
-        dobbelSoundsDeelPaneel.addCheckBox(dobbelSounds, 1, 1);
+        menuSoundsDeelPaneel.addControl(menuSounds, 1, 1);
+        locationSoundsDeelPaneel.addControl(locationSounds, 1, 1);
+        endOfRoundSoundsDeelPaneel.addControl(endOfRoundSounds, 1, 1);
+        koopHutSoundsDeelPaneel.addControl(koopHutSounds, 1, 1);
+        dobbelSoundsDeelPaneel.addControl(dobbelSounds, 1, 1);
 
         options.getChildren().add(menuSoundsDeelPaneel);
         options.getChildren().add(locationSoundsDeelPaneel);
