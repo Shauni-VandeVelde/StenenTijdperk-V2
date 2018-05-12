@@ -169,6 +169,11 @@ public class PersistentieController {
         }
     }
 
+    /**
+     * Verwijdert de oude save en roept dan 'saveNew' op om de huidige op te slaan onder dezelfde naam
+     * @param naam
+     * @param dc 
+     */
     public void saveOverride(String naam, DomeinController dc){
         String saveUpdateModeOff = "SET SQL_SAFE_UPDATES = 0;";
         boolean success = false;
@@ -230,6 +235,11 @@ public class PersistentieController {
         return saves;
     }
     
+    /**
+     * Returnt een nieuwe domeincontroller met de stats van de gewenste save
+     * @param naam
+     * @return 
+     */
     public DomeinController loadGame(String naam){
         DomeinController newDC = new DomeinController(true);
         
