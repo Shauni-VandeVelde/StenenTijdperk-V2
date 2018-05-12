@@ -63,10 +63,12 @@ public class LoadPane extends RightPaneBlueprint
         vBox.prefWidthProperty().bind(widthProperty());
         vBox.prefHeightProperty().bind(heightProperty());
         vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
 
         for (Button b : loadButtons)
             {
-            b.prefWidthProperty().bind(widthProperty().multiply(0.65));
+            b.prefWidthProperty().bind(widthProperty().multiply(0.2));
+            b.prefHeightProperty().bind(heightProperty().multiply(0.1));
             }
     }
 
@@ -74,7 +76,7 @@ public class LoadPane extends RightPaneBlueprint
     {
         for (Button b : loadButtons)
             {
-            b.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/Buttons.css").toExternalForm());
+            b.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
             }
     }
 
