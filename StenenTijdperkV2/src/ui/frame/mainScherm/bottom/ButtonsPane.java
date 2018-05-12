@@ -51,7 +51,7 @@ public class ButtonsPane extends Pane
         clear = false;
     }
 
-    public void init()
+    private void init()
     {
         cboPlaatsPionnen = new ComboBox();
         sliderPionnen = new Slider();
@@ -122,7 +122,7 @@ public class ButtonsPane extends Pane
 
     }
 
-    public void initSlider()
+    private void initSlider()
     {
         sliderPionnen.setMinorTickCount(1);
         sliderPionnen.setBlockIncrement(1);
@@ -373,20 +373,10 @@ public class ButtonsPane extends Pane
         txfHuidigeSpeler.setText("Huidige Speler: " + (mainScherm.getController().getHuidigeSpelerIndex() + 1) + "");
     }
 
-    public void setAantalPionnenSlider()
+    private void setAantalPionnenSlider()
     {
 
         sliderPionnen.setMax(gekozenLocatie.getBruikbarePionnen(mainScherm.getController().getHuidigeSpeler()));
-    }
-
-    public ComboBox getCBOPlaatsPionn()
-    {
-        return cboPlaatsPionnen;
-    }
-
-    public Slider getSlider()
-    {
-        return sliderPionnen;
     }
 
     public Locatie getGekozenLocatie()

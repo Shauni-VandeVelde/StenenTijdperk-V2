@@ -30,7 +30,7 @@ public class SoundMenu extends RightPaneBlueprint
     private PauzePane pauzePane;
     private double masterVolume, musicVolume, SFXVolume;
 
-    public SoundMenu(MainScherm mainScherm, PauzePane pauzePane)
+    SoundMenu(MainScherm mainScherm, PauzePane pauzePane)
     {
         super(mainScherm, mainScherm.getController().getSpelers().get(0), pauzePane, 1, 0.77);
         this.pauzePane = pauzePane;
@@ -38,7 +38,7 @@ public class SoundMenu extends RightPaneBlueprint
         setActions();
     }
 
-    public void init()
+    private void init()
     {
         HBox options = new HBox();
         menuSounds = new CheckBox("Menu SFX");
@@ -239,7 +239,7 @@ public class SoundMenu extends RightPaneBlueprint
 
     }
 
-    public void setActions()
+    private void setActions()
     {
 
         masterVolumeSlider.valueProperty().addListener(e ->
@@ -312,17 +312,17 @@ public class SoundMenu extends RightPaneBlueprint
             });
     }
 
-    public double getSFXVolume()
+    double getSFXVolume()
     {
         return SFXVolume;
     }
 
-    public double getMusicVolume()
+    double getMusicVolume()
     {
         return musicVolume;
     }
 
-    public double getMasterVolume()
+    double getMasterVolume()
     {
         return masterVolume;
     }

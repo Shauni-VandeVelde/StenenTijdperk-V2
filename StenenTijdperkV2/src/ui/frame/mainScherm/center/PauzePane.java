@@ -153,7 +153,7 @@ public class PauzePane extends Pane
 
     }
 
-    public void toggleSoundMenu()
+    private void toggleSoundMenu()
     {
 
         if (soundMenuActive)

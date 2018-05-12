@@ -45,10 +45,10 @@ public class EndOfGamePane extends RightPaneBlueprint
         initTop();
         initNamen();
         initSpelers();
-        initActions();
+        setActions();
     }
 
-    private void initActions()
+    private void setActions()
     {
         /*
     bevestig.setOnAction((event) ->

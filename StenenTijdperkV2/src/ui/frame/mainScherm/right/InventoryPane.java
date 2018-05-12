@@ -25,7 +25,6 @@ public class InventoryPane extends RightPaneBlueprint
 {
 
     private MainScherm mainScherm;
-
     private HBox voedselPane, houtPane, leemPane, steenPane, goudPane, pionnenPane, gereedschapsPane, rondePane, voedselPerBeurtPane;
     private Label steenLabel, voedselLabel, houtLabel, leemLabel, goudLabel, pionnenLabel, rondeLabel, voedselPerBeurtLabel;
     private DeelPaneel gereedschapSlot1, gereedschapSlot2, gereedschapSlot3;
@@ -36,9 +35,7 @@ public class InventoryPane extends RightPaneBlueprint
     public InventoryPane(Speler speler, MainScherm mainScherm, VBox vbox)
     {
         super(mainScherm, speler, new VBox(), 0.19, 0.77);
-
         this.mainScherm = mainScherm;
-
         init();
         setLabels();
     }

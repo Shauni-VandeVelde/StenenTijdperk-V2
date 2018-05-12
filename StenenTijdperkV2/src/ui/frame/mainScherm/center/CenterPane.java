@@ -133,39 +133,6 @@ public class CenterPane extends Pane
         setImages(temp, pionnen, speler);
     }
 
-    private void setImages(PionnenLocatieDeelPane[] locatiePaneel, ArrayList<Pion> pionnen, Speler speler)
-    {
-
-        boolean[] allPionnen = new boolean[pionnen.size()];
-        for (int i = 0; i < allPionnen.length; i++)
-            {
-            allPionnen[i] = false;
-            }
-
-        for (int indexAantal = 0; indexAantal < pionnen.size(); indexAantal++)
-            {
-
-            for (int locatieListIndex = 0; locatieListIndex < locatiePaneel.length; locatieListIndex++)
-                {
-                if (allPionnen[indexAantal] != true)
-                    {
-                    if (!locatiePaneel[locatieListIndex].hasImage())
-                        {
-                        locatiePaneel[locatieListIndex].setImage("pion" + speler.getKleur().toString() + "", pionnen.get(indexAantal));
-                        pionnen.remove(pionnen.get(indexAantal));
-
-                        allPionnen[indexAantal] = true;
-                        setImages(locatiePaneel, pionnen, speler);
-                        }
-
-                    }
-
-                }
-
-            }
-
-    }
-
     private void init()
     {
 
@@ -335,46 +302,17 @@ public class CenterPane extends Pane
 
     }
 
-    /*
-
-    private void fadeCursor(boolean bool)
+    public void openLocationMenu(String location)
     {
+        Locatie locatie = mainScherm.getController().getLocatie(location);
 
-        if (bool)
-            {
-            CustomCursor currentCursor = new CustomCursor(mainScherm, true);
-
-            Label label = new Label();
-            mainScherm.getStage().getScene().setCursor(new ImageCursor(currentCursor.getImage()));
-            currentCursor.getImageView().setOpacity(getOpacity() - 0.1);
-            FadeTransition ft = new FadeTransition(Duration.millis(10), label);
-            ft.setFromValue(1);
-            ft.setToValue(0.0);
-            ft.setCycleCount(1);
-            ft.play();
-            if (label.getOpacity() > 0.25)
-                {
-                ft.setOnFinished(e -> fadeCursor(bool));
-                }
-            }
     }
 
+    public void plaatsOpLocatie(String naam, int aantal)
+    {
 
-         Timeline timeline = new Timeline(
-                    new KeyFrame(Duration.millis(600),
-                            new KeyValue(currentCursor.getImageView().opacityProperty(), 0)));
-            timeline.setOnFinished(new EventHandler<ActionEvent>()
-            {
-                public void handle(ActionEvent event)
-                {
-                    // startDobbel();
-                }
+    }
 
-            });
-            timeline.play();
-
-
-     */
     public void setActions()
     {
 
@@ -859,9 +797,36 @@ public class CenterPane extends Pane
             });
     }
 
-    public void openLocationMenu(String location)
+    private void setImages(PionnenLocatieDeelPane[] locatiePaneel, ArrayList<Pion> pionnen, Speler speler)
     {
-        Locatie locatie = mainScherm.getController().getLocatie(location);
+
+        boolean[] allPionnen = new boolean[pionnen.size()];
+        for (int i = 0; i < allPionnen.length; i++)
+            {
+            allPionnen[i] = false;
+            }
+
+        for (int indexAantal = 0; indexAantal < pionnen.size(); indexAantal++)
+            {
+
+            for (int locatieListIndex = 0; locatieListIndex < locatiePaneel.length; locatieListIndex++)
+                {
+                if (allPionnen[indexAantal] != true)
+                    {
+                    if (!locatiePaneel[locatieListIndex].hasImage())
+                        {
+                        locatiePaneel[locatieListIndex].setImage("pion" + speler.getKleur().toString() + "", pionnen.get(indexAantal));
+                        pionnen.remove(pionnen.get(indexAantal));
+
+                        allPionnen[indexAantal] = true;
+                        setImages(locatiePaneel, pionnen, speler);
+                        }
+
+                    }
+
+                }
+
+            }
 
     }
 
@@ -999,11 +964,6 @@ public class CenterPane extends Pane
 
         // akkerLocatie.setImage("pionGroen");
         // gereedschapsmakerLocatie.setImage("pionBlauw");
-    }
-
-    public void plaatsOpLocatie(String naam, int aantal)
-    {
-
     }
 
     public boolean zijnAllePionnenWeg()

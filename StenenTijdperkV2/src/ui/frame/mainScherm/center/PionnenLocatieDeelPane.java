@@ -23,7 +23,7 @@ public class PionnenLocatieDeelPane extends Pane
     private boolean hasImage = false;
     private Pion pion;
 
-    public PionnenLocatieDeelPane(MainScherm mainScherm, Pane container, double scale, double x, double y)
+    PionnenLocatieDeelPane(MainScherm mainScherm, Pane container, double scale, double x, double y)
     {
         this.mainScherm = mainScherm;
         prefWidthProperty().bind(container.widthProperty().divide(scale * 0.5));
@@ -36,7 +36,7 @@ public class PionnenLocatieDeelPane extends Pane
         layoutYProperty().bind(heightProperty().multiply(y));
     }
 
-    public void reset(boolean full)
+    void reset(boolean full)
     {
         if (full)
             {
@@ -65,7 +65,7 @@ public class PionnenLocatieDeelPane extends Pane
         hasImage = false;
     }
 
-    public void setImage(String type, Pion pion)
+    void setImage(String type, Pion pion)
     {
         reset(true);
         this.pion = pion;
@@ -82,12 +82,12 @@ public class PionnenLocatieDeelPane extends Pane
         hasImage = true;
     }
 
-    public Pion getPion()
+    Pion getPion()
     {
         return pion;
     }
 
-    public boolean hasImage()
+    boolean hasImage()
     {
         return hasImage;
     }

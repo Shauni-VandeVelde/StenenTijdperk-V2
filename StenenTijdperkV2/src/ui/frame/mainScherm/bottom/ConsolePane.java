@@ -60,9 +60,7 @@ public class ConsolePane extends Pane
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight)
             {
-
                 fontTracking.set(Font.font(console.getFont().getFamily(), FontWeight.EXTRA_BOLD, newHeight.doubleValue() / 100 * fontSize));
-
             }
 
         });
