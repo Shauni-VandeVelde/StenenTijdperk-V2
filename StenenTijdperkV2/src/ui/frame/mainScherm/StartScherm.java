@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 package ui.frame.mainScherm;
+import java.awt.Color;
 import javafx.animation.FadeTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -20,7 +21,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import ui.frame.mainScherm.MainScherm;
 import ui.frame.mainScherm.right.DeelPaneel;
 import ui.frame.mainScherm.right.RightPaneBlueprint;
 
@@ -94,10 +94,14 @@ public class StartScherm extends RightPaneBlueprint
         highscoresDeelPaneel.setFontTracking(highscores, 50);
         homeScreenVBox.setAlignment(Pos.CENTER);
 
-        nieuwSpel.setStyle("-fx-background-color:transparent;-fx-text-fill:white;");
+        nieuwSpel.setStyle("-fx-background-color:transparent;-fx-text-fill:white; fx-stroke: black; fx-stroke-width: 3px;");
         laadSpel.setStyle("-fx-background-color:transparent;-fx-text-fill:white;");
         highscores.setStyle("-fx-background-color:transparent;-fx-text-fill:white;");
 
+        nieuwSpel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        laadSpel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        highscores.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        
         //
         mainScherm.playMusic();
 
@@ -177,6 +181,12 @@ public class StartScherm extends RightPaneBlueprint
         drieSpelersRadioButton.setStyle("-fx-text-fill:white;");
         vierSpelersRadioButton.setStyle("-fx-text-fill:white;");
         bevestigButton.setStyle("-fx-text-fill:white;-fx-background-color:transparent;");
+        
+        aantalSpelersLabel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        tweeSpelersRadioButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        drieSpelersRadioButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        vierSpelersRadioButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
+        bevestigButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
 
         bevestigButton.setOnAction(new EventHandler<ActionEvent>()
         {

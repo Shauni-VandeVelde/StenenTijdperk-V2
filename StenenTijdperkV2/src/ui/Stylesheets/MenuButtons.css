@@ -10,23 +10,38 @@ and open the template in the editor.
 
 
 .button { 
+    
+    /* ----   BACKGROUND   ----*/
     -fx-background-image: url("/img/Button.png");
     -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: contain;
-    -fx-text-fill:white;
-    -fx-margin: 15 15 15 15;
-
     -fx-background-color: transparent;
-
-    /*
     
-        -fx-font-weight: bold;
-        
-        -fx-background-insets: 0;
-        -fx-background-radius: 5;*/
+    /* ----   POSITIONING   ----*/
+    -fx-margin: 15 15 15 15;
+    -fx-text-fill:white;
+ 
+    
+
 }
 
+.button .text{
+       /* ----   TEXT   ----*/
+       
+    
+    -fx-font: 32px Verdana ;
+    -fx-stroke: black;
+    -fx-stroke-width: 1px;
+    -fx-font-weight: bold;
+    
+
+}
+
+#font-button {
+    -fx-font: bold italic 20pt "Arial";
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+}
 .button:hover{
     /*-fx-background-image: url("/img/Button.png");*/
 

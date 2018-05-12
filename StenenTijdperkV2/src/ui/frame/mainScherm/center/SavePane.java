@@ -99,8 +99,9 @@ public class SavePane extends RightPaneBlueprint
         btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.2));
         btnNewSave.prefHeightProperty().bind(heightProperty().multiply(0.1));
 
-        backButton.setLayoutX(30);
-        backButton.setLayoutY(100);
+        backButton.setLayoutX(20);
+        backButton.setLayoutY(20);
+
 
 //        btnNewSave.setBackground(buttonBG);
         for (Button b : existingSavesButtons)
