@@ -492,10 +492,15 @@ public class Speler
         this.aantalVoedsel = aantalVoedsel;
     }
 
-    private void setHutten(ArrayList<Hut> hutten)
+    public void setHutten(ArrayList<Hut> hutten)
     {
         previousHuttenSize = this.hutten.size();
         this.hutten = hutten;
+    }
+    
+    public void setHuttenRefresh(ArrayList<Hut> hutten){
+        this.hutten = hutten;
+        previousHuttenSize = hutten.size() - 1;
     }
 
     private void setPionnen(ArrayList<Pion> pionnen)
@@ -503,8 +508,13 @@ public class Speler
         previousPionnenSize = this.pionnen.size();
         this.pionnen = pionnen;
     }
+    
+    public void setPionnenRefresh(ArrayList<Pion> pionnen){
+        this.pionnen = pionnen;
+        previousPionnenSize = pionnen.size() - 1;
+    }
 
-    private void setGereedschapsFiches(ArrayList<GereedschapsFiche> gereedschapsFiches)
+    public void setGereedschapsFiches(ArrayList<GereedschapsFiche> gereedschapsFiches)
     {
         this.gereedschapsFiches = gereedschapsFiches;
     }

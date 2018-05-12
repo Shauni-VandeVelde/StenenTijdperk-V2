@@ -169,6 +169,43 @@ public class PersistentieController {
         }
     }
 
+    public void saveOverride(String naam, DomeinController dc){
+        String saveUpdateModeOff = "SET SQL_SAFE_UPDATES = 0;";
+        boolean success = false;
+        
+        try(Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")){
+            PreparedStatement qryDeleteHutten = con.prepareStatement(saveUpdateModeOff + "DELETE FROM hut WHERE dcNaam = ?");
+            PreparedStatement qryDeletePionnen = con.prepareStatement(saveUpdateModeOff + "DELETE FROM pion WHERE dcNaam = ?");
+            PreparedStatement qryDeleteGereedschapsFiches = con.prepareStatement(saveUpdateModeOff + "DELETE FROM gereedschapsfiche WHERE dcNaam = ?");
+            PreparedStatement qryDeleteSpelers = con.prepareStatement(saveUpdateModeOff + "DELETE FROM speler WHERE dcNaam = ?");
+            PreparedStatement qryDeleteStapels = con.prepareStatement(saveUpdateModeOff + "DELETE FROM stapel WHERE dcNaam = ?");
+            PreparedStatement qryDeleteDomeinController = con.prepareStatement(saveUpdateModeOff + "DELETE FROM domeincontroller WHERE dcNaam = ?");
+
+            qryDeleteHutten.setString(1, naam);
+            qryDeletePionnen.setString(1, naam);
+            qryDeleteGereedschapsFiches.setString(1, naam);
+            qryDeleteSpelers.setString(1, naam);
+            qryDeleteStapels.setString(1, naam);
+            qryDeleteDomeinController.setString(1, naam);
+            
+            qryDeleteHutten.executeQuery();
+            qryDeletePionnen.executeQuery();
+            qryDeleteGereedschapsFiches.executeQuery();
+            qryDeleteSpelers.executeQuery();
+            qryDeleteStapels.executeQuery();
+            qryDeleteDomeinController.executeQuery();
+            
+            success = true;
+        }
+        catch(SQLException ex){
+            System.out.println(ex);
+        }
+        
+        if(success){
+            saveNew(naam, dc);
+        }
+    }
+    
     /**
      * Returnt all domeincontroller in een pair van <String, int> volgens <naam, rondeNummer>
      * @return 
@@ -268,13 +305,72 @@ public class PersistentieController {
             
             //Speler hutten
             for(int i = 0; i < newDC.getSpelers().size(); ++i){
+                PreparedStatement qryGetHutten = con.prepareStatement("SELECT * FROM hut WHERE dcNaam = ? AND spelerIndex = ?");
                 
+                qryGetHutten.setString(1, naam);
+                qryGetHutten.setInt(2, i);
+                
+                rs = qryGetHutten.executeQuery();
+                
+                ArrayList<Hut> nieuweHutten = new ArrayList<Hut>();
+                while(rs.next()){
+                    int houtKost, steenKost, leemKost, goudKost;
+                    houtKost = rs.getInt("houtKost");
+                    steenKost = rs.getInt("steenKost");
+                    leemKost = rs.getInt("leemKost");
+                    goudKost = rs.getInt("goudKost");
+                    
+                    nieuweHutten.add(new Hut(houtKost, steenKost, goudKost, leemKost));
+                }
+                
+                newDC.getSpelers().get(i).setHuttenRefresh(nieuweHutten);
+            }
+            
+            // Pionnen
+            for(int i = 0; i < newDC.getSpelers().size(); ++i){
+                PreparedStatement qryGetPionnen = con.prepareStatement("SELECT COUNT(*) AS aantalPionnen FROM pion WHERE dcNaam = ? AND spelerID = ?");
+                
+                qryGetPionnen.setString(1, naam);
+                qryGetPionnen.setInt(2, i);
+                
+                rs = qryGetPionnen.executeQuery();
+                rs.next();
+                
+                int aantalPionnen = rs.getInt("aantalPionnen");
+                
+                ArrayList<Pion> nieuwePionnen = new ArrayList<Pion>();
+                for(int y = 0; y < aantalPionnen; ++y){
+                    nieuwePionnen.add(new Pion(newDC.getSpelers().get(i).getKleur(), false));
+                }
+                
+                newDC.getSpelers().get(i).setPionnenRefresh(nieuwePionnen);
+            }
+            
+            // Gereedschapsfiche
+            for(int i = 0; i < newDC.getSpelers().size(); ++i){
+                PreparedStatement qryGetGereedschapsFiches = con.prepareStatement("SELECT * FROM gereedschapsfiche WHERE dcNaam = ? AND spelerIndex = ?");
+                qryGetGereedschapsFiches.setString(1, naam);
+                qryGetGereedschapsFiches.setInt(2, i);
+                rs = qryGetGereedschapsFiches.executeQuery();
+                
+                ArrayList<GereedschapsFiche> nieuweGereedschapsFiches = new ArrayList<GereedschapsFiche>();
+                while(rs.next()){
+                    int waarde = rs.getInt("waarde");
+                    
+                    GereedschapsFiche temp = new GereedschapsFiche(waarde, false);
+                    
+                    nieuweGereedschapsFiches.add(temp);
+                }
+                
+                newDC.getSpelers().get(i).setGereedschapsFiches(nieuweGereedschapsFiches);
             }
         }
         catch(SQLException ex){
             System.out.println(ex);
+            return null;
         }
     
         return newDC;
     }
+
 }
