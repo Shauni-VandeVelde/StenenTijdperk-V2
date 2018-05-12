@@ -148,21 +148,21 @@ public class SavePane extends RightPaneBlueprint
 
         });
 
-         backButton.setOnAction(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-
-                if (mainScherm.shouldPlayMenuSFX())
-                    {
-                    mainScherm.queueSFX("menu", -1);
-                    }
-
-//               toggleBackButton();
-            }
-
-        });
+//         backButton.setOnAction(new EventHandler<ActionEvent>()
+//        {
+//            @Override
+//            public void handle(ActionEvent event)
+//            {
+//
+//                if (mainScherm.shouldPlayMenuSFX())
+//                    {
+//                    mainScherm.queueSFX("menu", -1);
+//                    }
+//
+////               toggleBackButton();
+//            }
+//
+//        });
     }
 
     private void loadExistingSaveButtons()
