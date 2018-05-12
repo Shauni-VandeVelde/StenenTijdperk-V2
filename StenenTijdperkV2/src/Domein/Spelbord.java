@@ -78,7 +78,6 @@ public class Spelbord
         all.add(stapels.get(3));
 
         return all;
-
     }
 
     public Stapel getStapel(int index)

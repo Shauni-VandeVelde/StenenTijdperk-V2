@@ -241,8 +241,30 @@ public class PersistentieController {
             }
             
             //Stapels clearen
+            newDC.getSpelbord().clearStapelsInhoud();
             
-            
+            //Stapels vullen met hutten
+            for(int i = 0; i < newDC.getSpelbord().getStapels().size(); ++i){
+                PreparedStatement qryGetHuttenVoorStapels = con.prepareStatement("SELECT * FROM hut WHERE dcNaam = ? AND hutIndex = ?");
+                
+                qryGetHuttenVoorStapels.setString(1, naam);
+                qryGetHuttenVoorStapels.setInt(2, i);
+                
+                rs = qryGetHuttenVoorStapels.executeQuery();
+                
+                ArrayList<Hut> nieuweHutten = new ArrayList<Hut>();
+                while(rs.next()){
+                    int houtKost, steenKost, leemKost, goudKost;
+                    houtKost = rs.getInt("houtKost");
+                    steenKost = rs.getInt("steenKost");
+                    leemKost = rs.getInt("leemKost");
+                    goudKost = rs.getInt("goudKost");
+                    
+                    nieuweHutten.add(new Hut(houtKost, steenKost, goudKost, leemKost));
+                }
+                
+                newDC.getSpelbord().getStapels().get(i).refill(nieuweHutten);
+            }
         }
         catch(SQLException ex){
             System.out.println(ex);
