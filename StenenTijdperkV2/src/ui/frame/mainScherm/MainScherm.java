@@ -36,7 +36,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import ui.CustomCursor;
 import ui.frame.StartGui;
-import ui.frame.StartScherm;
 import ui.frame.mainScherm.bottom.ButtonsPane;
 import ui.frame.mainScherm.bottom.Console;
 import ui.frame.mainScherm.bottom.ConsolePane;

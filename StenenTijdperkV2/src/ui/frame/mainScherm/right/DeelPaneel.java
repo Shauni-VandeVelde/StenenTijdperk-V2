@@ -52,12 +52,7 @@ public class DeelPaneel extends Pane
         this.mainScherm = mainScherm;
         if (binding)
             {
-            prefWidthProperty().bind(pane.widthProperty().multiply(divW));
-            prefHeightProperty().bind(pane.heightProperty().multiply(divH));
-            minWidthProperty().bind(pane.widthProperty().multiply(divW));
-            minHeightProperty().bind(pane.heightProperty().multiply(divH));
-            maxWidthProperty().bind(pane.widthProperty().multiply(divW));
-            maxHeightProperty().bind(pane.heightProperty().multiply(divH));
+            changeBindings(pane, divW, divH);
             }
     }
 
@@ -93,7 +88,6 @@ public class DeelPaneel extends Pane
             {
             getChildren().add(image);
             }
-
         button.prefWidthProperty().bind(widthProperty().multiply(x));
         button.prefHeightProperty().bind(heightProperty().multiply(y));
         button.minWidthProperty().bind(widthProperty().multiply(x));
