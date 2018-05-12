@@ -38,10 +38,10 @@ and open the template in the editor.
 
 }
 
-#font-button {
-    -fx-font: bold italic 20pt "Arial";
-    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+.button:hover{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
+
 .button:hover{
     /*-fx-background-image: url("/img/Button.png");*/
 

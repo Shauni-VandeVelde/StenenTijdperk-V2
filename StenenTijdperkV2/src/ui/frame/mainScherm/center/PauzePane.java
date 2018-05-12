@@ -135,6 +135,16 @@ public class PauzePane extends Pane
         background.fitWidthProperty().bind(widthProperty());
         background.fitHeightProperty().bind(heightProperty());
 
+        
+        getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/PauzeButtons.css").toExternalForm());
+        btnTerugNaarSpel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/PauzeButtons.css").toExternalForm());
+        btnSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/PauzeButtons.css").toExternalForm());
+        btnLoad.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/PauzeButtons.css").toExternalForm());
+        btnSoundOptions.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/PauzeButtons.css").toExternalForm());
+        btnTerugNaarMenu.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/PauzeButtons.css").toExternalForm());
+        btnSluiten.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/PauzeButtons.css").toExternalForm());
+        
+        
         this.widthProperty().addListener(e ->
             {
             double x, y;
