@@ -135,8 +135,7 @@ public class SavePane extends RightPaneBlueprint
             @Override
             public void handle(ActionEvent event)
             {
-                pc.saveNew("Test07", dc);
-                pauzePane.toggleSavePane();
+                pauzePane.toggleNewSavePane();
             }
 
         });

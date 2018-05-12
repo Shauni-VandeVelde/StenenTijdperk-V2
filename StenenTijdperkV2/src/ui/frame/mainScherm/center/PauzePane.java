@@ -217,6 +217,19 @@ public class PauzePane extends Pane
 
         loadPaneActive = !loadPaneActive;
     }
+    
+    public void toggleNewSavePane(){
+        if(savePaneActive){
+            toggleSavePane();
+            getChildren().clear();
+            getChildren().add(new NewSavePane(mainScherm, this, dc));
+        }
+        else{
+            getChildren().clear();
+            getChildren().add(background);
+            getChildren().add(menuOptionsVBox);
+        }
+    }
 
     private void setActions()
     {
