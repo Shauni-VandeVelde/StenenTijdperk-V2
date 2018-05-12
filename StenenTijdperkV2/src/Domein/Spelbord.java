@@ -49,9 +49,6 @@ public class Spelbord
 
     }
 
-    /**
-     * Can be used with both versions.
-     */
     public void resetLocaties()
     {
         rivier.reset();
@@ -64,20 +61,6 @@ public class Spelbord
         jacht.reset();
     }
 
-    /**
-     * Can be used with both versions.
-     *
-     * @param index
-     */
-    public void removeHuttenVanStapel(int index)
-    {
-        stapels.get(index).verwijder();
-        stapels.get(index).reset();
-    }
-
-    /**
-     * For use with Gui version
-     */
     public ArrayList<Locatie> getAllLocaties()
     {
         ArrayList<Locatie> all = new ArrayList<>();
@@ -103,30 +86,9 @@ public class Spelbord
         return stapels.get(index);
     }
 
-    /**
-     * Can be used with both versions.
-     *
-     * @param index
-     * @return
-     */
-    public Hut getBovensteHutStapel(int index)
-    {
-        return stapels.get(index).getBovensteHut();
-    }
-
     public ArrayList<Stapel> getStapels()
     {
         return this.stapels;
-    }
-
-    public Akker getAkker()
-    {
-        return akker;
-    }
-
-    public Gereedschapsmaker getGereedschapsmaker()
-    {
-        return gereedschapsmaker;
     }
 
 }

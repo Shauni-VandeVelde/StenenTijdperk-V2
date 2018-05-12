@@ -224,6 +224,11 @@ public class Speler
             }
     }
 
+    public void clearVoedsel()
+    {
+        aantalVoedsel = 0;
+    }
+
     void voegHutToe(Hut hut)
     {
         hutten.add(hut);
@@ -276,6 +281,82 @@ public class Speler
     {
         addedVoedsel = hoeveelheid;
         aantalVoedsel += hoeveelheid;
+    }
+
+    void voedPionnen()
+    {
+
+        geefVoedselPerBeurt();
+        upkeep = pionnen.size();
+        aantalVoedsel = aantalVoedsel - upkeep;
+
+        if (aantalVoedsel < 0)
+            {
+            setPunten(getPunten() - 10);
+            totaalPenalty -= 10;
+
+            resetFood();
+            }
+    }
+
+    boolean incrementPionnen()
+    {
+        previousPionnenSize = this.pionnen.size();
+        int maxHoeveelheidPionnen = 10;
+
+        if (pionnen.size() >= maxHoeveelheidPionnen)
+            {
+            return false;
+            }
+
+        pionnen.add(new Pion(this.kleur));
+        return true;
+    }
+
+    boolean incrementVoedselPerBeurt()
+    {
+        int maxVoedselPerBeurt = 10;
+        previousVoedselPerBeurt = this.voedselPerBeurt;
+        if (voedselPerBeurt >= maxVoedselPerBeurt)
+            {
+            if (!DomeinController.GUI)
+                {
+                System.out.println("Voedsel per beurt kan niet meer hoger!");
+                }
+            else
+                {
+                MainScherm.console.printLine("Voedsel per beurt kan niet meer hoger!");
+                }
+            return false;
+            }
+
+        voedselPerBeurt++;
+
+        return true;
+    }
+
+    boolean verrekenStapel(Stapel stapel)
+    {
+        Hut hut = stapel.getBovensteHut();
+        if ((hut.getGoudKost() < aantalGoud) && (hut.getHoutKost() < aantalHout) && (hut.getLeemKost() < aantalLeem) && (hut.getSteenKost() < aantalSteen))
+            {
+            aantalHout = aantalHout - hut.getHoutKost();
+            aantalLeem = aantalLeem - hut.getLeemKost();
+            aantalSteen = aantalSteen - hut.getSteenKost();
+            aantalGoud = aantalGoud - hut.getGoudKost();
+            System.out.println("Hut Kost " + hut.getHoutKost() + hut.getLeemKost() + hut.getSteenKost() + hut.getGoudKost());
+            punten += hut.berekenPunten();
+            System.err.println("Punten: " + punten);
+            voegHutToe(hut);
+            stapel.verwijderBovensteHut();
+            stapel.clearPionnen();
+            return true;
+            }
+        else
+            {
+            stapel.clearPionnen();
+            return false;
+            }
     }
 
     private void setIndex(int index)
@@ -331,16 +412,6 @@ public class Speler
         this.aantalVoedsel = aantalVoedsel;
     }
 
-    public int getVoedselEindeVorigeBeurt()
-    {
-        return voedselEindeVorigeBeurt;
-    }
-
-    public void clearVoedsel()
-    {
-        aantalVoedsel = 0;
-    }
-
     private void setHutten(ArrayList<Hut> hutten)
     {
         previousHuttenSize = this.hutten.size();
@@ -380,58 +451,6 @@ public class Speler
         return true;
     }
 
-    void voedPionnen()
-    {
-
-        geefVoedselPerBeurt();
-        upkeep = pionnen.size();
-        aantalVoedsel = aantalVoedsel - upkeep;
-
-        if (aantalVoedsel < 0)
-            {
-            setPunten(getPunten() - 10);
-            totaalPenalty -= 10;
-
-            resetFood();
-            }
-    }
-
-    boolean incrementPionnen()
-    {
-        previousPionnenSize = this.pionnen.size();
-        int maxHoeveelheidPionnen = 10;
-
-        if (pionnen.size() >= maxHoeveelheidPionnen)
-            {
-            return false;
-            }
-
-        pionnen.add(new Pion(this.kleur));
-        return true;
-    }
-
-    boolean incrementVoedselPerBeurt()
-    {
-        int maxVoedselPerBeurt = 10;
-        previousVoedselPerBeurt = this.voedselPerBeurt;
-        if (voedselPerBeurt >= maxVoedselPerBeurt)
-            {
-            if (!DomeinController.GUI)
-                {
-                System.out.println("Voedsel per beurt kan niet meer hoger!");
-                }
-            else
-                {
-                MainScherm.console.printLine("Voedsel per beurt kan niet meer hoger!");
-                }
-            return false;
-            }
-
-        voedselPerBeurt++;
-
-        return true;
-    }
-
     public ArrayList<Integer> getIndexesBruikbaarGereedschap()
     {
         ArrayList<Integer> temp = new ArrayList<>();
@@ -445,9 +464,11 @@ public class Speler
         return temp;
     }
 
-    /**
-     * Both versions.
-     */
+    public int getVoedselEindeVorigeBeurt()
+    {
+        return voedselEindeVorigeBeurt;
+    }
+
     public ArrayList<Pion> getPionnen()
     {
         return pionnen;
@@ -630,30 +651,6 @@ public class Speler
     public int getTotaalPenalty()
     {
         return totaalPenalty;
-    }
-
-    boolean verrekenStapel(Stapel stapel)
-    {
-        Hut hut = stapel.getBovensteHut();
-        if ((hut.getGoudKost() < aantalGoud) && (hut.getHoutKost() < aantalHout) && (hut.getLeemKost() < aantalLeem) && (hut.getSteenKost() < aantalSteen))
-            {
-            aantalHout = aantalHout - hut.getHoutKost();
-            aantalLeem = aantalLeem - hut.getLeemKost();
-            aantalSteen = aantalSteen - hut.getSteenKost();
-            aantalGoud = aantalGoud - hut.getGoudKost();
-            System.out.println("Hut Kost " + hut.getHoutKost() + hut.getLeemKost() + hut.getSteenKost() + hut.getGoudKost());
-            punten += hut.berekenPunten();
-            System.err.println("Punten: " + punten);
-            voegHutToe(hut);
-            stapel.verwijderBovensteHut();
-            stapel.clearPionnen();
-            return true;
-            }
-        else
-            {
-            stapel.clearPionnen();
-            return false;
-            }
     }
 
     public void printInfo()

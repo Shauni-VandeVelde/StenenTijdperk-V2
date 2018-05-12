@@ -5,7 +5,7 @@ public class Pion
 {
 
     private Kleur kleur;
-    private boolean gebruikt = false;
+    private boolean gebruikt;
 
     Pion(Kleur kleur)
     {
@@ -17,11 +17,9 @@ public class Pion
     {
         setGebruikt(gebruikt);
         setKleur(kleur);
+        gebruikt = false;
     }
 
-    /**
-     * For use with Gui version
-     */
     void setGebruikt(boolean gebruikt)
     {
         this.gebruikt = gebruikt;
