@@ -29,6 +29,7 @@ public class EndOfGamePane extends RightPaneBlueprint
 
     private MainScherm mainScherm;
     private HBox mainBox;
+    private Label mededelingLabel;
 
     public EndOfGamePane(MainScherm mainScherm, Pane container)
     {
@@ -62,7 +63,7 @@ public class EndOfGamePane extends RightPaneBlueprint
     {
         mainBox = new HBox();
         DeelPaneel mededelingDeelPaneel = new DeelPaneel(mainScherm, 0.85, 0.16, vbox, true);
-        Label mededelingLabel = new Label("Speler" + (speler.index() + 1) + " heeft gewonnen!");
+        mededelingLabel = new Label("Speler" + (speler.index() + 1) + " heeft gewonnen!");
         Button bevestig = new Button("Bevestig");
         mededelingDeelPaneel.addLabel(mededelingLabel, 1);
         mededelingLabel.setAlignment(Pos.CENTER);
@@ -85,7 +86,7 @@ public class EndOfGamePane extends RightPaneBlueprint
 
     private void initNamen()
     {
-        addChild((getNamenPaneel(4)));
+        addChild((getNamenPaneel(mainScherm.getController().getAantalSpelers())));
     }
 
     private void initSpelers()
@@ -93,6 +94,25 @@ public class EndOfGamePane extends RightPaneBlueprint
         ArrayList<Speler> orderedWinnaars = mainScherm.getController().getOrderedWinnaars();
         for (int i = 0; i < orderedWinnaars.size(); i++)
             {
+            if (i == 0)
+                {
+                switch (orderedWinnaars.get(i).index())
+                    {
+                    case 0:
+                        mededelingLabel.setStyle("-fx-text-fill:red;");
+                        break;
+                    case 1:
+                        mededelingLabel.setStyle("-fx-text-fill:blue;");
+                        break;
+                    case 2:
+                        mededelingLabel.setStyle("-fx-text-fill:yellow;");
+                        break;
+                    case 3:
+                        mededelingLabel.setStyle("-fx-text-fill:green;");
+                        break;
+                    }
+                mededelingLabel.setText("Speler" + (orderedWinnaars.get(i).index() + 1) + " heeft gewonnen!");
+                }
             addChild(getSpelerPaneel(orderedWinnaars.get(i), orderedWinnaars.size()));
             }
     }

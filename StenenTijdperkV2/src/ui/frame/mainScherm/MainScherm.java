@@ -577,6 +577,7 @@ public class MainScherm extends BorderPane
             queueSFX("mainMenu", -1);
             }
     }
+//penalty toevoegen eindscherm
 
     public void stopMusic()
     {
@@ -591,15 +592,16 @@ public class MainScherm extends BorderPane
                     new KeyFrame(Duration.millis(50),
                             new KeyValue(SFXPlayers.get(i).getPlayer().volumeProperty(), 0)));
             timeline.play();
-            int index = i;
-            if (i < SFXPlayers.size())
-                {
+            int j = i;
+            timeline.setOnFinished(e -> remove(j));
+            }
+    }
 
-                int j = i;
-                timeline.setOnFinished(e -> SFXPlayers.remove(SFXPlayers.get(j)));
-
-                }
-
+    private void remove(int j)
+    {
+        if (j < SFXPlayers.size())
+            {
+            SFXPlayers.remove(SFXPlayers.get(j));
             }
     }
 

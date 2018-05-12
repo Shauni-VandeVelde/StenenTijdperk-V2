@@ -218,7 +218,7 @@ public class Speler
         for (int i = 0; i < gereedschapsFiches.size(); i++)
             {
             gereedschapsFiches.get(i).reset();
-
+            previousWaardeGereedschap = getHoeveelheidGereedschap();
             }
     }
 
