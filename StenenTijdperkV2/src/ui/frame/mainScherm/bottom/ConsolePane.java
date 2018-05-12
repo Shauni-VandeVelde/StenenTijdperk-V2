@@ -6,8 +6,15 @@
 package ui.frame.mainScherm.bottom;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import ui.frame.mainScherm.MainScherm;
 
@@ -43,6 +50,42 @@ public class ConsolePane extends Pane
         getChildren().add(consoleBackgroundImage);
         getChildren().add(console);
         getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/TransparentTextArea.css").toExternalForm());
+        double fontSize = 18;
+        console.setStyle("-fx-text-fill:white;");
+        ObjectProperty<Font> fontTracking = new SimpleObjectProperty<Font>(Font.getDefault());
+
+        console.fontProperty().bind(fontTracking);
+        console.heightProperty().addListener(new ChangeListener<Number>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight)
+            {
+
+                fontTracking.set(Font.font(console.getFont().getFamily(), FontWeight.EXTRA_BOLD, newHeight.doubleValue() / 100 * fontSize));
+
+            }
+
+        });
+
+    }
+
+    public void setFontTracking(Button button, double fontSize)
+    {
+        ObjectProperty<Font> fontTracking = new SimpleObjectProperty<Font>(Font.getDefault());
+
+        button.fontProperty().bind(fontTracking);
+        button.heightProperty().addListener(new ChangeListener<Number>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight)
+            {
+
+                fontTracking.set(Font.font(button.getFont().getFamily(), FontWeight.EXTRA_BOLD, newHeight.doubleValue() / 100 * fontSize));
+
+            }
+
+        });
+
     }
 
 }

@@ -87,13 +87,13 @@ public class MainScherm extends BorderPane
     private ConsolePane consolePane;
     private boolean[] accept;
 
-    private boolean first = true;
-    private boolean finishRoundFirst = true;
-    private boolean magPionnenPlaatsen = true;
-    private boolean spelGestart = false;
-    private boolean spelGedaan = false;
-    private boolean isPlaying = true;
     private boolean firstDobbel = true;
+    private boolean finishRoundFirst = true;
+    private boolean isPionnenPlaatsenFase = true;
+    private boolean isSpelGestart = false;
+    private boolean isSpelGedaan = false;
+    private boolean isPlayingMusic = true;
+    private boolean eersteDobbelVanRonde = true;
     private boolean shouldPlayKoopHutSFX = true;
     private boolean shouldPlayEndOfRoundSFX = true;
     private boolean shouldPlayDobbelSFX = true;
@@ -135,7 +135,7 @@ public class MainScherm extends BorderPane
     public void startSpel(int aantal)
     {
         fadeMusic();
-        spelGestart = true;
+        isSpelGestart = true;
         playMusic();
         initPanels();
         controller = new DomeinController(true);
@@ -189,6 +189,7 @@ public class MainScherm extends BorderPane
     public void bevestigPlaatsen(LocatiePane locatiePane)
     {
         controller.plaatsPionnenOpVeld(locatiePane.getLocatie(), locatiePane.getCurrentlySelectedNumber());
+        console.printLine(locatiePane.getCurrentlySelectedNumber() + " pionnen geplaatst op locatie: " + locatiePane.getLocatie().getNaam());
         setPionnenImages(locatiePane.getLocatie(), locatiePane.getCurrentlySelectedNumber(), controller.getHuidigeSpeler());
         getStapelsPane().updateStapels();
         volgendeSpeler();
@@ -208,22 +209,23 @@ public class MainScherm extends BorderPane
     public void startDobbel()
     {
 
-        if (first)
+        if (firstDobbel)
             {
             if (shouldPlayDobbelSFX)
                 {
                 queueSFX("dice1", -1);
                 }
 
-            magPionnenPlaatsen = false;
+            isPionnenPlaatsenFase = false;
             controller.setHuidigeSpelerIndex();
-            first = false;
+            firstDobbel = false;
             }
         CustomCursor tempCursor = new CustomCursor(this, false);
         getStage().getScene().setCursor(new ImageCursor(tempCursor.getImage()));
         int spelerIndex = getVolgendeSpeler();
         if (spelerIndex != -1)
             {
+            console.printLine("Speler " + controller.getSpelers().get(spelerIndex).getKleur() + " is aan beurt.");
             if (controller.moetNogRollen(spelerIndex))
                 {
                 Locatie locatie = controller.getVolgendeBezetteLocatie(spelerIndex);
@@ -255,8 +257,9 @@ public class MainScherm extends BorderPane
             if (dobbel.getSpeler().getAantalBruikbaarGereedschap() == 0)
                 {
 
-                controller.geefResources(dobbel.getSpeler().index(), dobbel.getCurrentRol(), dobbel.getCurrentLocatie(),
-                        0);
+                controller.geefResources(dobbel.getSpeler().index(), dobbel.getCurrentRol(), dobbel.getCurrentLocatie(), 0);
+                console.printLine("Speler " + dobbel.getSpeler().getKleur() + " heeft " + dobbel.getCurrentRol() + " gerold op locatie: " + dobbel.getCurrentLocatie().getNaam());
+                console.printLine("Hij kreeg hiervoor " + (dobbel.getCurrentRol() / dobbel.getCurrentLocatie().getWaarde()) + " " + controller.getNaamVanResource(dobbel.getCurrentLocatie()) + ".");
                 }
             else
                 {
@@ -274,6 +277,10 @@ public class MainScherm extends BorderPane
                 controller.geefResources(dobbel.getSpeler().index(), dobbel.getCurrentRol(),
                         dobbel.getCurrentLocatie(),
                         totaalGereedschap);
+
+                console.printLine("Speler " + dobbel.getSpeler().getKleur() + " heeft " + dobbel.getCurrentRol() + " gerold op locatie: " + dobbel.getCurrentLocatie().getNaam() + " en gebruikte voor deze locatie " + totaalGereedschap + " gereedschap.");
+
+                console.printLine("En kreeg hiervoor " + (dobbel.getCurrentRol() / dobbel.getCurrentLocatie().getWaarde()) + " " + controller.getNaamVanResource(dobbel.getCurrentLocatie()) + ".");
                 }
             controller.clearPionnenVanSpeler(dobbel.getSpeler().index(), dobbel.getCurrentLocatie());
 
@@ -294,7 +301,7 @@ public class MainScherm extends BorderPane
                 ft.play();
                 ft.setOnFinished(e -> koopHut());
 
-                first = true;
+                firstDobbel = true;
                 }
             }
         else
@@ -303,8 +310,7 @@ public class MainScherm extends BorderPane
             controller.setHuidigeSpelerIndex();
             resetAccept();
             startVoeden();
-
-            first = false;
+            firstDobbel = false;
             }
 
     }
@@ -382,6 +388,7 @@ public class MainScherm extends BorderPane
         if (accepted)
             {
             controller.verrekenStapel(stapel, koopHutPane.getSpeler());
+            console.printLine("Hut gekocht door speler " + koopHutPane.getSpeler().getKleur());
             }
         else
             {
@@ -408,25 +415,28 @@ public class MainScherm extends BorderPane
             }
         else
             {
-            if ((speler.getVoedseltekort() > 0) && (!accept[controller.getHuidigeSpelerIndex()]))
+            if (!accept[controller.getHuidigeSpelerIndex()])
                 {
-                VoedselPane temp = new VoedselPane(this, centerMainHBox, speler);
-                if (speler.getAantalGoud() + speler.getAantalHout() + speler.getAantalLeem() + speler.getAantalSteen() >= speler.getVoedseltekort())
+                if (speler.getVoedseltekort() > 0)
                     {
-                    setVoedselPane(temp);
-                    }
-                else
-                    {
-                    accept[controller.getHuidigeSpelerIndex()] = true;
-                    controller.incrementHuidigeSpelerIndex();
-                    startVoeden();
+                    VoedselPane temp = new VoedselPane(this, centerMainHBox, speler);
+                    if (speler.getAantalGoud() + speler.getAantalHout() + speler.getAantalLeem() + speler.getAantalSteen() >= speler.getVoedseltekort())
+                        {
+                        setVoedselPane(temp);
+                        }
+                    else
+                        {
+                        accept[controller.getHuidigeSpelerIndex()] = true;
+                        controller.incrementHuidigeSpelerIndex();
+                        console.printLine("Speler " + speler.getKleur() + " kon de upkeep van pionnen niet betalen en kreeg 10 minpunten.");
+                        startVoeden();
+                        }
                     }
                 }
             else
                 {
                 accept[controller.getHuidigeSpelerIndex()] = true;
                 controller.incrementHuidigeSpelerIndex();
-
                 startVoeden();
 
                 }
@@ -447,6 +457,7 @@ public class MainScherm extends BorderPane
         else
             {
             accept[v.getSpeler().index()] = true;
+            console.printLine("Speler " + v.getSpeler().getKleur() + " wou de upkeep van pionnen niet betalen en kreeg 10 minpunten.");
             }
         controller.incrementHuidigeSpelerIndex();
         startVoeden();
@@ -472,7 +483,7 @@ public class MainScherm extends BorderPane
             controller.verrekenGereedschapsmaker();
             controller.verrekenLoveHut();
             finishRoundFirst = false;
-            firstDobbel = true;
+            eersteDobbelVanRonde = true;
             if (!controller.isHetSpelGedaan())
                 {
                 setEindeRondePane(new EindeRondePane(this, centerMainHBox));
@@ -481,8 +492,9 @@ public class MainScherm extends BorderPane
         else
             {
             finishRoundFirst = true;
-            first = true;
+            firstDobbel = true;
             System.err.println("Round " + controller.getRondeNummer() + ": " + " Finished");
+            console.printLine("Round " + controller.getRondeNummer() + ": " + " Finished");
             resetAccept();
             controller.resetVorigeLocaties();
             controller.resetLocaties();
@@ -499,7 +511,7 @@ public class MainScherm extends BorderPane
             spelbordPane.turnOffArrow();
             stapelsPanel.updateStapels();
             bottomButtonsPanel.update();
-            magPionnenPlaatsen = true;
+            isPionnenPlaatsenFase = true;
             tabNaarHuidigeSpeler();
 
             }
@@ -528,17 +540,17 @@ public class MainScherm extends BorderPane
 
     public boolean magPionnenPlaatsen()
     {
-        return magPionnenPlaatsen;
+        return isPionnenPlaatsenFase;
     }
 
-    public boolean isSpelGestart()
+    public boolean isIsSpelGestart()
     {
-        return spelGestart;
+        return isSpelGestart;
     }
 
-    public boolean isSpelGedaan()
+    public boolean isIsSpelGedaan()
     {
-        return spelGedaan;
+        return isSpelGedaan;
     }
 
     private int getVolgendeSpeler()
@@ -551,6 +563,7 @@ public class MainScherm extends BorderPane
 
             if (controller.getVolgendeBezetteLocatie(index) != null)
                 {
+
                 return index;
                 }
             controller.incrementHuidigeSpelerIndex();
@@ -580,9 +593,9 @@ public class MainScherm extends BorderPane
 
     public void playMusic()
     {
-        if (spelGestart)
+        if (isSpelGestart)
             {
-            if (!spelGedaan)
+            if (!isSpelGedaan)
                 {
                 fadeMusic();
                 queueSFX("musicLoop", -1);
@@ -594,7 +607,6 @@ public class MainScherm extends BorderPane
             queueSFX("mainMenu", -1);
             }
     }
-//penalty toevoegen eindscherm
 
     public void stopMusic()
     {
@@ -668,13 +680,13 @@ public class MainScherm extends BorderPane
     {
         for (int i = 0; i < SFXPlayers.size(); i++)
             {
-            if (isPlaying)
+            if (isPlayingMusic)
                 {
                 if (SFXPlayers.get(i).isMusic())
                     {
                     SFXPlayers.get(i).getPlayer().pause();
                     }
-                isPlaying = false;
+                isPlayingMusic = false;
                 }
             else
                 {
@@ -682,7 +694,7 @@ public class MainScherm extends BorderPane
                     {
                     SFXPlayers.get(i).getPlayer().play();
                     }
-                isPlaying = true;
+                isPlayingMusic = true;
                 }
             }
     }
@@ -988,7 +1000,7 @@ public class MainScherm extends BorderPane
 
     public void setDobbelPane(DobbelPane dobbelPane)
     {
-        if (firstDobbel)
+        if (eersteDobbelVanRonde)
             {
 
             if (controller.getRondeNummer() <= 3)
@@ -996,7 +1008,7 @@ public class MainScherm extends BorderPane
                 spelbordPane.toggleArrow();
                 }
 
-            firstDobbel = false;
+            eersteDobbelVanRonde = false;
             }
         centerMainHBox.getChildren().clear();
         centerMainHBox.getChildren().add(centerLeftVbox);

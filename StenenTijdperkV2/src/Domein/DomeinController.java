@@ -449,6 +449,24 @@ public class DomeinController
         return true;
     }
 
+    public String getNaamVanResource(Locatie locatie)
+    {
+        switch (locatie.getNaam().trim().toLowerCase())
+            {
+            case "bos":
+                return "hout";
+            case "leemgroeve":
+                return "leem";
+            case "steengroeve":
+                return "steen";
+            case "rivier":
+                return "goud";
+            case "jacht":
+                return "voedsel";
+            }
+        return "";
+    }
+
     public int getRondeNummer()
     {
         return rondeNummer;

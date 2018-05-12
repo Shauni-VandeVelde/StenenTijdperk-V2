@@ -297,7 +297,7 @@ public class Player
                 setPath("egypt9");
                 break;
             }
-        if (!mainScherm.isSpelGestart())
+        if (!mainScherm.isIsSpelGestart())
             {
             setPath("mainMenu");
             }
