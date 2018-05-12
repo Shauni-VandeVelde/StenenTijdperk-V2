@@ -6,6 +6,7 @@
 package ui.frame.mainScherm.center;
 
 import Domein.DomeinController;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -218,11 +219,11 @@ public class PauzePane extends Pane
         loadPaneActive = !loadPaneActive;
     }
     
-    public void toggleNewSavePane(){
+    public void toggleNewSavePane(ArrayList<String> bestaandeSpelnamen){
         if(savePaneActive){
             toggleSavePane();
             getChildren().clear();
-            getChildren().add(new NewSavePane(mainScherm, this, dc));
+            getChildren().add(new NewSavePane(mainScherm, this, dc, bestaandeSpelnamen));
         }
         else{
             getChildren().clear();
