@@ -1118,5 +1118,11 @@ public class MainScherm extends BorderPane
         return null;
 
     }
+    
+    public void loadGame(DomeinController newDC){
+        this.closePauzeMenu();
+        
+        
+    }
 
 }

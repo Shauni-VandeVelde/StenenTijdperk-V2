@@ -72,7 +72,7 @@ public class StartGui extends Application
             if (key.getCode() == KeyCode.TAB)
                 {
 
-                cmd.finishRound();
+                //  cmd.finishRound();
                 }
             });
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
@@ -80,7 +80,7 @@ public class StartGui extends Application
             if (key.getCode() == KeyCode.ENTER)
                 {
 
-                cmd.plaatsMaxPionnenBeschikbaar();
+//                cmd.plaatsMaxPionnenBeschikbaar();
                 }
             });
 
