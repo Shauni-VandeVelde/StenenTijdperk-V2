@@ -74,7 +74,7 @@ public class NewSavePane extends RightPaneBlueprint {
 
         vBox.setSpacing(10);
         
-        saveNameField.prefWidthProperty().bind(widthProperty().multiply(0.50));
+        saveNameField.prefWidthProperty().bind(widthProperty().multiply(0.65));
         lblSaveNaam.setFont(new Font("Arial", 30));
     }
     
