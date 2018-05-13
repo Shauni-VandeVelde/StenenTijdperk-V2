@@ -99,7 +99,7 @@ public class MainScherm extends BorderPane
     private boolean shouldPlayMenuSound = true;
     private boolean shouldPlayLocatieSFX = true;
     private ArrayList<Player> SFXPlayers = new ArrayList<>();
-    private double masterVolume = 0.8, musicVolume = 0.38, SFXVolume = 0.7;
+    private double masterVolume = 0.65, musicVolume = 0.092, SFXVolume = 0.31;
 
     public static String getUrl(String type)
     {
@@ -574,8 +574,9 @@ public class MainScherm extends BorderPane
     {
         return controller;
     }
-    
-    public void printLine(String line){
+
+    public void printLine(String line)
+    {
         console.printLine(line);
     }
 

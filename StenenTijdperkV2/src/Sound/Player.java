@@ -222,14 +222,12 @@ public class Player
                 break;
             case "gong":
                 soundEffect = true;
-                volume = 0.85;
+                volume = 0.6;
                 path = "/SFX/gong.mp3";
                 break;
             case "menu":
                 soundEffect = true;
-
                 path = "/SFX/Menu.mp3";
-
                 break;
             }
 

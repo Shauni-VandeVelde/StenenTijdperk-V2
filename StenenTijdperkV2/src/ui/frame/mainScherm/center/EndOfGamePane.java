@@ -136,10 +136,6 @@ public class EndOfGamePane extends RightPaneBlueprint
         DeelPaneel grondstoffenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
         DeelPaneel totaalPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
 
-        //spelerDeelPaneel.setStyle("-fx-background-color:blue;");
-        //huttenPuntenDeelPaneel.setStyle("-fx-background-color:red;");
-        //grondstoffenPuntenDeelPaneel.setStyle("-fx-background-color:purple;");
-        //totaalPuntenDeelPaneel.setStyle("-fx-background-color:orange;");
         spelerLabel.setAlignment(Pos.CENTER);
         GrondstoffenLabel.setAlignment(Pos.CENTER);
         penaltyLabel.setAlignment(Pos.CENTER);
@@ -214,10 +210,6 @@ public class EndOfGamePane extends RightPaneBlueprint
         DeelPaneel grondstoffenPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
         DeelPaneel totaalPuntenDeelPaneel = new DeelPaneel(mainScherm, widthDiv, 0.14, vbox, true);
 
-        // spelerDeelPaneel.setStyle("-fx-background-color:blue;");
-        // huttenPuntenDeelPaneel.setStyle("-fx-background-color:red;");
-        //  grondstoffenPuntenDeelPaneel.setStyle("-fx-background-color:purple;");
-        // totaalPuntenDeelPaneel.setStyle("-fx-background-color:orange;");
         spelerLabel.setAlignment(Pos.CENTER);
         penaltyLabel.setAlignment(Pos.CENTER);
         resourcesPuntenLabel.setAlignment(Pos.CENTER);

@@ -103,7 +103,7 @@ public class ButtonsPane extends Pane
         mainPanel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/ButtonPanel.css").toExternalForm());
         firstPanel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/ButtonPanel.css").toExternalForm());
         secondPanel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/ButtonPanel.css").toExternalForm());
-        txfHuidigeSpeler.setStyle("-fx-background-color: transparent;;-fx-text-inner-color: white;-fx-font-size: 14pt; -fx-font-weight: 900;-fx-font-family: \"Calibri\" ;");
+        txfHuidigeSpeler.setStyle("-fx-background-color: transparent;-fx-text-inner-color: white;-fx-font-size: 14pt; -fx-font-weight: 900;-fx-font-family: \"Calibri\" ;");
         setStyle("-fx-background-color: transparent;");
         initSlider();
         resetCBOPlaatsPionnen();

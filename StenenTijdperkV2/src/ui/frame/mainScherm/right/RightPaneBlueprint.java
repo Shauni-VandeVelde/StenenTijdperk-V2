@@ -257,7 +257,7 @@ public abstract class RightPaneBlueprint extends Pane
             pionnenImage = mainScherm.getImageView(mainScherm.getUrl("pionGroen"));
             }
 
-        style += "-fx-font-size:1.4em; -fx-font-weight:900; -fx-stroke: black -fx-stroke-width: 2px";
+        style += "-fx-font-size:1.4em; -fx-font-weight:900; -fx-stroke: black; -fx-stroke-width: 2px";
 
     }
 
