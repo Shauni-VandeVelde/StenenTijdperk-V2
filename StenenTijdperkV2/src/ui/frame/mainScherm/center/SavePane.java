@@ -22,13 +22,12 @@ import javafx.util.Pair;
 import ui.frame.mainScherm.MainScherm;
 import ui.frame.mainScherm.right.RightPaneBlueprint;
 
-
 /**
  *
  * @author kenzo
  */
-public class SavePane extends RightPaneBlueprint
-{
+public class SavePane extends RightPaneBlueprint {
+
     private MainScherm mainScherm;
     private PersistentieController pc;
     private DomeinController dc;
@@ -46,8 +45,7 @@ public class SavePane extends RightPaneBlueprint
 
     private ImageView backgroundImg;
 
-    SavePane(MainScherm mainScherm, PauzePane pauzePane, DomeinController dc)
-    {
+    SavePane(MainScherm mainScherm, PauzePane pauzePane, DomeinController dc) {
         super(mainScherm, mainScherm.getController().getSpelers().get(0), pauzePane, 1, 0.77);
         this.mainScherm = mainScherm;
         this.pauzePane = pauzePane;
@@ -75,24 +73,22 @@ public class SavePane extends RightPaneBlueprint
         vBox.getChildren().add(lblSave);
         vBox.getChildren().add(btnNewSave);
 
-        for (Button b : existingSavesButtons)
-            {
+        for (Button b : existingSavesButtons) {
             vBox.getChildren().add(b);
             b.setBackground(buttonBG);
-            }
+        }
 
         this.getChildren().add(vBox);
     }
 
-    private void setLayout()
-    {
+    private void setLayout() {
         backgroundImg.fitWidthProperty().bind(this.widthProperty());
         backgroundImg.fitHeightProperty().bind(this.heightProperty());
 
         vBox.prefWidthProperty().bind(widthProperty());
         vBox.prefHeightProperty().bind(heightProperty());
         vBox.setAlignment(Pos.CENTER);
-        
+
         vBox.setSpacing(10);
 
         lblSave.setFont(new Font("Arial", 30));
@@ -104,46 +100,35 @@ public class SavePane extends RightPaneBlueprint
         backButton.setLayoutX(20);
         backButton.setLayoutY(20);
 
-
 //        btnNewSave.setBackground(buttonBG);
-        for (Button b : existingSavesButtons)
-            {
+        for (Button b : existingSavesButtons) {
             b.prefWidthProperty().bind(btnNewSave.widthProperty());
             b.prefHeightProperty().bind(btnNewSave.heightProperty());
-            }
+        }
     }
 
-    private void setStyleSheets()
-    {
+    private void setStyleSheets() {
         btnNewSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
         backButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
 
-   
-
         btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.65));
 
-        for (Button b : existingSavesButtons)
-            {
+        for (Button b : existingSavesButtons) {
             b.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
-            }
+        }
     }
 
-    private void setActions()
-    {
-        btnNewSave.setOnAction(new EventHandler<ActionEvent>()
-        {
+    private void setActions() {
+        btnNewSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event)
-            {
+            public void handle(ActionEvent event) {
                 pauzePane.toggleNewSavePane(saves);
             }
 
         });
-        backButton.setOnAction(new EventHandler<ActionEvent>()
-        {
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event)
-            {
+            public void handle(ActionEvent event) {
                 System.out.println("Called toggle");
                 pauzePane.toggleSavePane();
             }
@@ -167,22 +152,31 @@ public class SavePane extends RightPaneBlueprint
 //        });
     }
 
-    private void loadExistingSaveButtons()
-    {
+    private void loadExistingSaveButtons() {
         ArrayList<Pair> temp = pc.getSaveNamesWithRoundNr();
 
-        for (int i = 0; i < temp.size(); ++i)
-            {
-            saves.add(temp.get(i).getKey().toString());
-            existingSavesButtons.add(new Button("Save " + (i + 1) + " - " + "Naam: " + temp.get(i).getKey().toString() + " - " + "Ronde: " + temp.get(i).getValue().toString()));
-            }
+        for (int i = 0; i < temp.size(); ++i) {
+            String strSaveName = temp.get(i).getKey().toString();
+            saves.add(strSaveName);
+
+            
+            Button tempButton = new Button("Save " + (i + 1) + " - " + "Naam: " + strSaveName + " - " + "Ronde: " + temp.get(i).getValue().toString());
+
+            tempButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent e) {
+                    pc.saveOverride(strSaveName, dc);
+                    mainScherm.printLine("Overschrijven " + strSaveName + " successvol.");
+                }
+            });
+
+            existingSavesButtons.add(tempButton);
+        }
     }
-    
-    
+
 //    public void toggleBackButton()
 //    {
 //            this.getChildren().clear();
 //            mainScherm.openPauzeMenu();
 //    }
-
 }

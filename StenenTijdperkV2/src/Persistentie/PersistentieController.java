@@ -178,15 +178,16 @@ public class PersistentieController {
      */
     public void saveOverride(String naam, DomeinController dc) {
         String saveUpdateModeOff = "SET SQL_SAFE_UPDATES = 0;";
+
         boolean success = false;
 
         try (Connection con = DriverManager.getConnection(JDBC_URL + "&useSSL=false")) {
-            PreparedStatement qryDeleteHutten = con.prepareStatement(saveUpdateModeOff + "DELETE FROM hut WHERE dcNaam = ?");
-            PreparedStatement qryDeletePionnen = con.prepareStatement(saveUpdateModeOff + "DELETE FROM pion WHERE dcNaam = ?");
-            PreparedStatement qryDeleteGereedschapsFiches = con.prepareStatement(saveUpdateModeOff + "DELETE FROM gereedschapsfiche WHERE dcNaam = ?");
-            PreparedStatement qryDeleteSpelers = con.prepareStatement(saveUpdateModeOff + "DELETE FROM speler WHERE dcNaam = ?");
-            PreparedStatement qryDeleteStapels = con.prepareStatement(saveUpdateModeOff + "DELETE FROM stapel WHERE dcNaam = ?");
-            PreparedStatement qryDeleteDomeinController = con.prepareStatement(saveUpdateModeOff + "DELETE FROM domeincontroller WHERE domeinControllerNaam = ?");
+            PreparedStatement qryDeleteHutten = con.prepareStatement("DELETE FROM hut WHERE dcNaam = ?;");
+            PreparedStatement qryDeletePionnen = con.prepareStatement("DELETE FROM pion WHERE dcNaam = ?");
+            PreparedStatement qryDeleteGereedschapsFiches = con.prepareStatement("DELETE FROM gereedschapsfiche WHERE dcNaam = ?");
+            PreparedStatement qryDeleteSpelers = con.prepareStatement("DELETE FROM speler WHERE dcNaam = ?");
+            PreparedStatement qryDeleteStapels = con.prepareStatement("DELETE FROM stapel WHERE dcNaam = ?");
+            PreparedStatement qryDeleteDomeinController = con.prepareStatement("DELETE FROM domeincontroller WHERE domeinControllerNaam = ?");
 
             qryDeleteHutten.setString(1, naam);
             qryDeletePionnen.setString(1, naam);
@@ -195,12 +196,12 @@ public class PersistentieController {
             qryDeleteStapels.setString(1, naam);
             qryDeleteDomeinController.setString(1, naam);
 
-            qryDeleteHutten.executeQuery();
-            qryDeletePionnen.executeQuery();
-            qryDeleteGereedschapsFiches.executeQuery();
-            qryDeleteSpelers.executeQuery();
-            qryDeleteStapels.executeQuery();
-            qryDeleteDomeinController.executeQuery();
+            qryDeleteSpelers.executeUpdate();
+            qryDeletePionnen.executeUpdate();
+            qryDeleteHutten.executeUpdate();
+            qryDeleteGereedschapsFiches.executeUpdate();
+            qryDeleteStapels.executeUpdate();
+            qryDeleteDomeinController.executeUpdate();
 
             success = true;
         } catch (SQLException ex) {
