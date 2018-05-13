@@ -10,11 +10,13 @@ import Persistentie.PersistentieController;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import ui.frame.mainScherm.MainScherm;
 import ui.frame.mainScherm.right.RightPaneBlueprint;
 
@@ -49,6 +51,7 @@ public class NewSavePane extends RightPaneBlueprint {
         btnSave = new Button("Save");
 
         setActions();
+        setStyleSheets();
         setLayout();
 
         vBox.getChildren().add(lblSaveNaam);
@@ -63,6 +66,27 @@ public class NewSavePane extends RightPaneBlueprint {
         backgroundImg.fitWidthProperty().bind(this.widthProperty());
         backgroundImg.fitHeightProperty().bind(this.heightProperty());
         
+        lblSaveNaam.setFont(new Font("Arial", 40));
+        
+        vBox.prefWidthProperty().bind(widthProperty());
+        vBox.prefHeightProperty().bind(heightProperty());
+        vBox.setAlignment(Pos.CENTER);
+
+        vBox.setSpacing(10);
+        
+        saveNameField.prefWidthProperty().bind(widthProperty().multiply(0.50));
+        lblSaveNaam.setFont(new Font("Arial", 30));
+    }
+    
+        private void setStyleSheets() {
+        lblSaveNaam.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/newSavePane.css").toExternalForm());
+        
+        saveNameField.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/newSavePane.css").toExternalForm());
+        
+        
+        btnSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+        
+
     }
 
     public void setActions() {

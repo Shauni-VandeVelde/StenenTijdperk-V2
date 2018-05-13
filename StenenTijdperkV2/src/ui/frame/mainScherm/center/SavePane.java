@@ -99,6 +99,8 @@ public class SavePane extends RightPaneBlueprint {
     }
 
     private void setStyleSheets() {
+        
+        lblSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/newSavePane.css").toExternalForm());
         btnNewSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
         btnNewSave.setId("saveButtons");
         btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.65));
