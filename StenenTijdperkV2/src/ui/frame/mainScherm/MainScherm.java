@@ -17,6 +17,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -103,7 +105,6 @@ public class MainScherm extends BorderPane
 
     public static String getUrl(String type)
     {
-
         String url = "";
         for (int i = 0; i < urls[0].length; i++)
             {
@@ -1126,10 +1127,20 @@ public class MainScherm extends BorderPane
         tabNaarHuidigeSpeler();
     }
     
+    public void setNewController(DomeinController newDC){
+        this.controller = newDC;
+        
+        
+    }
+    
     public void loadGame(DomeinController newDC){
         this.closePauzeMenu();
         
-        this.controller = newDC;
+        newDC.setAantalSpelers(newDC.getSpelers().size());
+        String[] temp = new String[newDC.getAantalSpelers()];
+        newDC.setVorigeLocaties(temp);
+        
+        setNewController(newDC);
         
         refreshInterface();
     }
