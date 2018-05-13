@@ -35,13 +35,11 @@ public class SavePane extends RightPaneBlueprint {
 
     private Label lblSave;
     private Button btnNewSave;
-    private Button backButton;
     private ArrayList<String> saves;
     private ArrayList<Button> existingSavesButtons;
     private VBox vBox;
     private PauzePane pauzePane;
     private Background buttonBG;
-    private boolean backButtonActive = false;
 
     private ImageView backgroundImg;
 
@@ -53,7 +51,6 @@ public class SavePane extends RightPaneBlueprint {
         this.dc = dc;
         lblSave = new Label("Spel opslaan:");
         btnNewSave = new Button("New Save");
-        backButton = new Button("Terug");
         saves = new ArrayList<String>();
         existingSavesButtons = new ArrayList<Button>();
 
@@ -68,7 +65,6 @@ public class SavePane extends RightPaneBlueprint {
         setActions();
 
         this.getChildren().add(backgroundImg);
-        this.getChildren().add(backButton);
 
         vBox.getChildren().add(lblSave);
         vBox.getChildren().add(btnNewSave);
@@ -92,13 +88,9 @@ public class SavePane extends RightPaneBlueprint {
         vBox.setSpacing(10);
 
         lblSave.setFont(new Font("Arial", 30));
-        backButton.setFont(new Font("Arial", 30));
 
         btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.2));
         btnNewSave.prefHeightProperty().bind(heightProperty().multiply(0.1));
-
-        backButton.setLayoutX(20);
-        backButton.setLayoutY(20);
 
 //        btnNewSave.setBackground(buttonBG);
         for (Button b : existingSavesButtons) {
@@ -109,7 +101,6 @@ public class SavePane extends RightPaneBlueprint {
 
     private void setStyleSheets() {
         btnNewSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
-        backButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
 
         btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.65));
 
@@ -128,30 +119,6 @@ public class SavePane extends RightPaneBlueprint {
             }
 
         });
-        backButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Called toggle");
-                pauzePane.toggleSavePane();
-            }
-
-        });
-
-//         backButton.setOnAction(new EventHandler<ActionEvent>()
-//        {
-//            @Override
-//            public void handle(ActionEvent event)
-//            {
-//
-//                if (mainScherm.shouldPlayMenuSFX())
-//                    {
-//                    mainScherm.queueSFX("menu", -1);
-//                    }
-//
-////               toggleBackButton();
-//            }
-//
-//        });
     }
 
     private void loadExistingSaveButtons() {
@@ -175,10 +142,4 @@ public class SavePane extends RightPaneBlueprint {
             existingSavesButtons.add(tempButton);
         }
     }
-
-//    public void toggleBackButton()
-//    {
-//            this.getChildren().clear();
-//            mainScherm.openPauzeMenu();
-//    }
 }
