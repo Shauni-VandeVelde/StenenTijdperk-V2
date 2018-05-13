@@ -49,8 +49,8 @@ public class PersistentieController {
                 PreparedStatement qrySaveSpelers[] = new PreparedStatement[dc.getSpelers().size()];
 
                 for (int i = 0; i < dc.getSpelers().size(); ++i) {
-                    qrySaveSpelers[i] = con.prepareStatement("INSERT INTO speler(spelerIndex, dcNaam, kleur, voedselPerBeurt, punten, aantalGoud, aantalHout, aantalLeem, aantalSteen, aantalVoedsel, previousHout, previousLeem, previousSteen, previousGoud, previousVoedsel, previousPunten, previousVoedselPerBeurt, previousPionnenSize, previousWaardeGereedschap, previousHuttenSize)"
-                            + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    qrySaveSpelers[i] = con.prepareStatement("INSERT INTO speler(spelerIndex, dcNaam, kleur, voedselPerBeurt, punten, aantalGoud, aantalHout, aantalLeem, aantalSteen, aantalVoedsel, previousHout, previousLeem, previousSteen, previousGoud, previousVoedsel, previousPunten, previousVoedselPerBeurt, previousPionnenSize, previousWaardeGereedschap, previousHuttenSize, totaalPenalty)"
+                            + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
                     qrySaveSpelers[i].setInt(1, i);
                     qrySaveSpelers[i].setString(2, naam);
@@ -72,6 +72,7 @@ public class PersistentieController {
                     qrySaveSpelers[i].setInt(18, dc.getSpelers().get(i).getPreviousPionnenSize());
                     qrySaveSpelers[i].setInt(19, dc.getSpelers().get(i).getPreviousWaardeGereedschap());
                     qrySaveSpelers[i].setInt(20, dc.getSpelers().get(i).getPreviousHuttenSize());
+                    qrySaveSpelers[i].setInt(21, dc.getSpelers().get(i).getTotaalPenalty());
                 }
 
                 // Gereedschapsfiches
@@ -177,7 +178,6 @@ public class PersistentieController {
      * @param dc
      */
     public void saveOverride(String naam, DomeinController dc) {
-        String saveUpdateModeOff = "SET SQL_SAFE_UPDATES = 0;";
 
         boolean success = false;
 
@@ -290,6 +290,7 @@ public class PersistentieController {
                 temp.setPreviousPionnenSize(rs.getInt("previousPionnenSize"));
                 temp.setPreviousWaardeGereedschap(rs.getInt("previousWaardeGereedschap"));
                 temp.setPreviousHuttenSize(rs.getInt("previousHuttenSize"));
+                temp.setTotaalPenalty(rs.getInt("totaalPenalty"));
 
                 newDC.addSpeler(temp);
             }
