@@ -57,82 +57,6 @@ public class CenterPane extends Pane
         setActions();
     }
 
-    public void turnOffArrow()
-    {
-        timeline.stop();
-        arrowPane.setVisible(false);
-        arrowShown = false;
-    }
-
-    public void removeArrow()
-    {
-        timeline.stop();
-        getChildren().remove(arrowPane);
-
-    }
-
-    public void toggleArrow()
-    {
-
-        if (!arrowShown)
-            {
-
-            timeline.play();
-
-            arrowShown = true;
-            }
-        else
-            {
-            timeline.stop();
-            arrowPane.setVisible(false);
-            arrowShown = false;
-            }
-    }
-
-    public void resetAkker()
-    {
-        akkerLocaties[0].reset(true);
-    }
-
-    public void resetGereedschapsMaker()
-    {
-        gereedschapsmakerLocaties[0].reset(true);
-    }
-
-    public void resetLovehut()
-    {
-        lovehutLocaties[0].reset(true);
-        lovehutLocaties[1].reset(true);
-
-    }
-
-    public void clearPionnenVanLocatie(Locatie locatie, Speler speler)
-    {
-        PionnenLocatieDeelPane[] array = getLocatieDeelPane(locatie);
-        for (int i = 0; i < array.length; i++)
-            {
-            if (array[i].hasImage())
-                {
-                if (array[i].getPion().getKleur() == speler.getKleur())
-                    {
-                    array[i].reset(false);
-                    }
-                }
-            }
-    }
-
-    public void setLocatieImages(Locatie locatie, int aantal, Speler speler)
-    {
-
-        ArrayList<Pion> pionnen = new ArrayList<>();
-        for (int i = 0; i < aantal; i++)
-            {
-            pionnen.add(new Pion(speler.getKleur(), true));
-            }
-        PionnenLocatieDeelPane[] temp = getLocatieDeelPane(locatie);
-        setImages(temp, pionnen, speler);
-    }
-
     private void init()
     {
 
@@ -159,6 +83,142 @@ public class CenterPane extends Pane
         timeline = new Timeline(new KeyFrame(Duration.seconds(0.3), evt -> arrowPane.setVisible(!arrowPane.isVisible())));
         timeline.setCycleCount(Animation.INDEFINITE);
 
+    }
+
+    private void initLocations()
+    {
+        double scale = 0.05;
+        arrowPane = new PionnenLocatieDeelPane(mainScherm, this, 0.12, 15.5, 4.43);
+        arrowPane.setImage("arrow", new Pion(Kleur.BLAUW, true));
+        bosLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 15.2, 2.6);
+        bosLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 16, 3.7);
+        bosLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 15.8, 1.5);
+        bosLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 17, 2.4);
+        bosLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 14.4, 4.3);
+        bosLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 15.9, 5.8);
+        bosLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 13, 5.5);
+
+        leemgroeveLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 26.4, 5.3);
+        leemgroeveLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 26.3, 1.6);
+        leemgroeveLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 23.4, 2.5);
+        leemgroeveLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 22.5, 4.8);
+        leemgroeveLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 30.8, 0.5);
+        leemgroeveLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 32.6, 1.5);
+        leemgroeveLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 28, 3.9);
+
+        steengroeveLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 29.8, 10.5);
+        steengroeveLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 31.9, 10.4);
+        steengroeveLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 32.8, 9.3);
+        steengroeveLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 37.5, 7);
+        steengroeveLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 38.4, 8.5);
+        steengroeveLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 34.9, 9.4);
+        steengroeveLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 36.9, 9.9);
+
+        rivierLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 28, 14);
+        rivierLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 30, 14);
+        rivierLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 32, 14.3);
+        rivierLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 34, 13.9);
+        rivierLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 36, 14.2);
+        rivierLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 37.5, 13.4);
+        rivierLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 26.5, 13.2);
+
+        lovehutLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 8.5, 17.5);
+        lovehutLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.5, 17.5);
+
+        akkerLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 14.8, 14.8);
+        gereedschapsmakerLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3.8, 13.9);
+
+        jachtLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 0.4, 0.6);
+        jachtLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.5, 1.7);
+        jachtLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.9, 0.3);
+        jachtLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3.3, 0.2);
+        jachtLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.0, 2.8);
+        jachtLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3, 2.5);
+        jachtLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 4.0, 1.6);
+        jachtLocaties[7] = new PionnenLocatieDeelPane(mainScherm, this, scale, 4.6, 0.1);
+        jachtLocaties[8] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.1, 0.3);
+        jachtLocaties[9] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.6, 1.5);
+        jachtLocaties[10] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.5, 4);
+        jachtLocaties[11] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3, 3.8);
+        jachtLocaties[12] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.2, 6.6);
+        jachtLocaties[13] = new PionnenLocatieDeelPane(mainScherm, this, scale, 2.2, 5.2);
+        jachtLocaties[14] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3.8, 4.85);
+        jachtLocaties[15] = new PionnenLocatieDeelPane(mainScherm, this, scale, 4.8, 4);
+        jachtLocaties[16] = new PionnenLocatieDeelPane(mainScherm, this, scale, 5.4, 5.2);
+        jachtLocaties[17] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.8, 6.4);
+        jachtLocaties[18] = new PionnenLocatieDeelPane(mainScherm, this, scale, 4.2, 6);
+        jachtLocaties[19] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.8, 2.6);
+        jachtLocaties[20] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.4, 3.7);
+        jachtLocaties[21] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.9, 5.8);
+        jachtLocaties[22] = new PionnenLocatieDeelPane(mainScherm, this, scale, 7.5, 0.7);
+        jachtLocaties[23] = new PionnenLocatieDeelPane(mainScherm, this, scale, 7.9, 1.8);
+        jachtLocaties[24] = new PionnenLocatieDeelPane(mainScherm, this, scale, 8.1, 2.9);
+        jachtLocaties[25] = new PionnenLocatieDeelPane(mainScherm, this, scale, 7.7, 4);
+        jachtLocaties[26] = new PionnenLocatieDeelPane(mainScherm, this, scale, 8.3, 5.1);
+        jachtLocaties[27] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.1, 0.2);
+        jachtLocaties[28] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.5, 0.6);
+        jachtLocaties[29] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.4, 1.5);
+        jachtLocaties[30] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.8, 1.8);
+        jachtLocaties[31] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.2, 2.9);
+        jachtLocaties[32] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.4, 3.9);
+        jachtLocaties[33] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.7, 4.2);
+        jachtLocaties[34] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.8, 5.2);
+        jachtLocaties[35] = new PionnenLocatieDeelPane(mainScherm, this, scale, 2.3, 7.5);
+        jachtLocaties[36] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3.7, 7.1);
+        jachtLocaties[37] = new PionnenLocatieDeelPane(mainScherm, this, scale, 5.8, 6.8);
+        jachtLocaties[38] = new PionnenLocatieDeelPane(mainScherm, this, scale, 8.5, 6.4);
+        jachtLocaties[39] = new PionnenLocatieDeelPane(mainScherm, this, scale, 7.2, 7.2);
+
+        for (int i = 0; i < stapelLocaties.length; i++)
+            {
+            stapelLocaties[i] = new PionnenLocatieDeelPane(mainScherm, this, scale, 16.5, 7);
+            stapelLocaties[i].setStyle("-fx-background-color:transparent;");
+            }
+
+        for (int i = 0; i < bosLocaties.length; i++)
+            {
+            getChildren().add(bosLocaties[i]);
+            //bosLocaties[i].setImage("pionRood");
+
+            getChildren().add(steengroeveLocaties[i]);
+            //steengroeveLocaties[i].setImage("pionGeel");
+            getChildren().add(leemgroeveLocaties[i]);
+            //leemgroeveLocaties[i].setImage("pionBlauw");
+            getChildren().add(rivierLocaties[i]);
+            // rivierLocaties[i].setImage("pionGroen");
+
+            bosLocaties[i].setStyle("-fx-background-color:transparent;");
+            steengroeveLocaties[i].setStyle("-fx-background-color:transparent;");
+            leemgroeveLocaties[i].setStyle("-fx-background-color:transparent;");
+            rivierLocaties[i].setStyle("-fx-background-color:transparent;");
+
+            }
+
+        for (int i = 0; i < lovehutLocaties.length; i++)
+            {
+            getChildren().add(lovehutLocaties[i]);
+            //lovehutLocaties[i].setImage("pionRood");
+            lovehutLocaties[i].setStyle("-fx-background-color:transparent;");
+            }
+
+        for (int i = 0; i < stapelLocaties.length; i++)
+            {
+            // getChildren().add(stapelLocaties[i]);
+            stapelLocaties[i].setStyle("-fx-background-color:transparent;");
+            }
+
+        for (int i = 0; i < jachtLocaties.length; i++)
+            {
+            getChildren().add(jachtLocaties[i]);
+            //jachtLocaties[i].setImage("pionGroen");
+            jachtLocaties[i].setStyle("-fx-background-color:transparent;");
+            }
+
+        getChildren().add(akkerLocaties[0]);
+        getChildren().add(gereedschapsmakerLocaties[0]);
+
+        // akkerLocatie.setImage("pionGroen");
+        // gereedschapsmakerLocatie.setImage("pionBlauw");
     }
 
     private void initLocatieButtons()
@@ -300,6 +360,70 @@ public class CenterPane extends Pane
         jacht.layoutXProperty().bind(widthProperty().multiply(0));
         jacht.layoutYProperty().bind(heightProperty().multiply(0));
 
+    }
+
+    public void toggleArrow()
+    {
+
+        if (!arrowShown)
+            {
+
+            timeline.play();
+
+            arrowShown = true;
+            }
+        else
+            {
+            timeline.stop();
+            arrowPane.setVisible(false);
+            arrowShown = false;
+            }
+    }
+
+    public void turnOffArrow()
+    {
+        timeline.stop();
+        arrowPane.setVisible(false);
+        arrowShown = false;
+    }
+
+    public void removeArrow()
+    {
+        timeline.stop();
+        getChildren().remove(arrowPane);
+
+    }
+
+    public void resetAkker()
+    {
+        akkerLocaties[0].reset(true);
+    }
+
+    public void resetGereedschapsMaker()
+    {
+        gereedschapsmakerLocaties[0].reset(true);
+    }
+
+    public void resetLovehut()
+    {
+        lovehutLocaties[0].reset(true);
+        lovehutLocaties[1].reset(true);
+
+    }
+
+    public void clearPionnenVanLocatie(Locatie locatie, Speler speler)
+    {
+        PionnenLocatieDeelPane[] array = getLocatieDeelPane(locatie);
+        for (int i = 0; i < array.length; i++)
+            {
+            if (array[i].hasImage())
+                {
+                if (array[i].getPion().getKleur() == speler.getKleur())
+                    {
+                    array[i].reset(false);
+                    }
+                }
+            }
     }
 
     public void openLocationMenu(String location)
@@ -797,6 +921,18 @@ public class CenterPane extends Pane
             });
     }
 
+    public void setLocatieImages(Locatie locatie, int aantal, Speler speler)
+    {
+
+        ArrayList<Pion> pionnen = new ArrayList<>();
+        for (int i = 0; i < aantal; i++)
+            {
+            pionnen.add(new Pion(speler.getKleur(), true));
+            }
+        PionnenLocatieDeelPane[] temp = getLocatieDeelPane(locatie);
+        setImages(temp, pionnen, speler);
+    }
+
     private void setImages(PionnenLocatieDeelPane[] locatiePaneel, ArrayList<Pion> pionnen, Speler speler)
     {
 
@@ -828,142 +964,6 @@ public class CenterPane extends Pane
 
             }
 
-    }
-
-    private void initLocations()
-    {
-        double scale = 0.05;
-        arrowPane = new PionnenLocatieDeelPane(mainScherm, this, 0.12, 15.5, 4.43);
-        arrowPane.setImage("arrow", new Pion(Kleur.BLAUW, true));
-        bosLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 15.2, 2.6);
-        bosLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 16, 3.7);
-        bosLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 15.8, 1.5);
-        bosLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 17, 2.4);
-        bosLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 14.4, 4.3);
-        bosLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 15.9, 5.8);
-        bosLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 13, 5.5);
-
-        leemgroeveLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 26.4, 5.3);
-        leemgroeveLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 26.3, 1.6);
-        leemgroeveLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 23.4, 2.5);
-        leemgroeveLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 22.5, 4.8);
-        leemgroeveLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 30.8, 0.5);
-        leemgroeveLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 32.6, 1.5);
-        leemgroeveLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 28, 3.9);
-
-        steengroeveLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 29.8, 10.5);
-        steengroeveLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 31.9, 10.4);
-        steengroeveLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 32.8, 9.3);
-        steengroeveLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 37.5, 7);
-        steengroeveLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 38.4, 8.5);
-        steengroeveLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 34.9, 9.4);
-        steengroeveLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 36.9, 9.9);
-
-        rivierLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 28, 14);
-        rivierLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 30, 14);
-        rivierLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 32, 14.3);
-        rivierLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 34, 13.9);
-        rivierLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 36, 14.2);
-        rivierLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 37.5, 13.4);
-        rivierLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 26.5, 13.2);
-
-        lovehutLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 8.5, 17.5);
-        lovehutLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.5, 17.5);
-
-        akkerLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 14.8, 14.8);
-        gereedschapsmakerLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3.8, 13.9);
-
-        jachtLocaties[0] = new PionnenLocatieDeelPane(mainScherm, this, scale, 0.4, 0.6);
-        jachtLocaties[1] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.5, 1.7);
-        jachtLocaties[2] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.9, 0.3);
-        jachtLocaties[3] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3.3, 0.2);
-        jachtLocaties[4] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.0, 2.8);
-        jachtLocaties[5] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3, 2.5);
-        jachtLocaties[6] = new PionnenLocatieDeelPane(mainScherm, this, scale, 4.0, 1.6);
-        jachtLocaties[7] = new PionnenLocatieDeelPane(mainScherm, this, scale, 4.6, 0.1);
-        jachtLocaties[8] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.1, 0.3);
-        jachtLocaties[9] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.6, 1.5);
-        jachtLocaties[10] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.5, 4);
-        jachtLocaties[11] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3, 3.8);
-        jachtLocaties[12] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.2, 6.6);
-        jachtLocaties[13] = new PionnenLocatieDeelPane(mainScherm, this, scale, 2.2, 5.2);
-        jachtLocaties[14] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3.8, 4.85);
-        jachtLocaties[15] = new PionnenLocatieDeelPane(mainScherm, this, scale, 4.8, 4);
-        jachtLocaties[16] = new PionnenLocatieDeelPane(mainScherm, this, scale, 5.4, 5.2);
-        jachtLocaties[17] = new PionnenLocatieDeelPane(mainScherm, this, scale, 1.8, 6.4);
-        jachtLocaties[18] = new PionnenLocatieDeelPane(mainScherm, this, scale, 4.2, 6);
-        jachtLocaties[19] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.8, 2.6);
-        jachtLocaties[20] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.4, 3.7);
-        jachtLocaties[21] = new PionnenLocatieDeelPane(mainScherm, this, scale, 6.9, 5.8);
-        jachtLocaties[22] = new PionnenLocatieDeelPane(mainScherm, this, scale, 7.5, 0.7);
-        jachtLocaties[23] = new PionnenLocatieDeelPane(mainScherm, this, scale, 7.9, 1.8);
-        jachtLocaties[24] = new PionnenLocatieDeelPane(mainScherm, this, scale, 8.1, 2.9);
-        jachtLocaties[25] = new PionnenLocatieDeelPane(mainScherm, this, scale, 7.7, 4);
-        jachtLocaties[26] = new PionnenLocatieDeelPane(mainScherm, this, scale, 8.3, 5.1);
-        jachtLocaties[27] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.1, 0.2);
-        jachtLocaties[28] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.5, 0.6);
-        jachtLocaties[29] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.4, 1.5);
-        jachtLocaties[30] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.8, 1.8);
-        jachtLocaties[31] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.2, 2.9);
-        jachtLocaties[32] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.4, 3.9);
-        jachtLocaties[33] = new PionnenLocatieDeelPane(mainScherm, this, scale, 10.7, 4.2);
-        jachtLocaties[34] = new PionnenLocatieDeelPane(mainScherm, this, scale, 9.8, 5.2);
-        jachtLocaties[35] = new PionnenLocatieDeelPane(mainScherm, this, scale, 2.3, 7.5);
-        jachtLocaties[36] = new PionnenLocatieDeelPane(mainScherm, this, scale, 3.7, 7.1);
-        jachtLocaties[37] = new PionnenLocatieDeelPane(mainScherm, this, scale, 5.8, 6.8);
-        jachtLocaties[38] = new PionnenLocatieDeelPane(mainScherm, this, scale, 8.5, 6.4);
-        jachtLocaties[39] = new PionnenLocatieDeelPane(mainScherm, this, scale, 7.2, 7.2);
-
-        for (int i = 0; i < stapelLocaties.length; i++)
-            {
-            stapelLocaties[i] = new PionnenLocatieDeelPane(mainScherm, this, scale, 16.5, 7);
-            stapelLocaties[i].setStyle("-fx-background-color:transparent;");
-            }
-
-        for (int i = 0; i < bosLocaties.length; i++)
-            {
-            getChildren().add(bosLocaties[i]);
-            //bosLocaties[i].setImage("pionRood");
-
-            getChildren().add(steengroeveLocaties[i]);
-            //steengroeveLocaties[i].setImage("pionGeel");
-            getChildren().add(leemgroeveLocaties[i]);
-            //leemgroeveLocaties[i].setImage("pionBlauw");
-            getChildren().add(rivierLocaties[i]);
-            // rivierLocaties[i].setImage("pionGroen");
-
-            bosLocaties[i].setStyle("-fx-background-color:transparent;");
-            steengroeveLocaties[i].setStyle("-fx-background-color:transparent;");
-            leemgroeveLocaties[i].setStyle("-fx-background-color:transparent;");
-            rivierLocaties[i].setStyle("-fx-background-color:transparent;");
-
-            }
-
-        for (int i = 0; i < lovehutLocaties.length; i++)
-            {
-            getChildren().add(lovehutLocaties[i]);
-            //lovehutLocaties[i].setImage("pionRood");
-            lovehutLocaties[i].setStyle("-fx-background-color:transparent;");
-            }
-
-        for (int i = 0; i < stapelLocaties.length; i++)
-            {
-            // getChildren().add(stapelLocaties[i]);
-            stapelLocaties[i].setStyle("-fx-background-color:transparent;");
-            }
-
-        for (int i = 0; i < jachtLocaties.length; i++)
-            {
-            getChildren().add(jachtLocaties[i]);
-            //jachtLocaties[i].setImage("pionGroen");
-            jachtLocaties[i].setStyle("-fx-background-color:transparent;");
-            }
-
-        getChildren().add(akkerLocaties[0]);
-        getChildren().add(gereedschapsmakerLocaties[0]);
-
-        // akkerLocatie.setImage("pionGroen");
-        // gereedschapsmakerLocatie.setImage("pionBlauw");
     }
 
     public boolean zijnAllePionnenWeg()
