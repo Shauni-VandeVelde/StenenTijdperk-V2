@@ -51,7 +51,7 @@ public class ConsolePane extends Pane
         getChildren().add(console);
         getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/TransparentTextArea.css").toExternalForm());
         double fontSize = 18;
-        console.setStyle("-fx-text-fill:white;");
+        console.setStyle("Black");
         ObjectProperty<Font> fontTracking = new SimpleObjectProperty<Font>(Font.getDefault());
 
         console.fontProperty().bind(fontTracking);
