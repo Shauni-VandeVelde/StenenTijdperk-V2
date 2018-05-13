@@ -85,10 +85,7 @@ public class NewSavePane extends RightPaneBlueprint {
         
         saveNameField.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/newSavePane.css").toExternalForm());
         
-        
         btnSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
-        
-
     }
 
     public void setActions() {
