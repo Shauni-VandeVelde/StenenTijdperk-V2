@@ -35,6 +35,7 @@ public class NewSavePane extends RightPaneBlueprint {
     private TextField saveNameField;
     private Button btnSave;
     private ArrayList<String> bestaandeSpelnamen;
+    private PauzePane pauzePane;
 
     public NewSavePane(MainScherm mainScherm, PauzePane pauzePane, DomeinController dc, ArrayList<String> bestaandeSpelnamen) {
         super(mainScherm, dc.getSpelers().get(0), pauzePane, 1, 0.77);
@@ -42,6 +43,7 @@ public class NewSavePane extends RightPaneBlueprint {
         this.dc = dc;
         this.mainScherm = mainScherm;
         this.bestaandeSpelnamen = bestaandeSpelnamen;
+        this.pauzePane = pauzePane;
 
         backgroundImg = mainScherm.getImageView("img/PauzeMenuBg.png");
 
@@ -108,6 +110,7 @@ public class NewSavePane extends RightPaneBlueprint {
                 else{
                     pc.saveNew(givenName, dc);
                     mainScherm.printLine("Het spel " + givenName + " is succesvol opgeslagen!");
+                    pauzePane.open();
                 }
             }
         });

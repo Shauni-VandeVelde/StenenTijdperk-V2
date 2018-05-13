@@ -232,22 +232,22 @@ public class PauzePane extends Pane
         }
     }
     
-    public void openSavePane(){
-            savePaneActive = true;
-            loadPaneActive = false;
-            soundMenuActive = false;
-        
-            getChildren().clear();
-            getChildren().add(background);
-            getChildren().add(menuOptionsVBox);
-    }
-    
     public void openNewSavePane(ArrayList<String> bestaandeSpelnamen){
             savePaneActive = false;
             loadPaneActive = false;
             soundMenuActive = false;
             getChildren().clear();
             getChildren().add(new NewSavePane(mainScherm, this, dc, bestaandeSpelnamen));
+    }
+    
+    public void open(){
+        savePaneActive = false;
+        loadPaneActive= false;
+        soundMenuActive = false;
+        
+        getChildren().clear();
+        getChildren().add(background);
+        getChildren().add(menuOptionsVBox);
     }
 
     private void setActions()
