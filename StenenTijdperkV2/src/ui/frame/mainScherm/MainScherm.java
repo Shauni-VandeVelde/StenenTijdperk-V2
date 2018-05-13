@@ -17,8 +17,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -102,6 +100,7 @@ public class MainScherm extends BorderPane
     private boolean shouldPlayLocatieSFX = true;
     private ArrayList<Player> SFXPlayers = new ArrayList<>();
     private double masterVolume = 0.65, musicVolume = 0.092, SFXVolume = 0.31;
+    private StartGui startGui;
 
     public static String getUrl(String type)
     {
@@ -116,8 +115,9 @@ public class MainScherm extends BorderPane
         return url;
     }
 
-    public MainScherm(Stage stage)
+    public MainScherm(StartGui startGui, Stage stage)
     {
+        this.startGui = startGui;
         this.stage = stage;
         getChildren().clear();
         StartScherm startScherm = new StartScherm(this);
@@ -126,6 +126,27 @@ public class MainScherm extends BorderPane
 
         startScherm.setOpacity(0);
         FadeTransition ft = new FadeTransition(Duration.millis(2800), startScherm);
+        ft.setFromValue(0);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.play();
+    }
+
+    public void exit()
+    {
+
+    }
+
+    public MainScherm(StartGui startGui, Stage stage, DomeinController newDC)
+    {
+        this.startGui = startGui;
+        this.stage = stage;
+        this.controller = newDC;
+
+        getChildren().clear();
+
+        this.setOpacity(0);
+        FadeTransition ft = new FadeTransition(Duration.millis(2800), this);
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(1);
@@ -142,6 +163,28 @@ public class MainScherm extends BorderPane
         controller.setAantalSpelers(aantal);
         controller.startSpel();
         stapelsPanel.init();
+        bottomButtonsPanel.initAfter();
+        setOpacity(0);
+        FadeTransition ft = new FadeTransition(Duration.millis(1200), this);
+        ft.setFromValue(0);
+        ft.setToValue(1.1);
+        ft.setCycleCount(1);
+        ft.play();
+        init();
+    }
+
+    public void startSpel()
+    {
+        fadeMusic();
+        isSpelGestart = true;
+        playMusic();
+        initPanels();
+
+        controller.setAantalSpelers(controller.getSpelers().size());
+        controller = new DomeinController(true);
+        controller.setAantalSpelers(4);
+        controller.startSpel();
+//        stapelsPanel.init();
         bottomButtonsPanel.initAfter();
         setOpacity(0);
         FadeTransition ft = new FadeTransition(Duration.millis(1200), this);
@@ -1119,30 +1162,26 @@ public class MainScherm extends BorderPane
         return null;
 
     }
-    
-    public void refreshInterface(){
+
+    public void refreshInterface()
+    {
         this.consolePane.clear();
         this.spelbordPane = new CenterPane(this);
         setInventoryPane(new InventoryPane(controller.getHuidigeSpeler(), this, centerRightInventoryMainVbox));
         tabNaarHuidigeSpeler();
     }
-    
-    public void setNewController(DomeinController newDC){
+
+    public void setNewController(DomeinController newDC)
+    {
         this.controller = newDC;
-        
-        
+
     }
-    
-    public void loadGame(DomeinController newDC){
+
+    public void loadGame(DomeinController newDC)
+    {
         this.closePauzeMenu();
-        
-        newDC.setAantalSpelers(newDC.getSpelers().size());
-        String[] temp = new String[newDC.getAantalSpelers()];
-        newDC.setVorigeLocaties(temp);
-        
-        setNewController(newDC);
-        
-        refreshInterface();
+        stopMusic();
+        startGui.loadGame(newDC);
     }
 
 }

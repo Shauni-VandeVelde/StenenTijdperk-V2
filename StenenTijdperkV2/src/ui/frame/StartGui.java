@@ -5,6 +5,7 @@
  */
 package ui.frame;
 
+import Domein.DomeinController;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -27,14 +28,16 @@ public class StartGui extends Application
 {
     private final boolean showSelectScreen = true;
     public static boolean isPaused = false;
-
+    private Stage stage;
     private Cmd cmd;
+    private MainScherm main;
+    private Pane pane;
 
     @Override
     public void start(Stage stage)
     {
-
-        MainScherm main = new MainScherm(stage);
+        this.stage = stage;
+        main = new MainScherm(this, stage);
 
         main.prefWidthProperty().bind(stage.widthProperty());
         main.minWidthProperty().bind(stage.widthProperty());
@@ -44,7 +47,7 @@ public class StartGui extends Application
         main.maxHeightProperty().bind(stage.heightProperty());
 
         // cmd = new Cmd(main, mainScherm.getController());
-        Pane pane = new Pane();
+        pane = new Pane();
         pane.getChildren().add(main);
         pane.setStyle("-fx-background-color:black;");
         Scene scene = new Scene(pane, 1024, 768);
@@ -115,6 +118,32 @@ public class StartGui extends Application
     public static void main(String[] args)
     {
         launch(args);
+    }
+
+    public void loadGame(DomeinController newDC)
+    {
+        newDC.setAantalSpelers(newDC.getSpelers().size());
+        String[] temp = new String[newDC.getAantalSpelers()];
+        newDC.setVorigeLocaties(temp);
+
+        main = new MainScherm(this, stage, newDC);
+        main.startSpel();
+        main.prefWidthProperty().bind(stage.widthProperty());
+        main.minWidthProperty().bind(stage.widthProperty());
+        main.maxWidthProperty().bind(stage.widthProperty());
+        main.prefHeightProperty().bind(stage.heightProperty());
+        main.minHeightProperty().bind(stage.heightProperty());
+        main.maxHeightProperty().bind(stage.heightProperty());
+        pane.getChildren().clear();
+        pane.getChildren().add(main);
+
+        pane.setStyle("-fx-background-color:black;");
+        Scene scene = new Scene(pane, 1024, 768);
+
+        stage.setScene(scene);
+        stage.show();
+        main.requestFocus();
+        main.requestFocus();
     }
 
 }

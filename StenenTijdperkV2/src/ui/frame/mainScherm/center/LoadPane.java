@@ -72,7 +72,7 @@ public class LoadPane extends RightPaneBlueprint
         vBox.prefHeightProperty().bind(heightProperty());
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
-        
+
         laadLabel.setFont(new Font("Arial", 30));
 
         for (Button b : loadButtons)
@@ -84,9 +84,9 @@ public class LoadPane extends RightPaneBlueprint
 
     private void setStyleSheets()
     {
-        
+
         laadLabel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/newSavePane.css").toExternalForm());
-        
+
         for (Button b : loadButtons)
             {
             b.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
@@ -94,7 +94,7 @@ public class LoadPane extends RightPaneBlueprint
             b.prefWidthProperty().bind(widthProperty().multiply(0.65));
             b.prefHeightProperty().bind(heightProperty().multiply(0.1));
             }
-        
+
     }
 
     private void setLoadButtons()
@@ -106,15 +106,20 @@ public class LoadPane extends RightPaneBlueprint
             saves.add(temp.get(i).getKey().toString());
             String strSaveName = temp.get(i).getKey().toString();
             Button btnTemp = new Button("Save " + (i + 1) + " - " + "Naam: " + strSaveName + " - " + "Ronde: " + temp.get(i).getValue().toString());
-            
-            btnTemp.setOnAction(new EventHandler<ActionEvent>() {
+
+            btnTemp.setOnAction(new EventHandler<ActionEvent>()
+            {
                 @Override
-                public void handle(ActionEvent e) {
-                    mainScherm.loadGame(pc.loadGame(strSaveName));
-                    mainScherm.printLine("Game " + "'" + strSaveName + "'" + " succssvol geladen.");
+                public void handle(ActionEvent e)
+                {
+                    DomeinController dc = pc.loadGame(strSaveName);
+
+                    mainScherm.loadGame(dc);
+                    mainScherm.printLine("Game " + "'" + strSaveName + "'" + " successvol geladen.");
                 }
+
             });
-            
+
             loadButtons.add(btnTemp);
             }
 

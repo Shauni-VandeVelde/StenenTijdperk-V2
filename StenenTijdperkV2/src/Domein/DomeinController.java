@@ -10,29 +10,36 @@ public class DomeinController
     private Spelbord spelbord;
     private ArrayList<Speler> spelers = new ArrayList<>();
 
-    public static void setGUI(boolean GUI) {
+    public static void setGUI(boolean GUI)
+    {
         DomeinController.GUI = GUI;
     }
 
-    public void setSpelbord(Spelbord spelbord) {
+    public void setSpelbord(Spelbord spelbord)
+    {
         this.spelbord = spelbord;
     }
 
-    public void setSpelers(ArrayList<Speler> spelers) {
+    public void setSpelers(ArrayList<Speler> spelers)
+    {
         this.spelers = spelers;
     }
 
-    public void setVorigeLocaties(String[] vorigeLocaties) {
+    public void setVorigeLocaties(String[] vorigeLocaties)
+    {
         this.vorigeLocaties = vorigeLocaties;
     }
 
-    public void setHuidigeSpelerIndex(int huidigeSpelerIndex) {
+    public void setHuidigeSpelerIndex(int huidigeSpelerIndex)
+    {
         this.huidigeSpelerIndex = huidigeSpelerIndex;
     }
 
-    public void setStartSpelerindex(int startSpelerindex) {
+    public void setStartSpelerindex(int startSpelerindex)
+    {
         this.startSpelerindex = startSpelerindex;
     }
+
     private String[] vorigeLocaties;
     private final int goudWaarde = 6;
     private final int leemWaarde = 4;
@@ -621,8 +628,9 @@ public class DomeinController
     {
         return spelers;
     }
-    
-    public void addSpeler(Speler sp){
+
+    public void addSpeler(Speler sp)
+    {
         spelers.add(sp);
     }
 
