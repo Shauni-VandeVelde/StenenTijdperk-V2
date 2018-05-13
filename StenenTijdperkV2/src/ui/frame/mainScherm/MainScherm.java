@@ -184,7 +184,7 @@ public class MainScherm extends BorderPane
         controller = new DomeinController(true);
         controller.setAantalSpelers(4);
         controller.startSpel();
-//        stapelsPanel.init();
+        stapelsPanel.init();
         bottomButtonsPanel.initAfter();
         setOpacity(0);
         FadeTransition ft = new FadeTransition(Duration.millis(1200), this);

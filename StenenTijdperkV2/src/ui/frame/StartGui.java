@@ -32,6 +32,7 @@ public class StartGui extends Application
     private Cmd cmd;
     private MainScherm main;
     private Pane pane;
+    private Scene scene;
 
     @Override
     public void start(Stage stage)
@@ -50,7 +51,7 @@ public class StartGui extends Application
         pane = new Pane();
         pane.getChildren().add(main);
         pane.setStyle("-fx-background-color:black;");
-        Scene scene = new Scene(pane, 1024, 768);
+        scene = new Scene(pane, 1024, 768);
         stage.setFullScreen(true);
         stage.setScene(scene);
         stage.setTitle("Stenen Tijdperk");
@@ -138,10 +139,10 @@ public class StartGui extends Application
         pane.getChildren().add(main);
 
         pane.setStyle("-fx-background-color:black;");
-        Scene scene = new Scene(pane, 1024, 768);
+        // scene = new Scene(pane, 1024, 768);
 
-        stage.setScene(scene);
-        stage.show();
+        // stage.setScene(scene);
+        //stage.show();
         main.requestFocus();
         main.requestFocus();
     }
