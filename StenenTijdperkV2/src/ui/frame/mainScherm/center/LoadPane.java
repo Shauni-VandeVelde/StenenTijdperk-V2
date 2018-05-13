@@ -5,7 +5,6 @@
  */
 package ui.frame.mainScherm.center;
 
-import Domein.DomeinController;
 import Persistentie.PersistentieController;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
@@ -112,10 +111,10 @@ public class LoadPane extends RightPaneBlueprint
                 @Override
                 public void handle(ActionEvent e)
                 {
-                    DomeinController dc = pc.loadGame(strSaveName);
+                    //DomeinController dc = pc.loadGame(strSaveName);
 
-                    mainScherm.loadGame(dc);
-                    mainScherm.printLine("Game " + "'" + strSaveName + "'" + " successvol geladen.");
+                    // mainScherm.loadGame(dc);
+                    //mainScherm.printLine("Game " + "'" + strSaveName + "'" + " successvol geladen.");
                 }
 
             });
