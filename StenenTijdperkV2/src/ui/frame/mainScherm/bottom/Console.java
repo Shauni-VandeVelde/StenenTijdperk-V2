@@ -28,6 +28,5 @@ public class Console extends TextArea
 
     public void clearText(){
         this.clear();
-        System.out.println("cleared");
     }
 }
