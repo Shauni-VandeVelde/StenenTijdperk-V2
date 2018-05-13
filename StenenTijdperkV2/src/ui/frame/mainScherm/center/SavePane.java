@@ -55,6 +55,9 @@ public class SavePane extends RightPaneBlueprint {
         existingSavesButtons = new ArrayList<Button>();
 
         loadExistingSaveButtons();
+        existingSavesButtons.add(new Button("fuck dit"));
+        existingSavesButtons.add(new Button("fuck dit hard"));
+        existingSavesButtons.add(new Button("fuck dit hard & droog"));
         
         backgroundImg = mainScherm.getImageView("img/PauzeMenuBg.png");
 
@@ -89,10 +92,6 @@ public class SavePane extends RightPaneBlueprint {
 
         lblSave.setFont(new Font("Arial", 30));
 
-        btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.2));
-        btnNewSave.prefHeightProperty().bind(heightProperty().multiply(0.1));
-
-//        btnNewSave.setBackground(buttonBG);
         for (Button b : existingSavesButtons) {
             b.prefWidthProperty().bind(btnNewSave.widthProperty());
             b.prefHeightProperty().bind(btnNewSave.heightProperty());
@@ -101,11 +100,13 @@ public class SavePane extends RightPaneBlueprint {
 
     private void setStyleSheets() {
         btnNewSave.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
-
+        btnNewSave.setId("saveButtons");
         btnNewSave.prefWidthProperty().bind(widthProperty().multiply(0.65));
 
         for (Button b : existingSavesButtons) {
             b.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+            b.setId("saveButtons");
+            
         }
     }
 
