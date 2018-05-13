@@ -9,8 +9,10 @@ import Persistentie.PersistentieController;
 import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.util.Pair;
 import ui.frame.mainScherm.MainScherm;
 import ui.frame.mainScherm.right.RightPaneBlueprint;
@@ -28,6 +30,7 @@ public class LoadPane extends RightPaneBlueprint
     private PersistentieController pc;
     private MainScherm mainScherm;
     private ImageView backgroundImg;
+    private Label laadLabel;
 
     LoadPane(MainScherm mainScherm, PauzePane pauzePane)
     {
@@ -36,6 +39,10 @@ public class LoadPane extends RightPaneBlueprint
         this.pc = new PersistentieController();
         this.saves = new ArrayList<String>();
         loadButtons = new ArrayList<Button>();
+        laadLabel = new Label("Laad spel");
+        
+        loadButtons.add( new Button("LELIJKE HOEREN JA"));
+        loadButtons.add( new Button("wat een lekker kippetje"));
 
         backgroundImg = mainScherm.getImageView("img/PauzeMenuBg.png");
 
@@ -46,6 +53,7 @@ public class LoadPane extends RightPaneBlueprint
         setStyleSheets();
 
         this.getChildren().add(backgroundImg);
+        vBox.getChildren().add(laadLabel);
 
         for (Button b : loadButtons)
             {
@@ -64,6 +72,8 @@ public class LoadPane extends RightPaneBlueprint
         vBox.prefHeightProperty().bind(heightProperty());
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
+        
+        laadLabel.setFont(new Font("Arial", 30));
 
         for (Button b : loadButtons)
             {
@@ -74,10 +84,17 @@ public class LoadPane extends RightPaneBlueprint
 
     private void setStyleSheets()
     {
+        
+        laadLabel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/newSavePane.css").toExternalForm());
+        
         for (Button b : loadButtons)
             {
             b.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/MenuButtons.css").toExternalForm());
+            b.setId("saveButtons");
+            b.prefWidthProperty().bind(widthProperty().multiply(0.65));
+            b.prefHeightProperty().bind(heightProperty().multiply(0.1));
             }
+        
     }
 
     private void setLoadButtons()
