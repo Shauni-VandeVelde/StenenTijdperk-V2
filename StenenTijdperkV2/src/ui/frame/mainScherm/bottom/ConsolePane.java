@@ -85,5 +85,9 @@ public class ConsolePane extends Pane
         });
 
     }
+    
+    public void clear(){
+        this.console.clearText();
+    }
 
 }

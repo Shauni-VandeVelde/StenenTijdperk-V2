@@ -1119,8 +1119,11 @@ public class MainScherm extends BorderPane
 
     }
     
-    public void refreshInterace(){
-        
+    public void refreshInterface(){
+        this.consolePane.clear();
+        this.spelbordPane = new CenterPane(this);
+        setInventoryPane(new InventoryPane(controller.getHuidigeSpeler(), this, centerRightInventoryMainVbox));
+        tabNaarHuidigeSpeler();
     }
     
     public void loadGame(DomeinController newDC){
@@ -1128,7 +1131,7 @@ public class MainScherm extends BorderPane
         
         this.controller = newDC;
         
-        refreshInterace();
+        refreshInterface();
     }
 
 }
