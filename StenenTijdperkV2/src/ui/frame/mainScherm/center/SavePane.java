@@ -55,9 +55,6 @@ public class SavePane extends RightPaneBlueprint {
         existingSavesButtons = new ArrayList<Button>();
 
         loadExistingSaveButtons();
-        existingSavesButtons.add(new Button("fuck dit"));
-        existingSavesButtons.add(new Button("fuck dit hard"));
-        existingSavesButtons.add(new Button("fuck dit hard & droog"));
         
         backgroundImg = mainScherm.getImageView("img/PauzeMenuBg.png");
 

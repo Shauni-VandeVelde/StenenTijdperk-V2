@@ -40,9 +40,6 @@ public class LoadPane extends RightPaneBlueprint
         this.saves = new ArrayList<String>();
         loadButtons = new ArrayList<Button>();
         laadLabel = new Label("Laad spel");
-        
-        loadButtons.add( new Button("LELIJKE HOEREN JA"));
-        loadButtons.add( new Button("wat een lekker kippetje"));
 
         backgroundImg = mainScherm.getImageView("img/PauzeMenuBg.png");
 
