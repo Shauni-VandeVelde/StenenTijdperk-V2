@@ -58,7 +58,7 @@ public class SavePane extends RightPaneBlueprint {
         existingSavesButtons = new ArrayList<Button>();
 
         loadExistingSaveButtons();
-
+        
         backgroundImg = mainScherm.getImageView("img/PauzeMenuBg.png");
 
         vBox = new VBox();
@@ -119,10 +119,12 @@ public class SavePane extends RightPaneBlueprint {
     }
 
     private void setActions() {
+        System.out.println("set actions called");
         btnNewSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                pauzePane.toggleNewSavePane(saves);
+                System.out.println("NEW SAVEPANE OPENED!");
+                pauzePane.openNewSavePane(saves);
             }
 
         });
