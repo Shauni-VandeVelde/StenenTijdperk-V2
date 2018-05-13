@@ -180,10 +180,6 @@ public class MainScherm extends BorderPane
         playMusic();
         initPanels();
 
-        controller.setAantalSpelers(controller.getSpelers().size());
-        controller = new DomeinController(true);
-        controller.setAantalSpelers(4);
-        controller.startSpel();
         stapelsPanel.init();
         bottomButtonsPanel.initAfter();
         setOpacity(0);
