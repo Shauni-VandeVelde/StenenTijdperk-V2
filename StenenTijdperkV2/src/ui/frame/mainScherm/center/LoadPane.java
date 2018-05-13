@@ -5,8 +5,11 @@
  */
 package ui.frame.mainScherm.center;
 
+import Domein.DomeinController;
 import Persistentie.PersistentieController;
 import java.util.ArrayList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -101,7 +104,18 @@ public class LoadPane extends RightPaneBlueprint
         for (int i = 0; i < temp.size(); ++i)
             {
             saves.add(temp.get(i).getKey().toString());
-            loadButtons.add(new Button("Save " + (i + 1) + " - " + "Naam: " + temp.get(i).getKey().toString() + " - " + "Ronde: " + temp.get(i).getValue().toString()));
+            String strSaveName = temp.get(i).getKey().toString();
+            Button btnTemp = new Button("Save " + (i + 1) + " - " + "Naam: " + strSaveName + " - " + "Ronde: " + temp.get(i).getValue().toString());
+            
+            btnTemp.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent e) {
+                    mainScherm.loadGame(pc.loadGame(strSaveName));
+                    mainScherm.printLine("Game " + "'" + strSaveName + "'" + " succssvol geladen.");
+                }
+            });
+            
+            loadButtons.add(btnTemp);
             }
 
     }
