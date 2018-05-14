@@ -5,7 +5,6 @@
  * and open the template in the editor.
  */
 package ui.frame.mainScherm;
-import java.awt.Color;
 import javafx.animation.FadeTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -101,7 +100,7 @@ public class StartScherm extends RightPaneBlueprint
         nieuwSpel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
         laadSpel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
         highscores.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
-        
+
         //
         mainScherm.playMusic();
 
@@ -181,7 +180,7 @@ public class StartScherm extends RightPaneBlueprint
         drieSpelersRadioButton.setStyle("-fx-text-fill:white;");
         vierSpelersRadioButton.setStyle("-fx-text-fill:white;");
         bevestigButton.setStyle("-fx-text-fill:white;-fx-background-color:transparent;");
-        
+
         aantalSpelersLabel.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
         tweeSpelersRadioButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
         drieSpelersRadioButton.getStylesheets().add(this.getClass().getClassLoader().getResource("ui/Stylesheets/StartUpText.css").toExternalForm());
@@ -232,6 +231,7 @@ public class StartScherm extends RightPaneBlueprint
         ft.setCycleCount(1);
         ft.play();
         ft.setOnFinished(e -> mainScherm.startSpel(aantal));
+        mainScherm.getChildren().remove(this);
 
     }
 

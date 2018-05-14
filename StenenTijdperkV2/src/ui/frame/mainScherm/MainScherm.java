@@ -85,7 +85,7 @@ public class MainScherm extends BorderPane
     private ButtonsPane bottomButtonsPanel;
     private ConsolePane consolePane;
     private boolean[] accept;
-
+    private boolean isBottomShown = true;
     private boolean firstDobbel = true;
     private boolean finishRoundFirst = true;
     private boolean isPionnenPlaatsenFase = true;
@@ -552,6 +552,13 @@ public class MainScherm extends BorderPane
             stapelsPanel.updateStapels();
             bottomButtonsPanel.update();
             isPionnenPlaatsenFase = true;
+            if (!isBottomShown)
+                {
+                getChildren().clear();
+                setCenter(centerMainHBox);
+                ;
+                setBottom(bottomVBox);
+                }
             tabNaarHuidigeSpeler();
 
             }
@@ -1078,7 +1085,9 @@ public class MainScherm extends BorderPane
         //System.err.println("setVoedselPanel()");
         centerMainHBox.getChildren().clear();
 
-        centerMainHBox.getChildren().add(eindeRondePane);
+        getChildren().clear();
+        setCenter(eindeRondePane);
+        isBottomShown = false;
         eindeRondePane.requestFocus();
     }
 
