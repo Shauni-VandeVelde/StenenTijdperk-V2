@@ -74,6 +74,10 @@ public class Player
     private void finish()
     {
         mainScherm.removeSFX(this);
+        if (isMusicLoop)
+            {
+            mainScherm.queueSFX("musicloop", -1);
+            }
     }
 
     private void setPath(String type)
@@ -95,7 +99,7 @@ public class Player
             case "win":
                 music = true;
                 path = "/SFX/Applause.mp3";
-                mainScherm.queueSFX("end", 65);
+                mainScherm.queueSFX("end", 55);
                 break;
             case "end":
                 music = true;

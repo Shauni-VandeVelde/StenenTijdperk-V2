@@ -172,7 +172,7 @@ public class StapelsPane extends Pane
                     mainScherm.getController().plaatsPionnenOpVeld(mainScherm.getController().getStapel(0), 1);
                     if (mainScherm.shouldPlayLocatieSFX())
                         {
-                        mainScherm.queueSFX("stapel", 50);
+                        mainScherm.queueSFX("stapel", 0.4);
                         }
                     updateStapels();
                     mainScherm.volgendeSpeler();
@@ -196,7 +196,7 @@ public class StapelsPane extends Pane
                     mainScherm.getController().plaatsPionnenOpVeld(mainScherm.getController().getStapel(1), 1);
                     if (mainScherm.shouldPlayLocatieSFX())
                         {
-                        mainScherm.queueSFX("stapel", 50);
+                        mainScherm.queueSFX("stapel", 0.4);
                         }
                     updateStapels();
                     mainScherm.volgendeSpeler();
@@ -221,7 +221,7 @@ public class StapelsPane extends Pane
                     mainScherm.getController().plaatsPionnenOpVeld(mainScherm.getController().getStapel(2), 1);
                     if (mainScherm.shouldPlayLocatieSFX())
                         {
-                        mainScherm.queueSFX("stapel", 50);
+                        mainScherm.queueSFX("stapel", 0.4);
                         }
                     updateStapels();
                     mainScherm.volgendeSpeler();
@@ -246,7 +246,7 @@ public class StapelsPane extends Pane
                     mainScherm.getController().plaatsPionnenOpVeld(mainScherm.getController().getStapel(3), 1);
                     if (mainScherm.shouldPlayLocatieSFX())
                         {
-                        mainScherm.queueSFX("stapel", 50);
+                        mainScherm.queueSFX("stapel", 0.4);
                         }
                     updateStapels();
                     mainScherm.volgendeSpeler();

@@ -35,7 +35,7 @@ public class KoopHutPane extends RightPaneBlueprint
         super(mainScherm, speler, container, 1, 0.77);
         if (mainScherm.shouldPlayKoopHutSFX())
             {
-            mainScherm.queueSFX("stapel", 50);
+            mainScherm.queueSFX("stapel", 0.35);
             }
 
         this.stapel = stapel;

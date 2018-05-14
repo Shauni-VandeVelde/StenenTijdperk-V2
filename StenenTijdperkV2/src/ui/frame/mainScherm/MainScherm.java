@@ -1073,7 +1073,7 @@ public class MainScherm extends BorderPane
     {
         if (shouldPlayEndOfRoundSFX)
             {
-            queueSFX("gong", -1);
+            queueSFX("gong", 0.45);
             }
         //System.err.println("setVoedselPanel()");
         centerMainHBox.getChildren().clear();
